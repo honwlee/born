@@ -20,18 +20,11 @@
 
 <body>
     <div class="wrapTopNav">
-        <nav class="navbar navbar-fixed-top topNavInner hidden-xs clearfix">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#sk-navbar" aria-controls="sk-navbar" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                    <a class="logo-nav navbar-brand" href="javascript:go('/')"><img src="./assets/images/logo.png" title="生美国际" alt="生美国际" class="logo" style="display:inline" /></a>
-                </div>
+        <div class="topNavInner hidden-xs clearfix">
+            <div class="logo">
+                <a href="/"><img alt="logo" src="/assets/images/logo.png" /></a>
+            </div>
+            <div class="navright clearfix">
                 <div class="navtopinfo clearfix">
                     <p class="gp_code">联系电话：<span>400 189 8888</span></p>
                     <!-- <div class="toplink clearfix"><a class="topweibo" href="http://weibo.com/u/5886052092" target="_blank">&nbsp;</a>
@@ -40,12 +33,67 @@
                         </div>
                     </div> -->
                 </div>
-                <div class="collapse navBottomInfo navbar-collapse" role="navigation" aria-expanded="false" id="sk-navbar"></div>
+                <div class="navBottomInfo">
+                    <ul class="list-unstyled clearfix">
+                        <li class="current"><a href="/">首页</a></li>
+
+                        <li>
+                            <a href="process">赴美流程</a>
+                            <div class="sameOne">
+                                <ul class="list-unstyled">
+                                    <li><a href="/">签证申请</a></li>
+                                    <li><a href="/">待产环境</a></li>
+                                    <li><a href="/">合作医院</a></li>
+                                    <li><a href="/">证件办理</a></li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/">在美活动</a>
+                        </li>
+                        <li>
+                            <a href="/">回国服务</a>
+                        </li>
+                        <li>
+                            <a href="/metUSA">遇见美利坚</a>
+
+                        </li>
+                        <li>
+                            <a href="/news">新闻资讯</a>
+                        </li>
+                        <li>
+                            <a href="/QA">赴美问答</a>
+                        </li>
+                        <li>
+                            <a class="last " href="about">关于我们</a>
+                            <div class="sameOne">
+                                <ul class="list-unstyled">
+                                    <li><a href="/">公司概况</a></li>
+                                    <li><a href="/">人才招聘</a></li>
+                                    <li><a href="/">联系我们</a></li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
             </div>
-        </nav>
+        </div>
+        <!--手机端显示网站logo-->
+        <!-- <div class="topNavMobi visible-xs">
+            <div class="mobiLogo">
+                <a href="./index.html"><img alt="logo" src="./statics/images/dcg/logo.png" /></a>
+            </div>
+            <div class="mobirightNav"></div>
+        </div> -->
     </div>
     <div id="main">
     </div>
+
 
     <div class="footer">
         <!-- 手机微博、微信 -->

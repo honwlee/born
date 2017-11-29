@@ -107,5 +107,5 @@ fs.readdirSync(appPath).forEach(item => {
 
 serve(appNames.join(","), {
     port: npm_argv.cooked[3] || 8087,
-    root: path.join(__dirname, 'frontend/src')
+    root: path.join(__dirname, 'frontend/src/apps/home')
 });

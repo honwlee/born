@@ -11,7 +11,7 @@ define([
             if (currentNav) currentNav.addClass("active");
         },
         showThrob = function() {
-            var selector = $("#main-wrap"),
+            var selector = $("#main"),
                 throb = window.addThrob(selector[0], function() {
                     router.one("routing", function(e) {
                         window._goTop();
@@ -50,21 +50,51 @@ define([
                 navClick("/", "home");
             });
             for (var key in routes) {
-                if (key === "home") continue;
                 var page = routes[key],
                     name = page.data.name,
                     navName = page.data.navName,
                     path = basePath + page.pathto;
-                $("<li>").attr({
-                    class: name + "-nav"
-                }).addContent(
-                    $("<a>").attr({
-                        class: "nav-item"
-                    }).data({
-                        name: name,
-                        path: path
-                    }).html(navName)
-                ).appendTo(ul);
+
+                if (page.subs) {
+                    var li = $("<li>").attr({
+                        class: name + "-nav subs"
+                    }).addContent(
+                        $("<a>").attr({
+                            class: "nav-item"
+                        }).data({
+                            name: name,
+                            path: path
+                        }).html(navName)
+                    ).appendTo(ul);
+                    var div = $("<div>").attr({
+                        class: "sameOne"
+                    }).appendTo(li).html("<ul class='list-unstyled'></ul>");
+                    page.subs.forEach(function(sub) {
+                        var subPage = routes[sub],
+                            subData = subPage.data;
+                        $("<li>").attr({
+                            class: "sub-nav"
+                        }).addContent(
+                            $("<a>").attr({
+                                class: "nav-item"
+                            }).data({
+                                name: subData.name,
+                                path: subPage.pathto
+                            }).html(subData.navName)
+                        ).appendTo(div.find("ul"));
+                    });
+                } else {
+                    $("<li>").attr({
+                        class: name + "-nav"
+                    }).addContent(
+                        $("<a>").attr({
+                            class: "nav-item"
+                        }).data({
+                            name: name,
+                            path: path
+                        }).html(navName)
+                    ).appendTo(ul);
+                }
             }
             _el.html(ul);
         },

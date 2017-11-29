@@ -25,49 +25,115 @@
             "controller": {
                 "type": "scripts/plugins/app/AppController"
             }
+        },
+        "navbar": {
+            "hookers": "starting",
+            "controller": {
+                "type": "scripts/plugins/navbar/NavbarController"
+            }
         }
     },
     "routes": {
         "home": {
             "pathto": "/",
+            "data": {
+                "name": "home",
+                "navName": "首页"
+            },
             "controller": {
                 "type": "scripts/routes/home/HomeController"
             }
         },
         "process": {
             "pathto": "/process",
+            "data": {
+                "name": "process",
+                "navName": "赴美流程"
+            },
+            "subs": ["process-visa"],
             "controller": {
                 "type": "scripts/routes/process/ProcessController"
             }
         },
-        "pro": {
-            "pathto": "pro",
+        "process-visa": {
+            "pathto": "/process/visa",
+            "data": {
+                "name": "process-visa",
+                "navName": "签证申请"
+            },
             "controller": {
-                "type": "scripts/routes/pro/ProController"
+                "type": "scripts/routes/process/ProcessController"
             }
         },
-        "about": {
-            "pathto": "/about",
+        "activity": {
+            "pathto": "/activity",
+            "data": {
+                "name": "activity",
+                "navName": "在美活动"
+            },
             "controller": {
-                "type": "scripts/routes/about/AboutController"
+                "type": "scripts/routes/activity/ActivityController"
             }
         },
-        "qa": {
-            "pathto": "/qa",
+        "repatriate": {
+            "pathto": "/repatriate",
+            "data": {
+                "name": "repatriate",
+                "navName": "回国服务"
+            },
             "controller": {
-                "type": "scripts/routes/qa/QaController"
-            }
-        },
-        "news": {
-            "pathto": "/news",
-            "controller": {
-                "type": "scripts/routes/news/NewsController"
+                "type": "scripts/routes/repatriate/RepatriateController"
             }
         },
         "meet": {
             "pathto": "/meet",
+            "data": {
+                "name": "meet",
+                "navName": "遇见美利坚"
+            },
             "controller": {
                 "type": "scripts/routes/meet/MeetController"
+            }
+        },
+        "news": {
+            "pathto": "/news",
+            "data": {
+                "name": "news",
+                "navName": "新闻资讯"
+            },
+            "controller": {
+                "type": "scripts/routes/news/NewsController"
+            }
+        },
+        "qa": {
+            "pathto": "/qa",
+            "data": {
+                "name": "qa",
+                "navName": "赴美回答"
+            },
+            "controller": {
+                "type": "scripts/routes/qa/QaController"
+            }
+        },
+        "about": {
+            "pathto": "/about",
+            "data": {
+                "name": "about",
+                "navName": "关于我们"
+            },
+            "subs": ["about-description"],
+            "controller": {
+                "type": "scripts/routes/about/AboutController"
+            }
+        },
+        "about-description": {
+            "pathto": "/about/description",
+            "data": {
+                "name": "about-description",
+                "navName": "公司概况"
+            },
+            "controller": {
+                "type": "scripts/routes/about/AboutController"
             }
         }
     }
