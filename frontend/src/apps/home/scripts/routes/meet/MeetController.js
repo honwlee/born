@@ -1,14 +1,14 @@
 define([
     "skylarkjs",
-    "text!scripts/routes/qa/qa.html"
-], function(skylarkjs, qaTpl) {
+    "text!scripts/routes/meet/meet.html"
+], function(skylarkjs, meetTpl) {
     var spa = skylarkjs.spa,
         $ = skylarkjs.query;
     return spa.RouteController.inherit({
-        klassName: "QaController",
+        klassName: "MeetController",
 
         rendering: function(e) {
-            e.content = qaTpl;
+            e.content = meetTpl;
         },
 
         entered: function() {

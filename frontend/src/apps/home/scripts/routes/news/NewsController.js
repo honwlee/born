@@ -11,7 +11,9 @@ define([
             e.content = newsTpl;
         },
 
-        entered: function() {},
-        exited: function() {}
+        entered: function() {
+        },
+        exited: function() {
+        }
     });
 });

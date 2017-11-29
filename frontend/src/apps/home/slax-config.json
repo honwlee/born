@@ -1,16 +1,15 @@
 {
     "name": "born",
-    "title": "born",
+    "title": "BornInUSA·生美国际-中美直营的赴美生子咨询服务商-赴美生子-南京赴美生子-赴美生子机构-赴美生子月子中心",
     "runtime": {
         "skylarkjs": {
             "version": "0.9.5"
         },
         "paths": {
             "server": "scripts/services/server",
-            "jquery": "https://cdn.bootcss.com/jquery/2.2.0/jquery.min",
+            "skylarkBs": "lib/skylark-bs-swt-all",
+            "jquery": "lib/skylark-jquery",
             "toastr": "https://cdn.bootcss.com/toastr.js/latest/js/toastr.min",
-            "bootstrapTb": "https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min",
-            "bootstrapTbZh": "https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min",
             "bootstrap": "https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min",
             "handlebars": "https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.amd.min",
             "text": "https://cdn.bootcss.com/require-text/2.0.12/text.min"
@@ -41,31 +40,34 @@
                 "type": "scripts/routes/process/ProcessController"
             }
         },
+        "pro": {
+            "pathto": "pro",
+            "controller": {
+                "type": "scripts/routes/pro/ProController"
+            }
+        },
         "about": {
             "pathto": "/about",
             "controller": {
                 "type": "scripts/routes/about/AboutController"
             }
         },
-
-        "metUSA": {
-            "pathto": "/metUSA",
+        "qa": {
+            "pathto": "/qa",
             "controller": {
-                "type": "scripts/routes/metUSA/MetUSAController"
+                "type": "scripts/routes/qa/QaController"
             }
         },
-
         "news": {
             "pathto": "/news",
             "controller": {
                 "type": "scripts/routes/news/NewsController"
             }
         },
-
-        "QA": {
-            "pathto": "/QA",
+        "meet": {
+            "pathto": "/meet",
             "controller": {
-                "type": "scripts/routes/QA/QAController"
+                "type": "scripts/routes/meet/MeetController"
             }
         }
     }

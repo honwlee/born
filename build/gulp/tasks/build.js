@@ -25,19 +25,19 @@ function buildApp(name) {
     if (fs.existsSync(appPath)) {
         copydir.sync(appPath, appDist);
         fs.mkdirSync(path.join(appDist, "lib"));
-        fs.mkdirSync(path.join(appDist, "services"));
-        fs.mkdirSync(path.join(appDist, "helpers"));
+        fs.mkdirSync(path.join(appDist, "scripts/services"));
+        fs.mkdirSync(path.join(appDist, "scripts/helpers"));
         copydir.sync(commonLib, path.join(appDist, "lib"), function(stat, filepath, filename) {
             if (filename === ".DS_Store") return false;
             if (stat === 'directory' && filename.match(/^\./)) return false;
             return true;
         });
-        copydir.sync(commonSrv, path.join(appDist, "services"), function(stat, filepath, filename) {
+        copydir.sync(commonSrv, path.join(appDist, "scripts/services"), function(stat, filepath, filename) {
             if (filename === ".DS_Store") return false;
             if (stat === 'directory' && filename.match(/^\./)) return false;
             return true;
         });
-        copydir.sync(commonHelper, path.join(appDist, "helpers"), function(stat, filepath, filename) {
+        copydir.sync(commonHelper, path.join(appDist, "scripts/helpers"), function(stat, filepath, filename) {
             if (filename === ".DS_Store") return false;
             if (stat === 'directory' && filename.match(/^\./)) return false;
             return true;
