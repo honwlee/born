@@ -1,0 +1,32 @@
+{
+    "name": "born",
+    "title": "born",
+    "runtime": {
+        "skylarkjs": {
+            "version": "0.9.5"
+        },
+        "paths": {
+            "text": "https://cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text"
+        }
+    },
+    "page": {
+        "routeViewer": "#main"
+    },
+    "spaModule": "scripts/helpers/spa",
+    "plugins": {
+        "app": {
+            "hookers": "starting started",
+            "controller": {
+                "type": "scripts/plugins/app/AppController"
+            }
+        }
+    },
+    "routes": {
+        "home": {
+            "pathto": "/",
+            "controller": {
+                "type": "scripts/routes/home/HomeController"
+            }
+        }
+    }
+}

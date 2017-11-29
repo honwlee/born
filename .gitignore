@@ -1,0 +1,10 @@
+node_modules
+build/node_modules
+backend/dbs
+backend/backup
+frontend/dist
+frontend/deploy
+frontend/src/assets/images/upload
+dump.rdb
+npm-debugs.log
+

@@ -1,0 +1,9 @@
+require('./gulp')([
+    'default',
+    'clean',
+    'build',
+    'src',
+    'lib',
+    'sass',
+    'deploy'
+]);
