@@ -50,19 +50,31 @@
                 "name": "process",
                 "navName": "赴美流程"
             },
-            "subs": ["process-visa"],
+            "subs": ["process-visa", "process-evn"],
             "controller": {
                 "type": "scripts/routes/process/ProcessController"
             }
         },
         "process-visa": {
+            "sub": true,
             "pathto": "/process/visa",
             "data": {
                 "name": "process-visa",
                 "navName": "签证申请"
             },
             "controller": {
-                "type": "scripts/routes/process/ProcessController"
+                "type": "scripts/routes/process/subs/VisaController"
+            }
+        },
+        "process-evn": {
+            "sub": true,
+            "pathto": "/process/evn",
+            "data": {
+                "name": "process-evn",
+                "navName": "签证申请"
+            },
+            "controller": {
+                "type": "scripts/routes/process/subs/VisaController"
             }
         },
         "activity": {
@@ -127,6 +139,7 @@
             }
         },
         "about-description": {
+            "sub": true,
             "pathto": "/about/description",
             "data": {
                 "name": "about-description",
