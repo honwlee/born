@@ -25,7 +25,7 @@ define([
     return spa.PluginController.inherit({
         starting: function(evt) {
             var spa = evt.spa,
-                basePath = spa.getConfig("baseUrl"),
+                basePath = (spa.getConfig("baseUrl") || "").replace(/.*(\/$)/,""),
                 routes = spa.getConfig("routes"),
                 _el = $("#sk-navbar"),
                 navClick = function(path, name) {
