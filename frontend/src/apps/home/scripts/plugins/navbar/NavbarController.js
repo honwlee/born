@@ -25,7 +25,7 @@ define([
     return spa.PluginController.inherit({
         starting: function(evt) {
             var spa = evt.spa,
-                basePath = (spa.getConfig("baseUrl") || "").replace(/.*(\/$)/,""),
+                basePath = (spa.getConfig("baseUrl") || "").replace(/.*(\/$)/, ""),
                 routes = spa.getConfig("routes"),
                 _el = $("#sk-navbar"),
                 navClick = function(path, name) {
@@ -54,7 +54,7 @@ define([
                     name = page.data.name,
                     navName = page.data.navName,
                     path = basePath + page.pathto;
-
+                if (page.sub) continue;
                 if (page.subs) {
                     var li = $("<li>").attr({
                         class: name + "-nav subs"
