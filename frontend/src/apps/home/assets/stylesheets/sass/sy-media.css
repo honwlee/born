@@ -1,0 +1,1015 @@
+
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone4/4s */
+
+    .hidden {
+        display: block;
+    }
+    .block{
+        display: none;
+    }
+    .histLeft{
+        width:50%
+    }
+    .histrRight{
+        width: 50%;
+    }
+    .histrRight span {
+        margin-left: 9%;
+    }
+    .histrRight dt{
+        margin-left:2px;
+    }
+    .histLeft dt {
+        width: 128px;
+        float: none;
+        margin-right: 0;
+    }
+    .martT {
+        margin-top: 30px;
+    }
+    .martT27{
+        margin-top: 184px;
+    }
+    .borderlast{
+        height:470px;
+    }
+    .martT_ph{
+        margin-top: 52px;
+    }
+    .martT_ph2{
+        margin-top:54px;
+    }
+    .martT_ph3{
+        margin-top:27px;
+    }
+    .histLeft img{
+        margin-top:10px;
+    }
+    .mart111{
+        margin-top:111px;
+    }
+    .layou{
+        width: 100%;
+        margin:0 auto;
+    }
+    .mapImg{
+        width: 100%;
+        height: 200px;
+        float: none;
+    }
+    .c_compay_infor{
+        height: 100px;
+    }
+    .layou_title{
+        /*margin:30px 0 16px 0;*/
+    }
+    .contBox{
+        padding-bottom:20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .c_addres_txt p{
+        padding-right: 6px;
+    }
+    .contWrap{
+        padding: 0 20px;
+    }
+    .c_map_box{
+        width: 90%;
+        margin:0 auto;
+    }
+}
+
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone5 */
+    .contWrap{
+        padding: 0 20px;
+    }
+    .c_map_box{
+        width: 90%;
+        margin:0 auto;
+    }
+    .hidden {
+        display: block;
+    }
+    .block{
+        display: none;
+    }
+    .rightUl .rightImg1 {
+        background: url("../images/picture6_phone.png") no-repeat;
+        background-size: cover;
+    }
+    .rightUl li {
+        float: left;
+        width: 40px;
+        height: 254px;
+        cursor: pointer;
+        position: relative;
+    }
+    .rightUl .rightImg2 {
+        background: url("../images/picture7_phone.png") no-repeat;
+        background-size: cover;
+    }
+
+}
+
+
+@media (device-height:667px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone6 */
+    .contWrap{
+        padding: 0 20px;
+    }
+    .c_map_box{
+        width: 90%;
+        margin:0 auto;
+    }
+    .left_ph{
+        width:65%;
+    }
+    .hidden {
+        display: block;
+    }
+    .block{
+        display: none;
+    }
+    .rightUl .rightImg1 {
+        background: url("../images/picture6_phone.png") no-repeat;
+        background-size: cover;
+    }
+    .rightUl li {
+        float: left;
+        width: 51px;
+        height: 254px;
+        cursor: pointer;
+        position: relative;
+    }
+    .rightUl .rightImg2 {
+        background: url("../images/picture7_phone.png") no-repeat;
+        background-size: cover;
+    }
+}
+
+@media (device-height:736px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone6 Plus */
+    .contWrap{
+        padding: 0 20px;
+    }
+    .left_ph{
+        width:66%;
+    }
+    .c_map_box{
+        width: 90%;
+        margin:0 auto;
+    }
+    .hidden {
+        display: block;
+    }
+    .block{
+        display: none;
+    }
+    .rightUl .rightImg1 {
+        background: url("../images/picture6_phone.png") no-repeat;
+        background-size: cover;
+    }
+    .rightUl li {
+        float: left;
+        width: 56px;
+        height: 254px;
+        cursor: pointer;
+        position: relative;
+    }
+    .rightUl .rightImg2  {
+        background: url("../images/picture7_phone.png") no-repeat;
+        background-size: cover;
+    }
+
+}
+@media only screen and (min-width: 1920px){
+
+}
+@media only screen and (max-width: 800px) {
+    .contWrap{
+        padding:0 20px;
+    }
+    .c_map_box{
+        width: 90%;
+        margin:0 auto;
+    }
+    .hidden {
+        display: block;
+    }
+    .block{
+        display: none;
+    }
+}
+@media only screen and (max-width: 1024px) {
+
+}
+@media only screen and (max-width: 320px) {
+    .contWrap{
+        padding: 0 20px;
+    }
+    .c_map_box{
+        width: 90%;
+        margin:0 auto;
+    }
+    .hidden {
+        display: block;
+    }
+    .block{
+        display: none;
+    }
+
+    .rightUl .rightImg1 {
+        background: url("../images/picture6_phone.png") no-repeat;
+        background-size: cover;
+    }
+    .txt_wrap_ph_title{
+        left:14%;
+    }
+    .rightUl .rightImg2 {
+        background: url("../images/picture7_phone.png") no-repeat;
+        background-size: cover;
+    }
+    .histLeft{
+        width:50%
+    }
+    .histrRight{
+        width: 50%;
+    }
+    .histrRight span {
+        margin-left: 9%;
+    }
+    .histrRight dt{
+        margin-left:2px;
+    }
+    .histLeft dt {
+        width: 128px;
+        float: none;
+        margin-right: 0;
+    }
+    /*.martT {*/
+        /*margin-top: 30px;*/
+    /*}*/
+    /*.martT27{*/
+        /*margin-top: 184px;*/
+    /*}*/
+    /*.borderlast{*/
+        /*height:470px;*/
+    /*}*/
+    /*.martT_ph{*/
+        /*margin-top: 52px;*/
+    /*}*/
+    /*.martT_ph2{*/
+        /*margin-top:54px;*/
+    /*}*/
+    /*.martT_ph3{*/
+        /*margin-top:27px;*/
+    /*}*/
+    .histLeft img{
+        margin-top:10px;
+    }
+    /*.mart111{*/
+        /*margin-top:111px;*/
+    /*}*/
+    .layou{
+        width: 100%;
+        margin:0 auto;
+    }
+    .mapImg{
+        width: 100%;
+        height: 200px;
+        float: none;
+    }
+    .c_compay_infor{
+        height: 100px;
+    }
+    .layou_title{
+        /*margin:30px 0 16px 0;*/
+    }
+    .contBox{
+        padding-bottom:20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .c_addres_txt p{
+        padding-right: 6px;
+    }
+    .layou{
+        width: 100%;
+        margin:0 auto;
+    }
+    .mapImg{
+        width: 100%;
+        height: 200px;
+        float: none;
+    }
+    .c_compay_infor{
+        height: 100px;
+    }
+    .layou_title{
+        /*margin:30px auto 16px;*/
+    }
+    .contBox{
+        padding-bottom:20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .c_addres_txt p{
+        padding-right: 6px;
+    }
+}
+@media only screen and (max-width: 414px){
+    .right_ph{
+        float: left;
+    }
+    .left_ph{
+        width: 67%;
+    }
+    .hidden {
+        display: block;
+    }
+    .block{
+        display: none;
+    }
+    .histLeft{
+        width:50%
+    }
+    .histrRight{
+        width: 50%;
+    }
+    .histrRight span {
+        margin-left: 9%;
+    }
+    .histrRight dt{
+        margin-left:2px;
+    }
+    .histLeft dt {
+        width: 128px;
+        float: none;
+        margin-right: 0;
+    }
+    .histLeft img{
+        margin-top:10px;
+    }
+    .layou{
+        width: 100%;
+        margin:0 auto;
+    }
+    .mapImg{
+        width: 100%;
+        height: 200px;
+        float: none;
+    }
+    .c_compay_infor{
+        height: 100px;
+    }
+    .layou_title{
+        /*margin:30px auto 16px;*/
+    }
+    .contBox{
+        padding-bottom:20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .c_addres_txt p{
+        padding-right: 6px;
+    }
+    .contWrap{
+        padding: 0 20px;
+    }
+    .c_map_box{
+        width: 90%;
+        margin:0 auto;
+    }
+}
+@media only screen and (max-width: 375px){
+    .contWrap{
+        padding: 0 20px;
+    }
+    .c_map_box{
+        width: 90%;
+        margin:0 auto;
+    }
+    .hidden {
+        display: block;
+    }
+    .block{
+        display: none;
+    }
+    .rightUl .rightImg1 {
+        background: url("../images/picture6_phone.png") no-repeat;
+        background-size: cover;
+    }
+    .rightUl li {
+        float: left;
+        width: 41px;
+        height: 254px;
+        cursor: pointer;
+        position: relative;
+    }
+    .rightUl .rightImg2 {
+        background: url("../images/picture7_phone.png") no-repeat;
+        background-size: cover;
+    }
+    .layou{
+        width: 100%;
+        margin:0 auto;
+    }
+    .mapImg{
+        width: 100%;
+        height: 200px;
+        float: none;
+    }
+    .c_compay_infor{
+        height: 100px;
+    }
+    .layou_title{
+        /*margin:30px auto 16px;*/
+    }
+    .contBox{
+        padding-bottom:20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .c_addres_txt p{
+        padding-right: 6px;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .contWrap{
+        padding: 0 20px;
+    }
+    .c_map_box{
+        width: 90%;
+        margin:0 auto;
+    }
+    .hidden {
+        display: block;
+    }
+    .block{
+        display: none;
+    }
+    .histLeft{
+        width:50%
+    }
+    .histrRight{
+        width: 50%;
+    }
+    .histrRight span {
+        margin-left: 9%;
+    }
+    .histrRight dt{
+        margin-left:2px;
+    }
+    .histLeft dt {
+        width: 128px;
+        float: none;
+        margin-right: 0;
+    }
+    /*.martT {*/
+        /*margin-top: 30px;*/
+    /*}*/
+    /*.martT27{*/
+        /*margin-top: 184px;*/
+    /*}*/
+    /*.borderlast{*/
+        /*height:470px;*/
+    /*}*/
+    /*.martT_ph{*/
+        /*margin-top: 52px;*/
+    /*}*/
+    /*.martT_ph2{*/
+        /*margin-top:54px;*/
+    /*}*/
+    /*.martT_ph3{*/
+        /*margin-top:27px;*/
+    /*}*/
+    .histLeft img{
+        margin-top:10px;
+    }
+    /*.mart111{*/
+        /*margin-top:111px;*/
+    /*}*/
+    .layou{
+        width: 100%;
+        margin:0 auto;
+    }
+    .mapImg{
+        width: 100%;
+        height: 200px;
+        float: none;
+    }
+    .c_compay_infor{
+        height: 100px;
+    }
+    .layou_title{
+        /*margin:30px auto 16px;*/
+    }
+    .contBox{
+        padding-bottom:20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .c_addres_txt p{
+        padding-right: 6px;
+    }
+
+}
+@media only screen and (max-width:800px) and (min-width:600px){
+    .left_ph {
+        width: 57%;
+    }
+    .banner_phone img{
+        display: block;
+        margin:0 auto;
+    }
+    .ulImg_ph li {
+        width: 23%;}
+    .layou_phone{
+        max-width: 100%;
+    }
+    .layou_title_ph{
+        max-width: 100%;
+    }
+    .histWrap_ph{
+        max-width: 100%;
+    }
+    .hidden {
+        display: block;
+    }
+    .block{
+        display: none;
+    }
+    .ulImg_ph{
+        width: 100%;
+    }
+    .ulImg_ph li{
+         width: 23%;
+        margin-right:10px;
+    }
+    .txt_wrap_ph_title{
+        left:34%;
+    }
+    .leftWrap_ph{
+        left:34%;
+    }
+    .rightUl .rightImg1 {
+        background: url("../images/picture6_phone.png") no-repeat;
+        background-size: cover;
+    }
+    .rightUl li {
+        float: left;
+        width: 108px;
+        height: 254px;
+        cursor: pointer;
+        position: relative;
+    }
+    .rightUl .rightImg2 {
+        background: url("../images/picture7_phone.png") no-repeat;
+        background-size: cover;
+    }
+    .left .contImg_phone{
+        width: 100%;
+    }
+    .histLeft{
+        width:50%
+    }
+    .histrRight{
+        width: 50%;
+    }
+    .histrRight span {
+        margin-left: 9%;
+    }
+    .histrRight dt{
+        margin-left:2px;
+    }
+    .histLeft dt {
+        width: 128px;
+        float: none;
+        margin-right: 0;
+    }
+    .martT {
+        margin-top: 30px;
+    }
+    .martT27{
+        margin-top: 184px;
+    }
+    .borderlast{
+        height:470px;
+    }
+    .martT_ph{
+        margin-top: 52px;
+    }
+    .martT_ph2{
+        margin-top:54px;
+    }
+    .martT_ph3{
+        margin-top:27px;
+    }
+    .histLeft img{
+        margin-top:10px;
+    }
+    .mart111{
+        margin-top:111px;
+    }
+    .layou{
+        width: 100%;
+        margin:0 auto;
+    }
+    .mapImg{
+        width: 100%;
+        height: 200px;
+        float: none;
+    }
+    .c_compay_infor{
+        height: 100px;
+    }
+    .layou_title{
+        /*margin:30px 0 16px 0;*/
+    }
+    .contBox{
+        padding-bottom:20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .contWrap{
+        padding: 0 20px;
+    }
+    .c_map_box{
+        width: 90%;
+        margin:0 auto;
+    }
+}
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone4/4s */
+    .histWrap_ph {
+        width: 90%;
+        max-width: 100%;
+    }
+    .layou_title_ph{
+        max-width: 100%;
+    }
+    .layou_phone{
+        width: 100%;
+        max-width: 100%;
+    }
+    .left_ph{
+        width: 67%;
+    }
+    .hidden {
+        display: block;
+    }
+    .block{
+        display: none;
+    }
+    .histLeft{
+        width:50%
+    }
+    .histrRight{
+        width: 50%;
+    }
+    .histrRight span {
+        margin-left: 9%;
+    }
+    .histrRight dt{
+        margin-left:2px;
+    }
+    .histLeft dt {
+        width: 128px;
+        float: none;
+        margin-right: 0;
+    }
+    .martT {
+        margin-top: 54px;
+    }
+    .martT27{
+        margin-top: 184px;
+    }
+    .borderlast{
+        height:470px;
+    }
+    .martT_ph{
+        margin-top: 52px;
+    }
+    .martT_ph2{
+        margin-top:78px;
+    }
+    .martT_ph3{
+        margin-top:27px;
+    }
+    .histLeft img{
+        margin-top:10px;
+    }
+    .mart111{
+        margin-top:111px;
+    }
+    .layou{
+        width: 100%;
+        margin:0 auto;
+    }
+    .mapImg{
+        width: 100%;
+        height: 200px;
+        float: none;
+    }
+    .c_compay_infor{
+        height: 100px;
+    }
+    .layou_title{
+        /*margin:30px 0 16px 0;*/
+    }
+    .contBox{
+        padding-bottom:20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .c_addres_txt p{
+        padding-right: 6px;
+    }
+    .contWrap{
+        padding: 0 20px;
+    }
+    .c_map_box{
+        width: 90%;
+        margin:0 auto;
+    }
+}
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone5 */
+    .histWrap_ph {
+        width: 90%;
+        max-width: 100%;
+    }
+    .layou_title_ph{
+        max-width: 100%;
+    }
+    .layou_phone{
+        width: 100%;
+        max-width: 100%;
+    }
+    .left_ph{
+        width: 67%;
+    }
+    .hidden {
+        display: block;
+    }
+    .block{
+        display: none;
+    }
+    .rightUl .rightImg1 {
+        background: url("../images/picture6_phone.png") no-repeat;
+        background-size: cover;
+    }
+    .rightUl li {
+        float: left;
+        width: 40px;
+        height: 254px;
+        cursor: pointer;
+        position: relative;
+    }
+    .rightUl .rightImg2 {
+        background: url("../images/picture7_phone.png") no-repeat;
+        background-size: cover;
+    }
+    .histLeft{
+        width:50%
+    }
+    .histrRight{
+        width: 50%;
+    }
+    .histrRight span {
+        margin-left: 9%;
+    }
+    .histrRight dt{
+        margin-left:2px;
+    }
+    .histLeft dt {
+        width: 128px;
+        float: none;
+         margin-right: 0;
+    }
+    .martT {
+        margin-top: 54px;
+    }
+    .martT27{
+        margin-top: 184px;
+    }
+    .borderlast{
+        height:470px;
+    }
+    .martT_ph{
+        margin-top: 52px;
+    }
+    .martT_ph2{
+        margin-top:78px;
+    }
+    .martT_ph3{
+        margin-top:27px;
+    }
+    .histLeft img{
+        margin-top:10px;
+    }
+    .mart111{
+        margin-top:111px;
+    }
+    .layou{
+        width:100%;
+        margin:0 auto;
+    }
+    .mapImg{
+        width: 100%;
+        height: 200px;
+        float: none;
+    }
+    .c_compay_infor{
+        height: 100px;
+    }
+    .layou_title{
+        /*margin:30px 0 16px 0;*/
+    }
+    .contBox{
+        padding-bottom:20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .c_addres_txt p{
+        padding-right: 6px;
+    }
+
+}
+@media (device-height:667px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone6 */
+    .histWrap_ph {
+        width: 90%;
+        max-width: 100%;
+    }
+    .layou_title_ph{
+        max-width: 100%;
+    }
+    .layou_phone{
+        width: 100%;
+        max-width: 100%;
+    }
+    .left_ph{
+        width: 66%;
+    }
+    .hidden {
+        display: block;
+    }
+    .block{
+        display: none;
+    }
+    .rightUl .rightImg1 {
+        background: url("../images/picture6_phone.png") no-repeat;
+        background-size: cover;
+    }
+    .rightUl li {
+        float: left;
+        width: 51px;
+        height: 254px;
+        cursor: pointer;
+        position: relative;
+    }
+    .rightUl .rightImg2 {
+        background: url("../images/picture7_phone.png") no-repeat;
+        background-size: cover;
+    }
+    .histLeft{
+        width:50%
+    }
+    .histrRight{
+        width:50%;
+    }
+    .histrRight span {
+        margin-left: 25%;
+    }
+    .martT {
+        margin-top: 77px;
+    }
+    .borderlast{
+        height:260px;
+    }
+    .martT27{
+      margin-top: 29px;
+    }
+    .martT_ph{
+        margin-top: 52px;
+    }
+    .martT_ph2{
+        margin-top:78px;
+    }
+    .martT_ph6{
+        margin-top:100px;
+    }
+    .martT_ph3{
+        margin-top:50px;
+    }
+    .histLeft img{
+        margin-top:10px;
+    }
+    .mart111{
+        margin-top:124px;
+    }
+    .layou{
+        width: 100%;
+        margin:0 auto;
+    }
+    .mapImg{
+        width: 100%;
+        height: 200px;
+        float: none;
+    }
+    .c_compay_infor{
+        height: 100px;
+    }
+    .layou_title{
+        /*margin:30px 0 16px 0;*/
+    }
+    .contBox{
+        padding-bottom:20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .c_addres_txt p{
+        padding-right: 6px;
+    }
+    .cont_txtPh li {
+         padding-right:0;
+    }
+
+}
+
+@media (device-height:736px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone6 Plus */
+    .layou_title_ph{
+        max-width: 100%;
+    }
+    .layou_phone{
+        width: 100%;
+        max-width: 100%;
+    }
+    .histWrap_ph {
+        width: 90%;
+        max-width: 100%;
+    }
+    .hidden {
+        display: block;
+    }
+    .block{
+        display: none;
+    }
+    .rightUl .rightImg1 {
+        background: url("../images/picture6_phone.png") no-repeat;
+        background-size: cover;
+    }
+    .rightUl li {
+        float: left;
+        width: 56px;
+        height: 254px;
+        cursor: pointer;
+        position: relative;
+    }
+    .rightUl .rightImg2  {
+        background: url("../images/picture7_phone.png") no-repeat;
+        background-size: cover;
+    }
+    .histLeft{
+        width:50%
+    }
+    .histrRight{
+        width: 50%;
+    }
+    .histrRight span {
+        margin-left: 32%;
+    }
+    .borderlast{
+        height:260px;
+    }
+    .martT {
+        margin-top: 77px;
+    }
+    .martT27{
+        margin-top:54px;
+    }
+    .martT_ph{
+        margin-top: 52px;
+    }
+    .martT_ph2{
+        margin-top:101px;
+    }
+    .martT_ph3{
+        margin-top:78px;
+    }
+    .histLeft img{
+        margin-top:10px;
+    }
+    .mart111{
+        margin-top:124px;
+    }
+    .layou{
+        width: 100%;
+        margin:0 auto;
+    }
+    .mapImg{
+        width: 100%;
+        height: 200px;
+        float: none;
+    }
+    .c_compay_infor{
+        height: 100px;
+    }
+    .layou_title{
+        /*margin:30px 0 16px 0;*/
+    }
+    .contBox{
+        padding-bottom:20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .left_ph {
+        width: 65%;
+    }
+}
