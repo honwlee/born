@@ -161,7 +161,7 @@ body {
 .backToTop {
     width: 50px;
     height: 65px;
-    background: url(/assets/images/dcg/BackTop.jpg) no-repeat;
+    background: url(/assets/images/BackTop.jpg) no-repeat;
     position: fixed;
     bottom: 150px;
     cursor: pointer;
@@ -197,7 +197,7 @@ body {
     float: left;
     width: 128px;
     height: 43px;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .topNavInner .navright {
@@ -232,7 +232,7 @@ body {
     width: 13px;
     height: 13px;
     outline: none;
-    background: url(/assets/images/dcg/searchtop.png) no-repeat;
+    background: url(/assets/images/searchtop.png) no-repeat;
     top: 5px;
     right: 8px;
     border: 0;
@@ -266,11 +266,11 @@ body {
     margin-right: 10px;
     width: 22px;
     height: 22px;
-    background: url(/assets/images/dcg/topweiboo.png) no-repeat;
+    background: url(/assets/images/topweiboo.png) no-repeat;
 }
 
 .navtopinfo .toplink .topweibo:hover {
-    background: url(/assets/images/dcg/topweiboohover.png) no-repeat;
+    background: url(/assets/images/topweiboohover.png) no-repeat;
 }
 
 .navtopinfo .toplink .topweixin {
@@ -280,11 +280,11 @@ body {
     z-index: 5;
     width: 22px;
     height: 22px;
-    background: url(/assets/images/dcg/topweixin.png) no-repeat;
+    background: url(/assets/images/topweixin.png) no-repeat;
 }
 
 .navtopinfo .toplink .topweixin:hover {
-    background: url(/assets/images/dcg/topweixinhover.png) no-repeat;
+    background: url(/assets/images/topweixinhover.png) no-repeat;
 }
 
 .navtopinfo .toplink .topweixin .code-weixin {
@@ -304,7 +304,7 @@ body {
 .navBottomInfo {
     clear: both;
     float: right;
-    *+width: 780px;
+    width: 780px;
     margin-top: 10px;
 }
 
@@ -397,7 +397,7 @@ body {
     top: 50%;
     margin-top: -10px;
     right: 20px;
-    background: url(/assets/images/dcg/mobrightNavBg.png) no-repeat center center;
+    background: url(/assets/images/mobrightNavBg.png) no-repeat center center;
     background-size: 100%;
     width: 30px;
     height: 20px;
@@ -431,7 +431,7 @@ body {
     position: absolute;
     width: 20px;
     height: 20px;
-    background: url(/assets/images/dcg/mobisearchBg.png) no-repeat;
+    background: url(/assets/images/mobisearchBg.png) no-repeat;
     outline: none;
     background-size: 100%;
     top: 4px;
@@ -510,11 +510,11 @@ body {
 }
 
 .navfixed_con>ul>li>.same>a.twonav {
-    background: url(/assets/images/dcg/navmobiarrow.png) no-repeat 180px center;
+    background: url(/assets/images/navmobiarrow.png) no-repeat 180px center;
 }
 
 .navfixed_con>ul>li>.same>a.twonav.current {
-    background: url(/assets/images/dcg/navmobiarrowhover.png) no-repeat 180px center;
+    background: url(/assets/images/navmobiarrowhover.png) no-repeat 180px center;
 }
 
 .navfixed_con>ul>li:first-child>.same>a {
@@ -588,7 +588,7 @@ body {
 .slider-homebanner .prenextHd .hd li {
     text-indent: -99999px;
     display: block;
-    background: url(/assets/images/dcg/homebannerdot.png) no-repeat 0 0;
+    background: url(/assets/images/homebannerdot.png) no-repeat 0 0;
     width: 10px;
     height: 10px;
     margin: 10px 0;
@@ -596,14 +596,14 @@ body {
 }
 
 .slider-homebanner .prenextHd .hd li.on {
-    background: url(/assets/images/dcg/homebannerdot.png) no-repeat -10px 0;
+    background: url(/assets/images/homebannerdot.png) no-repeat -10px 0;
 }
 
 .slider-homebanner .prenextHd .prev {
     cursor: pointer;
     width: 12px;
     height: 7px;
-    background: url(/assets/images/dcg/homeprevnextBg.png) no-repeat 0 0;
+    background: url(/assets/images/homeprevnextBg.png) no-repeat 0 0;
     margin-bottom: 10px;
 }
 
@@ -611,7 +611,7 @@ body {
     cursor: pointer;
     width: 12px;
     height: 7px;
-    background: url(/assets/images/dcg/homeprevnextBg.png) no-repeat -12px 0;
+    background: url(/assets/images/homeprevnextBg.png) no-repeat -12px 0;
     margin-top: 10px;
 }
 
@@ -656,7 +656,7 @@ body {
 .mobi-slider-homebanner .prenextHd .hd li {
     text-indent: -99999px;
     display: inline-block;
-    background: url(/assets/images/dcg/homebannerdot.png) no-repeat 0 0;
+    background: url(/assets/images/homebannerdot.png) no-repeat 0 0;
     width: 10px;
     height: 10px;
     margin: 0 5px;
@@ -664,7 +664,7 @@ body {
 }
 
 .mobi-slider-homebanner .prenextHd .hd li.on {
-    background: url(/assets/images/dcg/homebannerdot.png) no-repeat -10px 0;
+    background: url(/assets/images/homebannerdot.png) no-repeat -10px 0;
 }
 
 .mobi-slider-homebanner .prenextHd .prev {
@@ -672,7 +672,7 @@ body {
     cursor: pointer;
     width: 12px;
     height: 7px;
-    background: url(/assets/images/dcg/homeprevnextBg.png) no-repeat 0 0;
+    background: url(/assets/images/homeprevnextBg.png) no-repeat 0 0;
     margin-bottom: 3px;
 }
 
@@ -681,14 +681,14 @@ body {
     cursor: pointer;
     width: 12px;
     height: 7px;
-    background: url(/assets/images/dcg/homeprevnextBg.png) no-repeat -12px 0;
+    background: url(/assets/images/homeprevnextBg.png) no-repeat -12px 0;
     margin-top: 3px;
 }
 
 .homenews {
     width: 100%;
     height: 600px;
-    background: url(/assets/images/dcg/homenewsbg.jpg) no-repeat center top;
+    background: url(/assets/images/homenewsbg.jpg) no-repeat center top;
     margin-top: 30px;
     padding-bottom: 70px;
 }
@@ -716,11 +716,11 @@ body {
     bottom: 0;
     width: 28px;
     height: 28px;
-    background: url(/assets/images/dcg/homenewsnp.jpg) no-repeat 0 0;
+    background: url(assets/images/newsnp.jpg) no-repeat 0 0;
 }
 
 .homenewsTitle .prev:hover {
-    background: url(/assets/images/dcg/homenewsnp.jpg) no-repeat -28px 0;
+    background: url(assets/images/newsnp.jpg) no-repeat -28px 0;
 }
 
 .homenewsTitle .next {
@@ -729,11 +729,11 @@ body {
     bottom: 0;
     width: 28px;
     height: 28px;
-    background: url(/assets/images/dcg/homenewsnp.jpg) no-repeat 0 -28px;
+    background: url(assets/images/newsnp.jpg) no-repeat 0 -28px;
 }
 
 .homenewsTitle .next:hover {
-    background: url(/assets/images/dcg/homenewsnp.jpg) no-repeat -28px -28px;
+    background: url(assets/images/newsnp.jpg) no-repeat -28px -28px;
 }
 
 .homenewsCon .slidecon ul li {
@@ -768,7 +768,7 @@ body {
     margin-left: 5px;
     width: 8px;
     height: 16px;
-    background: url(/assets/images/dcg/rightArrowbg.png) no-repeat center 6px;
+    background: url(/assets/images/rightArrowbg.png) no-repeat center 6px;
 }
 
 .homenewsCon .slidecon ul li .con .inner p {
@@ -780,7 +780,7 @@ body {
     position: absolute;
     width: 53px;
     height: 19px;
-    background: url(/assets/images/dcg/newsmorebg.png) no-repeat;
+    background: url(/assets/images/newsmorebg.png) no-repeat;
     left: 20px;
     bottom: 20px;
 }
@@ -861,7 +861,7 @@ body {
     position: absolute;
     width: 13px;
     height: 8px;
-    background: url(/assets/images/dcg/footerbtnBg.png) no-repeat 0 0;
+    background: url(assets/images/erbtnBg.png) no-repeat 0 0;
     top: 50%;
     margin-top: -4px;
     left: 50%;
@@ -869,7 +869,7 @@ body {
 }
 
 .btnfooter.current span {
-    background: url(assets/images/footerbtnBg.png) no-repeat -13px 0;
+    background: url(assets/images/erbtnBg.png) no-repeat -13px 0;
 }
 
 .footerOne .innerCon {
@@ -882,7 +882,7 @@ body {
 
 .footerOne .innerCon .left .same {
     float: left;
-    margin-left: 78px;
+    margin-left: 60px;
 }
 
 .footerOne .innerCon .left .same:first-child {
@@ -913,11 +913,11 @@ body {
     display: block;
     width: 41px;
     height: 41px;
-    background: url(/assets/images/dcg/footerweibo.png) no-repeat;
+    background: url(/assets/images/footerweibo.png) no-repeat;
 }
 
 .footerOne .innerCon .right .footerweibo:hover {
-    background: url(/assets/images/dcg/footerweibohover.png) no-repeat;
+    background: url(/assets/images/footerweibohover.png) no-repeat;
 }
 
 .footerOne .innerCon .right .footerweixin {
@@ -927,12 +927,12 @@ body {
     float: left;
     width: 41px;
     height: 41px;
-    background: url(/assets/images/dcg/footerweixin.png) no-repeat;
+    background: url(/assets/images/footerweixin.png) no-repeat;
     box-sizing: content-box;
 }
 
 .footerOne .innerCon .right .footerweixin:hover {
-    background: url(/assets/images/dcg/footerweixinhover.png) no-repeat;
+    background: url(/assets/images/footerweixinhover.png) no-repeat;
 }
 
 .footerOne .innerCon .right .footerweixin .code {
@@ -993,12 +993,12 @@ body {
 }
 
 .footercode a.mobi-code {
-    background: url(/assets/images/dcg/mobiweixin.png) no-repeat;
+    background: url(/assets/images/mobiweixin.png) no-repeat;
     background-size: 100%;
 }
 
 .footercode a.mobi-weibo {
-    background: url(/assets/images/dcg/mobiweibo.png) no-repeat;
+    background: url(/assets/images/mobiweibo.png) no-repeat;
     background-size: 100%;
 }
 
@@ -1022,7 +1022,7 @@ body {
 .mainWrapCon .position-current {
     height: 48px;
     line-height: 48px;
-    background: url(/assets/images/dcg/mainpositionBg.jpg) no-repeat left top;
+    background: url(/assets/images/mainpositionBg.jpg) no-repeat left top;
 }
 
 .mainWrapCon .position-current a {
@@ -1041,7 +1041,7 @@ body {
     height: 42px;
     line-height: 42px;
     padding-left: 22px;
-    background: url(/assets/images/dcg/leftnavbg.jpg) no-repeat left top;
+    background: url(/assets/images/leftnavbg.jpg) no-repeat left top;
 }
 
 .leftNavCon ul li a {
@@ -1051,15 +1051,15 @@ body {
     color: #333333;
     font-size: 13px;
     border-bottom: 1px solid #f2f2f2;
-    background: #fff url(/assets/images/dcg/leftnavAbg.png) no-repeat 10px center;
+    background: #fff url(/assets/images/leftnavAbg.png) no-repeat 10px center;
     padding-left: 22px;
 }
 
 .leftNavCon ul li a:hover,
 .leftNavCon ul li a.current {
     color: #d60917;
-    background: #fbeced url(/assets/images/dcg/leftnavAbg.png) no-repeat 10px center;
-    background: #fbeced url(/assets/images/dcg/leftnavAbg.png) no-repeat 10px center;
+    background: #fbeced url(/assets/images/leftnavAbg.png) no-repeat 10px center;
+    background: #fbeced url(/assets/images/leftnavAbg.png) no-repeat 10px center;
 }
 
 .leftNavCon ul li ul li a {
@@ -1067,7 +1067,7 @@ body {
     height: auto;
     line-height: 22px;
     padding: 8px 15px 8px 20px;
-    background: #fff url(/assets/images/dcg/leftnavAbg.png) no-repeat 10px center;
+    background: #fff url(/assets/images/leftnavAbg.png) no-repeat 10px center;
 }
 
 .leftNavCon ul li ul li a:hover,
@@ -1103,7 +1103,7 @@ body {
     left: 0;
     width: 100%;
     height: 40px;
-    background: url(/assets/images/dcg/white80.png) repeat;
+    background: url(/assets/images/white80.png) repeat;
 }
 
 .mainWrapRight .samediv .infoBottom .inner {
@@ -1173,7 +1173,7 @@ body {
     top: 14px;
     width: 15px;
     height: 9px;
-    background: url(/assets/images/dcg/aboutus/chocieyearbtnBg.png) no-repeat 0 0;
+    background: url(/assets/images/aboutus/chocieyearbtnBg.png) no-repeat 0 0;
 }
 
 .choiceYearTop .hd .next {
@@ -1184,7 +1184,7 @@ body {
     bottom: 14px;
     width: 15px;
     height: 9px;
-    background: url(/assets/images/dcg/aboutus/chocieyearbtnBg.png) no-repeat -15px 0;
+    background: url(/assets/images/aboutus/chocieyearbtnBg.png) no-repeat -15px 0;
 }
 
 .newsTwoCon .newsTwoTitle-mobi {
@@ -1235,7 +1235,7 @@ body {
     top: 14px;
     width: 15px;
     height: 9px;
-    background: url(/assets/images/dcg/aboutus/chocieyearbtnBg.png) no-repeat 0 0;
+    background: url(/assets/images/aboutus/chocieyearbtnBg.png) no-repeat 0 0;
     transform: rotate(-90deg);
 }
 
@@ -1246,7 +1246,7 @@ body {
     bottom: 14px;
     width: 15px;
     height: 9px;
-    background: url(/assets/images/dcg/aboutus/chocieyearbtnBg.png) no-repeat -15px 0;
+    background: url(/assets/images/aboutus/chocieyearbtnBg.png) no-repeat -15px 0;
     transform: rotate(-90deg);
 }
 
@@ -1302,7 +1302,7 @@ body {
     margin-top: -13px;
     width: 26px;
     height: 26px;
-    background: url(/assets/images/dcg/hometharrow.png) no-repeat;
+    background: url(/assets/images/hometharrow.png) no-repeat;
 }
 
 .newsTwoCon .newsdetailCon ul li {
@@ -1320,7 +1320,7 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
     padding-left: 25px;
-    background: url(/assets/images/dcg/alinkdot.jpg) no-repeat 12px center;
+    background: url(/assets/images/alinkdot.jpg) no-repeat 12px center;
 }
 
 .newsTwoCon .newsdetailCon ul li a:hover {
@@ -1404,7 +1404,7 @@ body {
     height: 37px;
     top: 0;
     right: 0;
-    background: url(/assets/images/dcg/aboutus/positionsearch.jpg) no-repeat;
+    background: url(/assets/images/aboutus/positionsearch.jpg) no-repeat;
     border: 0;
     outline: none;
 }
@@ -1429,19 +1429,19 @@ body {
 
 .posearchInfo .info .address {
     padding-left: 22px;
-    background: url(/assets/images/dcg/aboutus/positionbg.png) no-repeat left 4px;
+    background: url(/assets/images/aboutus/positionbg.png) no-repeat left 4px;
     margin-bottom: 10px;
 }
 
 .posearchInfo .info .zipcode {
     padding-left: 22px;
-    background: url(/assets/images/dcg/aboutus/youbianbg.png) no-repeat left 5px;
+    background: url(/assets/images/aboutus/youbianbg.png) no-repeat left 5px;
     margin-bottom: 10px;
 }
 
 .posearchInfo .info .phone {
     padding-left: 22px;
-    background: url(/assets/images/dcg/aboutus/phonebg.png) no-repeat left 3px;
+    background: url(/assets/images/aboutus/phonebg.png) no-repeat left 3px;
     margin-bottom: 10px;
 }
 
@@ -1523,11 +1523,11 @@ body {
 }
 
 .dqbgCont .box.box1 .TopTitle {
-    background: url(/assets/images/dcg/touzizheguanxi/dqbgTitlebg1.jpg) repeat-x;
+    background: url(/assets/images/touzizheguanxi/dqbgTitlebg1.jpg) repeat-x;
 }
 
 .dqbgCont .box.box2 .TopTitle {
-    background: url(/assets/images/dcg/touzizheguanxi/dqbgTitlebg2.jpg) repeat-x;
+    background: url(/assets/images/touzizheguanxi/dqbgTitlebg2.jpg) repeat-x;
 }
 
 .dqbgCont .box .list {
@@ -1548,7 +1548,7 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-left: 8px;
-    background: url(/assets/images/dcg/liIcon.png) 0 6px no-repeat;
+    background: url(/assets/images/liIcon.png) 0 6px no-repeat;
     padding-left: 14px;
 }
 
@@ -1580,7 +1580,7 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-left: 8px;
-    background: url(/assets/images/dcg/liIcon2.png) 0 8px no-repeat;
+    background: url(/assets/images/liIcon2.png) 0 8px no-repeat;
     padding-left: 15px;
 }
 
@@ -1734,7 +1734,7 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-left: 8px;
-    background: url(/assets/images/dcg/liIcon2.png) 0 8px no-repeat;
+    background: url(/assets/images/liIcon2.png) 0 8px no-repeat;
     padding-left: 15px;
 }
 
@@ -1794,7 +1794,7 @@ body {
 }
 
 .ywbjCont .txtDL dd {
-    background: url(/assets/images/dcg/liIcon2.png) 30px 8px no-repeat;
+    background: url(/assets/images/liIcon2.png) 30px 8px no-repeat;
     padding-left: 42px;
 }
 
@@ -1837,28 +1837,28 @@ body {
 
 .qyyfwpt_cpjfwBox .tableClass td .sjzxyy {
     display: inline-block;
-    background: url(/assets/images/dcg/yewubuju/icon_sjzxyy.png) left center no-repeat;
+    background: url(/assets/images/yewubuju/icon_sjzxyy.png) left center no-repeat;
     padding-left: 32px;
     font-weight: bold;
 }
 
 .qyyfwpt_cpjfwBox .tableClass td .syyjsjyy {
     display: inline-block;
-    background: url(/assets/images/dcg/yewubuju/icon_syyjsjyy.png) left center no-repeat;
+    background: url(/assets/images/yewubuju/icon_syyjsjyy.png) left center no-repeat;
     padding-left: 32px;
     font-weight: bold;
 }
 
 .qyyfwpt_cpjfwBox .tableClass td .gyyfw {
     display: inline-block;
-    background: url(/assets/images/dcg/yewubuju/icon_gyyfw.png) left center no-repeat;
+    background: url(/assets/images/yewubuju/icon_gyyfw.png) left center no-repeat;
     padding-left: 32px;
     font-weight: bold;
 }
 
 .qyyfwpt_cpjfwBox .tableClass td .yzyhfw {
     display: inline-block;
-    background: url(/assets/images/dcg/yewubuju/icon_yzyhfw.png) left center no-repeat;
+    background: url(/assets/images/yewubuju/icon_yzyhfw.png) left center no-repeat;
     padding-left: 32px;
     font-weight: bold;
 }
@@ -1866,7 +1866,7 @@ body {
 .qyyfwpt_cpjfwBox .tableClass td a {
     display: inline-block;
     margin-right: 22px;
-    background: url(/assets/images/dcg/liIcon3.png) 0 9px no-repeat;
+    background: url(/assets/images/liIcon3.png) 0 9px no-repeat;
     padding-left: 12px;
 }
 
@@ -1876,7 +1876,7 @@ body {
 }
 
 .b2bsyhbhzptContent .txtDL dd {
-    background: url(/assets/images/dcg/liIcon2.png) 0 8px no-repeat;
+    background: url(/assets/images/liIcon2.png) 0 8px no-repeat;
     padding-left: 12px;
 }
 
@@ -1902,7 +1902,7 @@ body {
 .b2bsyhbhzpt_cpjfwBox .tableClass td a {
     display: inline-block;
     margin-right: 22px;
-    background: url(/assets/images/dcg/liIcon3.png) 0 9px no-repeat;
+    background: url(/assets/images/liIcon3.png) 0 9px no-repeat;
     padding-left: 12px;
 }
 
@@ -1934,61 +1934,61 @@ body {
 }
 
 .ywbjcptxList li .TopTitle .b2bIcon_1 {
-    background: url(/assets/images/dcg/yewubuju/icon_dnzj.png) 0 center no-repeat;
+    background: url(/assets/images/yewubuju/icon_dnzj.png) 0 center no-repeat;
 }
 
 .ywbjcptxList li .TopTitle .b2bIcon_2 {
-    background: url(/assets/images/dcg/yewubuju/icon_dnpj.png) 0 center no-repeat;
+    background: url(/assets/images/yewubuju/icon_dnpj.png) 0 center no-repeat;
 }
 
 .ywbjcptxList li .TopTitle .b2bIcon_3 {
-    background: url(/assets/images/dcg/yewubuju/icon_bgsb.png) 0 center no-repeat;
+    background: url(/assets/images/yewubuju/icon_bgsb.png) 0 center no-repeat;
 }
 
 .ywbjcptxList li .TopTitle .b2bIcon_4 {
-    background: url(/assets/images/dcg/yewubuju/icon_smyy.png) 2px center no-repeat;
+    background: url(/assets/images/yewubuju/icon_smyy.png) 2px center no-repeat;
 }
 
 .ywbjcptxList li .TopTitle .b2bIcon_5 {
-    background: url(/assets/images/dcg/yewubuju/icon_ydzn.png) 4px center no-repeat;
+    background: url(/assets/images/yewubuju/icon_ydzn.png) 4px center no-repeat;
 }
 
 .ywbjcptxList li .TopTitle .b2bIcon_6 {
-    background: url(/assets/images/dcg/yewubuju/icon_wlsb.png) 2px center no-repeat;
+    background: url(/assets/images/yewubuju/icon_wlsb.png) 2px center no-repeat;
 }
 
 .ywbjcptxList li .TopTitle .b2bIcon_7 {
-    background: url(/assets/images/dcg/yewubuju/icon_xxaq.png) 4px center no-repeat;
+    background: url(/assets/images/yewubuju/icon_xxaq.png) 4px center no-repeat;
 }
 
 .ywbjcptxList li .TopTitle .b2bIcon_8 {
-    background: url(/assets/images/dcg/yewubuju/icon_fwq.png) 4px center no-repeat;
+    background: url(/assets/images/yewubuju/icon_fwq.png) 4px center no-repeat;
 }
 
 .ywbjcptxList li .TopTitle .b2bIcon_9 {
-    background: url(/assets/images/dcg/yewubuju/icon_cc.png) 2px center no-repeat;
+    background: url(/assets/images/yewubuju/icon_cc.png) 2px center no-repeat;
 }
 
 .ywbjcptxList li .TopTitle .b2bIcon_10 {
-    background: url(/assets/images/dcg/yewubuju/icon_rj.png) 2px center no-repeat;
+    background: url(/assets/images/yewubuju/icon_rj.png) 2px center no-repeat;
 }
 
 .ywbjcptxList li .TopTitle .zzppIcon_1 {
-    background: url(/assets/images/dcg/yewubuju/icon_crhjsccpt.png) 0 center no-repeat;
+    background: url(/assets/images/yewubuju/icon_crhjsccpt.png) 0 center no-repeat;
 }
 
 .ywbjcptxList li .TopTitle .zzppIcon_2 {
-    background: url(/assets/images/dcg/yewubuju/icon_sjkytj.png) 2px center no-repeat;
+    background: url(/assets/images/yewubuju/icon_sjkytj.png) 2px center no-repeat;
 }
 
 .ywbjcptxList li .TopTitle .zzppIcon_3 {
-    background: url(/assets/images/dcg/yewubuju/icon_sjxnglytj.png) 0 center no-repeat;
+    background: url(/assets/images/yewubuju/icon_sjxnglytj.png) 0 center no-repeat;
 }
 
 .ywbjcptxList li .TopTitle .shrink {
     width: 12px;
     height: 12px;
-    background: url(/assets/images/dcg/yewubuju/shrinkIcon.png) 0 0 no-repeat;
+    background: url(/assets/images/yewubuju/shrinkIcon.png) 0 0 no-repeat;
     position: absolute;
     top: 50%;
     margin-top: -6px;
@@ -2033,49 +2033,49 @@ body {
 
 .b2bsyhbhzpt_cpjfwBox .tableClass td .jhj {
     display: inline-block;
-    background: url(/assets/images/dcg/yewubuju/icon_jhj.png) 0 center no-repeat;
+    background: url(/assets/images/yewubuju/icon_jhj.png) 0 center no-repeat;
     padding-left: 32px;
     font-weight: bold;
 }
 
 .b2bsyhbhzpt_cpjfwBox .tableClass td .wxcp {
     display: inline-block;
-    background: url(/assets/images/dcg/yewubuju/icon_wxcp.png) 2px center no-repeat;
+    background: url(/assets/images/yewubuju/icon_wxcp.png) 2px center no-repeat;
     padding-left: 32px;
     font-weight: bold;
 }
 
 .b2bsyhbhzpt_cpjfwBox .tableClass td .wlaq {
     display: inline-block;
-    background: url(/assets/images/dcg/yewubuju/icon_wlaq.png) 0 center no-repeat;
+    background: url(/assets/images/yewubuju/icon_wlaq.png) 0 center no-repeat;
     padding-left: 32px;
     font-weight: bold;
 }
 
 .b2bsyhbhzpt_cpjfwBox .tableClass td .yyjf {
     display: inline-block;
-    background: url(/assets/images/dcg/yewubuju/icon_yyjf.png) 2px center no-repeat;
+    background: url(/assets/images/yewubuju/icon_yyjf.png) 2px center no-repeat;
     padding-left: 32px;
     font-weight: bold;
 }
 
 .b2bsyhbhzpt_cpjfwBox .tableClass td .lyq {
     display: inline-block;
-    background: url(/assets/images/dcg/yewubuju/icon_lyq.png) 2px center no-repeat;
+    background: url(/assets/images/yewubuju/icon_lyq.png) 2px center no-repeat;
     padding-left: 32px;
     font-weight: bold;
 }
 
 .b2bsyhbhzpt_cpjfwBox .tableClass td .qdcp {
     display: inline-block;
-    background: url(/assets/images/dcg/yewubuju/icon_qdcp.png) 0 center no-repeat;
+    background: url(/assets/images/yewubuju/icon_qdcp.png) 0 center no-repeat;
     padding-left: 32px;
     font-weight: bold;
 }
 
 .b2bsyhbhzpt_cpjfwBox .tableClass td .qt {
     display: inline-block;
-    background: url(/assets/images/dcg/yewubuju/icon_qt.png) 2px center no-repeat;
+    background: url(/assets/images/yewubuju/icon_qt.png) 2px center no-repeat;
     padding-left: 32px;
     font-weight: bold;
 }
@@ -2149,7 +2149,7 @@ body {
 .itststyzList li .title .arrow {
     width: 15px;
     height: 7px;
-    background: url(/assets/images/dcg/yewubuju/itst_styzArrow.png) no-repeat;
+    background: url(/assets/images/yewubuju/itst_styzArrow.png) no-repeat;
     position: absolute;
     left: 11px;
     bottom: -7px;
@@ -2206,7 +2206,7 @@ body {
 .hzhbTopTxt .quote {
     width: 31px;
     height: 27px;
-    background: url(/assets/images/dcg/hezuohuoban/quoteIcon.png) no-repeat;
+    background: url(/assets/images/hezuohuoban/quoteIcon.png) no-repeat;
     position: absolute;
 }
 
@@ -2277,7 +2277,7 @@ body {
 .ywzxPop .popCont .closeBtn {
     width: 38px;
     height: 37px;
-    background: url(/assets/images/dcg/hezuohuoban/popClose.png) no-repeat;
+    background: url(/assets/images/hezuohuoban/popClose.png) no-repeat;
     float: right;
     cursor: pointer;
 }
@@ -2424,7 +2424,7 @@ body {
 .hzhb_scrollBox .picScroll .next {
     width: 12px;
     height: 21px;
-    background: url(/assets/images/dcg/hezuohuoban/arrowIcon.png) no-repeat;
+    background: url(/assets/images/hezuohuoban/arrowIcon.png) no-repeat;
     position: absolute;
     top: 50%;
     margin-top: -10.5px;
@@ -2581,7 +2581,7 @@ body {
         position: absolute;
         width: 871px;
         height: 104px;
-        background: url(/assets/images/dcg/opcbg.png) no-repeat left center;
+        background: url(/assets/images/opcbg.png) no-repeat left center;
         left: 0;
         bottom: 0;
     }
@@ -2589,7 +2589,7 @@ body {
         position: absolute;
         width: 26px;
         height: 26px;
-        background: url(/assets/images/dcg/hometharrow.png) no-repeat;
+        background: url(/assets/images/hometharrow.png) no-repeat;
         right: 85px;
         bottom: 37px;
     }
@@ -2623,7 +2623,7 @@ body {
         margin-left: 5px;
         width: 8px;
         height: 16px;
-        background: url(/assets/images/dcg/rightArrowbg.png) no-repeat center 6px;
+        background: url(/assets/images/rightArrowbg.png) no-repeat center 6px;
     }
     .homenws-mobi .slidecon ul li .con .inner p {
         color: #999999;
@@ -2632,7 +2632,7 @@ body {
     .homenws-mobi .slidecon ul li .con .inner .morelink {
         width: 53px;
         height: 19px;
-        background: url(/assets/images/dcg/newsmorebg.png) no-repeat;
+        background: url(/assets/images/newsmorebg.png) no-repeat;
         margin-top: 10px;
     }
     .homenws-mobi .slidecon ul li .img {
@@ -2683,7 +2683,7 @@ body {
     .newsTwoCon .newsdetailCon ul li a {
         width: 100%;
         padding-left: 15px;
-        background: url(/assets/images/dcg/alinkdot.jpg) no-repeat 2px center;
+        background: url(/assets/images/alinkdot.jpg) no-repeat 2px center;
         font-size: 12px;
     }
     .page_number {
@@ -2696,7 +2696,7 @@ body {
         margin-bottom: 15px;
     }
     .h4TitleLeft {
-        background: url(/assets/images/dcg/leftnavbg.jpg) no-repeat left top;
+        background: url(/assets/images/leftnavbg.jpg) no-repeat left top;
         background-size: 100%;
         width: 170px;
     }
@@ -2953,7 +2953,7 @@ body {
     }
     .threemodule {
         height: 104px;
-        background: url(/assets/images/dcg/homethreeBg.jpg) no-repeat center top;
+        background: url(/assets/images/homethreeBg.jpg) no-repeat center top;
     }
     .tmoduleInner {
         width: 1000px;
@@ -2983,7 +2983,7 @@ body {
         position: absolute;
         width: 871px;
         height: 104px;
-        background: url(/assets/images/dcg/opcbg.png) no-repeat left center;
+        background: url(/assets/images/opcbg.png) no-repeat left center;
         left: 0;
         bottom: 0;
     }
@@ -2991,7 +2991,7 @@ body {
         position: absolute;
         width: 26px;
         height: 26px;
-        background: url(/assets/images/dcg/hometharrow.png) no-repeat;
+        background: url(/assets/images/hometharrow.png) no-repeat;
         right: 65px;
         bottom: 37px;
     }
@@ -3018,7 +3018,7 @@ body {
         width: 361px;
         height: 140px;
         z-index: 5;
-        background: url(/assets/images/dcg/homethreeredbg.png) no-repeat;
+        background: url(/assets/images/homethreeredbg.png) no-repeat;
     }
     .homethreeredb .imginner {
         position: absolute;
@@ -3113,7 +3113,7 @@ body {
     line-height: 30px;
     font-size: 20px;
     color: #333;
-    background: urassets/images/dcg/tishiIcon.jpg) 0 0 no-repeat;
+    // background: urassets/images/tishiIcon.jpg) 0 0 no-repeat;
     padding-left: 40px;
     text-align: left;
 }

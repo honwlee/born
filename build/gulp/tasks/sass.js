@@ -15,7 +15,7 @@ const gutil = require('gulp-util'),
 function buildSass(name) {
     let dist = path.join(appsPath, name + '/assets/stylesheets'),
         src = path.join(dist, 'sass/**/*.scss');
-        console.log(dist);
+    console.log(dist);
     return gulp.src(src)
         .pipe(sourcemaps.init())
         .pipe(sass({
@@ -23,7 +23,7 @@ function buildSass(name) {
         }).on('error', sass.logError))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(dist));
-        // .pipe(rename("main.min.css"))
+    // .pipe(rename("main.min.css"))
 }
 module.exports = function() {
     if (apps) {

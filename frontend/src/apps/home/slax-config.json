@@ -41,16 +41,31 @@
                 "type": "scripts/routes/process/ProcessController"
             }
         },
-        "pro": {
-            "pathto": "pro",
-            "controller": {
-                "type": "scripts/routes/pro/ProController"
-            }
-        },
         "about": {
             "pathto": "/about",
             "controller": {
                 "type": "scripts/routes/about/AboutController"
+            }
+        },
+
+        "metUSA": {
+            "pathto": "/metUSA",
+            "controller": {
+                "type": "scripts/routes/metUSA/MetUSAController"
+            }
+        },
+
+        "news": {
+            "pathto": "/news",
+            "controller": {
+                "type": "scripts/routes/news/NewsController"
+            }
+        },
+
+        "QA": {
+            "pathto": "/QA",
+            "controller": {
+                "type": "scripts/routes/QA/QAController"
             }
         }
     }
