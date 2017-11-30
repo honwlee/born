@@ -1,0 +1,40 @@
+<div>
+    <script id="home-main" type="text/x-handlebars-template">
+        <div class="wrap clearfix">
+            <!-- banner开始 -->
+            <div class="banner carousel slide" id="carousel-generic" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    {{#each banners}}
+                        {{#if @index}}
+                            <li data-target="#carousel-generic" data-slide-to="{{@index}}"></li>
+                        {{else}}
+                            <li data-target="#carousel-generic" data-slide-to="{{@index}}" class="active"></li>
+                        {{/if}}
+                    {{/each}}
+                </ol>
+                <div class="carousel-inner">
+                    {{#each banners}}
+                        {{#if @index}}
+                            <div class="item">
+                        {{else}}
+                            <div class="item active">
+                        {{/if}}
+                            <img alt="{{name}}" src="{{imgUrl}}">
+                        </div>
+                    {{/each}}
+                    <div class="left carousel-control" href="#carousel-generic" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                    </div>
+                    <div class="right carousel-control" href="#carousel-generic" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </div>
+                </div>
+            </div><!-- banner结束 -->
+            <div class="pages">
+                {{#each pages}}
+                    {{{html}}}
+                {{/each}}
+            </div><!-- 主页内容结束 -->
+        </div>
+    </script>
+</div>

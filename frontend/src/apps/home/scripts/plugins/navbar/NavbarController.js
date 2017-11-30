@@ -1,7 +1,9 @@
 define([
     "jquery",
+    "scripts/helpers/Partial",
+    "handlebars",
     "skylarkjs"
-], function($, skylarkjs) {
+], function($, partial, handlebars, skylarkjs) {
     var spa = skylarkjs.spa,
         router = skylarkjs.router;
     var currentNav,
@@ -43,7 +45,7 @@ define([
             });
             router.one("routed", function(e) {
                 var curR = e.current.route;
-                setActive(curR.name);
+                setActive(curR.name || "home");
             });
             var selector = $("#main-wrap");
             $(".logo-nav").on("click", function() {
@@ -85,7 +87,7 @@ define([
                     });
                 } else {
                     $("<li>").attr({
-                        class: name + "-nav " + (name == "home" ? "active" : "")
+                        class: name + "-nav "
                     }).addContent(
                         $("<a>").attr({
                             class: "nav-item"
@@ -97,6 +99,9 @@ define([
                 }
             }
             _el.html(ul);
+            partial.get("gallery-partial");
+            var div = $("<div>").html(handlebars.compile("{{> gallery-partial}}")({}));
+            document.body.appendChild(div[0].firstChild);
         },
         routed: function() {}
     });

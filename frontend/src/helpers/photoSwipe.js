@@ -4,16 +4,15 @@ define([
     "./Partial",
     "photoswipe",
     "photoswipeUi",
-    "text!data/photos.json",
     "handlebars"
-], function(skylarkjs, $, partial, _PhotoSwipe, PhotoSwipeUI_Default, photosData, handlebars) {
+], function(skylarkjs, $, partial, _PhotoSwipe, PhotoSwipeUI_Default, handlebars) {
     var langx = skylarkjs.langx;
     var PhotoSwipe = langx.Evented.inherit({
         klassName: "HomeController",
         photoData: null,
         init: function(config) {
+            this.subSize = config.subSize || 4;
             this.photoData = config.photoData;
-            // partial.get("gallery-partial");
             partial.get("photoSwipe-item-partial");
             partial.get("photoSwipe-partial");
             var tpl = handlebars.compile("{{> photoSwipe-partial}}");
@@ -25,30 +24,35 @@ define([
         start: function(e) {
             var div = $("<div>").html(this.tpl);
             this._initPhotoSwipeFromDOM(div.find(".items-container"));
+            div.find(".img-main").wrap("<div class='__main'></div>");
+            var len = this.photoData.length - 1;
+            for (var i = 1, l = Math.ceil(len / this.subSize) + 1; i < l; i++) {
+                div.find(".sub-" + i).wrapAll("<div class='__subs'></div>");
+            }
             return div[0].firstChild;
         },
 
         _formatPhotoData: function(data) {
             var items = [];
-
-            JSON.parse(photosData).forEach(function(photo, index) {
-                // items.push({
-                //     big: photo.image.url,
-                //     normal: photo.image.wallpaper,
-                //     mini: photo.image.normal,
-                //     desc: photo.description,
-                //     imgClass: index ? "img-sub" : "img-main",
-                //     size: "1280x848"
-                // })
+            var first = data.slice(0, 1)[0];
+            items.push({
+                big: first.big,
+                normal: first.normal,
+                mini: first.mini,
+                desc: first.dedesc,
+                imgClass: "img-main",
+                size: first.size
+            });
+            data.slice(1).forEach(function(photo, index) {
                 items.push({
                     big: photo.big,
                     normal: photo.normal,
                     mini: photo.mini,
                     desc: photo.desc,
-                    imgClass: index ? "img-sub" : "img-main",
+                    imgClass: "img-sub sub-" + Math.ceil((index + 1) / this.subSize),
                     size: photo.size
-                })
-            });
+                });
+            }, this);
             return items;
         },
 
@@ -147,6 +151,7 @@ define([
                 items = parseThumbnailElements(galleryElement);
                 // define options (if needed)
                 options = {
+                    history: false,
                     galleryUID: galleryElement.getAttribute('data-pswp-uid'),
                     getThumbBoundsFn: function(index) {
                         // See Options->getThumbBoundsFn section of docs for more info
@@ -185,6 +190,7 @@ define([
                 if (isNaN(options.index)) {
                     return;
                 }
+                options.shareEl = false;
                 var radios = document.getElementsByName('gallery-style');
                 for (var i = 0, length = radios.length; i < length; i++) {
                     if (radios[i].checked) {
