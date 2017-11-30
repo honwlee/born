@@ -50,7 +50,7 @@
                 "name": "process",
                 "navName": "赴美流程"
             },
-            "subs": ["process-visa", "process-evn"],
+            "subs": ["process-visa", "process-environment", "process-cohospital", "process-cohospital"],
             "controller": {
                 "type": "scripts/routes/process/ProcessController"
             }
@@ -66,12 +66,34 @@
                 "type": "scripts/routes/process/subs/VisaController"
             }
         },
-        "process-evn": {
+        "process-environment": {
             "sub": true,
-            "pathto": "/process/evn",
+            "pathto": "/process/environment",
             "data": {
-                "name": "process-evn",
-                "navName": "签证申请"
+                "name": "process-environment",
+                "navName": "待产环境"
+            },
+            "controller": {
+                "type": "scripts/routes/process/subs/VisaController"
+            }
+        },
+        "process-cohospital": {
+            "sub": true,
+            "pathto": "/process/cohospital",
+            "data": {
+                "name": "process-cohospital",
+                "navName": "合作医院"
+            },
+            "controller": {
+                "type": "scripts/routes/process/subs/VisaController"
+            }
+        },
+        "process-certificate": {
+            "sub": true,
+            "pathto": "/process/certificate",
+            "data": {
+                "name": "process-certificate",
+                "navName": "证件办理"
             },
             "controller": {
                 "type": "scripts/routes/process/subs/VisaController"
@@ -87,24 +109,24 @@
                 "type": "scripts/routes/activity/ActivityController"
             }
         },
-        "repatriate": {
-            "pathto": "/repatriate",
+        "service": {
+            "pathto": "/service",
             "data": {
-                "name": "repatriate",
+                "name": "service",
                 "navName": "回国服务"
             },
             "controller": {
-                "type": "scripts/routes/repatriate/RepatriateController"
+                "type": "scripts/routes/service/ServiceController"
             }
         },
-        "meet": {
-            "pathto": "/meet",
+        "metusa": {
+            "pathto": "/metusa",
             "data": {
-                "name": "meet",
+                "name": "metusa",
                 "navName": "遇见美利坚"
             },
             "controller": {
-                "type": "scripts/routes/meet/MeetController"
+                "type": "scripts/routes/metusa/MetusaController"
             }
         },
         "news": {
@@ -117,14 +139,14 @@
                 "type": "scripts/routes/news/NewsController"
             }
         },
-        "qa": {
-            "pathto": "/qa",
+        "fqa": {
+            "pathto": "/fqa",
             "data": {
-                "name": "qa",
+                "name": "fqa",
                 "navName": "赴美回答"
             },
             "controller": {
-                "type": "scripts/routes/qa/QaController"
+                "type": "scripts/routes/fqa/FqaController"
             }
         },
         "about": {
@@ -133,17 +155,17 @@
                 "name": "about",
                 "navName": "关于我们"
             },
-            "subs": ["about-description"],
+            "subs": ["about-contact"],
             "controller": {
                 "type": "scripts/routes/about/AboutController"
             }
         },
-        "about-description": {
+        "about-contact": {
             "sub": true,
-            "pathto": "/about/description",
+            "pathto": "/about/contact",
             "data": {
-                "name": "about-description",
-                "navName": "公司概况"
+                "name": "about-contact",
+                "navName": "联系我们"
             },
             "controller": {
                 "type": "scripts/routes/about/AboutController"
