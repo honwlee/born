@@ -85,7 +85,7 @@ define([
                     });
                 } else {
                     $("<li>").attr({
-                        class: name + "-nav"
+                        class: name + "-nav " + (name == "home" ? "active" : "")
                     }).addContent(
                         $("<a>").attr({
                             class: "nav-item"

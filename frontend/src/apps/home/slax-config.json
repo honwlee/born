@@ -1,6 +1,7 @@
 {
     "name": "born",
     "title": "BornInUSA·生美国际-中美直营的赴美生子咨询服务商-赴美生子-南京赴美生子-赴美生子机构-赴美生子月子中心",
+    "baseUrl": "/",
     "runtime": {
         "skylarkjs": {
             "version": "0.9.5"
@@ -8,7 +9,7 @@
         "paths": {
             "server": "scripts/services/server",
             "skylarkBs": "lib/skylark-bs-swt-all",
-            "jquery": "lib/skylark-jquery",
+            "jquery": "lib/skylark-jquery-all",
             "toastr": "https://cdn.bootcss.com/toastr.js/latest/js/toastr.min",
             "bootstrap": "https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min",
             "handlebars": "https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.amd.min",

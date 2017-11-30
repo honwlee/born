@@ -2,6 +2,7 @@
 const gulp = require('gulp'),
     fs = require('fs'),
     copydir = require('copy-dir'),
+    mkdirp = require('mkdirp'),
     path = require('path'),
     gutil = require('gulp-util'),
     argv = require('yargs').argv,
@@ -13,8 +14,9 @@ const gulp = require('gulp'),
 function buildApp(name) {
     let appDist = path.join(util.frontend, "dist", name),
         commonLib = path.join(util.frontend, "lib"),
-        commonSrv = path.join(util.frontend, "src/services"),
-        commonHelper = path.join(util.frontend, "src/helpers");
+        commonSrvs = path.join(util.frontend, "src/services"),
+        commonPlugins = path.join(util.frontend, "src/plugins"),
+        commonHelpers = path.join(util.frontend, "src/helpers");
 
     if (fs.existsSync(appDist)) {
         del.sync([appDist + '/**/*'], {
@@ -24,20 +26,20 @@ function buildApp(name) {
     let appPath = path.join(appsPath, name);
     if (fs.existsSync(appPath)) {
         copydir.sync(appPath, appDist);
-        fs.mkdirSync(path.join(appDist, "lib"));
-        fs.mkdirSync(path.join(appDist, "scripts/services"));
-        fs.mkdirSync(path.join(appDist, "scripts/helpers"));
+        mkdirp(path.join(appDist, "lib"));
+        mkdirp(path.join(appDist, "scripts/services"));
+        mkdirp(path.join(appDist, "scripts/helpers"));
         copydir.sync(commonLib, path.join(appDist, "lib"), function(stat, filepath, filename) {
             if (filename === ".DS_Store") return false;
             if (stat === 'directory' && filename.match(/^\./)) return false;
             return true;
         });
-        copydir.sync(commonSrv, path.join(appDist, "scripts/services"), function(stat, filepath, filename) {
+        copydir.sync(commonSrvs, path.join(appDist, "scripts/services"), function(stat, filepath, filename) {
             if (filename === ".DS_Store") return false;
             if (stat === 'directory' && filename.match(/^\./)) return false;
             return true;
         });
-        copydir.sync(commonHelper, path.join(appDist, "scripts/helpers"), function(stat, filepath, filename) {
+        copydir.sync(commonHelpers, path.join(appDist, "scripts/helpers"), function(stat, filepath, filename) {
             if (filename === ".DS_Store") return false;
             if (stat === 'directory' && filename.match(/^\./)) return false;
             return true;

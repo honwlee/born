@@ -1,7 +1,6 @@
 define([
-    "jquery",
     "skylarkjs"
-], function($, skylarkjs) {
+], function(skylarkjs) {
     var spa = skylarkjs.spa,
         noder = skylarkjs.noder,
         langx = skylarkjs.langx,
@@ -36,8 +35,7 @@ define([
                 }).hide();
             };
             window.addThrob = function(node, callback, opacity) {
-                opacity = opacity === 0 ? 0 : opacity || 0.5;
-                $(node).css("opacity", opacity);
+                node.style.opacity = opacity === 0 ? 0 : opacity || 0.5;
                 var throb = noder.throb(node, {});
                 callback();
                 return throb;
@@ -65,25 +63,29 @@ define([
                     }
                 });
             };
-            var main = $("#main")[0];
+            var main = skylarkjs.finder.find("#mainWrapper");
             if (main) {
                 throb = window.addThrob(main, function() {
-                    require(["bootstrap"], function() {
-                        main.style.opacity = 1;
-                        throb.remove();
-                        deferred.resolve();
+                    require(["jquery"], function($) {
+                        require(["bootstrap"], function() {
+                            require(["skylarkBs"], function() {
+                                main.style.opacity = 1;
+                                throb.remove();
+                                goTop($(".go-top-btn"));
+                                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                                    $("#sk-navbar").delegate(".nav-item", "click", function(e) {
+                                        $('#sk-navbar').collapse('hide');
+                                    });
+                                    $(".logo-nav").on("click", function() {
+                                        $('#sk-navbar').collapse('hide');
+                                    })
+                                    $(".navbar").addClass("navbar-default");
+                                }
+                                deferred.resolve();
+                            });
+                        });
                     });
                 });
-            }
-            goTop($(".go-top-btn"));
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                $("#sk-navbar").delegate(".nav-item", "click", function(e) {
-                    $('#sk-navbar').collapse('hide');
-                });
-                $(".logo-nav").on("click", function() {
-                    $('#sk-navbar').collapse('hide');
-                })
-                $(".navbar").addClass("navbar-default");
             }
             e.result = deferred.promise;
         },

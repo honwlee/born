@@ -1,37 +1,39 @@
 {
-  "name": "born",
-  "title": "born",
-  "runtime": {
-    "skylarkjs": {
-      "version": "0.9.5"
+    "name": "born",
+    "title": "born",
+    "baseUrl": "/admin",
+    "runtime": {
+        "skylarkjs": {
+            "version": "0.9.5"
+        },
+        "paths": {
+            "server": "scripts/services/server",
+            "skylarkBs": "lib/skylark-bs-swt-all",
+            "jquery": "lib/skylark-jquery-all",
+            "toastr": "https://cdn.bootcss.com/toastr.js/latest/js/toastr.min",
+            "bootstrap": "https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min",
+            "handlebars": "https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.amd.min",
+            "text": "https://cdn.bootcss.com/require-text/2.0.12/text.min"
+        }
     },
-    "paths": {
-      "text": "https://cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text"
-    }
-  },
-  "page": {
-    "routeViewer": "#main"
-  },
-  "plugins": {
-    "app": {
-      "hookers": "starting started",
-      "controller": {
-        "type": "scripts/plugins/app/AppController"
-      }
+    "spaModule": "scripts/helpers/spa",
+    "page": {
+        "routeViewer": "#main"
     },
-    "highlight": {
-      "hookers": "routing routed",
-      "controller": {
-        "type": "scripts/plugins/highlight/HighlightController"
-      }
+    "plugins": {
+        "app": {
+            "hookers": "starting started",
+            "controller": {
+                "type": "scripts/plugins/app/AppController"
+            }
+        }
+    },
+    "routes": {
+        "home": {
+            "pathto": "/",
+            "controller": {
+                "type": "scripts/routes/home/HomeController"
+            }
+        }
     }
-  },
-  "routes": {
-    "home": {
-      "pathto": "/",
-      "controller": {
-        "type": "scripts/routes/home/HomeController"
-      }
-    }
-  }
 }
