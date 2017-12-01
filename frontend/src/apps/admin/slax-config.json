@@ -1,7 +1,7 @@
 {
     "name": "born",
     "title": "born",
-    "baseUrl": "/admin",
+    "contextPath": "/admin",
     "runtime": {
         "skylarkjs": {
             "version": "0.9.5"

@@ -1,17 +1,23 @@
 define([
+    "jquery",
     "skylarkjs",
-    "text!scripts/routes/process/subs/certificate.html"
-], function(skylarkjs, certificateTpl) {
-    var spa = skylarkjs.spa,
-        $ = skylarkjs.query;
+    "text!scripts/routes/process/process.html"
+], function($, skylarkjs, processTpl) {
+    var spa = skylarkjs.spa;
     return spa.RouteController.inherit({
         klassName: "ProcessCertificateController",
 
         rendering: function(e) {
-            e.content = certificateTpl;
+            e.content = processTpl;
         },
 
-        entered: function() {},
+        rendered: function() {
+            $('#pTabList a[href="#pCertificate"]').tab('show');
+            $("#pTablist").find('a').off('shown.bs.tab').on('shown.bs.tab', function(e) {
+                var path = $(e.currentTarget).data("path");
+                window.go(path, true);
+            });
+        },
         exited: function() {}
     });
 });

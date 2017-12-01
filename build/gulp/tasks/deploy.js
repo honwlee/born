@@ -4,6 +4,7 @@ const zipper = require("zip-local");
 const fs = require('fs');
 const proc = require('child_process');
 const path = require('path');
+const mkdirp = require('mkdirp');
 const asar = require('asar');
 const util = require('../utils');
 const deployPath = path.join(util.frontend, "deploy");
@@ -18,7 +19,7 @@ function ensureAppDir(slaxAppDir) {
         });
         fs.rmdirSync(slaxAppDir);
     }
-    fs.mkdirSync(slaxAppDir);
+    mkdirp.sync(islaxAppDir);
 }
 
 var extractSlaxFile = function(slaxFileName, slaxAppDir) {

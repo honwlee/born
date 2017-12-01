@@ -1,13 +1,12 @@
 define([
+    "jquery",
     "skylarkjs",
     "handlebars",
-    "text!scripts/routes/news/news.hbs"
-], function(skylarkjs, hbs, newsTpl) {
+    "scripts/helpers/Partial"
+], function($, skylarkjs, hbs, Partial) {
     var spa = skylarkjs.spa,
-        langx = skylarkjs.langx,
-        $ = skylarkjs.query;
-    selector = $(langx.trim(newsTpl));
-    var Data = [{
+        langx = skylarkjs.langx;
+    var data = [{
         imgUrl: "./assets/images/news/0.png",
         title: "去美国生宝宝 产后忌口",
         desc: "月子里忌口，在民间甚为流行。有的地方至今流传着月子里除了吃小米粥和鸡蛋以外，其他什么都忌。这种忌口的习俗是不科学的。这是因为坐月子期间需要大量的营养，一是用来补充",
@@ -16,24 +15,24 @@ define([
     }];
 
     [1, 2, 3, 4, 5].forEach(function(i) {
-        Data.push({
+        data.push({
             imgUrl: "./assets/images/news/" + i + ".png"
         });
     });
 
-    var Recommended = [{
-        heading: "美国相关资讯推荐 and 相关推荐",
-        item: "去美国生宝宝 产后忌口"
+    var recommended = [{
+        title: "去美国生宝宝 产后忌口"
     }];
     return spa.RouteController.inherit({
-        klassName: "newsController",
-
+        klassName: "NewsController",
         rendering: function(e) {
-            var tpl = hbs.compile(langx.trim(selector.find("#news-wrap").html()).replace("{{&gt;", "{{>")),
+            Partial.get("info-list-partial");
+            var tpl = hbs.compile("{{> info-list-partial}}"),
                 self = this,
                 _ec = $(tpl({
-                    data: Data,
-                    recommended: Recommended
+                    data: data,
+                    latest: recommended,
+                    recommended: recommended
                 }));
             e.content = _ec[0];
         },

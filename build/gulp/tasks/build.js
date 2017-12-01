@@ -26,9 +26,9 @@ function buildApp(name) {
     let appPath = path.join(appsPath, name);
     if (fs.existsSync(appPath)) {
         copydir.sync(appPath, appDist);
-        mkdirp(path.join(appDist, "lib"));
-        mkdirp(path.join(appDist, "scripts/services"));
-        mkdirp(path.join(appDist, "scripts/helpers"));
+        mkdirp.sync(path.join(appDist, "lib"));
+        mkdirp.sync(path.join(appDist, "scripts/services"));
+        mkdirp.sync(path.join(appDist, "scripts/helpers"));
         copydir.sync(commonLib, path.join(appDist, "lib"), function(stat, filepath, filename) {
             if (filename === ".DS_Store") return false;
             if (stat === 'directory' && filename.match(/^\./)) return false;

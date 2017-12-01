@@ -71,4 +71,69 @@
             </div>
         </div>
     </script>
+    <script id="info-list-partial" type="text/x-handlebars-template">
+        <div class="wrap fqa-wrap clearfix">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-8 left-list">
+                        <div class="panel panel-body">
+                            {{#each data}}
+                                <div class="media panel-body item">
+                                    <div class="media-left col-md-4">
+                                        <a href="#">
+                                            <img class="media-object" src="{{imgUrl}}" alt="..." style="width:100%;">
+                                        </a>
+                                    </div>
+                                    <div class="media-body media-right">
+                                        <h4 class="media-heading">{{title}}</h4>
+                                        <p class="text-tip"> {{desc}}</p>
+                                        <p class="media-footer"><span>{{date}}</span><span class="pull-right"><i class="glyphicon glyphicon-eye-open icon"></i>{{viewCount}}</span></p>
+                                    </div>
+                                </div>
+                            {{/each }}
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <li>
+                                        <a href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li>
+                                        <a href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-md-4 right-list">
+                        <div class="panel panel-default">
+                            <div class="panel-heading list-title">美国相关资讯推荐</div>
+                            <div class="panel-body">
+                                {{#each recommended}}
+                                    <a class="title" href="" title="{{title}}">{{title}}</a>
+                                {{/each}}
+                            </div>
+                            <div class="panel-footer text-right more"><a href="">查看更多 &gt;&gt;</a></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading list-title">相关推荐</div>
+                            <div class="panel-body">
+                                {{#each latest}}
+                                    <a class="title" href="" title="{{title}}">{{title}}</a>
+                                {{/each}}
+                            </div>
+                            <div class="panel-footer text-right more"><a href="">查看更多 &gt;&gt;</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
 </div>

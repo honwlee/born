@@ -1,7 +1,6 @@
 {
     "name": "born",
     "title": "BornInUSA·生美国际-中美直营的赴美生子咨询服务商-赴美生子-南京赴美生子-赴美生子机构-赴美生子月子中心",
-    "baseUrl": "",
     "runtime": {
         "skylarkjs": {
             "version": "0.9.5"
@@ -53,7 +52,7 @@
                 "name": "process",
                 "navName": "赴美流程"
             },
-            "subs": ["process-visa", "process-environment", "process-cohospital", "process-certificate"],
+            "subs": ["process-visa", "process-cohospital", "process-environment", "process-certificate"],
             "controller": {
                 "type": "scripts/routes/process/ProcessController"
             }
@@ -77,7 +76,7 @@
                 "navName": "待产环境"
             },
             "controller": {
-                "type": "scripts/routes/process/subs/VisaController"
+                "type": "scripts/routes/process/subs/EnvironmentController"
             }
         },
         "process-cohospital": {
@@ -88,7 +87,7 @@
                 "navName": "合作医院"
             },
             "controller": {
-                "type": "scripts/routes/process/subs/VisaController"
+                "type": "scripts/routes/process/subs/CohospitalController"
             }
         },
         "process-certificate": {
@@ -99,7 +98,7 @@
                 "navName": "证件办理"
             },
             "controller": {
-                "type": "scripts/routes/process/subs/VisaController"
+                "type": "scripts/routes/process/subs/CertificateController"
             }
         },
         "activity": {

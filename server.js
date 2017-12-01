@@ -76,7 +76,7 @@ SlaxServer.prototype.startBackend = function(callback) {
 }
 
 function serve(slaxApp, options) {
-    options.slax = slaxApp;
+    options.slaxs = slaxApp;
     let server = new SlaxServer(options);
 
     server.start(function() {
@@ -93,19 +93,29 @@ if (!(npm_argv && npm_argv.cooked instanceof Array)) {
     throw TypeError("npm argv Error"); // 异常的抛出会终止npm install命令
 }
 
-let appNames = [],
-    appPath = path.join(__dirname, "frontend/src/apps");
+let slaxs = [],
+    appPath = path.join(__dirname, "frontend/deploy");
 
-fs.readdirSync(appPath).forEach(item => {
-    let _path = ":/" + item;
-    if (item === "home") _path = ""
-    if (!item.match(/^\./)) {
-        let stats = fs.statSync(path.join(appPath, item));
-        if (stats.isDirectory()) appNames.push("frontend/deploy/" + item + ".slax" + _path);
+fs.readdirSync(appPath).forEach(name => {
+    let reg = new RegExp("(.*)\.slax$");
+    let matcher = name.match(reg);
+    if (matcher) {
+        let contextPath = ":/" + matcher[1],
+            middleware = ensureAuthenticated;
+        if (matcher[1] === "home") {
+            contextPath = "";
+            middleware = null;
+        }
+        slaxs.push({
+            name: matcher[1],
+            slaxPath: path.join(appPath, name),
+            contextPath: contextPath,
+            middleware: middleware
+        });
     }
 });
 
-serve(appNames.join(","), {
+serve(slaxs, {
     port: npm_argv.cooked[3] || 8087,
-    root: path.join(__dirname, 'frontend/src/apps/home')
+    root: path.join(__dirname, "frontend/src/apps/home")
 });

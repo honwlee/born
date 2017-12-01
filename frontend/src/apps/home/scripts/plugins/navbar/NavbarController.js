@@ -7,10 +7,16 @@ define([
     var spa = skylarkjs.spa,
         router = skylarkjs.router;
     var currentNav,
+        currentSub,
         setActive = function(selector) {
             if (currentNav) $(currentNav).removeClass("active");
             currentNav = $("." + selector + "-nav");
             if (currentNav) currentNav.addClass("active");
+        },
+        setSubActive = function(selector) {
+            if (currentSub) $(currentSub).removeClass("active");
+            currentSub = $("." + selector + "-nav");
+            if (currentSub) currentSub.addClass("active");
         },
         showThrob = function() {
             var selector = $("#main"),
@@ -41,11 +47,22 @@ define([
             }).delegate(".nav-item", "click", function(e) {
                 var target = $(e.target),
                     data = target.data();
-                navClick(data.path, data.name);
+                if (data.sub) {
+                    navClick(data.path, data.parent);
+                    setSubActive(data.name);
+                } else {
+                    navClick(data.path, data.name);
+                }
             });
             router.one("routed", function(e) {
                 var curR = e.current.route;
-                setActive(curR.name || "home");
+                if (curR.name.match(/-/)) {
+                    var names = curR.name.split("-");
+                    setActive(names[0]);
+                    setSubActive(curR.name);
+                } else {
+                    setActive(curR.name || "home");
+                }
             });
             var selector = $("#main-wrap");
             $(".logo-nav").on("click", function() {
@@ -58,6 +75,7 @@ define([
                     path = basePath + page.pathto;
                 if (page.sub) continue;
                 if (page.subs) {
+
                     var li = $("<li>").attr({
                         class: name + "-nav subs"
                     }).addContent(
@@ -68,23 +86,29 @@ define([
                             path: path
                         }).html(navName)
                     ).appendTo(ul);
+
                     var div = $("<div>").attr({
                         class: "sameOne"
                     }).appendTo(li).html("<ul class='list-unstyled'></ul>");
-                    page.subs.forEach(function(sub) {
-                        var subPage = routes[sub],
-                            subData = subPage.data;
-                        $("<li>").attr({
-                            class: "sub-nav"
-                        }).addContent(
-                            $("<a>").attr({
-                                class: "nav-item"
-                            }).data({
-                                name: subData.name,
-                                path: subPage.pathto
-                            }).html(subData.navName)
-                        ).appendTo(div.find("ul"));
-                    });
+
+                    (function(_page, _name, _div) {
+                        _page.subs.forEach(function(sub) {
+                            var subPage = routes[sub],
+                                subData = subPage.data;
+                            $("<li>").attr({
+                                class: "sub-nav " + subData.name + "-nav"
+                            }).addContent(
+                                $("<a>").attr({
+                                    class: "nav-item"
+                                }).data({
+                                    name: subData.name,
+                                    sub: true,
+                                    parent: _name,
+                                    path: subPage.pathto
+                                }).html(subData.navName)
+                            ).appendTo(_div.find("ul"));
+                        });
+                    })(page, name, div);
                 } else {
                     $("<li>").attr({
                         class: name + "-nav "
