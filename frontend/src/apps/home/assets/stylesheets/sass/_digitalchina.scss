@@ -829,7 +829,7 @@ ul {
 }
 
 .leftNavCon ul li a:hover,
-.leftNavCon ul li a.current {
+.leftNavCon ul li.active a{
     color: #d60917;
     background: #fbeced url(/assets/images/leftnavAbg.png) no-repeat 10px center;
     background: #fbeced url(/assets/images/leftnavAbg.png) no-repeat 10px center;

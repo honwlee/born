@@ -39,7 +39,7 @@ $navHeight: 82px;
                             padding: 13px 14px;
                             border-bottom: 1px solid #f9192f;
                             &:hover {
-                                background: #f9192f;
+                                background-color: #f9192f;
                             }
                             a {
                                 color: #fff;
@@ -60,6 +60,10 @@ $navHeight: 82px;
                             border-bottom: 5px solid #d6182a;
                             font-size: 0px;
                             line-height: 0px;
+                        }
+                        .active{
+                            color: #fff;
+                            background-color: #f9192f;
                         }
                     }
                     &:hover .sameOne {
