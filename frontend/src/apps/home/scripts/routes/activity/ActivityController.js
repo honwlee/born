@@ -26,7 +26,7 @@ define([
                     normal: path + name + ".jpeg",
                     mini: path + name + ".jpeg",
                     size: "300x300",
-                    desc: name
+                    desc: name+"desc"+name
                 });
             });
             var ps = new photoSwipe({

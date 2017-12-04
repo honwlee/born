@@ -491,6 +491,16 @@
     height: 4px;
     background-color: #b72024;
 }
+.main_title_seven:after {
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+    height: 4px;
+    background-color: #b72024;
+}
 
 .main_title_nine:after {
     content: " ";

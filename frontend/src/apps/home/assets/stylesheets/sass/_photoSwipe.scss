@@ -97,10 +97,33 @@
             flex: 1;
             padding: 1px;
             height: auto;
+            position: relative;
+        }
+        .img-main,.img-sub{
+            &:hover img{
+                transform:scale(1.1,1.1);
+               -ms-transform:scale(1.1,1.1);
+               -webkit-transfrom:scale(1.1,1.1);
+            }
         }
         figure {
-            display: none;
+            // display: none;
+            opacity: 0;
+            position: absolute;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            height: 100%;
+            width: 100%;
+            word-break: break-all;
+            word-wrap: normal;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            color: #fff;
         }
+        .img-sub:hover figure{
+            opacity: 1;
+    }
         .img-title {
             line-height: 14px;
             font-size: 14px;

@@ -170,7 +170,7 @@
                 "navName": "联系我们"
             },
             "controller": {
-                "type": "scripts/routes/about/AboutController"
+                "type": "scripts/routes/about/subs/ContactController"
             }
         }
     }
