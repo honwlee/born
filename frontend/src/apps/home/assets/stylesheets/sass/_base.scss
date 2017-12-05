@@ -10,12 +10,12 @@ body {
     overflow: auto;
 }
 
-$navHeight: 82px;
+// $navHeight: 82px;
 #mainWrapper {
     opacity: 0;
     nav.navbar {
         margin-bottom: 0;
-        height: $navHeight;
+        // height: $navHeight;
         background: #fff;
         box-shadow: 1px 1px 5px #ccc;
         .navbar-toggle .icon-bar {
@@ -36,12 +36,13 @@ $navHeight: 82px;
                         background-color: #d71728;
                         text-align: center;
                         li {
-                            padding: 13px 14px;
                             border-bottom: 1px solid #f9192f;
                             &:hover {
                                 background-color: #f9192f;
                             }
                             a {
+                                display: block;
+                                padding: 13px 14px;
                                 color: #fff;
                                 font-size: 14px;
                                 text-decoration: none;
@@ -61,7 +62,7 @@ $navHeight: 82px;
                             font-size: 0px;
                             line-height: 0px;
                         }
-                        .active{
+                        .active {
                             color: #fff;
                             background-color: #f9192f;
                         }
@@ -99,16 +100,14 @@ $navHeight: 82px;
                 color: #d71728;
             }
         }
-
         img.logo {
-            position: relative;
-            bottom: 4px;
-            padding: 0 5px;
+            // position: relative;
+            // bottom: 4px;
+            // padding: 0 5px;
         }
     }
-
     #main {
-        margin-top: $navHeight;
+        // margin-top: $navHeight;
         width: 100%;
         min-height: 600px;
     }

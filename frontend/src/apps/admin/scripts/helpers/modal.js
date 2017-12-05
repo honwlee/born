@@ -1,6 +1,6 @@
 define([
     "skylarkjs",
-    "./partial",
+    "./Partial",
     "jquery",
     "server",
     "toastr",
