@@ -124,5 +124,5 @@ if (!(npm_argv && npm_argv.cooked instanceof Array)) {
 
 serve({
     port: npm_argv.cooked[3] || 8087,
-    // root: path.join(__dirname, "frontend/src/apps/home")
+    root: path.join(__dirname, "frontend/src/apps/home")
 });
