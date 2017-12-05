@@ -8,30 +8,60 @@
     },
     {
         "id": 2,
-        "name": "provinces",
-        "spaceFileName": "_provinces.json",
+        "name": "attachments",
+        "spaceFileName": "_attachments.json",
         "autoOpen": true
     },
     {
         "id": 3,
-        "name": "dealers",
-        "spaceFileName": "_dealers.json",
+        "name": "banners",
+        "spaceFileName": "_banners.json",
         "autoOpen": true
     },
     {
         "id": 4,
-        "name": "warranties",
-        "spaceFileName": "_warranties.json",
+        "name": "events",
+        "spaceFileName": "_events.json",
         "autoOpen": true
     },
     {
         "id": 5,
-        "name": "cities",
-        "spaceFileName": "_cities.json",
+        "name": "keywords",
+        "spaceFileName": "_keywords.json",
         "autoOpen": true
     },
     {
         "id": 6,
+        "name": "messages",
+        "spaceFileName": "_messages.json",
+        "autoOpen": true
+    },
+    {
+        "id": 7,
+        "name": "news",
+        "spaceFileName": "_news.json",
+        "autoOpen": true
+    },
+    {
+        "id": 8,
+        "name": "pages",
+        "spaceFileName": "_pages.json",
+        "autoOpen": true
+    },
+    {
+        "id": 9,
+        "name": "photos",
+        "spaceFileName": "_photos.json",
+        "autoOpen": true
+    },
+    {
+        "id": 10,
+        "name": "posts",
+        "spaceFileName": "_posts.json",
+        "autoOpen": true
+    },
+    {
+        "id": 11,
         "name": "products",
         "spaceFileName": "_products.json",
         "autoOpen": true
