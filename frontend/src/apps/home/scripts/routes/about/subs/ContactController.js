@@ -1,14 +1,14 @@
 define([
     "skylarkjs",
     "text!scripts/routes/about/about.html"
-], function(skylarkjs, abouttTpl) {
+], function(skylarkjs, aboutTpl) {
     var spa = skylarkjs.spa,
         $ = skylarkjs.query;
     return spa.RouteController.inherit({
         klassName: "AboutContactController",
 
         rendering: function(e) {
-            e.content = abouttTpl;
+            e.content = aboutTpl;
         },
         rendered: function() {
             $('#aTabList a[href="#aContact"]').tab('show');

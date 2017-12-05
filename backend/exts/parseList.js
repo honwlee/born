@@ -7,8 +7,8 @@ module.exports = {
             db = dbms(dbpath, {
                 master_file_name: "master.json"
             });
-        let total = 0,
-            chain = db.get(name),
+        let chain = db.get(name),
+            total = chain.size(),
             // Remove q, _start, _end, ... from req.query to avoid filtering using those
             // parameters
             q = req.query.search,

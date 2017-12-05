@@ -1,6 +1,6 @@
 {
     "name": "born",
-    "title": "born",
+    "title": "管理后台",
     "contextPath": "/admin",
     "runtime": {
         "skylarkjs": {
@@ -8,31 +8,85 @@
         },
         "paths": {
             "server": "scripts/services/server",
-            "skylarkBs": "lib/skylark-bs-swt-all",
-            "jquery": "lib/skylark-jquery-all",
+            "MediumEditor": "https://cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min",
+            "photoswipe": "https://cdn.bootcss.com/photoswipe/4.1.2/photoswipe.min",
+            "photoswipeUi": "https://cdn.bootcss.com/photoswipe/4.1.2/photoswipe-ui-default.min",
+            "skylarkBs": "lib/uncompressed/skylark-bs-swt-all",
+            "lodash": "https://cdn.bootcss.com/lodash.js/4.17.4/lodash.min",
+            "jquery": "lib/uncompressed/skylark-jquery-all",
             "toastr": "https://cdn.bootcss.com/toastr.js/latest/js/toastr.min",
-            "bootstrap": "https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min",
+            "bootstrap": "https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap",
             "handlebars": "https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.amd.min",
             "text": "https://cdn.bootcss.com/require-text/2.0.12/text.min"
         }
     },
-    "spaModule": "scripts/helpers/spa",
     "page": {
         "routeViewer": "#main"
     },
+    "spaModule": "scripts/helpers/spa",
     "plugins": {
         "app": {
             "hookers": "starting started",
             "controller": {
                 "type": "scripts/plugins/app/AppController"
             }
+        },
+        "navbar": {
+            "hookers": "starting",
+            "controller": {
+                "type": "scripts/plugins/navbar/NavbarController"
+            }
         }
     },
     "routes": {
         "home": {
             "pathto": "/",
+            "data": {
+                "name": "home",
+                "navName": "管理主页"
+            },
             "controller": {
                 "type": "scripts/routes/home/HomeController"
+            }
+        },
+        "pages": {
+            "pathto": "/pages",
+            "data": {
+                "name": "pages",
+                "navName": "页面管理"
+            },
+            "controller": {
+                "type": "scripts/routes/pages/PagesController"
+            }
+        },
+        "posts": {
+            "pathto": "/posts",
+            "data": {
+                "name": "posts",
+                "navName": "文章管理"
+            },
+            "controller": {
+                "type": "scripts/routes/posts/PostsController"
+            }
+        },
+        "photos": {
+            "pathto": "/photos",
+            "data": {
+                "name": "photos",
+                "navName": "图片管理"
+            },
+            "controller": {
+                "type": "scripts/routes/photos/PhotosController"
+            }
+        },
+        "news": {
+            "pathto": "/news",
+            "data": {
+                "name": "news",
+                "navName": "新闻管理"
+            },
+            "controller": {
+                "type": "scripts/routes/news/NewsController"
             }
         }
     }

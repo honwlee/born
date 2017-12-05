@@ -7,19 +7,22 @@ define([
     var spa = skylarkjs.spa,
         router = skylarkjs.router;
     var currentNav,
-        currentSub,
-        setActive = function(selector) {
+        currentSubs = {},
+        setActive = function(name) {
             if (currentNav) $(currentNav).removeClass("active");
-            currentNav = $("." + selector + "-nav");
+            currentNav = $("." + name + "-nav");
             if (currentNav) currentNav.addClass("active");
         },
-        setSubActive = function(selector) {
-            if (currentSub) $(currentSub).removeClass("active");
-            currentSub = $("." + selector + "-nav");
-            if (currentSub) currentSub.addClass("active");
+        setSubActive = function(subName, parentName) {
+            var sub = currentSubs[parentName];
+            if (sub) sub._s.removeClass("active");
+            currentSubs[parentName] = {
+                _s: $("." + subName + "-nav").addClass("active"),
+                name: subName
+            };
         },
         showThrob = function() {
-            var selector = $("#main"),
+            var selector = $("#mainWrapper"),
                 throb = window.addThrob(selector[0], function() {
                     router.one("routing", function(e) {
                         window._goTop();
@@ -29,16 +32,73 @@ define([
                         selector.css("opacity", 1);
                     });
                 });
+        },
+        initItems = function(routes, key, ul) {
+            var page = routes[key],
+                name = page.data.name,
+                navName = page.data.navName,
+                path = page.pathto;
+            if (page.for === "admin") return;
+            if (page.sub) return;
+            if (page.subs) {
+                var li = $("<li>").attr({
+                    class: name + "-nav subs"
+                }).addContent(
+                    $("<a>").attr({
+                        class: "nav-item"
+                    }).data({
+                        name: name,
+                        path: path
+                    }).html(navName)
+                ).appendTo(ul);
+
+                var div = $("<div>").attr({
+                    class: "sameOne"
+                }).appendTo(li).html("<ul class='list-unstyled'></ul>");
+
+                (function(_page, _name, _div) {
+                    _page.subs.forEach(function(sub) {
+                        var subPage = routes[sub],
+                            subData = subPage.data;
+                        $("<li>").attr({
+                            class: "sub-nav " + subData.name + "-nav"
+                        }).addContent(
+                            $("<a>").attr({
+                                class: "nav-item"
+                            }).data({
+                                name: subData.name,
+                                sub: true,
+                                parent: _name,
+                                path: subPage.pathto
+                            }).html(subData.navName)
+                        ).appendTo(_div.find("ul"));
+                    });
+                })(page, name, div);
+            } else {
+                $("<li>").attr({
+                    class: name + "-nav "
+                }).addContent(
+                    $("<a>").attr({
+                        class: "nav-item"
+                    }).data({
+                        name: name,
+                        path: path
+                    }).html(navName)
+                ).appendTo(ul);
+            }
         };
+
     return spa.PluginController.inherit({
         starting: function(evt) {
             var spa = evt.spa,
-                basePath = (spa.getConfig("baseUrl") || "").replace(/.*(\/$)/, ""),
+                // basePath = (spa.getConfig("baseUrl") || "").replace(/.*(\/$)/, ""),
                 routes = spa.getConfig("routes"),
                 _el = $("#sk-navbar"),
-                navClick = function(path, name) {
+                goToPath = function(name) {
+                    var path = routes[name].pathto;
                     if (router.go(path)) {
-                        setActive(name);
+                        // 监听routed已经实现
+                        // setActive(name);
                         showThrob();
                     }
                 };
@@ -48,79 +108,33 @@ define([
                 var target = $(e.target),
                     data = target.data();
                 if (data.sub) {
-                    navClick(data.path, data.parent);
-                    setSubActive(data.name);
+                    goToPath(data.name);
                 } else {
-                    navClick(data.path, data.name);
+                    var sub = currentSubs[data.name];
+                    if (sub) {
+                        // 跳转到上次打开的二级导航
+                        goToPath(sub.name);
+                    } else {
+                        goToPath(data.name);
+                    }
                 }
             });
-            router.one("routed", function(e) {
+            router.on("routed", function(e) {
                 var curR = e.current.route;
+                // update nav dom with active class
                 if (curR.name.match(/-/)) {
                     var names = curR.name.split("-");
                     setActive(names[0]);
-                    setSubActive(curR.name);
+                    setSubActive(curR.name, names[0]);
                 } else {
                     setActive(curR.name || "home");
                 }
             });
-            var selector = $("#main-wrap");
             $(".logo-nav").on("click", function() {
-                navClick("/", "home");
+                goToPath("home");
             });
             for (var key in routes) {
-                var page = routes[key],
-                    name = page.data.name,
-                    navName = page.data.navName,
-                    path = basePath + page.pathto;
-                if (page.sub) continue;
-                if (page.subs) {
-
-                    var li = $("<li>").attr({
-                        class: name + "-nav subs"
-                    }).addContent(
-                        $("<a>").attr({
-                            class: "nav-item"
-                        }).data({
-                            name: name,
-                            path: path
-                        }).html(navName)
-                    ).appendTo(ul);
-
-                    var div = $("<div>").attr({
-                        class: "sameOne"
-                    }).appendTo(li).html("<ul class='list-unstyled'></ul>");
-
-                    (function(_page, _name, _div) {
-                        _page.subs.forEach(function(sub) {
-                            var subPage = routes[sub],
-                                subData = subPage.data;
-                            $("<li>").attr({
-                                class: "sub-nav " + subData.name + "-nav"
-                            }).addContent(
-                                $("<a>").attr({
-                                    class: "nav-item"
-                                }).data({
-                                    name: subData.name,
-                                    sub: true,
-                                    parent: _name,
-                                    path: subPage.pathto
-                                }).html(subData.navName)
-                            ).appendTo(_div.find("ul"));
-                        });
-                    })(page, name, div);
-                } else {
-                    $("<li>").attr({
-                        class: name + "-nav "
-                    }).addContent(
-                        $("<a>").attr({
-                            class: "nav-item"
-                        }).data({
-                            name: name,
-                            path: path
-                        }).html(navName)
-                    ).appendTo(ul);
-                }
+                initItems(routes, key, ul);
             }
             _el.html(ul);
             partial.get("gallery-partial");

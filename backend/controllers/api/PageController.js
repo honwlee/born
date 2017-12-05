@@ -6,7 +6,6 @@ module.exports = {
     index: function(req, res) {
         parse("pages", req, res, ["name"]);
     },
-
     show: function(req, res) {
         let opt = {};
         opt[req.query.key] = req.query.value;
@@ -26,6 +25,7 @@ module.exports = {
 
     create: function(req, res) {
         req.body.file = req.file;
+        console.log(req.body);
         validate(Page, { name: req.body.name }, req, res);
     },
 

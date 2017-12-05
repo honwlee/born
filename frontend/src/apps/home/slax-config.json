@@ -46,6 +46,7 @@
                 "type": "scripts/routes/home/HomeController"
             }
         },
+
         "process": {
             "pathto": "/process",
             "data": {

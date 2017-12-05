@@ -13,7 +13,7 @@ define([
 
         rendered: function() {
             $('#pTabList a[href="#pCertificate"]').tab('show');
-            $("#pTablist").find('a').off('shown.bs.tab').on('shown.bs.tab', function(e) {
+            $("#pTabList").find('a').off('shown.bs.tab').on('shown.bs.tab', function(e) {
                 var path = $(e.currentTarget).data("path");
                 window.go(path, true);
             });

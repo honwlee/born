@@ -1,4 +1,5 @@
 const passport = require('passport'),
+    path = require('path'),
     api = require("./_api");
 
 module.exports = function(app, router, ensureAuthenticated, rootPath) {
@@ -30,22 +31,29 @@ module.exports = function(app, router, ensureAuthenticated, rootPath) {
     });
 
     //sends the request through our local login/signin strategy, and if successful takes user to homepage, otherwise returns then to signin page
-    // app.post('/login', passport.authenticate('local-signin', {
-    //     successRedirect: '/',
-    //     failureRedirect: '/signin'
-    // }));
-    //
+    app.post('/login', passport.authenticate('local-signin', {
+        successRedirect: '/admin',
+        failureRedirect: '/signin'
+    }));
 
-    app.post('/login', function(req, res, next) {
-        passport.authenticate('local-signin', function(err, user, info) {
-            if (err) { return res.json({ status: false, msg: err }); }
-            if (!user) { return res.json({ status: false, msg: err }); }
-            req.logIn(user, function(err) {
-                if (err) { return next(err); }
-                return res.json({ status: true, user });;
-            });
-        })(req, res, next);
+
+    app.get('/signin', function(req, res, next) {
+        res.render('signin', { layout: null });
+        //res.sendFile(path.join(__dirname, "../views/auth/signin.html"));
     });
+    // app.post('/login', function(req, res, next) {
+    //     passport.authenticate('local-signin', function(err, user, info) {
+    //         if (err) { return res.json({ status: false, msg: err }); }
+    //         if (!user) { return res.json({ status: false, msg: err }); }
+    //         req.logIn(user, function(err) {
+    //             if (err) { return next(err); }
+    //             return res.json({ status: true, user });;
+    //             console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+    //             res.redirect("/admin");
+    //         });
+    //     })(req, res, next);
+    // });
 
     // app.post('/login', passport.authenticate('local-signin'), function(req, res) {
     //     console.log(req.result);

@@ -24,7 +24,8 @@ module.exports = {
         module: require("./NewsController")
     },
     pages: {
-        module: require("./PageController")
+        module: require("./PageController"),
+        uploadPath: "attachments"
     },
     photos: {
         module: require("./PhotoController"),

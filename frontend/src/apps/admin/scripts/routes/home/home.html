@@ -2,6 +2,232 @@
     <div class="container">
         <div class="caption">
             <h3>hi,home</h3>
+            <div class="loader" data-initialize="loader" id="myLoader"></div>
+        </div>
+    </div>
+    <div class="fu-example section">
+        <div class="repeater" data-staticheight="400px" id="myRepeaterList" data-currentview="list" data-viewtype="list">
+            <div class="repeater-header">
+                <div class="repeater-header-left">
+                    <span class="repeater-title">Awesome Repeater</span>
+                    <div class="repeater-search">
+                        <div class="search input-group">
+                            <input type="search" class="form-control" placeholder="Search">
+                            <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                            <span class="sr-only">Search</span>
+                            </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="repeater-header-right">
+                    <div class="btn-group selectlist repeater-filters" data-resize="auto">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width: 91px;">
+                                <span class="selected-label">all</span>
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Filters</span>
+                            </button>
+                        <ul class="dropdown-menu" role="menu" style="width: 91px;">
+                            <li data-value="all" data-selected="true"><a href="#">all</a></li>
+                            <li data-value="bug"><a href="#">bug</a></li>
+                            <li data-value="dark"><a href="#">dark</a></li>
+                            <li data-value="dragon"><a href="#">dragon</a></li>
+                            <li data-value="electric"><a href="#">electric</a></li>
+                            <li data-value="fairy"><a href="#">fairy</a></li>
+                            <li data-value="fighting"><a href="#">fighting</a></li>
+                            <li data-value="fire"><a href="#">fire</a></li>
+                            <li data-value="flying"><a href="#">flying</a></li>
+                            <li data-value="ghost"><a href="#">ghost</a></li>
+                            <li data-value="grass"><a href="#">grass</a></li>
+                            <li data-value="ground"><a href="#">ground</a></li>
+                            <li data-value="ice"><a href="#">ice</a></li>
+                            <li data-value="normal"><a href="#">normal</a></li>
+                            <li data-value="poison"><a href="#">poison</a></li>
+                            <li data-value="psychic"><a href="#">psychic</a></li>
+                            <li data-value="rock"><a href="#">rock</a></li>
+                            <li data-value="steel"><a href="#">steel</a></li>
+                            <li data-value="water"><a href="#">water</a></li>
+                        </ul>
+                        <input class="hidden hidden-field" name="filterSelection" readonly="readonly" aria-hidden="true" type="text">
+                    </div>
+                    <div class="btn-group repeater-views" data-toggle="buttons">
+                        <label class="btn btn-default active">
+                                <input name="repeaterViews" type="radio" value="list" class=""><span class="glyphicon glyphicon-list"></span>
+                            </label>
+                    </div>
+                </div>
+            </div>
+            <div class="repeater-viewport" style="height: 298px;">
+                <div class="repeater-canvas scrolling">
+                    <div class="repeater-list " data-preserve="shallow">
+                        <div class="repeater-list-wrapper" data-infinite="true" data-preserve="shallow">
+                            <table aria-readonly="true" class="table" data-preserve="shallow" role="grid">
+                                <thead data-preserve="deep">
+                                    <tr>
+                                        <th class="sortable" style="width: 116px;">Name<span class="glyphicon rlc"></span>
+                                            <div class="repeater-list-heading sortable" style="height: 35px; width: 114px;">Name<span class="glyphicon rlc"></span></div>
+                                        </th>
+                                        <th class="sortable" style="width: 116px;">Id<span class="glyphicon rlc"></span>
+                                            <div class="repeater-list-heading sortable" style="height: 35px; width: 112px;">Id<span class="glyphicon rlc"></span></div>
+                                        </th>
+                                        <th class="sortable" style="width: 116px;">Type<span class="glyphicon rlc"></span>
+                                            <div class="repeater-list-heading sortable" style="height: 35px; width: 114px;">Type<span class="glyphicon rlc"></span></div>
+                                        </th>
+                                        <th class="sortable" style="width: 116px;">Height (in)<span class="glyphicon rlc"></span>
+                                            <div class="repeater-list-heading sortable" style="height: 35px; width: 114px;">Height (in)<span class="glyphicon rlc"></span></div>
+                                        </th>
+                                        <th class="sortable" style="width: 116px;">Weight (lbs)<span class="glyphicon rlc"></span>
+                                            <div class="repeater-list-heading sortable" style="height: 35px; width: 114px;">Weight (lbs)<span class="glyphicon rlc"></span></div>
+                                        </th>
+                                        <th class="sortable" style="width: 116px;">Abilities<span class="glyphicon rlc"></span>
+                                            <div class="repeater-list-heading sortable" style="height: 35px; width: 115px;">Abilities<span class="glyphicon rlc"></span></div>
+                                        </th>
+                                        <th class="sortable" style="width: 116px;">Weakness<span class="glyphicon rlc"></span>
+                                            <div class="repeater-list-heading sortable" style="height: 35px; width: 115px;">Weakness<span class="glyphicon rlc"></span></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody data-container="true">
+                                    <tr>
+                                        <td style="width: 116px;">Bulbasaur</td>
+                                        <td style="width: 116px;">001</td>
+                                        <td style="width: 116px;">grass, poison</td>
+                                        <td style="width: 116px;">28.0</td>
+                                        <td style="width: 116px;">15.2</td>
+                                        <td style="width: 116px;">Overgrow</td>
+                                        <td style="width: 116px;">fire, flying, ice, psychic</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 116px;">Ivysaur</td>
+                                        <td style="width: 116px;">002</td>
+                                        <td style="width: 116px;">grass, poison</td>
+                                        <td style="width: 116px;">39.0</td>
+                                        <td style="width: 116px;">28.7</td>
+                                        <td style="width: 116px;">Overgrow</td>
+                                        <td style="width: 116px;">fire, flying, ice, psychic</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 116px;">Venusaur</td>
+                                        <td style="width: 116px;">003</td>
+                                        <td style="width: 116px;">grass, poison</td>
+                                        <td style="width: 116px;">94.0</td>
+                                        <td style="width: 116px;">342.8</td>
+                                        <td style="width: 116px;">Overgrow, Thick Fat</td>
+                                        <td style="width: 116px;">fire, psychic, flying, ice</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 116px;">Charmander</td>
+                                        <td style="width: 116px;">004</td>
+                                        <td style="width: 116px;">fire</td>
+                                        <td style="width: 116px;">24.0</td>
+                                        <td style="width: 116px;">18.7</td>
+                                        <td style="width: 116px;">Blaze</td>
+                                        <td style="width: 116px;">ground, rock, water</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 116px;">Charmeleon</td>
+                                        <td style="width: 116px;">005</td>
+                                        <td style="width: 116px;">fire</td>
+                                        <td style="width: 116px;">43.0</td>
+                                        <td style="width: 116px;">41.9</td>
+                                        <td style="width: 116px;">Blaze</td>
+                                        <td style="width: 116px;">ground, rock, water</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 116px;">Charizard</td>
+                                        <td style="width: 116px;">006</td>
+                                        <td style="width: 116px;">fire, flying</td>
+                                        <td style="width: 116px;">67.0</td>
+                                        <td style="width: 116px;">221.6</td>
+                                        <td style="width: 116px;">Tough Claws, Drought, Blaze</td>
+                                        <td style="width: 116px;">water, rock, electric</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 116px;">Squirtle</td>
+                                        <td style="width: 116px;">007</td>
+                                        <td style="width: 116px;">water</td>
+                                        <td style="width: 116px;">20.0</td>
+                                        <td style="width: 116px;">19.8</td>
+                                        <td style="width: 116px;">Torrent</td>
+                                        <td style="width: 116px;">electric, grass</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 116px;">Wartortle</td>
+                                        <td style="width: 116px;">008</td>
+                                        <td style="width: 116px;">water</td>
+                                        <td style="width: 116px;">39.0</td>
+                                        <td style="width: 116px;">49.6</td>
+                                        <td style="width: 116px;">Torrent</td>
+                                        <td style="width: 116px;">electric, grass</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 116px;">Blastoise</td>
+                                        <td style="width: 116px;">009</td>
+                                        <td style="width: 116px;">water</td>
+                                        <td style="width: 116px;">63.0</td>
+                                        <td style="width: 116px;">222.9</td>
+                                        <td style="width: 116px;">Mega Launcher, Torrent</td>
+                                        <td style="width: 116px;">grass, electric</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 116px;">Caterpie</td>
+                                        <td style="width: 116px;">010</td>
+                                        <td style="width: 116px;">bug</td>
+                                        <td style="width: 116px;">12.0</td>
+                                        <td style="width: 116px;">6.4</td>
+                                        <td style="width: 116px;">Shield Dust</td>
+                                        <td style="width: 116px;">fire, flying, rock</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="loader repeater-loader" style="display: none;"></div>
+            </div>
+            <div class="repeater-footer">
+                <div class="repeater-footer-left">
+                    <div class="repeater-itemization">
+                        <span><span class="repeater-start">1</span> - <span class="repeater-end">10</span> of <span class="repeater-count">660</span> items</span>
+                        <div class="btn-group selectlist" data-resize="auto">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width: 66px;">
+                                    <span class="selected-label">10</span>
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                            <ul class="dropdown-menu" role="menu" style="width: 66px;">
+                                <li data-value="5"><a href="#">5</a></li>
+                                <li data-value="10" data-selected="true"><a href="#">10</a></li>
+                                <li data-value="20"><a href="#">20</a></li>
+                                <li data-value="50" data-foo="bar" data-fizz="buzz"><a href="#">50</a></li>
+                                <li data-value="100"><a href="#">100</a></li>
+                            </ul>
+                            <input class="hidden hidden-field" name="itemsPerPage" readonly="readonly" aria-hidden="true" type="text">
+                        </div>
+                        <span>Per Page</span>
+                    </div>
+                </div>
+                <div class="repeater-footer-right">
+                    <div class="repeater-pagination">
+                        <button type="button" class="btn btn-default btn-sm repeater-prev page-end" disabled="disabled"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                        <span>Page</span>
+                        <div class="repeater-primaryPaging">
+                            <div class="input-group input-append dropdown combobox">
+                                <input type="text" class="form-control">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                    <ul class="dropdown-menu pull-right"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control repeater-secondaryPaging active">
+                        <span>of <span class="repeater-pages">66</span></span>
+                        <button type="button" class="btn btn-default btn-sm repeater-next"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

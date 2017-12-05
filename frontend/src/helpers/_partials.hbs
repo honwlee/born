@@ -1,20 +1,18 @@
- <div>
-     <script id="photoSwipe-partial"  type="text/x-handlebars-template">
-         <section class="features photo-container" id="photosContainer">
+<div>
+    <script id="photoSwipe-partial" type="text/x-handlebars-template">
+        <section class="features photo-container" id="photosContainer">
             <div class="container">
                 <div class="section section--head">
                     <div class="row">
                         <div class="items-container">
-                            {{#each photos}}
-                                {{> photoSwipe-item-partial}}
-                            {{/each}}
+                            {{#each photos}} {{> photoSwipe-item-partial}} {{/each}}
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </script>
-    <script id="photoSwipe-item-partial"  type="text/x-handlebars-template">
+    <script id="photoSwipe-item-partial" type="text/x-handlebars-template">
         <a href="{{normal}}" data-size="{{size}}" data-med="{{big}}" data-med-size="{{size}}" class="{{imgClass}}">
             <img src="{{mini}}" alt="" />
             <figure>{{desc}}</figure>
@@ -27,46 +25,46 @@
 
             <div class="pswp__scroll-wrap">
 
-              <div class="pswp__container">
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-              </div>
+                <div class="pswp__container">
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                </div>
 
-              <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__ui pswp__ui--hidden">
 
-                <div class="pswp__top-bar">
+                    <div class="pswp__top-bar">
 
-                    <div class="pswp__counter"></div>
+                        <div class="pswp__counter"></div>
 
-                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 
-                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                        <button class="pswp__button pswp__button--share" title="Share"></button>
 
-                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
 
-                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
 
-                    <div class="pswp__preloader">
-                        <div class="pswp__preloader__icn">
-                          <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                          </div>
+                        <div class="pswp__preloader">
+                            <div class="pswp__preloader__icn">
+                                <div class="pswp__preloader__cut">
+                                    <div class="pswp__preloader__donut"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                        <div class="pswp__share-tooltip"></div>
+                    </div>
+
+                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                    <div class="pswp__caption">
+                        <div class="pswp__caption__center">
                         </div>
                     </div>
                 </div>
-
-                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                    <div class="pswp__share-tooltip"></div>
-                </div>
-
-                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-                <div class="pswp__caption">
-                  <div class="pswp__caption__center">
-                  </div>
-                </div>
-              </div>
 
             </div>
         </div>
@@ -78,18 +76,18 @@
                     <div class="col-md-8 left-list">
                         <div class="panel panel-body">
                             {{#each data}}
-                                <div class="media panel-body item">
-                                    <div class="media-left col-md-4">
-                                        <a href="#">
-                                            <img class="media-object" src="{{imgUrl}}" alt="..." style="width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="media-body media-right">
-                                        <h4 class="media-heading">{{title}}</h4>
-                                        <p class="text-tip"> {{desc}}</p>
-                                        <p class="media-footer"><span>{{date}}</span><span class="pull-right"><i class="glyphicon glyphicon-eye-open icon"></i>{{viewCount}}</span></p>
-                                    </div>
+                            <div class="media panel-body item">
+                                <div class="media-left col-md-4">
+                                    <a href="#">
+                                        <img class="media-object" src="{{imgUrl}}" alt="..." style="width:100%;">
+                                    </a>
                                 </div>
+                                <div class="media-body media-right">
+                                    <h4 class="media-heading">{{title}}</h4>
+                                    <p class="text-tip"> {{desc}}</p>
+                                    <p class="media-footer"><span>{{date}}</span><span class="pull-right"><i class="glyphicon glyphicon-eye-open icon"></i>{{viewCount}}</span></p>
+                                </div>
+                            </div>
                             {{/each }}
                             <nav aria-label="Page navigation">
                                 <ul class="pagination">
@@ -117,8 +115,7 @@
                             <div class="panel-heading list-title">美国相关资讯推荐</div>
                             <div class="panel-body">
                                 {{#each recommended}}
-                                    <a class="title" href="" title="{{title}}">{{title}}</a>
-                                {{/each}}
+                                <a class="title" href="" title="{{title}}">{{title}}</a> {{/each}}
                             </div>
                             <div class="panel-footer text-right more"><a href="">查看更多 &gt;&gt;</a></div>
                         </div>
@@ -126,11 +123,186 @@
                             <div class="panel-heading list-title">相关推荐</div>
                             <div class="panel-body">
                                 {{#each latest}}
-                                    <a class="title" href="" title="{{title}}">{{title}}</a>
-                                {{/each}}
+                                <a class="title" href="" title="{{title}}">{{title}}</a> {{/each}}
                             </div>
                             <div class="panel-footer text-right more"><a href="">查看更多 &gt;&gt;</a></div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="list-template-partial" type="text/x-handlebars-template">
+        <div class="repeater" id="{{id}}">
+            <div class="repeater-header">
+                <div class="repeater-header-left">
+                    <span class="repeater-title">{{title}}</span>
+                    <div class="repeater-search">
+                        <div class="search input-group">
+                            <input type="search" class="form-control" placeholder="Search" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                    <span class="sr-only">搜索</span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="repeater-header-right">
+                    <div class="btn-group selectlist repeater-filters" data-resize="auto">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span class="selected-label">&nbsp;</span>
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Filters</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li data-value="all" data-selected="true"><a href="#">all</a></li>
+                            <li data-value="some"><a href="#">some</a></li>
+                            <li data-value="others"><a href="#">others</a></li>
+                        </ul>
+                        <input class="hidden hidden-field" name="filterSelection" readonly="readonly" aria-hidden="true" type="text" />
+                    </div>
+                    <div class="btn-group repeater-views" data-toggle="buttons">
+                        <label class="btn btn-default active">
+                            <input name="repeaterViews" type="radio" value="list"><span class="glyphicon glyphicon-list"></span>
+                        </label>
+                        <label class="btn btn-default">
+                            <input name="repeaterViews" type="radio" value="thumbnail"><span class="glyphicon glyphicon-th"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="btn-group repeater-add">
+                        <button class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </label>
+                    </div>
+                    <div class="btn-group repeater-refresh">
+                        <button class="btn btn-default">
+                            <span class="glyphicon glyphicon-refresh"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="repeater-viewport">
+                <div class="repeater-canvas"></div>
+                <div class="loader repeater-loader"></div>
+            </div>
+            <div class="repeater-footer">
+                <div class="repeater-footer-left">
+                    <div class="repeater-itemization">
+                        <span><span class="repeater-start"></span> - <span class="repeater-end"></span> of <span class="repeater-count"></span> items</span>
+                        <div class="btn-group selectlist" data-resize="auto">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="selected-label">&nbsp;</span>
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li data-value="5"><a href="#">5</a></li>
+                                <li data-value="10" data-selected="true"><a href="#">10</a></li>
+                                <li data-value="20"><a href="#">20</a></li>
+                                <li data-value="50" data-foo="bar" data-fizz="buzz"><a href="#">50</a></li>
+                                <li data-value="100"><a href="#">100</a></li>
+                            </ul>
+                            <input class="hidden hidden-field" name="itemsPerPage" readonly="readonly" aria-hidden="true" type="text" />
+                        </div>
+                        <span>Per Page</span>
+                    </div>
+                </div>
+                <div class="repeater-footer-right">
+                    <div class="repeater-pagination">
+                        <button type="button" class="btn btn-default btn-sm repeater-prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous Page</span>
+                        </button>
+                        <label class="page-label" id="myPageLabel">Page</label>
+                        <div class="repeater-primaryPaging active">
+                            <div class="input-group input-append dropdown combobox">
+                                <input type="text" class="form-control" aria-labelledby="myPageLabel">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-right"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control repeater-secondaryPaging" aria-labelledby="myPageLabel">
+                        <span>of <span class="repeater-pages"></span></span>
+                        <button type="button" class="btn btn-default btn-sm repeater-next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next Page</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="modal-partial" type="text/x-handlebars-template">
+        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">关闭</span>
+                        </button>
+                        <h4 class="modal-title" id="deleteModalLabel">删除</h4>
+                    </div>
+                    <div class="modal-body">
+                        确定要删除当前项？
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancel btn-default" data-dismiss="modal">取消</button>
+                        <a class="btn btn-danger btn-ok">删除</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="contentModal" tabindex="-1" role="dialog" aria-labelledby="contentModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">关闭</span>
+                        </button>
+                        <h4 class="modal-title" id="contentModalLabel">查看内容</h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancel btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">关闭</span>
+                        </button>
+                        <h4 class="modal-title" id="formModalLabel"></h4>
+                    </div>
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                        </button>
+                        <button type="button" class="btn btn-primary save-btn">
+                        保存
+                        </button>
                     </div>
                 </div>
             </div>
