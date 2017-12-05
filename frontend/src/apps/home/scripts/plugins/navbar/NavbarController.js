@@ -39,6 +39,7 @@ define([
                 navName = page.data.navName,
                 path = page.pathto;
             if (page.for === "admin") return;
+            if (page.hide) return;
             if (page.sub) return;
             if (page.subs) {
                 var li = $("<li>").attr({

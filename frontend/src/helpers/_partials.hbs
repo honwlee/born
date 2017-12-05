@@ -76,9 +76,9 @@
                     <div class="col-md-8 left-list">
                         <div class="panel panel-body">
                             {{#each data}}
-                            <div class="media panel-body item">
+                            <div class="media panel-body item article-item" data-id={{id}}>
                                 <div class="media-left col-md-4">
-                                    <a href="#">
+                                    <a href="javascript:void(0)">
                                         <img class="media-object" src="{{imgUrl}}" alt="..." style="width:100%;">
                                     </a>
                                 </div>
@@ -92,17 +92,17 @@
                             <nav aria-label="Page navigation">
                                 <ul class="pagination">
                                     <li>
-                                        <a href="#" aria-label="Previous">
+                                        <a href="javascript:void(0)" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
+                                    <li><a href="javascript:void(0)">1</a></li>
+                                    <li><a href="javascript:void(0)">2</a></li>
+                                    <li><a href="javascript:void(0)">3</a></li>
+                                    <li><a href="javascript:void(0)">4</a></li>
+                                    <li><a href="javascript:void(0)">5</a></li>
                                     <li>
-                                        <a href="#" aria-label="Next">
+                                        <a href="javascript:void(0)" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>
@@ -115,7 +115,7 @@
                             <div class="panel-heading list-title">美国相关资讯推荐</div>
                             <div class="panel-body">
                                 {{#each recommended}}
-                                <a class="title" href="" title="{{title}}">{{title}}</a> {{/each}}
+                                <a class="title" href="javascript:go('/{{../routeName}}/{{id}}')" title="{{title}}">{{title}}</a> {{/each}}
                             </div>
                             <div class="panel-footer text-right more"><a href="">查看更多 &gt;&gt;</a></div>
                         </div>
@@ -123,7 +123,7 @@
                             <div class="panel-heading list-title">相关推荐</div>
                             <div class="panel-body">
                                 {{#each latest}}
-                                <a class="title" href="" title="{{title}}">{{title}}</a> {{/each}}
+                                <a class="title" href="javascript:go('/{{../routeName}}/{{id}}')" title="{{title}}">{{title}}</a> {{/each}}
                             </div>
                             <div class="panel-footer text-right more"><a href="">查看更多 &gt;&gt;</a></div>
                         </div>
