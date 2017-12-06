@@ -42,8 +42,10 @@ ul {
     padding: 0;
     margin: 0
 }
+
 // .fl{float: left;}
 // .fr{float: right;}
+
 /*table{border-collapse:collapse;border-spacing:0;}*/
 
 .backToTop {
@@ -58,7 +60,6 @@ ul {
 
 
 /*首页*/
-
 
 .wrapTopNav {
     width: 1000px;
@@ -81,10 +82,12 @@ ul {
     float: right;
     margin-top: 10px;
 }
-.navtopinfo{
+
+.navtopinfo {
     display: block;
     width: 100%;
 }
+
 .navtopinfo .gp_code {
     margin-left: 15px;
     color: #666666;
@@ -147,7 +150,6 @@ ul {
 .navtopinfo .toplink .topweixin:hover .code-weixin {
     display: block;
 }
-
 
 .topNavMobi {
     height: 50px;
@@ -609,7 +611,7 @@ ul {
 }
 
 .footerOne {
-    background: #475059;
+    background: #b72024;
 }
 
 .footerOne .innner {
@@ -623,7 +625,7 @@ ul {
     position: absolute;
     width: 100px;
     height: 24px;
-    background: #475059;
+    background: #b72020db;
     left: 50%;
     margin-left: -50px;
     top: -24px;
@@ -829,7 +831,7 @@ ul {
 }
 
 .leftNavCon ul li a:hover,
-.leftNavCon ul li.active a{
+.leftNavCon ul li.active a {
     color: #d60917;
     background: #fbeced url(/assets/images/leftnavAbg.png) no-repeat 10px center;
     background: #fbeced url(/assets/images/leftnavAbg.png) no-repeat 10px center;
