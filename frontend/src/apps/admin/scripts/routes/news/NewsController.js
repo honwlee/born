@@ -82,12 +82,11 @@ define([
                                     label: '发布时间',
                                     property: 'publishedDate',
                                     sortable: true
+                                }, {
+                                    label: '原文链接',
+                                    property: 'link',
+                                    sortable: false
                                 }
-                                //, {
-                                //     label: '创建时间',
-                                //     property: 'createdDate',
-                                //     sortable: false
-                                // }
                             ],
                             items: items
                         };

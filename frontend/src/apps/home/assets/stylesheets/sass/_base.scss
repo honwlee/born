@@ -10,12 +10,12 @@ body {
     overflow: auto;
 }
 
-// $navHeight: 82px;
+$navHeight: 82px;
 #mainWrapper {
     opacity: 0;
     nav.navbar {
         margin-bottom: 0;
-        // height: $navHeight;
+        height: $navHeight;
         background: #fff;
         box-shadow: 1px 1px 5px #ccc;
         .navbar-toggle .icon-bar {
@@ -107,7 +107,7 @@ body {
         }
     }
     #main {
-        // margin-top: $navHeight;
+        margin-top: $navHeight;
         width: 100%;
         min-height: 600px;
     }
