@@ -2,8 +2,7 @@
 1 verbose cli [ '/home/hudao/.nvm/versions/node/v6.0.0/bin/node',
 1 verbose cli   '/home/hudao/.nvm/versions/node/v6.0.0/bin/npm',
 1 verbose cli   'run',
-1 verbose cli   'serve',
-1 verbose cli   '--port=9002' ]
+1 verbose cli   'serve' ]
 2 info using npm@3.8.6
 3 info using node@v6.0.0
 4 verbose stack Error: missing script: serve
@@ -18,7 +17,7 @@
 4 verbose stack     at FSReqWrap.readFileAfterOpen [as oncomplete] (fs.js:359:13)
 5 verbose cwd /home/hudao/work/born/build
 6 error Linux 3.13.0-67-generic
-7 error argv "/home/hudao/.nvm/versions/node/v6.0.0/bin/node" "/home/hudao/.nvm/versions/node/v6.0.0/bin/npm" "run" "serve" "--port=9002"
+7 error argv "/home/hudao/.nvm/versions/node/v6.0.0/bin/node" "/home/hudao/.nvm/versions/node/v6.0.0/bin/npm" "run" "serve"
 8 error node v6.0.0
 9 error npm  v3.8.6
 10 error missing script: serve

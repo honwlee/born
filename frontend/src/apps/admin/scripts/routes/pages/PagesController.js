@@ -25,10 +25,10 @@ define([
 
         buildList: function(pages) {
             this.list = new List({
-                title: "文章列表",
+                title: "页面列表",
                 id: "pageRepeater",
-                editTile: "编辑文章",
-                deleteTitle: "删除文章",
+                editTile: "编辑页面",
+                deleteTitle: "删除页面",
                 key: "pages",
                 data: pages,
                 hbsFormTpl: tpl,
@@ -65,22 +65,28 @@ define([
                             start: startIndex,
                             end: endIndex,
                             columns: [{
-                                label: 'Id',
-                                property: 'id',
+                                label: '名称',
+                                property: 'name',
                                 sortbale: false
-                            }, {
+                            },{
                                 label: '标题',
                                 property: 'title',
+                                sortable: false
+                            },{
+                                label: '页面内容',
+                                property: 'content',
                                 sortable: false
                             }, {
                                 label: '发布时间',
                                 property: 'publishedDate',
                                 sortable: true
-                            }, {
-                                label: '创建时间',
-                                property: 'createdDate',
-                                sortable: false
-                            }],
+                            }
+                            // , {
+                            //     label: '创建时间',
+                            //     property: 'createdDate',
+                            //     sortable: false
+                            // }
+                        ],
                             items: items
                         };
 
