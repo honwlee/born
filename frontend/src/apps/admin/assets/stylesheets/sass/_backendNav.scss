@@ -1,0 +1,33 @@
+.navbar{
+    background: #174676;
+}
+.navbar a{
+    color: #fff;
+}
+.navbar-header{
+    float:left;
+}
+.navbar-nav{
+    float:right !important;
+}
+.navbar-nav li.active{
+    background: rgba(255,255,255,0.2);
+}
+
+nav a {
+    cursor: pointer;
+    display: inline-block;
+    padding: 1em;
+}
+
+nav a:focus,
+nav a:hover {
+    border-bottom-color: deepskyblue;
+    color: #555;
+}
+
+nav a:active,
+nav a.active {
+    border-bottom-color: darkorange;
+    color: darkorange;
+}
