@@ -18,18 +18,14 @@ module.exports = function(app, router, ensureAuthenticated, rootPath) {
     if (!fs.existsSync(rootPath)) mkdirp(rootPath);
     // api
     Object.keys(ctrls).forEach(function(key) {
-        ["update", "create", "show", "delete", "index"].forEach(function(name) {
+        ["update", "create", "show", "delete", "index", "config", "select"].forEach(function(name) {
             let item = ctrls[key];
-            let matcher = name.match(/^(show|index)/)
+            let matcher = name.match(/^(update|create|delete)/)
             if (matcher) {
-                app.get('/api/' + key + '/' + name, function(req, res) {
-                    item.module[name](req, res);
-                });
-            } else {
                 let storage = multer.diskStorage({
                         destination: function(req, file, cb) {
                             let _p = path.join(rootPath, 'upload', item.uploadPath || "");
-                            if (!fs.existsSync(_p)) mkdirp(_p);
+                            if (!fs.existsSync(_p)) mkdirp.sync(_p);
                             cb(null, _p);
                         },
                         filename: function(req, file, cb) {
@@ -37,9 +33,18 @@ module.exports = function(app, router, ensureAuthenticated, rootPath) {
                         }
                     }),
                     upload = multer({ storage: storage });
-                app.post('/api/' + key + '/' + name, ensureAuthenticated, upload.single('file'), function(req, res) {
-                    item.module[name](req, res);
-                });
+                if (item.module[name]) {
+                    app.post('/api/' + key + '/' + name, ensureAuthenticated, upload.single('file'), function(req, res) {
+                        item.module[name](req, res);
+                    });
+                }
+            } else {
+                if (item.module[name]) {
+                    app.get('/api/' + key + '/' + name, function(req, res) {
+                        item.module[name](req, res);
+                    });
+                }
+
             }
         });
     });

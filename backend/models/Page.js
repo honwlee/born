@@ -1,6 +1,7 @@
 'use strict';
 const Model = require("./_Base").Model,
     path = require('path'),
+    pageExt = require('../exts/page'),
     fs = require('fs');
 
 exports.Page = class Page extends Model {
@@ -17,12 +18,24 @@ exports.Page = class Page extends Model {
         return Model.findByReg("pages", args);
     }
     static create(args) {
-        return Model.create("pages", args);
+        args.pathto = args.pathto.match(/^\//) ? args.pathto : "/" + args.pathto;
+        if (args.parent) {
+            let parent = Model.findBy("pages", {
+                id: args.parent
+            });
+            args.parentName = parent.name;
+            args.pathto = parent.pathto + args.pathto;
+        }
+        let result = Model.create("pages", args);
+        pageExt.add(result);
+        return result;
     }
     static update(args) {
         return Model.update("pages", "id", args);
     }
     static delete(args) {
+        let result = Model.findBy("pages", args);
+        pageExt.remove(result);
         return Model.delete("pages", args);
     }
     static importData() {

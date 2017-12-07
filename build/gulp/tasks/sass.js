@@ -13,7 +13,7 @@ const gutil = require('gulp-util'),
     appsPath = path.join(util.frontend, "src/apps");
 
 function buildSass(name) {
-    let dist = path.join(appsPath, name + '/assets/stylesheets'),
+    let dist = path.join(appsPath, name + '/src/assets/stylesheets'),
         src = path.join(dist, 'sass/**/*.scss');
     console.log(dist);
     return gulp.src(src)

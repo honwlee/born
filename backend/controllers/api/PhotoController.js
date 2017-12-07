@@ -7,6 +7,14 @@ module.exports = {
         parse("photos", req, res, ["name"]);
     },
 
+    select: function(req, res) {
+        let opt = {};
+        if (!req.query.key) return res.json({});
+        opt[req.query.key] = req.query.value;
+        let photos = Page.findAll(opt);
+        res.json(photos);
+    },
+
     show: function(req, res) {
         let opt = {};
         opt[req.query.key] = req.query.value;

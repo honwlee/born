@@ -1,7 +1,7 @@
 /**
  * skylarkjs - An Elegant JavaScript Library and HTML5 Application Framework.
  * @author Hudaokeji Co.,Ltd
- * @version v0.9.7
+ * @version v0.9.8-beta
  * @link www.skylarkjs.org
  * @license MIT
  */
@@ -7074,7 +7074,7 @@ define('skylark-utils/query',[
             },
 
             add: function(selector, context) {
-                return $(uniq(this.concat($(selector, context))))
+                return $(uniq(this.toArray().concat($(selector, context).toArray())));
             },
 
             is: function(selector) {

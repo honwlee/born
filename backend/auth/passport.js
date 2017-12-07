@@ -22,13 +22,20 @@ passport.use('local-signin', new LocalStrategy({ passReqToCallback: true }, //al
                 req.result = result;
                 if (result.status) {
                     let user = result.user;
+                    req.session.sessionFlash = {
+                        type: 'success',
+                        message: 'login success.'
+                    }
                     console.log("LOGGED IN AS!!!!!!!!!!!: " + user.username);
                     done(null, result.user);
                 } else {
+                    req.session.sessionFlash = {
+                        type: 'danger',
+                        message: result.msg
+                    }
                     console.log("COULD NOT LOG IN");
                     console.log(result);
                     done(null, result.user);
-
                 }
             })
             .fail(function(err) {

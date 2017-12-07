@@ -1,12 +1,47 @@
+const utils = require('./utils');
+const url = require('url');
+const pluralize = require('pluralize');
+const path = require('path'),
+    dbpath = path.join(__dirname, "../dbs"),
+    dbms = require('../lib/dbms/'),
+    _ = require('lodash'),
+    db = dbms(dbpath, {
+        master_file_name: "master.json"
+    });
+// Embed function used in GET /name and GET /name/id
+function embed(resource, e) {
+    e && [].concat(e).forEach(function(externalResource) {
+        if (db.get(externalResource).value) {
+            var query = {};
+            var singularResource = pluralize.singular(name);
+            query[singularResource + 'Id'] = resource.id;
+            resource[externalResource] = db.get(externalResource).filter(query).value();
+        }
+    });
+}
+
+// Expand function used in GET /name and GET /name/id
+function expand(resource, e) {
+    e && [].concat(e).forEach(function(innerResource) {
+        var plural = pluralize(innerResource);
+        if (db.get(plural).value()) {
+            var prop = innerResource + 'Id';
+            resource[innerResource] = db.get(plural).getById(resource[prop]).value();
+        }
+    });
+}
+
+function getFullURL(req) {
+    var root = url.format({
+        protocol: req.protocol,
+        host: req.get('host')
+    });
+
+    return '' + root + req.originalUrl;
+}
 module.exports = {
     parse: function(name, req, res, queryKeys) {
-        let path = require('path'),
-            dbpath = path.join(__dirname, "../dbs"),
-            dbms = require('../lib/dbms/'),
-            _ = require('lodash'),
-            db = dbms(dbpath, {
-                master_file_name: "master.json"
-            });
+
         let chain = db.get(name),
             total = chain.size(),
             // Remove q, _start, _end, ... from req.query to avoid filtering using those

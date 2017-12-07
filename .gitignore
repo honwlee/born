@@ -1,5 +1,7 @@
 node_modules
 build/node_modules
+backup
+public
 backend/dbs
 backend/backup
 frontend/dist

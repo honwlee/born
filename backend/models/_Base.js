@@ -9,6 +9,7 @@ const path = require('path'),
         master_file_name: "master.json"
     }),
     shortid = require('shortid'),
+    uploadPath = path.join(__dirname, "../../public"),
     refresh = function() {
         jsondb = dbms(dbpath, {
             master_file_name: "master.json"
@@ -61,7 +62,8 @@ class Model {
         args.createdAt = new Date();
         args.updatedAt = new Date();
         if (args.file && args.file.path) {
-            args.file.path = args.file.path.replace(path.join(__dirname, "../../src"), "");
+            args.file.path = args.file.path.replace(uploadPath, "");
+            args.src = args.file.path;
         }
         let result = jsondb.get(name).push(args).last().write();
         return result;
@@ -75,7 +77,8 @@ class Model {
             args.createdAt = new Date();
             args.updatedAt = new Date();
             if (args.file && args.file.path) {
-                args.file.path = args.file.path.replace(path.join(__dirname, "../../src"), "");
+                args.file.path = args.file.path.replace(uploadPath, "");
+                args.src = args.file.path;
             }
             result = Model.create(name, args);
         }
@@ -89,10 +92,11 @@ class Model {
         if (args.file && args.file.path) {
             let file = result.value().file;
             if (file && file.path) {
-                let fPath = path.join(__dirname, "../../src", file.path);
+                let fPath = path.join(uploadPath, file.path);
                 if (fs.existsSync(fPath)) fs.unlinkSync(fPath);
             }
-            args.file.path = args.file.path.replace(path.join(__dirname, "../../src"), "");
+            args.file.path = args.file.path.replace(uploadPath, "");
+            args.src = args.file.path;
         } else {
             args.file = result.value().file;
         }
@@ -104,7 +108,7 @@ class Model {
         if (result.value()) {
             let file = result.value().file;
             if (file && file.path) {
-                let fPath = path.join(__dirname, "../../src", file.path);
+                let fPath = path.join(uploadPath, file.path);
                 if (fs.existsSync(fPath)) fs.unlinkSync(fPath);
             }
         }

@@ -25,7 +25,7 @@ function buildApp(name) {
     }
     let appPath = path.join(appsPath, name);
     if (fs.existsSync(appPath)) {
-        copydir.sync(appPath, appDist);
+        copydir.sync(appPath + "/src", appDist);
         mkdirp.sync(path.join(appDist, "lib"));
         mkdirp.sync(path.join(appDist, "scripts/services"));
         mkdirp.sync(path.join(appDist, "scripts/helpers"));

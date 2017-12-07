@@ -53,6 +53,14 @@ function unpack(slaxFileName, slaxAppDir) {
     }
 }
 
+function empty() {
+    if (fs.existsSync(deployPath)) {
+        del.sync([deployPath + '/**/*'], {
+            force: true
+        });
+    }
+};
+
 function deployApp(name) {
     let slaxPath = path.join(deployPath, name + ".slax");
     if (fs.existsSync(slaxPath)) {
@@ -76,6 +84,7 @@ module.exports = function() {
             deployApp(name);
         });
     } else {
+        empty();
         fs.readdirSync(distPath).forEach(item => {
             if (!item.match(/^\./)) {
                 let stats = fs.statSync(path.join(distPath, item));

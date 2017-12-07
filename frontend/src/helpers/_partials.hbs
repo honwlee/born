@@ -132,116 +132,6 @@
             </div>
         </div>
     </script>
-
-    <script id="list-template-partial" type="text/x-handlebars-template">
-        <div class="repeater" id="{{id}}">
-            <div class="repeater-header">
-                <div class="repeater-header-left">
-                    <span class="repeater-title">{{title}}</span>
-                    <div class="repeater-search">
-                        <div class="search input-group">
-                            <input type="search" class="form-control" placeholder="Search" />
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                    <span class="sr-only">搜索</span>
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repeater-header-right">
-                    <div class="btn-group selectlist repeater-filters" data-resize="auto">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span class="selected-label">&nbsp;</span>
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Filters</span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li data-value="all" data-selected="true"><a href="#">all</a></li>
-                            <li data-value="some"><a href="#">some</a></li>
-                            <li data-value="others"><a href="#">others</a></li>
-                        </ul>
-                        <input class="hidden hidden-field" name="filterSelection" readonly="readonly" aria-hidden="true" type="text" />
-                    </div>
-                    <div class="btn-group repeater-views" data-toggle="buttons">
-                        <label class="btn btn-default active">
-                            <input name="repeaterViews" type="radio" value="list"><span class="glyphicon glyphicon-list"></span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input name="repeaterViews" type="radio" value="thumbnail"><span class="glyphicon glyphicon-th"></span>
-                        </label>
-                    </div>
-                    
-                    <div class="btn-group repeater-add">
-                        <button class="btn btn-default">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </label>
-                    </div>
-                    <div class="btn-group repeater-refresh">
-                        <button class="btn btn-default">
-                            <span class="glyphicon glyphicon-refresh"></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="repeater-viewport">
-                <div class="repeater-canvas"></div>
-                <div class="loader repeater-loader"></div>
-            </div>
-            <div class="repeater-footer">
-                <div class="repeater-footer-left">
-                    <div class="repeater-itemization">
-                        <span><span class="repeater-start"></span> - <span class="repeater-end"></span> of <span class="repeater-count"></span> items</span>
-                        <div class="btn-group selectlist" data-resize="auto">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                <span class="selected-label">&nbsp;</span>
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li data-value="5"><a href="#">5</a></li>
-                                <li data-value="10" data-selected="true"><a href="#">10</a></li>
-                                <li data-value="20"><a href="#">20</a></li>
-                                <li data-value="50" data-foo="bar" data-fizz="buzz"><a href="#">50</a></li>
-                                <li data-value="100"><a href="#">100</a></li>
-                            </ul>
-                            <input class="hidden hidden-field" name="itemsPerPage" readonly="readonly" aria-hidden="true" type="text" />
-                        </div>
-                        <span>Per Page</span>
-                    </div>
-                </div>
-                <div class="repeater-footer-right">
-                    <div class="repeater-pagination">
-                        <button type="button" class="btn btn-default btn-sm repeater-prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                            <span class="sr-only">Previous Page</span>
-                        </button>
-                        <label class="page-label" id="myPageLabel">Page</label>
-                        <div class="repeater-primaryPaging active">
-                            <div class="input-group input-append dropdown combobox">
-                                <input type="text" class="form-control" aria-labelledby="myPageLabel">
-                                <div class="input-group-btn">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-right"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <input type="text" class="form-control repeater-secondaryPaging" aria-labelledby="myPageLabel">
-                        <span>of <span class="repeater-pages"></span></span>
-                        <button type="button" class="btn btn-default btn-sm repeater-next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="sr-only">Next Page</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </script>
-
     <script id="modal-partial" type="text/x-handlebars-template">
         <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -263,24 +153,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="contentModal" tabindex="-1" role="dialog" aria-labelledby="contentModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">关闭</span>
-                        </button>
-                        <h4 class="modal-title" id="contentModalLabel">查看内容</h4>
-                    </div>
-                    <div class="modal-body">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-cancel btn-default" data-dismiss="modal">关闭</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
         <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -303,6 +176,184 @@
                         <button type="button" class="btn btn-primary save-btn">
                         保存
                         </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="contentModal" tabindex="-1" role="dialog" aria-labelledby="contentModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">关闭</span>
+                        </button>
+                        <h4 class="modal-title" id="contentModalLabel">查看内容</h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancel btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="date-picker-partial" type="text/x-handlebars-template">
+        <div class="col-sm-10 datepicker" data-initialize="datepicker" id="datepickerIllustration">
+            <div class="input-group">
+                <input class="form-control" id="{{formName}}" type="text" name="{{formName}}">
+                <div class="input-group-btn open">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                    <span class="sr-only">Toggle Calendar</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right datepicker-calendar-wrapper" role="menu">
+                        <div class="datepicker-calendar">
+                            <div class="datepicker-calendar-header">
+                                <button type="button" class="prev"><span class="glyphicon glyphicon-chevron-left"></span><span class="sr-only">Previous Month</span></button>
+                                <button type="button" class="next"><span class="glyphicon glyphicon-chevron-right"></span><span class="sr-only">Next Month</span></button>
+                                <button type="button" class="title" data-month="11" data-year="2017">
+                                <span class="month">
+                                    <span data-month="0">January</span>
+                                    <span data-month="1">February</span>
+                                    <span data-month="2">March</span>
+                                    <span data-month="3">April</span>
+                                    <span data-month="4">May</span>
+                                    <span data-month="5">June</span>
+                                    <span data-month="6">July</span>
+                                    <span data-month="7">August</span>
+                                    <span data-month="8">September</span>
+                                    <span data-month="9">October</span>
+                                    <span data-month="10">November</span>
+                                    <span data-month="11" class="current">December</span>
+                                    </span> <span class="year">2017</span>
+                                    </button>
+                            </div>
+                            <table class="datepicker-calendar-days">
+                                <thead>
+                                    <tr>
+                                        <th>Su</th>
+                                        <th>Mo</th>
+                                        <th>Tu</th>
+                                        <th>We</th>
+                                        <th>Th</th>
+                                        <th>Fr</th>
+                                        <th>Sa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="last-month first past restricted" data-date="26" data-month="10" data-year="2017" title="Restricted"><span><b class="datepicker-date">26</b></span></td>
+                                        <td class="last-month past restricted" data-date="27" data-month="10" data-year="2017" title="Restricted"><span><b class="datepicker-date">27</b></span></td>
+                                        <td class="last-month past restricted" data-date="28" data-month="10" data-year="2017" title="Restricted"><span><b class="datepicker-date">28</b></span></td>
+                                        <td class="last-month past restricted" data-date="29" data-month="10" data-year="2017" title="Restricted"><span><b class="datepicker-date">29</b></span></td>
+                                        <td class="last-month past restricted last" data-date="30" data-month="10" data-year="2017" title="Restricted"><span><b class="datepicker-date">30</b></span></td>
+                                        <td data-date="1" data-month="11" data-year="2017" class="past restricted" title="Restricted"><span><b class="datepicker-date">1</b></span></td>
+                                        <td data-date="2" data-month="11" data-year="2017" class="past restricted" title="Restricted"><span><b class="datepicker-date">2</b></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-date="3" data-month="11" data-year="2017" class="past restricted" title="Restricted"><span><b class="datepicker-date">3</b></span></td>
+                                        <td data-date="4" data-month="11" data-year="2017" class="past restricted selected" title="Restricted"><span><b class="datepicker-date">4</b></span></td>
+                                        <td data-date="5" data-month="11" data-year="2017" class="current-day"><span><button type="button" class="datepicker-date">5</button></span></td>
+                                        <td data-date="6" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">6</button></span></td>
+                                        <td data-date="7" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">7</button></span></td>
+                                        <td data-date="8" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">8</button></span></td>
+                                        <td data-date="9" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">9</button></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-date="10" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">10</button></span></td>
+                                        <td data-date="11" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">11</button></span></td>
+                                        <td data-date="12" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">12</button></span></td>
+                                        <td data-date="13" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">13</button></span></td>
+                                        <td data-date="14" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">14</button></span></td>
+                                        <td data-date="15" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">15</button></span></td>
+                                        <td data-date="16" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">16</button></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-date="17" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">17</button></span></td>
+                                        <td data-date="18" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">18</button></span></td>
+                                        <td data-date="19" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">19</button></span></td>
+                                        <td data-date="20" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">20</button></span></td>
+                                        <td data-date="21" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">21</button></span></td>
+                                        <td data-date="22" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">22</button></span></td>
+                                        <td data-date="23" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">23</button></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-date="24" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">24</button></span></td>
+                                        <td data-date="25" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">25</button></span></td>
+                                        <td data-date="26" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">26</button></span></td>
+                                        <td data-date="27" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">27</button></span></td>
+                                        <td data-date="28" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">28</button></span></td>
+                                        <td data-date="29" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">29</button></span></td>
+                                        <td data-date="30" data-month="11" data-year="2017"><span><button type="button" class="datepicker-date">30</button></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-date="31" data-month="11" data-year="2017" class="last"><span><button type="button" class="datepicker-date">31</button></span></td>
+                                        <td class="next-month first" data-date="1" data-month="0" data-year="2018"><span><button type="button" class="datepicker-date">1</button></span></td>
+                                        <td class="next-month" data-date="2" data-month="0" data-year="2018"><span><button type="button" class="datepicker-date">2</button></span></td>
+                                        <td class="next-month" data-date="3" data-month="0" data-year="2018"><span><button type="button" class="datepicker-date">3</button></span></td>
+                                        <td class="next-month" data-date="4" data-month="0" data-year="2018"><span><button type="button" class="datepicker-date">4</button></span></td>
+                                        <td class="next-month" data-date="5" data-month="0" data-year="2018"><span><button type="button" class="datepicker-date">5</button></span></td>
+                                        <td class="next-month last" data-date="6" data-month="0" data-year="2018"><span><button type="button" class="datepicker-date">6</button></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="datepicker-calendar-footer">
+                                <button type="button" class="datepicker-today">Today</button>
+                            </div>
+                        </div>
+                        <div class="datepicker-wheels" aria-hidden="true" style="display: none;">
+                            <div class="datepicker-wheels-month">
+                                <h2 class="header">Month</h2>
+                                <ul>
+                                    <li data-month="0">
+                                        <button type="button">Jan</button>
+                                    </li>
+                                    <li data-month="1">
+                                        <button type="button">Feb</button>
+                                    </li>
+                                    <li data-month="2">
+                                        <button type="button">Mar</button>
+                                    </li>
+                                    <li data-month="3">
+                                        <button type="button">Apr</button>
+                                    </li>
+                                    <li data-month="4">
+                                        <button type="button">May</button>
+                                    </li>
+                                    <li data-month="5">
+                                        <button type="button">Jun</button>
+                                    </li>
+                                    <li data-month="6">
+                                        <button type="button">Jul</button>
+                                    </li>
+                                    <li data-month="7">
+                                        <button type="button">Aug</button>
+                                    </li>
+                                    <li data-month="8">
+                                        <button type="button">Sep</button>
+                                    </li>
+                                    <li data-month="9">
+                                        <button type="button">Oct</button>
+                                    </li>
+                                    <li data-month="10">
+                                        <button type="button">Nov</button>
+                                    </li>
+                                    <li data-month="11">
+                                        <button type="button">Dec</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="datepicker-wheels-year">
+                                <h2 class="header">Year</h2>
+                                <ul></ul>
+                            </div>
+                            <div class="datepicker-wheels-footer clearfix">
+                                <button type="button" class="btn datepicker-wheels-back"><span class="glyphicon glyphicon-arrow-left"></span><span class="sr-only">Return to Calendar</span></button>
+                                <button type="button" class="btn datepicker-wheels-select">Select <span class="sr-only">Month and Year</span></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

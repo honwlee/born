@@ -14,6 +14,7 @@ const SlaxServer = require('skylark-slax-nodeserver'),
     backupDb = require('./backend/exts/schedule.js').backupDb,
     funcs = require('./backend/auth/functions.js'),
     chalk = require('chalk'),
+    flash = require('express-flash'),
     routes = require('./backend/routes/routes'),
     publicPath = path.join(__dirname, "public"),
     replacestream = require('replacestream');
@@ -30,6 +31,7 @@ function ensureAuthenticated(req, res, next) {
 }
 
 function errorHandler(err, req, res, next) {
+    throw err;
     return res.json({ status: false, system: true, msg: err });
 }
 
@@ -54,6 +56,7 @@ function _startBackend(app) {
             maxAge: 3600000 // see below
         }
     }));
+    app.use(flash());
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(express.static(publicPath));
@@ -66,7 +69,8 @@ function _startBackend(app) {
         delete req.session.error;
         delete req.session.success;
         delete req.session.notice;
-
+        res.locals.sessionFlash = req.session.sessionFlash;
+        delete req.session.sessionFlash;
         if (err) res.locals.error = err;
         if (msg) res.locals.notice = msg;
         if (success) res.locals.success = success;
@@ -124,5 +128,5 @@ if (!(npm_argv && npm_argv.cooked instanceof Array)) {
 
 serve({
     port: npm_argv.cooked[3] || 8087,
-    root: path.join(__dirname, "frontend/src/apps/home")
+    root: path.join(__dirname, "frontend/src/apps/home/src")
 });

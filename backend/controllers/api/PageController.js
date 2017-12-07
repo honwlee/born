@@ -1,6 +1,7 @@
 'use strict';
 const Page = require('../../models/Page').Page;
 const parse = require('../../exts/parseList').parse;
+const pageExt = require("../../exts/page");
 const validate = require('../../exts/validation').validate;
 module.exports = {
     index: function(req, res) {
@@ -15,6 +16,17 @@ module.exports = {
         } else {
             res.json({ status: false, msg: "no results!" });
         }
+    },
+
+    select: function(req, res) {
+        let pages = Page.findAll({
+            type: "main"
+        });
+        res.json(pages);
+    },
+
+    config: function(req, res) {
+        res.json(pageExt.parse().routes);
     },
 
     update: function(req, res) {
