@@ -10,6 +10,14 @@ body {
     overflow: auto;
 }
 
+@mixin word-ellipsis {
+    word-break: break-all;
+    word-wrap: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 $navHeight: 82px;
 #mainWrapper {
     opacity: 0;
