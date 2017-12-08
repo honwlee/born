@@ -326,7 +326,7 @@
         height: 325px;
         background-color: #fff;
         margin-right: 11px;
-        &.margin_none {
+        &:last-child {
             margin-right: 0;
         }
     }
@@ -602,7 +602,7 @@
         margin-right: 16px;
         position: relative;
         cursor: pointer;
-        &.margin_none {
+        &:last-child {
             margin-right: 0;
         }
         p.part_four_title {
