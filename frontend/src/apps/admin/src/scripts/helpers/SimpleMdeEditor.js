@@ -42,14 +42,15 @@ define([
         cm.focus();
     };
 
-    function buildPhotoList(_callback) {
+    function buildPhotoList(callback) {
         require(["scripts/helpers/List"], function(List) {
             var list = new List({
                 title: "图片列表",
+                defaultView: "thumbnail",
                 id: "photoModalRepeater",
-                thumbnail_selectable: "single",
+                thumbnail_selectable: "multi",
                 key: "photos",
-                list_selectable: "single",
+                list_selectable: "multi",
                 thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" src="{{src}}" width="65"><span>{{name}}</span></div>',
                 addBtn: false,
                 multiView: false,
@@ -63,22 +64,23 @@ define([
                     sortable: false
                 }]
             });
+            callback(list);
         });
     };
 
     function showPhotos(callback) {
-        buildPhotoList(function(list) {
-            var selector = list.getDom();
-            var modal = $("#contentModal");
-            selector.on("selected.fu.repeaterThumbnail", function(row) {
-                callback(selector.repeater('thumbnail_getSelectedItems'), modal);
+        var modal = $("#contentModal");
+        modal.find(".modal-title").html("图片列表");
+        modal.off('shown.bs.modal').on('shown.bs.modal', function() {
+            buildPhotoList(function(list) {
+                var selector = list.getDom();
+                selector.on("selected.fu.repeaterThumbnail", function(row) {
+                    callback(selector.repeater('thumbnail_getSelectedItems'), modal);
+                });
+                modal.find(".modal-body").html(selector);
             });
-
-            modal.find(".modal-body").html(selector);
-            modal.find(".modal-title").html("图片列表");
-            modal.modal('show');
-
         });
+        modal.modal('show');
     };
 
     function drawImage(editor) {
@@ -87,7 +89,7 @@ define([
             var cm = editor.codemirror;
             var stat = editor.getState(cm);
             var options = editor.options;
-            var url = $(items[0]).find("img").attr("src");
+            var url = items[0].data.src;
             _replaceSelection(cm, stat.image, options.insertTexts.image, url);
             modal.modal("hide");
         });

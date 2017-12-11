@@ -16,8 +16,12 @@
                 <ul id="list" class="part_one_list">
                     {{#each attendUsaPage}}
                     <li class="part_one_margin">
-                        <a target="_blank"><img src="{{src}}" title="{{title}}" alt="{{title}}" height="216" width="383"></a>
-                        <p><a target="_blank" href="{{href}}">{{title}}</a></p>
+                        <a target="_blank">
+                            <img src="{{src}}" title="{{title}}" alt="{{title}}" height="216" width="383">
+                        </a>
+                        <p>
+                            <a target="_blank" href="{{href}}">{{title}}</a>
+                        </p>
                     </li>
                     {{/each}}
                 </ul>
@@ -38,7 +42,9 @@
                 <div class="pt_li1"></div>
                 <p class="part_two_title">{{title}}</p>
                 <p class="part_two_row {{serviceClass}}"></p>
-                <p class="part_two_con"><a target="_blank" href="{{href}}">{{text}}</a></p>
+                <p class="part_two_con">
+                    <a target="_blank" href="{{href}}">{{text}}</a>
+                </p>
             </li>
             {{/each}}
         </ul>
@@ -61,32 +67,20 @@
                     <p class="pt_datail_page">1/6</p>
                 </div>
                 <ul class="part_three_left">
-                    <li class="pt_left_03">
-                        <p>赴美生子诚实签</p>
-                        <img data-main="3" src="/assets/images/wap_new/img/part3_04.png" height="104px" width="104px">
+                    {{#each advantagesLeftPage}}
+                    <li class="{{class}}">
+                        <p>{{title}}</p>
+                        <img data-main="{{dataMain}}" src="{{imgUrl}}" height="104px" width="104px">
                     </li>
-                    <li class="pt_left_02">
-                        <p>一站式定制服务</p>
-                        <img data-main="2" src="/assets/images/wap_new/img/part3_02.png" height="104px" width="104px">
-                    </li>
-                    <li class="pt_left_01">
-                        <p>直营品牌保障</p>
-                        <img data-main="1" src="/assets/images/wap_new/img/part3_03.png" height="104px" width="104px">
-                    </li>
+                    {{/each}}
                 </ul>
                 <ul class="part_three_right">
-                    <li class="pt_left_06">
-                        <img data-main="4" src="/assets/images/wap_new/img/part3_05.png" height="104px" width="104px">
-                        <p>套餐价格多样</p>
+                    {{#each advantagesRightPage}}
+                    <li class="{{class}}">
+                        <img data-main="{{dataMain}}" src="{{imgUrl}}" height="104px" width="104px">
+                        <p>{{title}}</p>
                     </li>
-                    <li class="pt_left_05">
-                        <img data-main="5" src="/assets/images/wap_new/img/part3_06.png" height="104px" width="104px">
-                        <p>免费预约服务</p>
-                    </li>
-                    <li class="pt_left_04">
-                        <img data-main="6" src="/assets/images/wap_new/img/part3_07.png" height="104px" width="104px">
-                        <p>严保客户隐私</p>
-                    </li>
+                    {{/each}}
                 </ul>
             </div>
         </div>
@@ -101,7 +95,9 @@
         <ul class="part_four">
             {{#each environmentPage}}
             <li>
-                <a target="_blank" href="{{href}}"><img src="{{imgUrl}}" title="" alt="" height="213" width="379"></a>
+                <a target="_blank" href="{{href}}">
+                    <img src="{{imgUrl}}" title="" alt="" height="213" width="379">
+                </a>
                 <p style="line-height: 66px;" class="part_four_title">{{text}}</p>
             </li>
             {{/each}}
@@ -128,46 +124,18 @@
             <!--    <div class="ps_haddleTop"></div> -->
             <div style="margin-top:60px;" class="ps_right_con">
                 <ul>
+                    {{#each activePage}}
                     <li>
                         <div class="img_img_desc">
-                            <a href="http://www.xiduobaby.com/view-6232-12.html" title="内蒙古客人赴美生子后携满月宝宝回国">
-                                <img src="http://www.xiduobaby.com/uploads/allimg/171116/1_171116173425_1.png" height="auto" width="277">
+                            <a href="{{href}}" title="{{title}}">
+                                <img src="{{imgUrl}}" height="auto" width="277">
                             </a>
                         </div>
-                        <a href="http://www.xiduobaby.com/view-6232-12.html" title="内蒙古客人赴美生子后携满月宝宝回国">
-                            <p>内蒙古客人赴美生子后携满月宝宝回国</p>
+                        <a href="{{href}}" title="{{title}}">
+                            <p>{{text}}</p>
                         </a>
                     </li>
-                    <li style="margin-right: 0; margin-bottom: 16px;">
-                        <div class="img_img_desc">
-                            <a href="http://www.xiduobaby.com/view-6121-12.html" title="都有哪些明星是在美国生的宝宝">
-                                <img src="http://www.xiduobaby.com/uploads/allimg/171116/1_171116110851_1.jpg" height="auto" width="277">
-                            </a>
-                        </div>
-                        <a href="http://www.xiduobaby.com/view-6121-12.html" title="都有哪些明星是在美国生的宝宝">
-                            <p>都有哪些明星是在美国生的宝宝</p>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="img_img_desc">
-                            <a href="http://www.xiduobaby.com/view-6076-12.html" title="北京吴小姐二胎赴美生子顺利生产">
-                                <img src="http://www.xiduobaby.com/uploads/allimg/171115/1_171115174524_1.png" height="auto" width="277">
-                            </a>
-                        </div>
-                        <a href="http://www.xiduobaby.com/view-6076-12.html" title="北京吴小姐二胎赴美生子顺利生产">
-                            <p>北京吴小姐二胎赴美生子顺利生产</p>
-                        </a>
-                    </li>
-                    <li style="margin-right: 0; margin-bottom: 16px;">
-                        <div class="img_img_desc">
-                            <a href="http://www.xiduobaby.com/view-6075-12.html" title="苏州客人持赴美生子诚实签入境产下女宝">
-                                <img src="http://www.xiduobaby.com/uploads/allimg/171115/1_171115173338_1.png" height="auto" width="277">
-                            </a>
-                        </div>
-                        <a href="http://www.xiduobaby.com/view-6075-12.html" title="苏州客人持赴美生子诚实签入境产下女宝">
-                            <p>苏州客人持赴美生子诚实签入境产下女宝</p>
-                        </a>
-                    </li>
+                    {{/each}}
                 </ul>
             </div>
             <!-- <div class="ps_haddleBottom"></div> -->
@@ -178,7 +146,7 @@
     </div>
 </div>
 </script>
-    <script id="home-page6-partial" type="text/x-handlebars-template">
+<script id="home-page6-partial" type="text/x-handlebars-template">
 <!-- 新闻消息 -->
 <div class="homenews hidden-xs">
     <div class="homenewsCon">
@@ -196,21 +164,29 @@
                             <a>
                                 <div class="con panel-body">
                                     <div class="inner">
-                                        <h6 class="slidetitle">{{newsTitle}}<i class="arrowI"></i></h6>
-                                        <p>{{newsText}} </p>
+                                        <h6 class="slidetitle">{{title}}
+                                        <i class="arrowI"></i>
+                                        </h6>
+                                        <p>{{text}} </p>
                                         <div class="morelink">morelink</div>
                                     </div>
                                 </div>
-                                <div class="imgright"><img src="{{imgUrl}}" alt=""></div>
+                                <div class="imgright">
+                                    <img src="{{imgUrl}}" alt="">
+                                </div>
                             </a>
                         </li>
                         {{/each}}
                         <li class="clearfix">
                             <a>
-                                <div class="imgright"><img src="/assets/images/news/0.png" alt=""></div>
+                                <div class="imgright">
+                                    <img src="/assets/images/news/0.png" alt="">
+                                </div>
                                 <div class="panel-body con">
                                     <div class="inner">
-                                        <h6 class="slidetitle">​特朗普VS伊朗：中东或更加动荡 美战略负担将增加<i class="arrowI"></i></h6>
+                                        <h6 class="slidetitle">​特朗普VS伊朗：中东或更加动荡 美战略负担将增加
+                                        <i class="arrowI"></i>
+                                        </h6>
                                         <p>2017年1~9月，中美贸易总额2.89万亿人民币，增长了18.7%，其中中国对美出口增长了16.5%，从美国进口则增长了25%。 </p>
                                         <div class="morelink">morelink</div>
                                     </div>
@@ -219,10 +195,14 @@
                         </li>
                         <li class="clearfix">
                             <a>
-                                <div class="imgright"><img src="/assets/images/news/0.png" alt=""></div>
+                                <div class="imgright">
+                                    <img src="/assets/images/news/0.png" alt="">
+                                </div>
                                 <div class="panel-body con">
                                     <div class="inner">
-                                        <h6 class="slidetitle">​特朗普VS伊朗：中东或更加动荡 美战略负担将增加<i class="arrowI"></i></h6>
+                                        <h6 class="slidetitle">​特朗普VS伊朗：中东或更加动荡 美战略负担将增加
+                                        <i class="arrowI"></i>
+                                        </h6>
                                         <p>2017年1~9月，中美贸易总额2.89万亿人民币，增长了18.7%，其中中国对美出口增长了16.5%，从美国进口则增长了25%。 </p>
                                         <div class="morelink">morelink</div>
                                     </div>
@@ -236,21 +216,21 @@
     </div>
 </div>
 </script>
-    <script id="home-page7-partial" type="text/x-handlebars-template">
+<script id="home-page7-partial" type="text/x-handlebars-template">
 <!-- 生美国际赴美的五心服务 -->
 <div class="bg_ten">
     <div class="part">
         <p class="main_title main_title_ten">BornInUSA 生美贴心服务</p>
     </div>
     <ul class="part_ten">
-         {{#each intimateServicePage}}
+        {{#each intimateServicePage}}
         <li>
             <img src="{{imgUrl}}" height="130" width="130">
             <p class="part_ten_title">{{title}}</p>
             <p class="part_ten_main">{{text}}</p>
             <p class="part_ten_con">{{con}}</p>
         </li>
-         {{/each}}
+        {{/each}}
     </ul>
 </div>
 </script>

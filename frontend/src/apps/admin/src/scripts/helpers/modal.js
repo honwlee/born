@@ -145,29 +145,36 @@ define([
                 fields: ["id", "description", "src", "name"]
             }
         }
-        buildList(data[type], opts, function(list) {
-            var selector = list.getDom();
-            var cmodal = $("#contentModal");
-            selector.on("selected.fu.repeaterList", function(row) {
-                var items = selector.repeater('list_getSelectedItems');
-                __content[opts.key] = {
-                    type: type,
-                    items: items.map(function(item) {
-                        var ret = {};
-                        data[type].fields.forEach(function(f) {
-                            ret[f] = item[f];
-                        });
-                        return ret;
-                    })
-                };
-                cmodal.modal("hide");
-                opts.listSCallback(formModal, items);
-            });
+        var cmodal = $("#chooseModal");
+        cmodal.find(".modal-title").html("图片列表");
+        cmodal.off('shown.bs.modal').on('shown.bs.modal', function() {
+            buildList(data[type], opts, function(list) {
+                var s = list.getDom();
+                cmodal.find(".modal-body").html(s);
+                cmodal.find(".save-btn").off("click").on("click", function() {
+                    var items = s.repeater('list_getSelectedItems');
+                    if (items.length) {
+                        __content[opts.key] = {
+                            type: type,
+                            items: items.map(function(item) {
+                                var ret = {};
+                                data[type].fields.forEach(function(f) {
+                                    ret[f] = item.data[f];
+                                });
+                                return ret;
+                            })
+                        };
+                        cmodal.modal("hide");
+                        opts.listSCallback(formModal, items);
+                    } else {
+                        toastr.warning("请选择一项！");
+                    }
 
-            cmodal.find(".modal-body").html(selector);
-            cmodal.find(".modal-title").html("图片列表");
-            cmodal.modal('show');
+                });
+            });
         });
+        cmodal.modal('show');
+
     };
 
     var validates = {

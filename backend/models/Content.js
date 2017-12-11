@@ -5,31 +5,31 @@ const Model = require("./_Base").Model,
 
 exports.Content = class Banner extends Model {
     static list(sortKey = "status", direction = "asc") {
-        return Model.list("slides", sortKey, direction);
+        return Model.list("contents", sortKey, direction);
     }
     static findBy(args) {
-        return Model.findBy("slides", args);
+        return Model.findBy("contents", args);
     }
     static findAll(args) {
-        return Model.findAll("slides", args);
+        return Model.findAll("contents", args);
     }
     static findByReg(args) {
-        return Model.findByReg("slides", args);
+        return Model.findByReg("contents", args);
     }
     static create(args) {
-        return Model.create("slides", args);
+        return Model.create("contents", args);
     }
     static update(args) {
-        return Model.update("slides", "id", args);
+        return Model.update("contents", "id", args);
     }
     static delete(args) {
-        return Model.delete("slides", args);
+        return Model.delete("contents", args);
     }
     static importData() {
-        let slides = JSON.parse(fs.readFileSync(path.join(__dirname, "../dbs/slides.json"), 'utf8'));
+        let contents = JSON.parse(fs.readFileSync(path.join(__dirname, "../dbs/contents.json"), 'utf8'));
         let results = [];
-        slides.forEach(function(banner) {
-            results.push(Model.findOrCreate("slides", "name", banner));
+        contents.forEach(function(banner) {
+            results.push(Model.findOrCreate("contents", "name", banner));
         });
         return results;
     }

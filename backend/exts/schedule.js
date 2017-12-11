@@ -41,6 +41,7 @@ function backupDb() {
         let backupPath = path.join(__dirname, '../../backup');
         console.log("备份文件只保留最近6条数据");
         fs.readdir(backupPath, function(err, files) {
+            if (!files) return;
             files.filter(function(f) {
                 return f.match(/\d+/);
             }).sort(function(a, b) {

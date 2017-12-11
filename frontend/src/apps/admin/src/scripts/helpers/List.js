@@ -144,7 +144,7 @@ define([
                     addBtn: opts.addBtn === false ? false : true,
                     refreshBtn: opts.refreshBtn === false ? false : true,
                     title: opts.title,
-                    multiView: opts.multiView === false ? false : true,
+                    multiView: opts.multiView === true ? true : false,
                     listShow: opts.listShow === false ? false : true,
                     thumbShow: opts.thumbShow === false ? false : true,
                     id: opts.id
@@ -207,6 +207,7 @@ define([
             } else {
                 obj.dataSource = this.initDataSource(opts);
             }
+            obj.defaultView = opts.defaultView || "list";
             if (opts.views) obj.views = opts.views;
             if (opts.thumbnail_selectable) obj.thumbnail_selectable = opts.thumbnail_selectable;
             if (opts.thumbnail_template) obj.thumbnail_template = opts.thumbnail_template;

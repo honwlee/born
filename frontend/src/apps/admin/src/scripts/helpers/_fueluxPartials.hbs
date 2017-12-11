@@ -17,19 +17,21 @@
                     </div>
                 </div>
                 <div class="repeater-header-right">
-                    <div class="btn-group selectlist repeater-filters" data-resize="auto">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span class="selected-label">&nbsp;</span>
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Filters</span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            {{#each filters}}
-                                <li data-value="{{value}}" {{#if selected}}data-selected="true"{{/if}}><a href="#">{{text}}</a></li>
-                            {{/each}}
-                        </ul>
-                        <input class="hidden hidden-field" name="filterSelection" readonly="readonly" aria-hidden="true" type="text"/>
-                    </div>
+                    {{#if filterShow}}
+                        <div class="btn-group selectlist repeater-filters" data-resize="auto">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="selected-label">&nbsp;</span>
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Filters</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                {{#each filters}}
+                                    <li data-value="{{value}}" {{#if selected}}data-selected="true"{{/if}}><a href="#">{{text}}</a></li>
+                                {{/each}}
+                            </ul>
+                            <input class="hidden hidden-field" name="filterSelection" readonly="readonly" aria-hidden="true" type="text"/>
+                        </div>
+                    {{/if}}
                     {{#if multiView}}
                         <div class="btn-group repeater-views" data-toggle="buttons">
                             {{#if listShow}}

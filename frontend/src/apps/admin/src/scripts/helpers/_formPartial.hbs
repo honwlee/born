@@ -68,28 +68,35 @@
         </form>
     </script>
     <script id="content-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
+        <form class="form-horizontal admin-form form" id="contentForm" role="form">
             <div class="form-group">
                 <div class="col-sm-10">
                     <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label" for="title">标题</label>
+                <label class="col-sm-2 control-label" for="name">名称</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="title" value="{{title}}" />
+                    <input type="text" class="form-control" name="name" value="{{name}}" />
                 </div>
             </div>
+            {{> page-select-partial}}
             <div class="form-group">
                 <label class="col-sm-2 control-label">页面模板</label>
                 <div class="col-sm-10">
                     <select class="form-control" name="tpl" id="tpl">
-                        <option value="main" select=true>主页面</option>
-                        <option value="sub">子页面</option>
+                        <option value="0">-请选择-</option>
+                        {{#each tpls}}
+                            {{#if @index}}
+                                <option value="{{name}}">{{cnName}}</option>
+                            {{ else }} 
+                                <option value="{{name}}" select=true>{{cnName}}</option>
+                            {{/if}}
+                        {{/each}}
                     </select>
                 </div>
             </div>
-            {{> page-select-partial}}
+            <div class="tpl-container sub-form"></div>
         </form>
     </script>
     <script id="page-cog-partial" type="text/x-handlebars-template">

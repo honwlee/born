@@ -6,10 +6,10 @@ define([
     "server",
     "scripts/helpers/modal",
     "scripts/helpers/Partial",
-    "scripts/data/content",
     "scripts/helpers/List",
+    "scripts/helpers/tpl",
     "text!scripts/helpers/_formPartial.hbs"
-], function($, skylarkjs, hbs, _, server, modal, partial, content, List, formTpl) {
+], function($, skylarkjs, hbs, _, server, modalFunc, partial, List, tplHelper, formTpl) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         formSelector = $(langx.trim(formTpl));
@@ -29,12 +29,12 @@ define([
 
         buildList: function(post) {
             this.list = new List({
-                title: "图片列表",
+                title: "模板内容",
                 id: this.repeaterId,
-                key: "slides",
+                key: "contents",
                 actions: [{
                     name: "delete",
-                    title: "删除slide",
+                    title: "删除模板",
                     tpl: "",
                     callback: function() {
 
@@ -61,14 +61,19 @@ define([
             var self = this,
                 selector = this.list.getDom();
             selector.find(".repeater-add button").off("click").on("click", function(e) {
-                modal.show("form", $(tpl({
-                    pages: self.pages
+                var modal = modalFunc.show("form", $(tpl({
+                    pages: self.pages,
+                    tpls: tplHelper.tpls
                 })), "添加slide", {
                     key: "contents",
                     file: true,
                     callback: function() {
                         selector.repeater('render');
                     }
+                });
+                modal.find("#tpl").off("change").on("change", function() {
+                    var value = this.value;
+                    if (value) $(tplHelper.getForm(value)()).appendTo(modal.find("#contentForm .tpl-container").empty());
                 });
             });
             selector.find(".repeater-refresh button").off("click").on("click", function(e) {

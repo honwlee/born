@@ -31,27 +31,25 @@
     </script>
 
     <script id="page1-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label">内容</label>
+            <div class="col-sm-10">
+                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+            </div>
+        </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label" for="title">标题</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="title" value="{{title}}" />
-                </div>
+            <label class="col-sm-2 control-label" for="file">选择文章</label>
+            <div class="col-sm-10">
+                <button class="btn btn-primary select-content-list" data-type="posts" type="button">点击选择</button>
             </div>
-            
-            <div class="form-group">
-                <label class="col-sm-2 control-label">内容</label>
-                <div class="col-sm-10">
-                    <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-                </div>
-            </div>
-             <div class="form-group">
-                <label class="col-sm-2 control-label" for="file">选择文章</label>
-                <div class="col-sm-10">
-                    <button class="btn btn-primary select-content-list" data-type="posts" type="button">点击选择</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </script>
 
     <script id="page2-partial" type="text/x-handlebars-template">
@@ -75,6 +73,24 @@
     </script>
     
     <script id="page2-form-partial" type="text/x-handlebars-template">
-    
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label">内容</label>
+            <div class="col-sm-10">
+                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+            </div>
+        </div>
+            <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">选择文章</label>
+            <div class="col-sm-10">
+                <button class="btn btn-primary select-content-list" data-type="posts" type="button">点击选择</button>
+            </div>
+        </div> 
     </script>
 </div>
