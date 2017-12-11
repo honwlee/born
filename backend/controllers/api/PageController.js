@@ -1,5 +1,6 @@
 'use strict';
 const Page = require('../../models/Page').Page;
+const Slide = require('../../models/Slide').Slide;
 const parse = require('../../exts/parseList').parse;
 const pageExt = require("../../exts/page");
 const validate = require('../../exts/validation').validate;
@@ -10,9 +11,17 @@ module.exports = {
     show: function(req, res) {
         let opt = {};
         opt[req.query.key] = req.query.value;
-        let page = Page.findByReg(opt);
+        let page = Page.findByReg(opt)[0];
+        let slides = Slide.findAll({
+            page: page.name
+        });
         if (page) {
-            res.json(page);
+            res.json({
+                page: page,
+                slide: slides.map(function(s) {
+                    return s._content.items;
+                })[0]
+            });
         } else {
             res.json({ status: false, msg: "no results!" });
         }

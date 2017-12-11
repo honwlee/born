@@ -261,30 +261,6 @@ define('skylark-langx/langx',["./skylark"], function(skylark) {
     })();
 
 
-   function clone( /*anything*/ src) {
-        var copy;
-        if (src === undefined || src === null) {
-            copy =  src;
-        } else if (src.clone){
-            copy = src.clone();
-        } else if (isArray(src)) {
-            copy = [];
-            for (var i = 0;i<src.length;i++) {
-                copy.push(clone(src[i]));
-            }
-        } else if (isPlainObject(src)){
-            copy = {};
-            for (var key in src){
-                copy[key] = clone(src[key]);
-            } 
-        } else {
-            copy = src;
-        }
-
-        return copy;
-
-    }
-
     function debounce(fn, wait) {
         var timeout,
             args,
@@ -298,21 +274,6 @@ define('skylark-langx/langx',["./skylark"], function(skylark) {
             timeout = setTimeout(later, wait);
         };
     }
-
-    var delegate = (function(){
-            // boodman/crockford delegation w/ cornford optimization
-            function TMP(){}
-            return function(obj, props){
-                TMP.prototype = obj;
-                var tmp = new TMP();
-                TMP.prototype = null;
-                if(props){
-                    mixin(tmp, props);
-                }
-                return tmp; // Object
-            };
-    })();
-
 
     var Deferred = function() {
         this.promise = new Promise(function(resolve, reject) {
@@ -734,17 +695,17 @@ define('skylark-langx/langx',["./skylark"], function(skylark) {
         var i;
 
         if (array.indexOf) {
-            return array.indexOf(item) > -1;
+            return array.indexOf(item);
         }
 
         i = array.length;
         while (i--) {
             if (array[i] === item) {
-                return true;
+                return i;
             }
         }
 
-        return false;
+        return -1;
     }
 
     function inherit(ctor, base) {
@@ -755,7 +716,7 @@ define('skylark-langx/langx',["./skylark"], function(skylark) {
     }
 
     function isArray(object) {
-        return object && object.constructor === Array;
+        return object instanceof Array;
     }
 
     function isArrayLike(obj) {
@@ -792,10 +753,6 @@ define('skylark-langx/langx',["./skylark"], function(skylark) {
 
     function isDefined(obj) {
         return typeof obj !== 'undefined';
-    }
-
-    function isHtmlNode(obj) {
-        return obj && (obj instanceof Node);
     }
 
     function isNumber(obj) {
@@ -1040,15 +997,12 @@ define('skylark-langx/langx',["./skylark"], function(skylark) {
                 return a.toUpperCase().replace('-', '');
             });
         },
-        clone: clone,
 
         compact: compact,
 
         dasherize: dasherize,
 
         debounce: debounce,
-
-        delegate: delegate,
 
         Deferred: Deferred,
 
@@ -1081,8 +1035,6 @@ define('skylark-langx/langx',["./skylark"], function(skylark) {
         isEmptyObject: isEmptyObject,
 
         isFunction: isFunction,
-
-        isHtmlNode : isHtmlNode,
 
         isObject: isObject,
 
@@ -1126,10 +1078,6 @@ define('skylark-langx/langx',["./skylark"], function(skylark) {
 
         safeMixin: safeMixin,
 
-        serializeValue : function(value) {
-            return JSON.stringify(value)
-        },
-
         substitute: substitute,
 
         toPixel: toPixel,
@@ -1156,7 +1104,7 @@ define('skylark-langx/langx',["./skylark"], function(skylark) {
 /**
  * skylark-router - An Elegant HTML5 Routing Framework.
  * @author Hudaokeji Co.,Ltd
- * @version v0.9.5
+ * @version v0.9.3-beta
  * @link www.skylarkjs.org
  * @license MIT
  */
@@ -1334,7 +1282,6 @@ define('skylark-router/router',[
         }
 
         var r = _curCtx.route.enter({
-            force: _curCtx.force,
             path: _curCtx.path,
             params: _curCtx.params
         },true);
@@ -1374,7 +1321,6 @@ define('skylark-router/router',[
 
             if (router.useHistoryApi) {
                 var state = {
-                    force: force,
                     path: path
                 }
 
@@ -1622,7 +1568,6 @@ define('skylark-spa/spa',[
         init: function(name, setting) {
             this.overrided(name, setting);
             this.content = setting.content;
-            this.forceRefresh = setting.forceRefresh;
             this.data = setting.data;
             //this.lazy = !!setting.lazy;
             var self = this;
@@ -1634,7 +1579,7 @@ define('skylark-spa/spa',[
         },
 
         _entering: function(ctx) {
-            if (this.forceRefresh || ctx.force || !this._prepared) {
+            if (!this._prepared) {
                 return this.prepare();
             }
             return this;
@@ -3116,11 +3061,14 @@ define('skylark-utils/finder',[
 
     local.pseudos = {
         // custom pseudos
-        checked: function(elm) {
+        'checkbox': function(elm){
+            return elm.type === "checkbox";
+        },
+        'checked': function(elm) {
             return !!elm.checked;
         },
 
-        contains: function(elm, idx, nodes, text) {
+        'contains': function(elm, idx, nodes, text) {
             if ($(this).text().indexOf(text) > -1) return this
         },
 
@@ -3132,7 +3080,7 @@ define('skylark-utils/finder',[
             return !elm.disabled;
         },
 
-        eq: function(elm, idx, nodes, value) {
+        'eq': function(elm, idx, nodes, value) {
             return (idx == value);
         },
 
@@ -3140,47 +3088,55 @@ define('skylark-utils/finder',[
             return document.activeElement === elm && (elm.href || elm.type || elm.tabindex);
         },
 
-        first: function(elm, idx) {
+        'first': function(elm, idx) {
             return (idx === 0);
         },
 
-        gt: function(elm, idx, nodes, value) {
+        'gt': function(elm, idx, nodes, value) {
             return (idx > value);
         },
 
-        has: function(elm, idx, nodes, sel) {
+        'has': function(elm, idx, nodes, sel) {
             return local.querySelector(elm, sel).length > 0;
         },
 
 
-        hidden: function(elm) {
+        'hidden': function(elm) {
             return !local.pseudos["visible"](elm);
         },
 
-        last: function(elm, idx, nodes) {
+        'last': function(elm, idx, nodes) {
             return (idx === nodes.length - 1);
         },
 
-        lt: function(elm, idx, nodes, value) {
+        'lt': function(elm, idx, nodes, value) {
             return (idx < value);
         },
 
-        not: function(elm, idx, nodes, sel) {
+        'not': function(elm, idx, nodes, sel) {
             return local.match(elm, sel);
         },
 
-        parent: function(elm) {
+        'parent': function(elm) {
             return !!elm.parentNode;
         },
 
-        selected: function(elm) {
+        'radio': function(elm){
+            return elm.type === "radio";
+        },
+
+        'selected': function(elm) {
             return !!elm.selected;
         },
 
-        visible: function(elm) {
+        'visible': function(elm) {
             return elm.offsetWidth && elm.offsetWidth
         }
     };
+
+    ["first","eq","last"].forEach(function(item){
+        local.pseudos[item].isArrayFilter = true;
+    });
 
     local.divide = function(cond) {
         var nativeSelector = "",
@@ -3237,51 +3193,59 @@ define('skylark-utils/finder',[
 
     };
 
-    local.check = function(node, cond, idx, nodes) {
+    local.check = function(node, cond, idx, nodes,arrayFilte) {
         var tag,
             id,
             classes,
             attributes,
-            pseudos;
+            pseudos,
 
-        if (tag = cond.tag) {
-            var nodeName = node.nodeName.toUpperCase();
-            if (tag == '*') {
-                if (nodeName < '@') return false; // Fix for comment nodes and closed nodes
-            } else {
-                if (nodeName != (tag || "").toUpperCase()) return false;
+            i, part, cls, pseudo;
+
+        if (!arrayFilte) {
+            if (tag = cond.tag) {
+                var nodeName = node.nodeName.toUpperCase();
+                if (tag == '*') {
+                    if (nodeName < '@') return false; // Fix for comment nodes and closed nodes
+                } else {
+                    if (nodeName != (tag || "").toUpperCase()) return false;
+                }
             }
+
+            if (id = cond.id) {
+                if (node.getAttribute('id') != id) {
+                    return false;
+                }
+            }
+
+
+            if (classes = cond.classes) {
+                for (i = classes.length; i--;) {
+                    cls = node.getAttribute('class');
+                    if (!(cls && classes[i].regexp.test(cls))) return false;
+                }
+            }
+
+            if (attributes) {
+                for (i = attributes.length; i--;) {
+                    part = attributes[i];
+                    if (part.operator ? !part.test(node.getAttribute(part.key)) : !node.hasAttribute(part.key)) return false;
+                }
+
+            }
+
         }
-
-        if (id = cond.id) {
-            if (node.getAttribute('id') != id) {
-                return false;
-            }
-        }
-
-        var i, part, cls, pseudo;
-
-        if (classes = cond.classes) {
-            for (i = classes.length; i--;) {
-                cls = node.getAttribute('class');
-                if (!(cls && classes[i].regexp.test(cls))) return false;
-            }
-        }
-
-        if (attributes)
-            for (i = attributes.length; i--;) {
-                part = attributes[i];
-                if (part.operator ? !part.test(node.getAttribute(part.key)) : !node.hasAttribute(part.key)) return false;
-            }
         if (pseudos = cond.pseudos) {
             for (i = pseudos.length; i--;) {
                 part = pseudos[i];
                 if (pseudo = this.pseudos[part.key]) {
-                    if (!pseudo(node, idx, nodes, part.value)) {
-                        return false;
+                    if ((arrayFilte && pseudo.isArrayFilter) || (!arrayFilte && !pseudo.isArrayFilter)) {
+                        if (!pseudo(node, idx, nodes, part.value)) {
+                            return false;
+                        }
                     }
                 } else {
-                    if (!nativeMatchesSelector.call(node, part.key)) {
+                    if (!arrayFilte && !nativeMatchesSelector.call(node, part.key)) {
                         return false;
                     }
                 }
@@ -3292,7 +3256,14 @@ define('skylark-utils/finder',[
 
     local.match = function(node, selector) {
 
-        var parsed = local.Slick.parse(selector);
+        var parsed ;
+
+        if (langx.isString(selector)) {
+            parsed = local.Slick.parse(selector);
+        } else {
+            parsed = selector;            
+        }
+        
         if (!parsed) {
             return true;
         }
@@ -3300,12 +3271,13 @@ define('skylark-utils/finder',[
         // simple (single) selectors
         var expressions = parsed.expressions,
             simpleExpCounter = 0,
-            i;
+            i,
+            currentExpression;
         for (i = 0;
             (currentExpression = expressions[i]); i++) {
             if (currentExpression.length == 1) {
                 var exp = currentExpression[0];
-                if (this.check(node, exp)) {
+                if (this.check(node,exp)) {
                     return true;
                 }
                 simpleExpCounter++;
@@ -3325,6 +3297,39 @@ define('skylark-utils/finder',[
         }
         return false;
     };
+
+
+    local.filter = function(nodes, selector) {
+        var parsed = local.Slick.parse(selector);
+
+
+        // simple (single) selectors
+        var expressions = parsed.expressions,
+            i,
+            currentExpression,
+            ret = [];
+        for (i = 0;
+            (currentExpression = expressions[i]); i++) {
+            if (currentExpression.length == 1) {
+                var exp = currentExpression[0];
+
+                var matchs = filter.call(nodes, function(node, idx) {
+                    return local.check(node, exp, idx, nodes,false);
+                });    
+
+                matchs = filter.call(matchs, function(node, idx) {
+                    return local.check(node, exp, idx, matchs,true);
+                });    
+
+                ret = langx.uniq(ret.concat(matchs));
+            } else {
+                throw new Error("not supported selector:" + selector);
+            }
+        }
+
+        return ret;
+ 
+    };    
 
     local.combine = function(elm, bit) {
         var op = bit.combinator,
@@ -3393,8 +3398,14 @@ define('skylark-utils/finder',[
                         nodes = filter.call(nodes, function(item, idx) {
                             return local.check(item, {
                                 pseudos: [divided.customPseudos[i]]
-                            }, idx, nodes)
+                            }, idx, nodes,false)
                         });
+
+                        nodes = filter.call(nodes, function(item, idx) {
+                            return local.check(item, {
+                                pseudos: [divided.customPseudos[i]]
+                            }, idx, nodes,true)
+                        });                        
                     }
                 }
                 break;
@@ -3458,9 +3469,7 @@ define('skylark-utils/finder',[
         var ret = [],
             rootIsSelector = root && langx.isString(root);
         while (node = node.parentNode) {
-            if (matches(node, selector)) {
                 ret.push(node);
-            }
             if (root) {
                 if (rootIsSelector) {
                     if (matches(node,root)) {
@@ -3471,6 +3480,10 @@ define('skylark-utils/finder',[
                 }
             } 
 
+        }
+
+        if (selector) {
+            ret = local.filter(ret,selector);
         }
         return ret;
     }
@@ -3486,11 +3499,11 @@ define('skylark-utils/finder',[
         for (var i = 0; i < childNodes.length; i++) {
             var node = childNodes[i];
             if (node.nodeType == 1) {
-                if (!selector || matches(node, selector)) {
-                    ret.push(node);
-                }
-
+                ret.push(node);
             }
+        }
+        if (selector) {
+            ret = local.filter(ret,selector);
         }
         return ret;
     }

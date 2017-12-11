@@ -3,7 +3,7 @@ const Model = require("./_Base").Model,
     path = require('path'),
     fs = require('fs');
 
-exports.Banner = class Banner extends Model {
+exports.Slide = class Banner extends Model {
     static list(sortKey = "status", direction = "asc") {
         return Model.list("slides", sortKey, direction);
     }
@@ -17,9 +17,11 @@ exports.Banner = class Banner extends Model {
         return Model.findByReg("slides", args);
     }
     static create(args) {
+        if (args._content) args._content = JSON.parse(args._content);
         return Model.create("slides", args);
     }
     static update(args) {
+        if (args._content) args._content = JSON.parse(args._content);
         return Model.update("slides", "id", args);
     }
     static delete(args) {

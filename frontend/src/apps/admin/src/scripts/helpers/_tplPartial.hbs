@@ -1,0 +1,80 @@
+<div>
+    <script id="page1-partial" type="text/x-handlebars-template">
+        <div class="bg_one">
+            <div class="part">
+                <p class="main_title main_title_eleven">生美国际赴美生子</p>
+            </div>
+            <div class="part_one">
+                <div class="part_one_main">
+                    <div class="part_one_con">
+                        <p id="one_con" style="margin-top: 30px;">
+                            美国生美国际月子中心，总部位于美国洛杉矶，分布于Rancho Cucamonga和尔湾（Irvine）两地的高级公寓和别墅社区内。2009年开始在美国提供服务，2013年在中国设立客服团队，目前在北京和上海两地有办事处，是一家从中国到美国一站式服务的赴美生子直营机构。
+                            <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;十余种不同套餐，从平民到私人订制，满足客人不同需求。
+                        </p>
+                    </div>
+                    <ul id="list" class="part_one_list">
+                        {{#each attendUsaPage}}
+                        <li class="part_one_margin">
+                            <a target="_blank">
+                                <img src="{{src}}" title="{{title}}" alt="{{title}}" height="216" width="383">
+                            </a>
+                            <p>
+                                <a target="_blank" href="{{href}}">{{title}}</a>
+                            </p>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <!-- <img class="part_one_city" src="/assets/images/part1_02.png" height="462" width="394"> -->
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="page1-form-partial" type="text/x-handlebars-template">
+        <form class="form-horizontal admin-form form" id="pageForm" role="form">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">标题</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="title" value="{{title}}" />
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-sm-2 control-label">内容</label>
+                <div class="col-sm-10">
+                    <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="col-sm-2 control-label" for="file">选择文章</label>
+                <div class="col-sm-10">
+                    <button class="btn btn-primary select-content-list" data-type="posts" type="button">点击选择</button>
+                </div>
+            </div>
+        </form>
+    </script>
+
+    <script id="page2-partial" type="text/x-handlebars-template">
+        <div class="bg_two">
+            <div class="part">
+                <p class="main_title main_title_two">我们的服务</p>
+            </div>
+            <ul class="part_two">
+                {{#each servicePage}}
+                <li onclick="javascript:window.open('{{href}}')">
+                    <div class="pt_li1"></div>
+                    <p class="part_two_title">{{title}}</p>
+                    <p class="part_two_row {{serviceClass}}"></p>
+                    <p class="part_two_con">
+                        <a target="_blank" href="{{href}}">{{text}}</a>
+                    </p>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </script>
+    
+    <script id="page2-form-partial" type="text/x-handlebars-template">
+    
+    </script>
+</div>

@@ -52,7 +52,7 @@ define([
                 list_selectable: "single",
                 thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" src="{{src}}" width="65"><span>{{name}}</span></div>',
                 addBtn: false,
-                listShow: false,
+                multiView: false,
                 columns: [{
                     label: '名称',
                     property: 'name',

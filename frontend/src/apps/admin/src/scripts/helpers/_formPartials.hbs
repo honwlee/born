@@ -5,13 +5,13 @@
             <div class="col-sm-10">
                 <select class="form-control" name="page" id="pageSelect">
                     {{#each pages}}
-                        <option value="{{id}}">{{name}}</option>
+                        <option value="{{name}}">{{name}}</option>
                     {{/each}}
                 </select>
             </div>
         </div>
     </script> 
-    <script id="page-form-partial" type="text/x-handlebars-template">
+     <script id="page-form-partial" type="text/x-handlebars-template">
         <form class="form-horizontal admin-form form" id="pageForm" role="form">
             <div class="form-group">
                 <div class="col-sm-10">
@@ -28,6 +28,23 @@
                 <label class="col-sm-2 control-label" for="title">标题</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="title" value="{{title}}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">页面类型</label>
+                <div class="col-sm-10">
+                    <select class="form-control related" name="type" id="type" data-related=".parent-page-selector@sub@pages">
+                        <option value="main" select=true>主页面</option>
+                        <option value="sub">子页面</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group hide parent-page-selector">
+                <label class="col-sm-2 control-label">父页面</label>
+                <div class="col-sm-10">
+                    <select class="form-control hide" name="parent" id="parentPageSelect">
+                        
+                    </select>
                 </div>
             </div>
             <div class="form-group">
@@ -135,6 +152,13 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label" for="publishedDate">发布时间</label> {{> date-picker-partial formName='publishedDate'}}
             </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="file">封面图片</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control file" name="file" id="file" />
+                    <p class="fieldset info text-right"><span class="text-warning text-info">图片格式只支持gif、jpg或者png！</span></p>
+                </div>
+            </div>
         </form>
     </script>
     <script id="photo-form-partial" type="text/x-handlebars-template">
@@ -152,10 +176,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label" for="file">缩略图</label>
+                <label class="col-sm-2 control-label" for="file">图片</label>
                 <div class="col-sm-10">
                     <input type="file" class="form-control file" name="file" id="file" />
-                    <p class="fieldset info text-right"><span class="text-warning text-info">缩略图格式只支持gif、jpg或者png！</span></p>
+                    <p class="fieldset info text-right"><span class="text-warning text-info">图片格式只支持gif、jpg或者png！</span></p>
                 </div>
             </div>
             <div class="form-group text-center">
@@ -196,6 +220,43 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label" for="title">标题</label>
                 <div class="col-sm-10">
+                    <input type="text" class="form-control" name="title" value="{{title}}" />
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="col-sm-2 control-label" for="link">新闻链接</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="link" value="{{link}}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="content">新闻内容</label>
+                <div class="col-sm-10 textarea content">
+                    <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="publishedDate">发布时间</label> {{> date-picker-partial formName='publishedDate'}}
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="file">封面图片</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control file" name="file" id="file" />
+                    <p class="fieldset info text-right"><span class="text-warning text-info">图片格式只支持gif、jpg或者png！</span></p>
+                </div>
+            </div>
+        </form>
+    </script>
+    <script id="qa-form-partial" type="text/x-handlebars-template">
+        <form class="form-horizontal admin-form form" id="pageForm" role="form">
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">标题</label>
+                <div class="col-sm-10">
                     <input type="text" class="form-control" name="title" value="{{title}}" placeholder="请输入文章标题" />
                 </div>
             </div>
@@ -207,6 +268,13 @@
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label" for="publishedDate">发布时间</label> {{> date-picker-partial formName='publishedDate'}}
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="file">封面图片</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control file" name="file" id="file" />
+                    <p class="fieldset info text-right"><span class="text-warning text-info">图片格式只支持gif、jpg或者png！</span></p>
+                </div>
             </div>
         </form>
     </script>

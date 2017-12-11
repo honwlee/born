@@ -4,14 +4,11 @@ const parse = require('../../exts/parseList').parse;
 const validate = require('../../exts/validation').validate;
 module.exports = {
     index: function(req, res) {
-        parse("qas", req, res, ["name"]);
+        parse("qas", req, res, ["title"]);
     },
 
     select: function(req, res) {
-        let qas = Qa.findAll({
-            type: "main"
-        });
-        res.json(qas);
+        parse("qas", req, res, ["title"]);
     },
 
     show: function(req, res) {

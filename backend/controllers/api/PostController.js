@@ -8,10 +8,7 @@ module.exports = {
     },
 
     select: function(req, res) {
-        let posts = Post.findAll({
-            type: "main"
-        });
-        res.json(posts);
+        parse("posts", req, res, ["title"]);
     },
 
     show: function(req, res) {

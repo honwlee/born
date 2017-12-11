@@ -200,6 +200,7 @@ define([
                 contentM.find(".modal-title").html("出错啦！");
                 contentM.modal("show");
             }
+            modal.find(".modal .modal-dialog").css("width", "800px");
             skylarkBsExts();
         },
         routed: function() {}

@@ -30,18 +30,20 @@
                         </ul>
                         <input class="hidden hidden-field" name="filterSelection" readonly="readonly" aria-hidden="true" type="text"/>
                     </div>
-                    <div class="btn-group repeater-views" data-toggle="buttons">
-                        {{#if listShow}}
-                            <label class="btn btn-default active">
-                                <input name="repeaterViews" type="radio" value="list"><span class="{{#unless mctheme}}glyphicon glyphicon-list{{else}}fuelux-icon fuelux-icon-gridview-list{{/unless}}"></span>
-                            </label>
-                        {{/if}}
-                        {{#if thumbShow}}
-                            <label class="btn btn-default">
-                                <input name="repeaterViews" type="radio" value="thumbnail"><span class="{{#unless mctheme}}glyphicon glyphicon-th{{else}}fuelux-icon fuelux-icon-gridview-thumbnail{{/unless}}"></span>
-                            </label>
-                        {{/if}}
-                    </div>
+                    {{#if multiView}}
+                        <div class="btn-group repeater-views" data-toggle="buttons">
+                            {{#if listShow}}
+                                <label class="btn btn-default active">
+                                    <input name="repeaterViews" type="radio" value="list"><span class="{{#unless mctheme}}glyphicon glyphicon-list{{else}}fuelux-icon fuelux-icon-gridview-list{{/unless}}"></span>
+                                </label>
+                            {{/if}}
+                            {{#if thumbShow}}
+                                <label class="btn btn-default">
+                                    <input name="repeaterViews" type="radio" value="thumbnail"><span class="{{#unless mctheme}}glyphicon glyphicon-th{{else}}fuelux-icon fuelux-icon-gridview-thumbnail{{/unless}}"></span>
+                                </label>
+                            {{/if}}
+                        </div>
+                    {{/if}}
                     {{#if addBtn}} 
                         <div class="btn-group repeater-add">
                             <button class="btn btn-default">

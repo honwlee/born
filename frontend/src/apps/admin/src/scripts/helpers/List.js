@@ -144,6 +144,7 @@ define([
                     addBtn: opts.addBtn === false ? false : true,
                     refreshBtn: opts.refreshBtn === false ? false : true,
                     title: opts.title,
+                    multiView: opts.multiView === false ? false : true,
                     listShow: opts.listShow === false ? false : true,
                     thumbShow: opts.thumbShow === false ? false : true,
                     id: opts.id
@@ -172,7 +173,7 @@ define([
                 }
 
                 server().connect(opts.key, "get", "index").then(function(data) {
-                    var items = data.rows;
+                    var items = data.rows || [];
                     var totalItems = data.total;
                     var totalPosts = Math.ceil(totalItems / pageSize);
                     var startIndex = (pageIndex * pageSize) + 1;

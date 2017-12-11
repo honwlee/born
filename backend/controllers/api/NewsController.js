@@ -7,6 +7,10 @@ module.exports = {
         parse("news", req, res, ["title"]);
     },
 
+    select: function(req, res) {
+        parse("news", req, res, ["title"]);
+    },
+
     show: function(req, res) {
         let news = News.findBy({
             id: req.query.id

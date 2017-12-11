@@ -8,11 +8,12 @@ module.exports = {
     },
 
     select: function(req, res) {
-        let opt = {};
-        if (!req.query.key) return res.json({});
-        opt[req.query.key] = req.query.value;
-        let photos = Page.findAll(opt);
-        res.json(photos);
+        // let opt = {};
+        // if (!req.query.key) return res.json({});
+        // opt[req.query.key] = req.query.value;
+        // let photos = Page.findAll(opt);
+        // res.json(photos);
+        parse("photos", req, res, ["name"]);
     },
 
     show: function(req, res) {

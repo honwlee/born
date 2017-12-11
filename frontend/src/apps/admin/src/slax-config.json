@@ -119,6 +119,16 @@
             "controller": {
                 "type": "scripts/routes/contents/ContentsController"
             }
+        },
+        "qas": {
+            "pathto": "/qas",
+            "data": {
+                "name": "qas",
+                "navName": "QA内容管理"
+            },
+            "controller": {
+                "type": "scripts/routes/qas/QasController"
+            }
         }
     }
 }

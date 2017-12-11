@@ -1,5 +1,5 @@
 'use strict';
-const Banner = require('../../models/Slide').Slide;
+const Slide = require('../../models/Slide').Slide;
 const parse = require('../../exts/parseList').parse;
 const validate = require('../../exts/validation').validate;
 module.exports = {

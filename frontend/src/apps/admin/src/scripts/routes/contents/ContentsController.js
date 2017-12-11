@@ -6,9 +6,10 @@ define([
     "server",
     "scripts/helpers/modal",
     "scripts/helpers/Partial",
+    "scripts/data/content",
     "scripts/helpers/List",
     "text!scripts/helpers/_formPartial.hbs"
-], function($, skylarkjs, hbs, _, server, modal, partial, List, formTpl) {
+], function($, skylarkjs, hbs, _, server, modal, partial, content, List, formTpl) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         formSelector = $(langx.trim(formTpl));

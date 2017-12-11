@@ -47,7 +47,7 @@ define([
         }
         delete opt._file;
         if (opt._content) {
-            formData.append("_content", opt._content);
+            formData.append("_content", JSON.stringify(opt._content));
         }
         delete opt._content;
         for (var key in opt) {
@@ -83,71 +83,90 @@ define([
         xhr.send(formData);
     };
 
-    function buildList(type, opts, callback) {
-        var data = {
-            posts: {
-                title: "选择文章列表",
-                id: "selectPostListR",
-                columns: [{
-                    label: '标题',
-                    property: 'title',
-                    sortable: false
-                }]
-            },
-            news: {
-                title: "选择新闻列表",
-                id: "selectNewsListR",
-                columns: [{
-                    label: '标题',
-                    property: 'title',
-                    sortable: false
-                }]
-            },
-            qas: {
-                title: "选择问答列表",
-                id: "selectQaListR",
-                columns: [{
-                    label: '标题',
-                    property: 'title',
-                    sortable: true
-                }]
-            },
-            photos: {
-                title: "选择图片列表",
-                id: "selectPostListR",
-                columns: [{
-                    label: '名称',
-                    property: 'name',
-                    sortable: true
-                }]
-            }
-        }
+    function buildList(obj, opts, callback) {
         require(["scripts/helpers/List"], function(List) {
-            var obj = data[type];
             var list = new List({
                 title: obj.title,
                 id: obj.id,
                 list_selectable: opts.list_selectable,
-                key: type,
-                list_selectable: "muti",
+                key: obj.type,
                 addBtn: false,
+                multiView: false,
                 columns: obj.columns
             });
             callback(list);
         });
     };
 
-    function showList(type, opts, callback) {
-        buildList(type, opts, function(list) {
+    function showList(formModal, type, opts) {
+        var data = {
+            posts: {
+                type: "posts",
+                title: "选择文章列表",
+                id: "selectPostListR",
+                columns: [{
+                    label: '标题',
+                    property: 'title',
+                    sortable: false
+                }],
+                fields: ["id"]
+            },
+            news: {
+                type: "news",
+                title: "选择新闻列表",
+                id: "selectNewsListR",
+                columns: [{
+                    label: '标题',
+                    property: 'title',
+                    sortable: false
+                }],
+                fields: ["id"]
+            },
+            qas: {
+                type: "qas",
+                title: "选择问答列表",
+                id: "selectQaListR",
+                columns: [{
+                    label: '标题',
+                    property: 'title',
+                    sortable: true
+                }],
+                fields: ["id"]
+            },
+            photos: {
+                type: "photos",
+                title: "选择图片列表",
+                id: "selectPostListR",
+                columns: [{
+                    label: '名称',
+                    property: 'name',
+                    sortable: true
+                }],
+                fields: ["id", "description", "src", "name"]
+            }
+        }
+        buildList(data[type], opts, function(list) {
             var selector = list.getDom();
-            var modal = $("#contentModal");
+            var cmodal = $("#contentModal");
             selector.on("selected.fu.repeaterList", function(row) {
-                callback(selector.repeater('list_getSelectedItems'), modal);
+                var items = selector.repeater('list_getSelectedItems');
+                __content[opts.key] = {
+                    type: type,
+                    items: items.map(function(item) {
+                        var ret = {};
+                        data[type].fields.forEach(function(f) {
+                            ret[f] = item[f];
+                        });
+                        return ret;
+                    })
+                };
+                cmodal.modal("hide");
+                opts.listSCallback(formModal, items);
             });
 
-            modal.find(".modal-body").html(selector);
-            modal.find(".modal-title").html("图片列表");
-            modal.modal('show');
+            cmodal.find(".modal-body").html(selector);
+            cmodal.find(".modal-title").html("图片列表");
+            cmodal.modal('show');
         });
     };
 
@@ -220,13 +239,7 @@ define([
                 s.off("change").on("change", function() {
                     var value = this.value;
                     server().connect(value, "get", "select").then(function(data) {
-                        showList(value, opts, function(items, modal) {
-                            __content[opts.key] = {
-                                type: value,
-                                items: items
-                            };
-                            modal.modal("hide");
-                        });
+                        showList(selector, value, opts);
                     });
                 });
             });
@@ -235,14 +248,7 @@ define([
         contentListByBtn: function(selector, opts) {
             selector.find("button.select-content-list").off("click").on("click", function(e) {
                 var type = $(e.currentTarget).data("type");
-                showList(type, opts, function(items, modal) {
-                    __content[opts.key] = {
-                        type: type,
-                        items: items.map(function(item) { return item.data.id })
-                    };
-                    opts.listSCallback(selector, items);
-                    modal.modal("hide");
-                });
+                showList(selector, type, opts);
             });
         },
 

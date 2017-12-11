@@ -2,20 +2,15 @@ define([
     "jquery",
     "skylarkjs",
     "handlebars",
+    "server",
+    "scripts/helpers/components/components",
     "text!scripts/routes/home/_pages.hbs",
     "text!scripts/routes/home/home.hbs"
-], function($, skylarkjs, hbs, pagesTpl, homeTpl) {
+], function($, skylarkjs, hbs, server, components, pagesTpl, homeTpl) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         pageSelector = $(langx.trim(pagesTpl)),
         selector = $(langx.trim(homeTpl));
-    var banners = [];
-    [1, 2, 3, 4, 5].forEach(function(i) {
-        banners.push({
-            name: "banner" + i,
-            imgUrl: "/assets/images/wap_new/banner0" + i + ".jpg"
-        });
-    });
 
     var attendUsaPage = [];
     [1, 2, 3].forEach(function(i) {
@@ -105,37 +100,45 @@ define([
         });
     });
 
-    var pages = [];
-    [1, 2, 3, 4, 5, 6, 7].forEach(function(j) {
-        var name = "home-page" + j + "-partial";
-        hbs.registerPartial(name, langx.trim(pageSelector.find("#" + name).html()).replace(/\{\{&gt;/g, "{{>"));
-        var tpl = hbs.compile("{{> " + name + "}}");
-        pages.push({
-            html: tpl({
-                attendUsaPage: attendUsaPage,
-                servicePage: servicePage,
-                activePage: activePage,
-                newsPage: newsPage,
-                advantagesLeftPage: advantagesLeftPage,
-                advantagesRightPage: advantagesRightPage,
-                environmentPage: environmentPage,
-                intimateServicePage: intimateServicePage
-            })
+    function preparePage(data) {
+        var pages = [];
+        [1, 2, 3, 4, 5, 6, 7].forEach(function(j) {
+            var name = "home-page" + j + "-partial";
+            hbs.registerPartial(name, langx.trim(pageSelector.find("#" + name).html()).replace(/\{\{&gt;/g, "{{>"));
+            var tpl = hbs.compile("{{> " + name + "}}");
+            pages.push({
+                html: tpl({
+                    attendUsaPage: attendUsaPage,
+                    servicePage: servicePage,
+                    activePage: activePage,
+                    newsPage: newsPage,
+                    advantagesLeftPage: advantagesLeftPage,
+                    advantagesRightPage: advantagesRightPage,
+                    environmentPage: environmentPage,
+                    intimateServicePage: intimateServicePage
+                })
+            });
         });
-    });
+        return pages;
+    };
+
     return spa.RouteController.inherit({
         klassName: "HomeController",
+        pageData: null,
         preparing: function(e) {
-
+            var self = this;
+            e.result = server().connect("pages", "get", "show?key=name&&value=" + e.route.name).then(function(data) {
+                self.pageData = data;
+            });
         },
 
         rendering: function(e) {
             var tpl = hbs.compile(langx.trim(selector.find("#home-main").html()).replace("{{&gt;", "{{>")),
                 self = this,
                 _ec = $(tpl({
-                    pages: pages,
-                    banners: banners
+                    pages: preparePage()
                 }));
+            $(components.slide(this.pageData.slide)).prependTo(_ec.find(".home-slide-container"))
             e.content = _ec[0];
         },
 

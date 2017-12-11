@@ -12,40 +12,54 @@ define([
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         formSelector = $(langx.trim(formTpl));
-    partial.get("page-select-partial", formSelector);
-    partial.get("grid-form-partial", formSelector);
-    var tpl = hbs.compile("{{> grid-form-partial}}");
+    partial.get("date-picker-partial");
+    partial.get("qa-form-partial", formSelector);
+    var tpl = hbs.compile("{{> qa-form-partial}}");
     return spa.RouteController.inherit({
-        klassName: "GridsController",
-        repeaterId: "gridsRepeater",
+        klassName: "QaController",
+        repeaterId: "QaRepeater",
         list: null,
         preparing: function(e) {
             var self = this;
-            e.result = server().connect("pages", "get", "select").then(function(pages) {
-                self.pages = pages;
-            });
         },
 
-        buildList: function(post) {
+        buildList: function() {
             this.list = new List({
-                title: "图片列表",
-                id: this.repeaterId,
-                key: "grids",
+                title: "文章列表",
+                id: "qaRepeater",
+                key: "qas",
                 actions: [{
                     name: "delete",
-                    title: "删除Grid",
-                    tpl: "",
+                    title: "删除文章",
+                    callback: function() {
+
+                    }
+                }, {
+                    name: "show",
+                    title: "查看文章",
+                    tpl: tpl,
+                    callback: function() {
+
+                    }
+                }, {
+                    name: "edit",
+                    title: "编辑文章",
+                    tpl: tpl,
                     callback: function() {
 
                     }
                 }],
                 columns: [{
-                    label: '名称',
-                    property: 'name',
+                    label: '标题',
+                    property: 'title',
+                    sortable: false
+                }, {
+                    label: '发布时间',
+                    property: 'publishedDate',
                     sortable: true
                 }, {
-                    label: '所属页面',
-                    property: 'page',
+                    label: '创建时间',
+                    property: 'createdAt',
                     sortable: false
                 }]
             });
@@ -60,17 +74,10 @@ define([
             var self = this,
                 selector = this.list.getDom();
             selector.find(".repeater-add button").off("click").on("click", function(e) {
-                modal.show("form", $(tpl({
-                    pages: self.pages
-                })), "添加文章", {
-                    list_selectable: "multi",
-                    key: "grids",
-                    file: true,
+                modal.show("form", $(tpl()), "添加文章", {
+                    key: "qas",
                     callback: function() {
                         selector.repeater('render');
-                    },
-                    listSCallback: function(modal, items) {
-
                     }
                 });
             });
