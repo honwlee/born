@@ -12,6 +12,7 @@ const ctrls = require("../controllers/api/controllers"),
     }),
     mkdirp = require('mkdirp'),
     _ = require('lodash'),
+    User = require('../models/User').User,
     multer = require('multer');
 
 module.exports = function(app, router, ensureAuthenticated, rootPath) {
@@ -49,11 +50,7 @@ module.exports = function(app, router, ensureAuthenticated, rootPath) {
         });
     });
 
-    app.get('/api/auth/check', function(req, res) {
-        if (req.isAuthenticated()) {
-            res.json({ status: true, auth: true });
-        } else {
-            res.json({ status: false, auth: true });
-        }
+    app.get('/api/system/check', function(req, res) {
+        res.json({ checked: User.delay(true, true) });
     });
 };

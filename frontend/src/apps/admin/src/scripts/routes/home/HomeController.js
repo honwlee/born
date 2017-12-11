@@ -1,9 +1,8 @@
 define([
     "jquery",
     "skylarkjs",
-    "skylarkBs",
     "text!scripts/routes/home/home.html"
-], function($, skylarkjs, skylarkBs, homeTpl) {
+], function($, skylarkjs, homeTpl) {
     var spa = skylarkjs.spa;
     return spa.RouteController.inherit({
         klassName: "HomeController",

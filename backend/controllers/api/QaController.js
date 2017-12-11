@@ -1,43 +1,47 @@
 'use strict';
-const Post = require('../../models/Post').Post;
+const Qa = require('../../models/Qa').Qa;
 const parse = require('../../exts/parseList').parse;
 const validate = require('../../exts/validation').validate;
 module.exports = {
     index: function(req, res) {
-        parse("posts", req, res, ["title"]);
+        parse("qas", req, res, ["name"]);
     },
 
     select: function(req, res) {
-        let posts = Post.findAll({
+        let qas = Qa.findAll({
             type: "main"
         });
-        res.json(posts);
+        res.json(qas);
     },
 
     show: function(req, res) {
-        let post = Post.findBy({
-            id: req.query.id
-        });
-        res.json(post);
+        let opt = {};
+        opt[req.query.key] = req.query.value;
+        let qa = Qa.findByReg(opt);
+        if (qa) {
+            res.json(qa);
+        } else {
+            res.json({ status: false, msg: "no results!" });
+        }
     },
 
     update: function(req, res) {
         req.body.file = req.file;
-        let post = Post.update(req.body);
-        res.json({ status: true, result: post });
+        let qa = Qa.update(req.body);
+        res.json({ status: true, result: qa });
     },
 
     create: function(req, res) {
         req.body.file = req.file;
-        validate(Post, { title: req.body.title }, req, res);
+        validate(Qa, { name: req.body.name }, req, res);
     },
 
     delete: function(req, res) {
-        Post.delete(req.body);
+        Qa.delete(req.body);
         res.json({ status: true, msg: "删除成功！" });
     },
 
     import: function(req, res) {
-        res.json(Post.importData());
+        res.json(Qa.importData());
     }
 }

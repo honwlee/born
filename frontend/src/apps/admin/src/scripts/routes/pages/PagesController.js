@@ -1,7 +1,6 @@
 define([
     "jquery",
     "skylarkjs",
-    "skylarkBs",
     "handlebars",
     "lodash",
     "server",
@@ -9,7 +8,7 @@ define([
     "scripts/helpers/Partial",
     "scripts/helpers/List",
     "text!scripts/helpers/_formPartial.hbs"
-], function($, skylarkjs, sbs, hbs, _, server, modal, partial, List, formTpl) {
+], function($, skylarkjs, hbs, _, server, modal, partial, List, formTpl) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         formSelector = $(langx.trim(formTpl));
@@ -64,64 +63,23 @@ define([
                         });
                     }
                 }],
-                dataSource: function(options, callback) {
-                    // set options
-                    var pageIndex = options.pageIndex;
-                    var pageSize = options.pageSize;
-                    var options = {
-                        limit: pageSize,
-                        direction: options.sortDirection,
-                        sort: options.sortProperty,
-                        filter: options.filter.value || '',
-                        search: options.search || ''
-                    };
-                    var action = "index?page=" + options.page;
-                    for (var key in options) {
-                        if (options.key) action = action + "&&" + key + "=" + options[key];
-                    }
-
-                    server().connect("pages", "get", action).then(function(data) {
-                        var items = data.rows;
-                        var totalItems = data.total;
-                        var totalPages = Math.ceil(totalItems / pageSize);
-                        var startIndex = (pageIndex * pageSize) + 1;
-                        var endIndex = (startIndex + pageSize) - 1;
-
-                        if (endIndex > items.length) {
-                            endIndex = items.length;
-                        }
-
-                        // configure datasource
-                        var dataSource = {
-                            page: pageIndex,
-                            pages: totalPages,
-                            count: totalItems,
-                            start: startIndex,
-                            end: endIndex,
-                            columns: [{
-                                label: '名称',
-                                property: 'name',
-                                sortbale: false
-                            }, {
-                                label: '标题',
-                                property: 'title',
-                                sortable: false
-                            }, {
-                                label: '路由',
-                                property: 'pathto',
-                                sortable: false
-                            }, {
-                                label: '位置',
-                                property: 'postion',
-                                sortable: false
-                            }],
-                            items: items
-                        };
-
-                        // invoke callback to render repeater
-                        callback(dataSource);
-                    });
-                }
+                columns: [{
+                    label: '名称',
+                    property: 'name',
+                    sortbale: true
+                }, {
+                    label: '标题',
+                    property: 'title',
+                    sortable: false
+                }, {
+                    label: '路由',
+                    property: 'pathto',
+                    sortable: false
+                }, {
+                    label: '位置',
+                    property: 'postion',
+                    sortable: false
+                }]
             });
         },
 
@@ -140,6 +98,9 @@ define([
                         selector.repeater('render');
                     }
                 });
+            });
+            selector.on('selected.fu.repeaterList', function() {
+
             });
             selector.find(".repeater-refresh button").off("click").on("click", function(e) {
                 selector.repeater('render');

@@ -2,10 +2,12 @@ define([
     "jquery",
     "scripts/helpers/Partial",
     "handlebars",
+    "server",
     "skylarkjs"
-], function($, partial, handlebars, skylarkjs) {
+], function($, partial, handlebars, server, skylarkjs) {
     var spa = skylarkjs.spa,
         router = skylarkjs.router,
+        __isDelayed,
         basePath = (spa().getConfig("baseUrl") || "");
     var currentNav,
         setActive = function(name) {
@@ -32,7 +34,7 @@ define([
                 path = page.pathto;
             $("<li>").attr({
                 class: name + "-nav "
-            }).addContent(
+            }).html(
                 $("<a>").attr({
                     class: "nav-item"
                 }).data({
@@ -135,6 +137,12 @@ define([
         };
 
     return spa.PluginController.inherit({
+
+        preparing: function(e) {
+            e.result = server().connect("system", "get", "check").then(function(data) {
+                __isDelayed = data.checked;
+            });
+        },
         starting: function(evt) {
             var spa = evt.spa,
 
@@ -182,6 +190,16 @@ define([
             var modal = $("<div>").html(handlebars.compile("{{> modal-partial}}")());
             document.body.appendChild(modal[0]);
             document.body.appendChild(div[0].firstChild);
+            if (__isDelayed) {
+                partial.get("error-partial");
+                var error = $("<div>").attr({
+                    class: "container"
+                }).html(handlebars.compile("{{> error-partial}}")({}));
+                var contentM = modal.find("#contentModal");
+                contentM.find(".modal-body").html(error);
+                contentM.find(".modal-title").html("出错啦！");
+                contentM.modal("show");
+            }
             skylarkBsExts();
         },
         routed: function() {}

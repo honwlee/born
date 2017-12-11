@@ -17,7 +17,6 @@
             "jquery": "lib/uncompressed/skylark-jquery-all",
             "simplemde": "https://cdn.bootcss.com/simplemde/1.11.2/simplemde.min",
             "toastr": "https://cdn.bootcss.com/toastr.js/latest/js/toastr",
-            "bootstrap": "https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap",
             "handlebars": "https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.amd.min",
             "text": "https://cdn.bootcss.com/require-text/2.0.12/text.min"
         }
@@ -89,6 +88,36 @@
             },
             "controller": {
                 "type": "scripts/routes/news/NewsController"
+            }
+        },
+        "slides": {
+            "pathto": "/slides",
+            "data": {
+                "name": "slides",
+                "navName": "Slides管理"
+            },
+            "controller": {
+                "type": "scripts/routes/slides/SlidesController"
+            }
+        },
+        "grids": {
+            "pathto": "/grids",
+            "data": {
+                "name": "grids",
+                "navName": "Grid管理"
+            },
+            "controller": {
+                "type": "scripts/routes/grids/GridsController"
+            }
+        },
+        "contents": {
+            "pathto": "/contents",
+            "data": {
+                "name": "contents",
+                "navName": "页面内容管理"
+            },
+            "controller": {
+                "type": "scripts/routes/contents/ContentsController"
             }
         }
     }

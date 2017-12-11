@@ -1,26 +1,14 @@
-const utils = require('./utils');
-const url = require('url');
-const pluralize = require('pluralize');
-const path = require('path');
-
-function getFullURL(req) {
-    var root = url.format({
-        protocol: req.protocol,
-        host: req.get('host')
-    });
-
-    return '' + root + req.originalUrl;
-}
 module.exports = {
     parse: function(name, req, res, queryKeys) {
-        let dbpath = path.join(__dirname, "../dbs"),
+        let path = require('path'),
+            dbpath = path.join(__dirname, "../dbs"),
             dbms = require('../lib/dbms/'),
             _ = require('lodash'),
             db = dbms(dbpath, {
                 master_file_name: "master.json"
             });
-        let chain = db.get(name),
-            total = chain.size(),
+        let total = 0,
+            chain = db.get(name),
             // Remove q, _start, _end, ... from req.query to avoid filtering using those
             // parameters
             q = req.query.search,
@@ -50,9 +38,13 @@ module.exports = {
             // Full-text search
             // q = q.toLowerCase();
             chain = chain.filter(function(obj) {
-                for (var key in queryKeys) {
-                    if (obj[queryKeys[key]] === q) return true;
+                var result = false;
+                for (var index in queryKeys) {
+                    var key = queryKeys[index];
+                    var reg = new RegExp(q, "i");
+                    result = result || (obj[key].length == q.length && obj[key].match(reg));
                 }
+                return result;
             });
         }
 
@@ -102,7 +94,7 @@ module.exports = {
                 return _.get(element, _sort);
             });
 
-            if (_order === 'DESC') {
+            if (_order.match(/desc/g)) {
                 chain = chain.reverse();
             }
         }

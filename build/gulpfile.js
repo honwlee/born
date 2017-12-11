@@ -4,6 +4,7 @@ require('./gulp')([
     'build',
     'src',
     'lib',
+    'import',
     'sass',
     'deploy'
 ]);

@@ -212,38 +212,6 @@
             "controller": {
                 "type": "scripts/routes/about/subs/ContactController"
             }
-        },
-        "test": {
-            "pathto": "/test",
-            "controller": {
-                "type": "scripts/routes/test/TestController"
-            },
-            "data": {
-                "name": "test",
-                "navName": "Test"
-            }
-        },
-        "ggggg": {
-            "pathto": "/gggg",
-            "controller": {
-                "type": "scripts/routes/ggggg/GggggController"
-            },
-            "data": {
-                "name": "ggggg",
-                "navName": "ggggg"
-            },
-            "hide": true
-        },
-        "xxxx": {
-            "pathto": "/xxxx",
-            "controller": {
-                "type": "scripts/routes/xxxx/XxxxController"
-            },
-            "data": {
-                "name": "xxxx",
-                "navName": "xxxx"
-            },
-            "hide": true
         }
     }
 }

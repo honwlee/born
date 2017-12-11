@@ -12,57 +12,42 @@ define([
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         formSelector = $(langx.trim(formTpl));
-    partial.get("date-picker-partial");
-    partial.get("news-form-partial", formSelector);
-    var tpl = hbs.compile("{{> news-form-partial}}");
+    partial.get("page-select-partial", formSelector);
+    partial.get("content-form-partial", formSelector);
+    var tpl = hbs.compile("{{> content-form-partial}}");
     return spa.RouteController.inherit({
-        klassName: "NewsController",
-        repeaterId: "newsRepeater",
+        klassName: "ContentsController",
+        repeaterId: "contentsRepeater",
         list: null,
         preparing: function(e) {
             var self = this;
+            e.result = server().connect("pages", "get", "select").then(function(pages) {
+                self.pages = pages;
+            });
         },
 
-        buildList: function(news) {
+        buildList: function(post) {
             this.list = new List({
-                title: "新闻列表",
-                id: "newsRepeater",
-                key: "news",
+                title: "图片列表",
+                id: this.repeaterId,
+                key: "slides",
                 actions: [{
                     name: "delete",
-                    title: "删除新闻",
+                    title: "删除slide",
                     tpl: "",
-                    callback: function() {
-
-                    }
-                }, {
-                    name: "show",
-                    title: "查看新闻",
-                    tpl: tpl,
-                    callback: function() {
-
-                    }
-                }, {
-                    name: "edit",
-                    title: "编辑",
-                    tpl: tpl,
                     callback: function() {
 
                     }
                 }],
                 columns: [{
-                    label: '标题',
-                    property: 'title',
-                    sortable: false
-                }, {
-                    label: '新闻内容',
-                    property: 'content',
-                    sortable: false
-                }, {
-                    label: '发布时间',
-                    property: 'publishedDate',
+                    label: '名称',
+                    property: 'name',
                     sortable: true
-                }],
+                }, {
+                    label: '所属页面',
+                    property: 'page',
+                    sortable: false
+                }]
             });
         },
 
@@ -75,8 +60,11 @@ define([
             var self = this,
                 selector = this.list.getDom();
             selector.find(".repeater-add button").off("click").on("click", function(e) {
-                modal.show("form", $(tpl()), "添加新闻", {
-                    key: "news",
+                modal.show("form", $(tpl({
+                    pages: self.pages
+                })), "添加slide", {
+                    key: "contents",
+                    file: true,
                     callback: function() {
                         selector.repeater('render');
                     }

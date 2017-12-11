@@ -64,7 +64,7 @@ define([
                         id: helpers.rowData.id,
                         key: opts.key,
                         callback: function() {
-                            container.repeater('render');
+                            opts.container.repeater('render');
                             if (opts.callback) opts.callback();
                         }
                     });
@@ -79,7 +79,7 @@ define([
                     modal.show("form", $(opts.tpl(helpers.rowData)), opts.title, {
                         key: opts.key,
                         callback: function() {
-                            container.repeater('render');
+                            opts.container.repeater('render');
                             if (opts.callback) opts.callback();
                         }
                     });
@@ -94,7 +94,7 @@ define([
                     modal.show("content", $(opts.tpl(helpers.rowData)), opts.title, {
                         key: opts.key,
                         callback: function() {
-                            container.repeater('render');
+                            opts.container.repeater('render');
                             if (opts.callback) opts.callback();
                         }
                     });
@@ -155,16 +155,67 @@ define([
             return this.selector;
         },
 
+        initDataSource: function(opts) {
+            return function(options, callback) {
+                var pageIndex = options.pageIndex + 1;
+                var pageSize = options.pageSize;
+                var options = {
+                    limit: pageSize,
+                    direction: options.sortDirection,
+                    sort: options.sortProperty,
+                    filter: options.filter.value || '',
+                    search: options.search || ''
+                };
+                var action = "index?page=" + pageIndex;
+                for (var key in options) {
+                    if (options.key) action = action + "&&" + key + "=" + options[key];
+                }
+
+                server().connect(opts.key, "get", "index").then(function(data) {
+                    var items = data.rows;
+                    var totalItems = data.total;
+                    var totalPosts = Math.ceil(totalItems / pageSize);
+                    var startIndex = (pageIndex * pageSize) + 1;
+                    var endIndex = (startIndex + pageSize) - 1;
+
+                    if (endIndex > items.length) {
+                        endIndex = items.length;
+                    }
+
+                    // configure datasource
+                    var dataSource = {
+                        page: pageIndex,
+                        pages: totalPosts,
+                        count: totalItems,
+                        start: startIndex,
+                        end: endIndex,
+                        columns: opts.columns,
+                        items: items
+                    };
+
+                    // invoke callback to render repeater
+                    callback(dataSource);
+                });
+            };
+        },
+
         buildList: function(container, opts) {
-            var obj = { dataSource: opts.dataSource };
+            var obj = {};
+            if (opts.dataSource) {
+                obj.dataSource = opts.dataSource;
+            } else {
+                obj.dataSource = this.initDataSource(opts);
+            }
             if (opts.views) obj.views = opts.views;
             if (opts.thumbnail_selectable) obj.thumbnail_selectable = opts.thumbnail_selectable;
             if (opts.thumbnail_template) obj.thumbnail_template = opts.thumbnail_template;
+            if (opts.list_selectable) obj.list_selectable = opts.list_selectable;
             if (opts.actions) {
                 var actions = [];
                 opts.actions.forEach(function(a) {
                     if (defaultActions[a.name]) {
                         actions.push(defaultActions[a.name]({
+                            container: container,
                             key: opts.key,
                             callback: a.callback,
                             tpl: a.tpl,
@@ -175,13 +226,13 @@ define([
                     }
                 });
                 obj.list_actions = {
-                    width: 200,
+                    width: 37,
                     items: actions
                 };
             }
 
             container.repeater(obj);
-            //container.repeater('infinitescrolling', true, { hybrid: true });
+            // container.repeater('infinitescrolling', true, { hybrid: true });
         }
     });
     return List;

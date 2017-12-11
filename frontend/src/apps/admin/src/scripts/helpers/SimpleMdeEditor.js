@@ -47,76 +47,48 @@ define([
             var list = new List({
                 title: "图片列表",
                 id: "photoModalRepeater",
+                thumbnail_selectable: "single",
+                list_selectable: "single",
                 thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" src="{{src}}" width="65"><span>{{name}}</span></div>',
                 addBtn: false,
                 listShow: false,
-                dataSource: function(options, callback) {
-                    // set options
-                    var pageIndex = options.pageIndex;
-                    var pageSize = options.pageSize;
-                    var options = {
-                        pageIndex: pageIndex,
-                        pageSize: pageSize,
-                        sortDirection: options.sortDirection,
-                        sortBy: options.sortProperty,
-                        filterBy: options.filter.value || '',
-                        searchBy: options.search || ''
-                    };
-
-                    server().connect("photos", "get", "index").then(function(data) {
-                        var items = data.rows;
-                        var totalItems = data.total;
-                        var totalPages = Math.ceil(totalItems / pageSize);
-                        var startIndex = (pageIndex * pageSize) + 1;
-                        var endIndex = (startIndex + pageSize) - 1;
-
-                        if (endIndex > items.length) {
-                            endIndex = items.length;
-                        }
-
-                        // configure datasource
-                        var dataSource = {
-                            page: pageIndex,
-                            pages: totalPages,
-                            count: totalItems,
-                            start: startIndex,
-                            end: endIndex,
-                            columns: [],
-                            items: items
-                        };
-
-                        // invoke callback to render repeater
-                        callback(dataSource);
-                        _callback(list);
-                    });
-                }
+                columns: [{
+                    label: '名称',
+                    property: 'name',
+                    sortable: true
+                }, {
+                    label: '图片地址',
+                    property: 'src',
+                    sortable: false
+                }]
             });
         });
     };
 
     function showPhotos(callback) {
         buildPhotoList(function(list) {
+            var selector = list.getDom();
             var modal = $("#contentModal");
-            modal.find(".modal-body").html(list.getDom());
+            selector.on("selected.fu.repeaterThumbnail", function(row) {
+                callback(selector.repeater('thumbnail_getSelectedItems'), modal);
+            });
+
+            modal.find(".modal-body").html(selector);
             modal.find(".modal-title").html("图片列表");
             modal.modal('show');
-            callback();
+
         });
     };
 
     function drawImage(editor) {
-        showPhotos(function() {
+        showPhotos(function(items, modal) {
+            items;
             var cm = editor.codemirror;
             var stat = editor.getState(cm);
             var options = editor.options;
-            var url = "http://";
-            if (options.promptURLs) {
-                url = prompt(options.promptTexts.image);
-                if (!url) {
-                    return false;
-                }
-            }
+            var url = $(items[0]).find("img").attr("src");
             _replaceSelection(cm, stat.image, options.insertTexts.image, url);
+            modal.modal("hide");
         });
     };
 

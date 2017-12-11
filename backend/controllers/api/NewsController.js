@@ -8,14 +8,10 @@ module.exports = {
     },
 
     show: function(req, res) {
-        let opt = {};
-        opt[req.query.key] = req.query.value;
-        let news = News.findByReg(opt);
-        if (news) {
-            res.json(news);
-        } else {
-            res.json({ status: false, msg: "no results!" });
-        }
+        let news = News.findBy({
+            id: req.query.id
+        });
+        res.json(news);
     },
 
     update: function(req, res) {

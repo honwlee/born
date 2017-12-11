@@ -7,9 +7,8 @@ module.exports = {
         module: require("./AttachmentController"),
         uploadPath: "attachments"
     },
-    banners: {
-        module: require("./BannerController"),
-        uploadPath: "banners"
+    slides: {
+        module: require("./SlideController")
     },
     events: {
         module: require("./EventController")
@@ -36,5 +35,14 @@ module.exports = {
     },
     products: {
         module: require("./ProductController")
+    },
+    contents: {
+        module: require("./ContentController")
+    },
+    grids: {
+        module: require("./GridController")
+    },
+    qas: {
+        module: require("./QaController")
     }
 }

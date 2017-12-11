@@ -13,18 +13,11 @@ define([
         klassName: "PostsShowController",
         post: null,
         preparing: function(e) {
-            var deferred = new langx.Deferred(),
-                self = this,
+            var self = this,
                 id = e.route.getNamedValue()[1];
-            // server().connect("posts", "get", "show?id=" + id).then(function(post) {
-            //     self.post = post;
-            //     deferred.resolve();
-            // });
-            // e.result = deferred.promise;
-            self.post = data.filter(function(d) {
-                return d.id == id;
-            })[0];
-            e.result = langx.Deferred.when(true);
+            e.result = server().connect("news", "get", "show?id=" + id).then(function(post) {
+                self.post = post;
+            });
         },
         rendering: function(e) {
             var selector = $(langx.trim(showTpl));
@@ -34,7 +27,7 @@ define([
                 id: this.post.id,
                 title: this.post.title,
                 imgUrl: this.post.imgUrl,
-                date: new Date(this.post.date).toISOString().substring(0, 10)
+                date: new Date(this.post.publishedDate).toISOString().substring(0, 10)
             }));
             var simplemde = new SimpleMDE({
                 element: e.content.find("textarea")[0]
@@ -49,4 +42,4 @@ define([
         },
         exited: function() {}
     });
-});
+})

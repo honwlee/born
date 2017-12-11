@@ -67,23 +67,21 @@ define([
             if (main) {
                 throb = window.addThrob(main, function() {
                     require(["jquery"], function($) {
-                        require(["bootstrap"], function() {
-                            require(["moment"], function() {
-                                require(["skylarkBs"], function() {
-                                    main.style.opacity = 1;
-                                    throb.remove();
-                                    goTop($(".go-top-btn"));
-                                    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                                        $("#sk-navbar").delegate(".nav-item", "click", function(e) {
-                                            $('#sk-navbar').collapse('hide');
-                                        });
-                                        $(".logo-nav").on("click", function() {
-                                            $('#sk-navbar').collapse('hide');
-                                        })
-                                        $(".navbar").addClass("navbar-default");
-                                    }
-                                    deferred.resolve();
-                                });
+                        require(["moment"], function() {
+                            require(["skylarkBs"], function() {
+                                main.style.opacity = 1;
+                                throb.remove();
+                                goTop($(".go-top-btn"));
+                                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                                    $("#sk-navbar").delegate(".nav-item", "click", function(e) {
+                                        $('#sk-navbar').collapse('hide');
+                                    });
+                                    $(".logo-nav").on("click", function() {
+                                        $('#sk-navbar').collapse('hide');
+                                    })
+                                    $(".navbar").addClass("navbar-default");
+                                }
+                                deferred.resolve();
                             });
                         });
                     });

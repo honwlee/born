@@ -1,4 +1,16 @@
 <div>
+    <script id="page-select-partial" type="text/x-handlebars-template">
+        <div class="form-group hide parent-page-selector">
+            <label class="col-sm-2 control-label">页面</label>
+            <div class="col-sm-10">
+                <select class="form-control hide" name="parent" id="pageSelect">
+                    {{#each pages}}
+                        <option value="{{id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+    </script> 
     <script id="page-form-partial" type="text/x-handlebars-template">
         <form class="form-horizontal admin-form form" id="pageForm" role="form">
             <div class="form-group">
@@ -19,23 +31,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">页面类型</label>
-                <div class="col-sm-10">
-                    <select class="form-control related" name="type" id="type" data-related=".parent-page-selector@sub@pages">
-                        <option value="main" select=true>主页面</option>
-                        <option value="sub">子页面</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group hide parent-page-selector">
-                <label class="col-sm-2 control-label">父页面</label>
-                <div class="col-sm-10">
-                    <select class="form-control hide" name="parent" id="parentPageSelect">
-                        
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
                 <label class="col-sm-2 control-label" for="name">路由</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="pathto" value="{{pathto}}" />
@@ -53,6 +48,31 @@
                     <input class="form-control" type="text" value="{{postion}}" name="postion">
                 </div>
             </div>
+        </form>
+    </script>
+    <script id="content-form-partial" type="text/x-handlebars-template">
+        <form class="form-horizontal admin-form form" id="pageForm" role="form">
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">标题</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="title" value="{{title}}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">页面模板</label>
+                <div class="col-sm-10">
+                    <select class="form-control" name="tpl" id="tpl">
+                        <option value="main" select=true>主页面</option>
+                        <option value="sub">子页面</option>
+                    </select>
+                </div>
+            </div>
+            {{> page-select-partial}}
         </form>
     </script>
     <script id="page-cog-partial" type="text/x-handlebars-template">
@@ -126,6 +146,12 @@
                 </div>
             </div>
             <div class="form-group">
+                <label class="col-sm-2 control-label" for="name">描述</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" name="description" value="{{description}}"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="col-sm-2 control-label" for="file">缩略图</label>
                 <div class="col-sm-10">
                     <input type="file" class="form-control file" name="file" id="file" />
@@ -134,6 +160,23 @@
             </div>
             <div class="form-group text-center">
                 <img src="{{imagePath}}" />
+            </div>
+        </form> 
+    </script>
+    <script id="slide-form-partial" type="text/x-handlebars-template">
+        <form class="form-horizontal admin-form form" id="pageForm" role="form">
+             <div class="form-group">
+                <label class="col-sm-2 control-label" for="name">名称</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="name" value="{{name}}" />
+                </div>
+            </div>
+            {{> page-select-partial}}
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="file">选择图片</label>
+                <div class="col-sm-10">
+                    <button class="btn btn-primary">点击选择</button>
+                </div>
             </div>
         </form> 
     </script>
@@ -160,5 +203,36 @@
                 <label class="col-sm-2 control-label" for="publishedDate">发布时间</label> {{> date-picker-partial formName='publishedDate'}}
             </div>
         </form>
+    </script>
+    <script id="grid-form-partial" type="text/x-handlebars-template">
+        <form class="form-horizontal admin-form form" id="pageForm" role="form">
+             <div class="form-group">
+                <label class="col-sm-2 control-label" for="name">名称</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="name" value="{{name}}" />
+                </div>
+            </div>
+            {{> page-select-partial}}
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Grid模板</label>
+                <div class="col-sm-10">
+                    <select class="form-control" name="tpl" id="tpl" >
+                        <option value="tpl1" select=true>模板一</option>
+                        <option value="tpl2">模板二</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Grid内容</label>
+                <div class="col-sm-10">
+                    <select class="form-control muti-content" name="content" id="content">
+                        <option value="news" select=true>新闻</option>
+                        <option value="qas">问答</option>
+                        <option value="posts">文章</option>
+                        <option value="photos">图片</option>
+                    </select>
+                </div>
+            </div>
+        </form> 
     </script>
 </div>

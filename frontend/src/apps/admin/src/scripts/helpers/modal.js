@@ -7,7 +7,8 @@ define([
     "toastr",
     "handlebars"
 ], function(skylarkjs, partial, SimpeMdeEditor, $, server, toastr, handlebars) {
-    var __files = {};
+    var __files = {},
+        __content = {};
 
     function save(name, selector, opt, callback) {
         var action = "create",
@@ -18,20 +19,20 @@ define([
             var s = $(this),
                 val = s.val();
             if (this.type === "checkbox") val = s.is(":checked");
-            formData.append(s.attr("name"), val);
-            data[s.attr("name")] = val;
+            if (s.attr("name")) formData.append(s.attr("name"), val);
+            if (s.attr("name")) data[s.attr("name")] = val;
         });
         selector.find("select").each(function() {
             var s = $(this);
             if (s.hasClass("hide")) return;
-            formData.append(s.attr("name"), s.val());
+            if (s.attr("name")) formData.append(s.attr("name"), s.val());
+            if (s.attr("name")) data[s.attr("name")] = s.val();
         });
         selector.find("textarea").each(function() {
             var s = $(this);
-            formData.append(s.attr("name"), s.val());
-            data[s.attr("name")] = s.val();
+            if (s.attr("name")) formData.append(s.attr("name"), s.val());
+            if (s.attr("name")) data[s.attr("name")] = s.val();
         });
-        // data.file = file;
         if (data.id) action = "update";
         //将文件信息追加到其中
         if (opt.file) {
@@ -76,6 +77,62 @@ define([
         };
         xhr.send(formData);
     };
+
+    function buildList(type, callback) {
+        var data = {
+            posts: {
+                title: "选择文章列表",
+                id: "selectPostListR",
+                columns: [{
+                    label: '标题',
+                    property: 'title',
+                    sortable: false
+                }]
+            },
+            news: {
+                title: "选择新闻列表",
+                id: "selectNewsListR",
+                columns: [{
+                    label: '标题',
+                    property: 'title',
+                    sortable: false
+                }]
+            },
+            qas: {
+                title: "选择问答列表",
+                id: "selectQaListR",
+                columns: [{
+                    label: '标题',
+                    property: 'title',
+                    sortable: true
+                }]
+            },
+            photos: {
+                title: "选择图片列表",
+                id: "selectPostListR",
+                columns: [{
+                    label: '名称',
+                    property: 'name',
+                    sortable: true
+                }]
+            }
+        }
+        require(["scripts/helpers/List"], function(List) {
+            var obj = data[type];
+            var list = new List({
+                    title: obj.title,
+                    id: obj.id,
+                    list_selectable: "muti",
+                    addBtn: false,
+                    columns: obj.columns
+                }),
+                selector = list.getDom();
+            selector.on("selected.fu.repeaterList", function() {
+                callback(selector.repeater('list_getSelectedItems'));
+            });
+        });
+    };
+
     var validates = {
         warrantyID: {
             emptyMsg: "质保ID不能为空",
@@ -134,14 +191,27 @@ define([
                         }
                     })
                 }
-            })
+            });
+        },
+
+        contentSelected: function(selector) {
+            selector.find("select.muti-content").each(function() {
+                var s = $(this);
+                s.off("change").on("change", function() {
+                    var value = this.value;
+                    server().connect(value, "get", "select").then(function(data) {
+                        buildList(value, function(items) {
+                            __content[value] = items;
+                        });
+                    });
+                });
+            });
         },
 
         _showForm: function(content, title, opts) {
             var modal = $("#formModal");
             modal.find(".modal-body").html(content);
             modal.find("#datepickerIllustration").datepicker();
-            modal.find(".modal-title").html(title);
             modal.find(".save-btn").off("click").on("click", function() {
                 var __save = function() {
                     save(opts.key, modal, {
@@ -169,7 +239,7 @@ define([
                     __files[opts.key] = this.files[0];
                 });
             }
-
+            this.contentSelected(modal);
             this.toggleRelated(modal);
 
             if (modal.find("#simplemde")[0]) {

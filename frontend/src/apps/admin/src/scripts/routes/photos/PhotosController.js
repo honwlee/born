@@ -1,7 +1,6 @@
 define([
     "jquery",
     "skylarkjs",
-    "skylarkBs",
     "handlebars",
     "lodash",
     "server",
@@ -9,7 +8,7 @@ define([
     "scripts/helpers/Partial",
     "scripts/helpers/List",
     "text!scripts/helpers/_formPartial.hbs"
-], function($, skylarkjs, sbs, hbs, _, server, modal, partial, List, formTpl) {
+], function($, skylarkjs, hbs, _, server, modal, partial, List, formTpl) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         formSelector = $(langx.trim(formTpl));
@@ -38,47 +37,15 @@ define([
 
                     }
                 }],
-                dataSource: function(options, callback) {
-                    var pageIndex = options.pageIndex;
-                    var pageSize = options.pageSize;
-                    var options = {
-                        limit: pageSize,
-                        direction: options.sortDirection,
-                        sort: options.sortProperty,
-                        filter: options.filter.value || '',
-                        search: options.search || ''
-                    };
-                    var action = "index?page=" + options.page;
-                    for (var key in options) {
-                        if (options.key) action = action + "&&" + key + "=" + options[key];
-                    }
-
-                    server().connect("photos", "get", action).then(function(data) {
-                        var items = data.rows;
-                        var totalItems = data.total;
-                        var totalPosts = Math.ceil(totalItems / pageSize);
-                        var startIndex = (pageIndex * pageSize) + 1;
-                        var endIndex = (startIndex + pageSize) - 1;
-
-                        if (endIndex > items.length) {
-                            endIndex = items.length;
-                        }
-
-                        // configure datasource
-                        var dataSource = {
-                            page: pageIndex,
-                            pages: totalPosts,
-                            count: totalItems,
-                            start: startIndex,
-                            end: endIndex,
-                            columns: [],
-                            items: items
-                        };
-
-                        // invoke callback to render repeater
-                        callback(dataSource);
-                    });
-                }
+                columns: [{
+                    label: '名称',
+                    property: 'name',
+                    sortable: true
+                }, {
+                    label: '图片地址',
+                    property: 'src',
+                    sortable: false
+                }]
             });
         },
 
@@ -95,12 +62,12 @@ define([
                     key: "photos",
                     file: true,
                     callback: function() {
-
+                        selector.repeater('render');
                     }
                 });
             });
             selector.find(".repeater-refresh button").off("click").on("click", function(e) {
-                selector.repeater('render')
+                selector.repeater('render');
             });
             e.content = this.list.getDom()[0];
         },

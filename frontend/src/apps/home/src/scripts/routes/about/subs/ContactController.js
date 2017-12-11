@@ -16,6 +16,11 @@ define([
                 var path = $(e.currentTarget).data("path");
                 window.go(path, true);
             });
+            $('[data-toggle="tab"]').each(function() {
+                var $this = $(this);
+                $this.tab();
+            });
+            $('[data-toggle="dropdown"]').dropdown();
         },
         entered: function() {},
         exited: function() {}

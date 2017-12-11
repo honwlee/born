@@ -686,7 +686,7 @@ define('skylark-langx/langx',["./skylark"], function(skylark) {
     }
 
     function isArray(object) {
-        return object instanceof Array;
+        return object && object.constructor === Array;
     }
 
     function isArrayLike(obj) {
@@ -1394,6 +1394,7 @@ define('skylark-utils/noder',[
 
     function createFragment(html) {
         // A special case optimization for a single tag
+        html = langx.trim(html);
         if (singleTagRE.test(html)) {
             return [createElement(RegExp.$1)];
         }
@@ -2801,6 +2802,13 @@ define('skylark-utils/datax',[
         return this;
     }
 
+    function removeProp(elm, name) {
+        name.split(' ').forEach(function(prop) {
+            delete elm[prop];
+        });
+        return this;
+    }
+
     function text(elm, txt) {
         if (txt === undefined) {
             return elm.textContent;
@@ -2843,6 +2851,8 @@ define('skylark-utils/datax',[
         removeAttr: removeAttr,
 
         removeData: removeData,
+
+        removeProp: removeProp,
 
         text: text,
 
@@ -4659,6 +4669,8 @@ define('skylark-utils/query',[
             removeAttr: wrapper_every_act(datax.removeAttr, datax),
 
             prop: wrapper_name_value(datax.prop, datax, datax.prop),
+
+            removeProp: wrapper_every_act(datax.removeProp, datax),
 
             data: wrapper_name_value(datax.data, datax, datax.data),
 
@@ -6748,6 +6760,13 @@ define('skylark-bs-swt/datepicker',[
 				e.stopPropagation();
 			});
 
+			this.$element.on('click.fu.datepicker.data-api', '.datepicker .dropdown-menu', function (e) {
+				var $target = $(e.target);
+				if (!$target.is('.datepicker-date') || $target.closest('.restricted').length) {
+					e.stopPropagation();
+				}
+			});
+			
 			var init = function () {
 				if (this.checkForMomentJS()) {
 					moment = moment || window.moment;// need to pull in the global moment if they didn't do it via require

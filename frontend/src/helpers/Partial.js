@@ -9,7 +9,7 @@ define([
     var __selector = $(langx.trim(partialsTpl));
     var _registryPartial = function(name, selector) {
         selector = selector || __selector;
-        selector.find("#" + name).forEach(function(partial) {
+        selector.find("#" + name).each(function(index, partial) {
             handlebars.registerPartial(name, langx.trim($(partial).html()).replace(/\{\{&gt;/g, "{{>"));
             partials[name] = true;
         });

@@ -13,18 +13,11 @@ define([
         klassName: "PostsShowController",
         post: null,
         preparing: function(e) {
-            var deferred = new langx.Deferred(),
-                self = this,
+            var self = this,
                 id = e.route.getNamedValue()[1];
-            // server().connect("posts", "get", "show?id=" + id).then(function(post) {
-            //     self.post = post;
-            //     deferred.resolve();
-            // });
-            // e.result = deferred.promise;
-            self.post = data.filter(function(d) {
-                return d.id == id;
-            })[0];
-            e.result = langx.Deferred.when(true);
+            e.result = server().connect("posts", "get", "show?id=" + id).then(function(post) {
+                self.post = post;
+            });
         },
         rendering: function(e) {
             var selector = $(langx.trim(showTpl));

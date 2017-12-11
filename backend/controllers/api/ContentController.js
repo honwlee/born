@@ -1,18 +1,25 @@
 'use strict';
-const Banner = require('../../models/Banner').Banner;
+const Content = require('../../models/Content').Content;
 const parse = require('../../exts/parseList').parse;
 const validate = require('../../exts/validation').validate;
 module.exports = {
     index: function(req, res) {
-        parse("banners", req, res, ["name"]);
+        parse("contents", req, res, ["name"]);
+    },
+
+    select: function(req, res) {
+        let contents = Content.findAll({
+            type: "main"
+        });
+        res.json(contents);
     },
 
     show: function(req, res) {
         let opt = {};
         opt[req.query.key] = req.query.value;
-        let banner = Banner.findByReg(opt);
-        if (banner) {
-            res.json(banner);
+        let content = Content.findByReg(opt);
+        if (content) {
+            res.json(content);
         } else {
             res.json({ status: false, msg: "no results!" });
         }
@@ -20,13 +27,13 @@ module.exports = {
 
     update: function(req, res) {
         req.body.file = req.file;
-        let banner = Banner.update(req.body);
-        res.json({ status: true, result: banner });
+        let content = Content.update(req.body);
+        res.json({ status: true, result: content });
     },
 
     create: function(req, res) {
         req.body.file = req.file;
-        validate(Banner, { name: req.body.name }, req, res);
+        validate(Content, { name: req.body.name }, req, res);
     },
 
     delete: function(req, res) {
@@ -35,6 +42,6 @@ module.exports = {
     },
 
     import: function(req, res) {
-        res.json(Banner.importData());
+        res.json(Content.importData());
     }
 }

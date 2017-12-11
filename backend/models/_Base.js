@@ -23,6 +23,9 @@ class Model {
     static refresh() {
         refresh();
     }
+    static db(name) {
+        return jsondb.get(name);
+    }
     static list(name, sortKey = "id", direction = "asc") {
         let results = jsondb.get(name).sortBy(sortKey).value();
         if (direction == "desc") results = results.reverse();
