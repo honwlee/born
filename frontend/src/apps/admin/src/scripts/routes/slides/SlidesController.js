@@ -8,7 +8,7 @@ define([
     "scripts/helpers/Partial",
     "scripts/helpers/List",
     "text!scripts/helpers/_formPartial.hbs"
-], function($, skylarkjs, hbs, _, server, modal, partial, List, formTpl) {
+], function($, skylarkjs, hbs, _, server, modalFunc, partial, List, formTpl) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         formSelector = $(langx.trim(formTpl));
@@ -60,19 +60,27 @@ define([
             var self = this,
                 selector = this.list.getDom();
             selector.find(".repeater-add button").off("click").on("click", function(e) {
-                modal.show("form", $(tpl({
+                var modal = modalFunc.show("form", $(tpl({
                     pages: self.pages
                 })), "添加slide", {
+                    list_selectable: "multi",
                     key: "slides",
                     file: true,
                     callback: function() {
                         selector.repeater('render');
+                    },
+                    listSCallback: function(modal, items) {
+                        var div = $("<div>").attr({ class: "row" }).appendTo(modal.find(".result-container").empty());
+                        items.forEach(function(item) {
+                            $("<div>").attr({
+                                class: "col-xs-6 col-md-3"
+                            }).appendTo(div).html("<img src='" + item.data.src + "' >");
+                        });
                     }
                 });
+
             });
-            selector.find(".repeater-refresh button").off("click").on("click", function(e) {
-                selector.repeater('render');
-            });
+
             e.content = this.list.getDom()[0];
         },
 

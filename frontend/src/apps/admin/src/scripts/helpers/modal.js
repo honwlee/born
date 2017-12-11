@@ -35,17 +35,21 @@ define([
         });
         if (data.id) action = "update";
         //将文件信息追加到其中
-        if (opt.file) {
-            formData.append('file', opt.file);
+        if (opt._file) {
+            formData.append('file', opt._file);
             //利用split切割，拿到上传文件的格式
-            var src = opt.file.name,
+            var src = opt._file.name,
                 formart = src.split(".")[1];
             //使用if判断上传文件格式是否符合
             if (!(/(gif|jpg|jpeg|png)$/i).test(formart)) {
                 return toastr.error("缩略图格式只支持gif、jpg或者png！");
             }
         }
-        delete opt.file;
+        delete opt._file;
+        if (opt._content) {
+            formData.append("_content", opt._content);
+        }
+        delete opt._content;
         for (var key in opt) {
             formData.append(key, opt[key]);
         }
@@ -53,6 +57,7 @@ define([
         var url = "/api/" + name + "/" + action;
         var xhr = new XMLHttpRequest();
         xhr.open("POST", url, true);
+
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
@@ -78,7 +83,7 @@ define([
         xhr.send(formData);
     };
 
-    function buildList(type, callback) {
+    function buildList(type, opts, callback) {
         var data = {
             posts: {
                 title: "选择文章列表",
@@ -120,16 +125,29 @@ define([
         require(["scripts/helpers/List"], function(List) {
             var obj = data[type];
             var list = new List({
-                    title: obj.title,
-                    id: obj.id,
-                    list_selectable: "muti",
-                    addBtn: false,
-                    columns: obj.columns
-                }),
-                selector = list.getDom();
-            selector.on("selected.fu.repeaterList", function() {
-                callback(selector.repeater('list_getSelectedItems'));
+                title: obj.title,
+                id: obj.id,
+                list_selectable: opts.list_selectable,
+                key: type,
+                list_selectable: "muti",
+                addBtn: false,
+                columns: obj.columns
             });
+            callback(list);
+        });
+    };
+
+    function showList(type, opts, callback) {
+        buildList(type, opts, function(list) {
+            var selector = list.getDom();
+            var modal = $("#contentModal");
+            selector.on("selected.fu.repeaterList", function(row) {
+                callback(selector.repeater('list_getSelectedItems'), modal);
+            });
+
+            modal.find(".modal-body").html(selector);
+            modal.find(".modal-title").html("图片列表");
+            modal.modal('show');
         });
     };
 
@@ -168,6 +186,8 @@ define([
         }
     };
     var modalFuncs = {
+        buildList: buildList,
+
         toggleRelated: function(selector) {
             selector.find("select.related").each(function() {
                 var s = $(this),
@@ -194,16 +214,34 @@ define([
             });
         },
 
-        contentSelected: function(selector) {
+        contentListBySelect: function(selector, opts) {
             selector.find("select.muti-content").each(function() {
                 var s = $(this);
                 s.off("change").on("change", function() {
                     var value = this.value;
                     server().connect(value, "get", "select").then(function(data) {
-                        buildList(value, function(items) {
-                            __content[value] = items;
+                        showList(value, opts, function(items, modal) {
+                            __content[opts.key] = {
+                                type: value,
+                                items: items
+                            };
+                            modal.modal("hide");
                         });
                     });
+                });
+            });
+        },
+
+        contentListByBtn: function(selector, opts) {
+            selector.find("button.select-content-list").off("click").on("click", function(e) {
+                var type = $(e.currentTarget).data("type");
+                showList(type, opts, function(items, modal) {
+                    __content[opts.key] = {
+                        type: type,
+                        items: items.map(function(item) { return item.data.id })
+                    };
+                    opts.listSCallback(selector, items);
+                    modal.modal("hide");
                 });
             });
         },
@@ -215,8 +253,10 @@ define([
             modal.find(".save-btn").off("click").on("click", function() {
                 var __save = function() {
                     save(opts.key, modal, {
-                        file: __files[opts.key]
+                        _content: __content[opts.key],
+                        _file: __files[opts.key]
                     }, function(data) {
+                        __content[opts.key] = null;
                         __files[opts.key] = null;
                         toastr.success("已保存！");
                         if (opts.callback) opts.callback(data);
@@ -234,14 +274,15 @@ define([
                     __save();
                 }
             });
+
             if (opts.file) {
                 modal.find(".form input.file").on("change", function(e) {
                     __files[opts.key] = this.files[0];
                 });
             }
-            this.contentSelected(modal);
+            this.contentListBySelect(modal, opts);
             this.toggleRelated(modal);
-
+            this.contentListByBtn(modal, opts);
             if (modal.find("#simplemde")[0]) {
                 new SimpeMdeEditor({
                     selector: modal.find("#simplemde")[0]

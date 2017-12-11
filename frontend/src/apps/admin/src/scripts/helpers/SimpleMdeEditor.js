@@ -48,6 +48,7 @@ define([
                 title: "图片列表",
                 id: "photoModalRepeater",
                 thumbnail_selectable: "single",
+                key: "photos",
                 list_selectable: "single",
                 thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" src="{{src}}" width="65"><span>{{name}}</span></div>',
                 addBtn: false,

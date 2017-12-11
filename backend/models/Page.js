@@ -31,7 +31,9 @@ exports.Page = class Page extends Model {
         return result;
     }
     static update(args) {
-        return Model.update("pages", "id", args);
+        result = Model.update("pages", "id", args);
+        pageExt.update(result);
+        return result;
     }
     static delete(args) {
         let result = Model.findBy("pages", args);

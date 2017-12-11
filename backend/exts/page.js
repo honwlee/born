@@ -8,6 +8,22 @@ function parse() {
     return JSON.parse(fs.readFileSync(configPath, 'utf8'));
 };
 
+function writeConfig(page) {
+    let configData = parse();
+    let route = configData.routes[page.name];
+    if (route) {
+        route.data = {
+            name: name,
+            navName: page.title
+        };
+        if (page.hide) route.hide = true;
+        if (page.type === "sub") {
+            route.sub = true;
+        }
+    }
+    fs.writeFileSync(configPath, JSON.stringify(configData));
+};
+
 module.exports = {
     add: function(page) {
         let route, name = page.name,
@@ -16,19 +32,7 @@ module.exports = {
                 exec('sjs routes add ' + appPath + ' ' + _name + ":" + _pathto, (err, stdout, stderr) => {
                     if (stdout) {
                         console.log(`stdout: ${stdout}`);
-                        let configData = parse();
-                        let route = configData.routes[page.name];
-                        if (route) {
-                            route.data = {
-                                name: name,
-                                navName: _page.title
-                            };
-                            if (_page.hide) route.hide = true;
-                            if (_page.type === "sub") {
-                                route.sub = true;
-                            }
-                        }
-                        fs.writeFileSync(configPath, JSON.stringify(configData));
+                        writeConfig(_page, name);
                     } else {
                         console.log(`stderr: ${stderr}`);
                     }
@@ -38,6 +42,13 @@ module.exports = {
             name = page.parentName + "-" + name;
         }
         addRoute(page, name, pathto);
+    },
+    update: function(page) {
+        let name = page.name;
+        if (page.parentName) {
+            name = page.parentName + "-" + name;
+        }
+        writeConfig(page, name);
     },
     remove: function(page) {
         let name = page.name;
