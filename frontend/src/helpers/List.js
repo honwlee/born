@@ -12,6 +12,7 @@ define([
     partial.get("repeater-tpl-partial", __selector);
     partial.get("datepicker-tpl-partial", __selector);
     partial.get("checkbox-tpl-partial", __selector);
+    partial.get("wizard-tpl-partial", __selector);
 
     function customColumnRenderer(helpers, callback) {
         // Determine what column is being rendered and review 
@@ -57,7 +58,7 @@ define([
         callback();
     }
     var defaultActions = {
-        "delete": function(opts) {
+        "delete": function(modal, opts) {
             return {
                 name: 'delete',
                 html: '<span class="glyphicon glyphicon-trash"></span> 删除',
@@ -73,7 +74,7 @@ define([
                 }
             };
         },
-        "edit": function(opts) {
+        "edit": function(modal, opts) {
             return {
                 name: 'edit',
                 html: '<span class="glyphicon glyphicon-edit"></span> 编辑',
@@ -88,7 +89,7 @@ define([
                 }
             };
         },
-        "show": function(opts) {
+        "show": function(modal, opts) {
             return {
                 name: 'show',
                 html: '<span class="glyphicon glyphicon-eye-open"></span> 查看',
@@ -220,7 +221,7 @@ define([
                     var actions = [];
                     opts.actions.forEach(function(a) {
                         if (defaultActions[a.name]) {
-                            actions.push(defaultActions[a.name]({
+                            actions.push(defaultActions[a.name](modal, {
                                 container: container,
                                 key: opts.key,
                                 callback: a.callback,

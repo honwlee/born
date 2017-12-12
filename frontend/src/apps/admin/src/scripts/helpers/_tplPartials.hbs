@@ -37,14 +37,14 @@
                 <input type="text" class="form-control" name="title" value="{{title}}" />
             </div>
         </div>
-        
+
         <div class="form-group">
             <label class="col-sm-2 control-label">内容</label>
             <div class="col-sm-10">
                 <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
             </div>
         </div>
-            <div class="form-group">
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="file">选择文章</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="posts" type="button">点击选择</button>
@@ -71,7 +71,7 @@
             </ul>
         </div>
     </script>
-    
+
     <script id="page2-form-partial" type="text/x-handlebars-template">
         <div class="form-group">
             <label class="col-sm-2 control-label" for="title">标题</label>
@@ -79,174 +79,173 @@
                 <input type="text" class="form-control" name="title" value="{{title}}" />
             </div>
         </div>
-        
+
         <div class="form-group">
             <label class="col-sm-2 control-label">内容</label>
             <div class="col-sm-10">
                 <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
             </div>
         </div>
-            <div class="form-group">
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="file">选择文章</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="posts" type="button">点击选择</button>
             </div>
-        </div> 
+        </div>
     </script>
 
 
-<script id="page3-partial" type="text/x-handlebars-template">
-    <!-- 我们的优势 -->
-    <div class="bg_three">
-        <div class="part">
-            <p class="main_title main_title_three">我们的优势</p>
-        </div>
-        <div class="part_three">
-            <p class="part_three_about">
-                业界知名专家“洛杉矶胖爸爸”创立，首次提出赴美生子诚实签，倡导安全合法赴美生子，品质保障。国内城市设立办事处，定期全国巡回面对面咨询，让孕妈更加放心安心。
-            </p>
-            <div class="part_three_detail">
-                <div class="part_three_datailCon">
-                    <p class="pt_datail_title">直营品牌保障</p>
-                    <p class="pt_datail_con">洛杉矶老牌直营月子中心，国内外同一服务团队。正规注册公司，安全有保障。</p>
-                    <p class="pt_datail_page">1/6</p>
+    <script id="page3-partial" type="text/x-handlebars-template">
+        <!-- 我们的优势 -->
+        <div class="bg_three">
+            <div class="part">
+                <p class="main_title main_title_three">我们的优势</p>
+            </div>
+            <div class="part_three">
+                <p class="part_three_about">
+                    业界知名专家“洛杉矶胖爸爸”创立，首次提出赴美生子诚实签，倡导安全合法赴美生子，品质保障。国内城市设立办事处，定期全国巡回面对面咨询，让孕妈更加放心安心。
+                </p>
+                <div class="part_three_detail">
+                    <div class="part_three_datailCon">
+                        <p class="pt_datail_title">直营品牌保障</p>
+                        <p class="pt_datail_con">洛杉矶老牌直营月子中心，国内外同一服务团队。正规注册公司，安全有保障。</p>
+                        <p class="pt_datail_page">1/6</p>
+                    </div>
+                    <ul class="part_three_left">
+                        {{#each advantagesLeftPage}}
+                        <li class="{{class}}">
+                            <p>{{title}}</p>
+                            <img data-main="{{dataMain}}" src="{{imgUrl}}" height="104px" width="104px">
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <ul class="part_three_right">
+                        {{#each advantagesRightPage}}
+                        <li class="{{class}}">
+                            <img data-main="{{dataMain}}" src="{{imgUrl}}" height="104px" width="104px">
+                            <p>{{title}}</p>
+                        </li>
+                        {{/each}}
+                    </ul>
                 </div>
-                <ul class="part_three_left">
-                    {{#each advantagesLeftPage}}
-                    <li class="{{class}}">
-                        <p>{{title}}</p>
-                        <img data-main="{{dataMain}}" src="{{imgUrl}}" height="104px" width="104px">
-                    </li>
-                    {{/each}}
-                </ul>
-                <ul class="part_three_right">
-                    {{#each advantagesRightPage}}
-                    <li class="{{class}}">
-                        <img data-main="{{dataMain}}" src="{{imgUrl}}" height="104px" width="104px">
-                        <p>{{title}}</p>
-                    </li>
-                    {{/each}}
-                </ul>
             </div>
         </div>
-    </div>
     </script>
- 
 
-        <script id="page3-form-partial" type="text/x-handlebars-template">
+
+    <script id="page3-form-partial" type="text/x-handlebars-template">
         <div class="form-group">
             <label class="col-sm-2 control-label" for="title">标题</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="title" value="{{title}}" />
             </div>
         </div>
-        
+
         <div class="form-group">
             <label class="col-sm-2 control-label">优势内容</label>
             <div class="col-sm-10">
                 <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
             </div>
             <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">优势标题一</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
+                <label class="col-sm-2 control-label" for="title">优势标题一</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="title" value="{{title}}" />
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">优势内容一</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-        </div> 
-         <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">优势标题二</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">优势内容二</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-        </div> 
-         <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">优势标题三</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
             <div class="form-group">
-            <label class="col-sm-2 control-label">优势内容三</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-        </div> 
-        </div> 
-                 <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">优势标题四</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">优势内容四</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-        </div> 
-        </div> 
-         <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">优势标题五</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">优势内容五</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-        </div> 
-         <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">优势标题六</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">优势内容六</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-        </div> 
+                <label class="col-sm-2 control-label">优势内容一</label>
+                <div class="col-sm-10">
+                    <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="title">优势标题二</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="title" value="{{title}}" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">优势内容二</label>
+                    <div class="col-sm-10">
+                        <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="title">优势标题三</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="title" value="{{title}}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">优势内容三</label>
+                        <div class="col-sm-10">
+                            <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="title">优势标题四</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="title" value="{{title}}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">优势内容四</label>
+                        <div class="col-sm-10">
+                            <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="title">优势标题五</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="title" value="{{title}}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">优势内容五</label>
+                        <div class="col-sm-10">
+                            <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="title">优势标题六</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="title" value="{{title}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">优势内容六</label>
+                            <div class="col-sm-10">
+                                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+                            </div>
     </script>
 
-      <script id="page4-partial" type="text/x-handlebars-template">
-    <!-- 月子中心 -->
-    <div class="bg_four">
-        <div class="part">
-            <p class="main_title main_title_three">美国待产环境</p>
+    <script id="page4-partial" type="text/x-handlebars-template">
+        <!-- 月子中心 -->
+        <div class="bg_four">
+            <div class="part">
+                <p class="main_title main_title_three">美国待产环境</p>
+            </div>
+            <ul class="part_four">
+                {{#each environmentPage}}
+                <li>
+                    <a target="_blank" href="{{href}}">
+                        <img src="{{imgUrl}}" title="" alt="" height="213" width="379">
+                    </a>
+                    <p style="line-height: 66px;" class="part_four_title">{{text}}</p>
+                </li>
+                {{/each}}
+            </ul>
+            <div class="find_more_four">
+                <a class="part_four_more part_more" href="/show-3/">查看更多</a>
+            </div>
         </div>
-        <ul class="part_four">
-            {{#each environmentPage}}
-            <li>
-                <a target="_blank" href="{{href}}">
-                    <img src="{{imgUrl}}" title="" alt="" height="213" width="379">
-                </a>
-                <p style="line-height: 66px;" class="part_four_title">{{text}}</p>
-            </li>
-            {{/each}}
-        </ul>
-        <div class="find_more_four">
-            <a class="part_four_more part_more" href="/show-3/">查看更多</a>
-        </div>
-    </div>
     </script>
-        <script id="page4-form-partial" type="text/x-handlebars-template">
+    <script id="page4-form-partial" type="text/x-handlebars-template">
         <div class="form-group">
             <label class="col-sm-2 control-label" for="title">标题</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="title" value="{{title}}" />
             </div>
         </div>
-        
-        </div>
-            <div class="form-group">
+
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="file">选择文章</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="posts" type="button">点击选择</button>
@@ -255,55 +254,53 @@
     </script>
 
     <script id="page5-partial" type="text/x-handlebars-template">
-    <!-- 在美活动 -->
-    <div class="bg_seven">
-        <div class="part">
-            <p class="main_title main_title_seven">在美活动</p>
-        </div>
-        <div class="part_seven_main">
-            <div id="success_left" class="part_seven_left">
-                <img src="/assets/images/10361431_IMG_6166.jpeg" title="" height="267" width="577">
-                <p class="ps_left_title"><a href="http://www.xiduobaby.com/view-2846-12.html" title="新疆赴美生子生美国际月子中心庆祝美宝满月生个美宝好处多">新疆赴美生子生美国际月子中心庆祝美宝满月</a>
-            </p>
-            <div class="ps_left_con">洛杉矶生美国际月子中心Rancho Cucamonga别墅里来自新疆乌鲁木齐的赴美产子客人为自家的小美宝庆祝满月啦 ， 妈妈这次是来美国生二宝的， 大宝是位小王子，二宝也是哦，哥俩以后可以一起...</div>
-        </div>
-        <div class="part_seven_right">
-            <!--    <div class="ps_haddleTop"></div> -->
-            <div style="margin-top:60px;" class="ps_right_con">
-                <ul>
-                    {{#each activePage}}
-                    <li>
-                        <div class="img_img_desc">
-                            <a href="{{href}}" title="{{title}}">
-                                <img src="{{imgUrl}}" height="auto" width="277">
-                            </a>
-                        </div>
-                        <a href="{{href}}" title="{{title}}">
-                            <p>{{text}}</p>
-                        </a>
-                    </li>
-                    {{/each}}
-                </ul>
+        <!-- 在美活动 -->
+        <div class="bg_seven">
+            <div class="part">
+                <p class="main_title main_title_seven">在美活动</p>
             </div>
-            <!-- <div class="ps_haddleBottom"></div> -->
+            <div class="part_seven_main">
+                <div id="success_left" class="part_seven_left">
+                    <img src="/assets/images/10361431_IMG_6166.jpeg" title="" height="267" width="577">
+                    <p class="ps_left_title"><a href="http://www.xiduobaby.com/view-2846-12.html" title="新疆赴美生子生美国际月子中心庆祝美宝满月生个美宝好处多">新疆赴美生子生美国际月子中心庆祝美宝满月</a>
+                    </p>
+                    <div class="ps_left_con">洛杉矶生美国际月子中心Rancho Cucamonga别墅里来自新疆乌鲁木齐的赴美产子客人为自家的小美宝庆祝满月啦 ， 妈妈这次是来美国生二宝的， 大宝是位小王子，二宝也是哦，哥俩以后可以一起...</div>
+                </div>
+                <div class="part_seven_right">
+                    <!--    <div class="ps_haddleTop"></div> -->
+                    <div style="margin-top:60px;" class="ps_right_con">
+                        <ul>
+                            {{#each activePage}}
+                            <li>
+                                <div class="img_img_desc">
+                                    <a href="{{href}}" title="{{title}}">
+                                        <img src="{{imgUrl}}" height="auto" width="277">
+                                    </a>
+                                </div>
+                                <a href="{{href}}" title="{{title}}">
+                                    <p>{{text}}</p>
+                                </a>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <!-- <div class="ps_haddleBottom"></div> -->
+                </div>
+                <div class="find_more_five">
+                    <a class="part_five_more part_more" href="/list-12/">查看更多</a>
+                </div>
+            </div>
         </div>
-        <div class="find_more_five">
-            <a class="part_five_more part_more" href="/list-12/">查看更多</a>
-        </div>
-    </div>
-</div>
-</script>
-  </script>
-        <script id="page5-form-partial" type="text/x-handlebars-template">
+    </script>
+    <script id="page5-form-partial" type="text/x-handlebars-template">
         <div class="form-group">
             <label class="col-sm-2 control-label" for="title">标题</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="title" value="{{title}}" />
             </div>
         </div>
-        
-        </div>
-            <div class="form-group">
+
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="file">选择文章</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="posts" type="button">点击选择</button>
@@ -311,86 +308,84 @@
         </div>
     </script>
     <script id="page6-partial" type="text/x-handlebars-template">
-<!-- 新闻消息 -->
-    <div class="homenews hidden-xs">
-    <div class="homenewsCon">
-        <h5 class="homenewsTitle">
-        <span><img src="/assets/images/homenewstitle.png" alt=""></span>
-        <a href="javascript:void(0)" class="prev"></a>
-        <a href="javascript:void(0)" class="next"></a>
-        </h5>
-        <div class="tbC">
-            <div class="tempWrap">
-                <div class="slidecon">
-                    <ul class="list-unstyled clearfix">
-                        {{#each newsPage}}
-                        <li class="clearfix">
-                            <a>
-                                <div class="con panel-body">
-                                    <div class="inner">
-                                        <h6 class="slidetitle">{{title}}
-                                        <i class="arrowI"></i>
-                                        </h6>
-                                        <p>{{text}} </p>
-                                        <div class="morelink">morelink</div>
-                                    </div>
-                                </div>
-                                <div class="imgright">
-                                    <img src="{{imgUrl}}" alt="">
-                                </div>
-                            </a>
-                        </li>
-                        {{/each}}
-                        <li class="clearfix">
-                            <a>
-                                <div class="imgright">
-                                    <img src="/assets/images/news/0.png" alt="">
-                                </div>
-                                <div class="panel-body con">
-                                    <div class="inner">
-                                        <h6 class="slidetitle">​特朗普VS伊朗：中东或更加动荡 美战略负担将增加
-                                        <i class="arrowI"></i>
-                                        </h6>
-                                        <p>2017年1~9月，中美贸易总额2.89万亿人民币，增长了18.7%，其中中国对美出口增长了16.5%，从美国进口则增长了25%。 </p>
-                                        <div class="morelink">morelink</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="clearfix">
-                            <a>
-                                <div class="imgright">
-                                    <img src="/assets/images/news/0.png" alt="">
-                                </div>
-                                <div class="panel-body con">
-                                    <div class="inner">
-                                        <h6 class="slidetitle">​特朗普VS伊朗：中东或更加动荡 美战略负担将增加
-                                        <i class="arrowI"></i>
-                                        </h6>
-                                        <p>2017年1~9月，中美贸易总额2.89万亿人民币，增长了18.7%，其中中国对美出口增长了16.5%，从美国进口则增长了25%。 </p>
-                                        <div class="morelink">morelink</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+        <!-- 新闻消息 -->
+        <div class="homenews hidden-xs">
+            <div class="homenewsCon">
+                <h5 class="homenewsTitle">
+                    <span><img src="/assets/images/homenewstitle.png" alt=""></span>
+                    <a href="javascript:void(0)" class="prev"></a>
+                    <a href="javascript:void(0)" class="next"></a>
+                </h5>
+                <div class="tbC">
+                    <div class="tempWrap">
+                        <div class="slidecon">
+                            <ul class="list-unstyled clearfix">
+                                {{#each newsPage}}
+                                <li class="clearfix">
+                                    <a>
+                                        <div class="con panel-body">
+                                            <div class="inner">
+                                                <h6 class="slidetitle">{{title}}
+                                                    <i class="arrowI"></i>
+                                                </h6>
+                                                <p>{{text}} </p>
+                                                <div class="morelink">morelink</div>
+                                            </div>
+                                        </div>
+                                        <div class="imgright">
+                                            <img src="{{imgUrl}}" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                {{/each}}
+                                <li class="clearfix">
+                                    <a>
+                                        <div class="imgright">
+                                            <img src="/assets/images/news/0.png" alt="">
+                                        </div>
+                                        <div class="panel-body con">
+                                            <div class="inner">
+                                                <h6 class="slidetitle">​特朗普VS伊朗：中东或更加动荡 美战略负担将增加
+                                                    <i class="arrowI"></i>
+                                                </h6>
+                                                <p>2017年1~9月，中美贸易总额2.89万亿人民币，增长了18.7%，其中中国对美出口增长了16.5%，从美国进口则增长了25%。 </p>
+                                                <div class="morelink">morelink</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="clearfix">
+                                    <a>
+                                        <div class="imgright">
+                                            <img src="/assets/images/news/0.png" alt="">
+                                        </div>
+                                        <div class="panel-body con">
+                                            <div class="inner">
+                                                <h6 class="slidetitle">​特朗普VS伊朗：中东或更加动荡 美战略负担将增加
+                                                    <i class="arrowI"></i>
+                                                </h6>
+                                                <p>2017年1~9月，中美贸易总额2.89万亿人民币，增长了18.7%，其中中国对美出口增长了16.5%，从美国进口则增长了25%。 </p>
+                                                <div class="morelink">morelink</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-</script>
-  </script>
-        <script id="page6-form-partial" type="text/x-handlebars-template">
+    </script>
+    <script id="page6-form-partial" type="text/x-handlebars-template">
         <div class="form-group">
             <label class="col-sm-2 control-label" for="title">标题</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="title" value="{{title}}" />
             </div>
         </div>
-        
-        </div>
-            <div class="form-group">
+
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="file">选择文章</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="posts" type="button">点击选择</button>
@@ -398,30 +393,30 @@
         </div>
     </script>
     <script id="page7-partial" type="text/x-handlebars-template">
-<!-- 生美国际赴美的五心服务 -->
-    <div class="bg_ten">
-    <div class="part">
-        <p class="main_title main_title_ten">BornInUSA 生美贴心服务</p>
-    </div>
-    <ul class="part_ten">
-        {{#each intimateServicePage}}
-        <li>
-            <img src="{{imgUrl}}" height="130" width="130">
-            <p class="part_ten_title">{{title}}</p>
-            <p class="part_ten_main">{{text}}</p>
-            <p class="part_ten_con">{{con}}</p>
-        </li>
-        {{/each}}
-    </ul>
-</div>
-</script>
+        <!-- 生美国际赴美的五心服务 -->
+        <div class="bg_ten">
+            <div class="part">
+                <p class="main_title main_title_ten">BornInUSA 生美贴心服务</p>
+            </div>
+            <ul class="part_ten">
+                {{#each intimateServicePage}}
+                <li>
+                    <img src="{{imgUrl}}" height="130" width="130">
+                    <p class="part_ten_title">{{title}}</p>
+                    <p class="part_ten_main">{{text}}</p>
+                    <p class="part_ten_con">{{con}}</p>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </script>
     <script id="page7-form-partial" type="text/x-handlebars-template">
         <div class="form-group">
             <label class="col-sm-2 control-label" for="title">标题</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="title" value="{{title}}" />
             </div>
-        </div>       
+        </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">内容</label>
             <div class="col-sm-10">
@@ -429,12 +424,12 @@
             </div>
         </div>
 
-                <div class="form-group">
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="title">标题</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="title" value="{{title}}" />
             </div>
-        </div>       
+        </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">内容</label>
             <div class="col-sm-10">
@@ -442,12 +437,12 @@
             </div>
         </div>
 
-                <div class="form-group">
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="title">标题</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="title" value="{{title}}" />
             </div>
-        </div>       
+        </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">内容</label>
             <div class="col-sm-10">
@@ -455,12 +450,12 @@
             </div>
         </div>
 
-                <div class="form-group">
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="title">标题</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="title" value="{{title}}" />
             </div>
-        </div>       
+        </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">内容</label>
             <div class="col-sm-10">
@@ -468,16 +463,17 @@
             </div>
         </div>
 
-                <div class="form-group">
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="title">标题</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="title" value="{{title}}" />
             </div>
-        </div>       
+        </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">内容</label>
             <div class="col-sm-10">
                 <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
             </div>
         </div>
+    </script>
 </div>
