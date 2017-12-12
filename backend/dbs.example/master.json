@@ -1,69 +1,89 @@
 {
-    "tables": [
-    {
-        "id": 1,
-        "name": "users",
-        "spaceFileName": "_users.json",
-        "autoOpen": true
-    },
-    {
-        "id": 2,
-        "name": "attachments",
-        "spaceFileName": "_attachments.json",
-        "autoOpen": true
-    },
-    {
-        "id": 3,
-        "name": "banners",
-        "spaceFileName": "_banners.json",
-        "autoOpen": true
-    },
-    {
-        "id": 4,
-        "name": "events",
-        "spaceFileName": "_events.json",
-        "autoOpen": true
-    },
-    {
-        "id": 5,
-        "name": "keywords",
-        "spaceFileName": "_keywords.json",
-        "autoOpen": true
-    },
-    {
-        "id": 6,
-        "name": "messages",
-        "spaceFileName": "_messages.json",
-        "autoOpen": true
-    },
-    {
-        "id": 7,
-        "name": "news",
-        "spaceFileName": "_news.json",
-        "autoOpen": true
-    },
-    {
-        "id": 8,
-        "name": "pages",
-        "spaceFileName": "_pages.json",
-        "autoOpen": true
-    },
-    {
-        "id": 9,
-        "name": "photos",
-        "spaceFileName": "_photos.json",
-        "autoOpen": true
-    },
-    {
-        "id": 10,
-        "name": "posts",
-        "spaceFileName": "_posts.json",
-        "autoOpen": true
-    },
-    {
-        "id": 11,
-        "name": "products",
-        "spaceFileName": "_products.json",
-        "autoOpen": true
-    }]
+    "tables": [{
+            "id": 1,
+            "name": "users",
+            "spaceFileName": "_users.json",
+            "autoOpen": true
+        },
+        {
+            "id": 2,
+            "name": "attachments",
+            "spaceFileName": "_attachments.json",
+            "autoOpen": true
+        },
+        {
+            "id": 3,
+            "name": "slides",
+            "spaceFileName": "_slides.json",
+            "autoOpen": true
+        },
+        {
+            "id": 4,
+            "name": "events",
+            "spaceFileName": "_events.json",
+            "autoOpen": true
+        },
+        {
+            "id": 5,
+            "name": "keywords",
+            "spaceFileName": "_keywords.json",
+            "autoOpen": true
+        },
+        {
+            "id": 6,
+            "name": "messages",
+            "spaceFileName": "_messages.json",
+            "autoOpen": true
+        },
+        {
+            "id": 7,
+            "name": "news",
+            "spaceFileName": "_news.json",
+            "autoOpen": true
+        },
+        {
+            "id": 8,
+            "name": "pages",
+            "spaceFileName": "_pages.json",
+            "autoOpen": true
+        },
+        {
+            "id": 9,
+            "name": "photos",
+            "spaceFileName": "_photos.json",
+            "autoOpen": true
+        },
+        {
+            "id": 10,
+            "name": "posts",
+            "spaceFileName": "_posts.json",
+            "autoOpen": true
+        },
+        {
+            "id": 11,
+            "name": "products",
+            "spaceFileName": "_products.json",
+            "autoOpen": true
+        }, {
+            "id": 12,
+            "name": "grids",
+            "spaceFileName": "_grids.json",
+            "autoOpen": true
+        }, {
+            "id": 13,
+            "name": "contents",
+            "spaceFileName": "_contents.json",
+            "autoOpen": true
+        }, {
+            "id": 14,
+            "name": "qas",
+            "spaceFileName": "_qas.json",
+            "autoOpen": true
+        }, {
+            "id": 15,
+            "name": "sites",
+            "spaceFileName": "_sites.json",
+            "autoOpen": true
+        }
+    ]
 }
