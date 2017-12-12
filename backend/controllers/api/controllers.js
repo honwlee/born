@@ -44,5 +44,8 @@ module.exports = {
     },
     qas: {
         module: require("./QaController")
+    },
+    sites: {
+        module: require("./SiteController")
     }
 }

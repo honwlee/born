@@ -71,9 +71,11 @@ define([
                         selector.repeater('render');
                     }
                 });
-                modal.find("#tpl").off("change").on("change", function() {
-                    var value = this.value;
-                    if (value) $(tplHelper.getForm(value)()).appendTo(modal.find("#contentForm .tpl-container").empty());
+                modal.off('shown.bs.modal').on('shown.bs.modal', function() {
+                    modal.find("#tpl").off("change").on("change", function() {
+                        var value = this.value;
+                        if (value) $(tplHelper.getForm(value)()).appendTo(modal.find("#contentForm .tpl-container").empty());
+                    });
                 });
             });
             selector.find(".repeater-refresh button").off("click").on("click", function(e) {

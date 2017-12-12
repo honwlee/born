@@ -3,7 +3,7 @@ const Model = require("./_Base").Model,
     path = require('path'),
     fs = require('fs');
 
-exports.Qa = class Banner extends Model {
+exports.Qa = class Qa extends Model {
     static list(sortKey = "status", direction = "asc") {
         return Model.list("qas", sortKey, direction);
     }

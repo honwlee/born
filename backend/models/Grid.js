@@ -3,7 +3,7 @@ const Model = require("./_Base").Model,
     path = require('path'),
     fs = require('fs');
 
-exports.Grid = class Banner extends Model {
+exports.Grid = class Grid extends Model {
     static list(sortKey = "status", direction = "asc") {
         return Model.list("grids", sortKey, direction);
     }

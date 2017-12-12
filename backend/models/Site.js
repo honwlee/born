@@ -3,9 +3,12 @@ const Model = require("./_Base").Model,
     path = require('path'),
     fs = require('fs');
 
-exports.Site = class Banner extends Model {
+exports.Site = class Site extends Model {
     static list(sortKey = "status", direction = "asc") {
         return Model.list("sites", sortKey, direction);
+    }
+    static first() {
+        return Model.first("sites");
     }
     static findBy(args) {
         return Model.findBy("sites", args);
