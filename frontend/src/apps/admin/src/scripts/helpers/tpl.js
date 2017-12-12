@@ -26,12 +26,33 @@ define([
 
     return {
         tpls: [{
-            name: "page1",
-            cnName: "模板一"
-        }, {
-            name: "page2",
-            cnName: "模板二"
-        }],
+                name: "page1",
+                cnName: "模板一"
+            }, {
+                name: "page2",
+                cnName: "模板二"
+            },
+            {
+                name: "page3",
+                cnName: "模板三"
+            },
+            {
+                name: "page4",
+                cnName: "模板四"
+            },
+            {
+                name: "page5",
+                cnName: "模板五"
+            },
+            {
+                name: "page6",
+                cnName: "模板六"
+            },
+            {
+                name: "page7",
+                cnName: "模板七"
+            }
+        ],
         getForm: getFormTpl,
         getContent: getContentTpl
     };
