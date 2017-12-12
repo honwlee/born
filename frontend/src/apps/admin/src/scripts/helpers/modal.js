@@ -257,7 +257,7 @@ define([
         });
     };
 
-    function bindFormEvnts(selector) {
+    function bindFormEvnts(modal, opts) {
         contentListBySelect(modal, opts);
         toggleRelated(modal);
         contentListByBtn(modal, opts);
