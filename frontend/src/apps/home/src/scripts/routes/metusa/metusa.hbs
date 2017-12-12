@@ -22,4 +22,24 @@
             </section>
         </div>
     </script>
+    <script id="metusa-listItem-partial" type="text/x-handlebars-template">
+        <div class="media panel-body item" data-id="{{id}}">
+            <div class="media-left col-md-4">
+                <a href="#">
+                    <img class="media-object" src="{{src}}" alt="..." style="width:100%;">
+                </a>
+            </div>
+            <div class="media-body media-right">
+                <h4 class="media-heading">{{title}}</h4>
+                <p class="text-tip"> {{content}}</p>
+                <p class="media-footer">
+                    <span>{{publishedDate}}</span>
+                    <span class="pull-right">
+                        <i class="glyphicon glyphicon-eye-open icon"></i>
+                        {{viewCount}}
+                    </span>
+                </p>
+            </div>
+        </div>
+    </script>
 </div>

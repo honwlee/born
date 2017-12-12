@@ -165,7 +165,7 @@ define([
                             })
                         };
                         cmodal.modal("hide");
-                        opts.listSCallback(formModal, items);
+                        if (opts.listSCallback) opts.listSCallback(formModal, items);
                     } else {
                         toastr.warning("请选择一项！");
                     }
@@ -211,54 +211,65 @@ define([
             }
         }
     };
-    var modalFuncs = {
-        buildList: buildList,
 
-        toggleRelated: function(selector) {
-            selector.find("select.related").each(function() {
-                var s = $(this),
-                    related = s.data("related");
-                if (related) {
-                    var r = related.split("@");
-                    var subSC = $(r[0]);
-                    s.off("change").on("change", function() {
-                        if (this.value === r[1]) {
-                            server().connect(r[2], "get", "select").then(function(data) {
-                                var subS = subSC.find("select").empty();
-                                data.forEach(function(d) {
-                                    $("<option>").attr({
-                                        value: d.id
-                                    }).text(d.title).appendTo(subS);
-                                });
-                                subSC.removeClass("hide").find("select").removeClass("hide");
-                            });
-                        } else {
-                            subSC.addClass("hide").find("select").addClass("hide");
-                        }
-                    })
-                }
-            });
-        },
-
-        contentListBySelect: function(selector, opts) {
-            selector.find("select.muti-content").each(function() {
-                var s = $(this);
-                s.off("change").on("change", function() {
-                    var value = this.value;
-                    server().connect(value, "get", "select").then(function(data) {
-                        showList(selector, value, opts);
-                    });
+    function contentListBySelect(selector, opts) {
+        selector.find("select.muti-content").each(function() {
+            var s = $(this);
+            s.off("change").on("change", function() {
+                var value = this.value;
+                server().connect(value, "get", "select").then(function(data) {
+                    showList(selector, value, opts);
                 });
             });
-        },
+        });
+    };
 
-        contentListByBtn: function(selector, opts) {
-            selector.find("button.select-content-list").off("click").on("click", function(e) {
-                var type = $(e.currentTarget).data("type");
-                showList(selector, type, opts);
+    function contentListByBtn(selector, opts) {
+        selector.find("button.select-content-list").off("click").on("click", function(e) {
+            var type = $(e.currentTarget).data("type");
+            showList(selector, type, opts);
+        });
+    };
+
+    function toggleRelated(selector) {
+        selector.find("select.related").each(function() {
+            var s = $(this),
+                related = s.data("related");
+            if (related) {
+                var r = related.split("@");
+                var subSC = $(r[0]);
+                s.off("change").on("change", function() {
+                    if (this.value === r[1]) {
+                        server().connect(r[2], "get", "select").then(function(data) {
+                            var subS = subSC.find("select").empty();
+                            data.forEach(function(d) {
+                                $("<option>").attr({
+                                    value: d.id
+                                }).text(d.title).appendTo(subS);
+                            });
+                            subSC.removeClass("hide").find("select").removeClass("hide");
+                        });
+                    } else {
+                        subSC.addClass("hide").find("select").addClass("hide");
+                    }
+                })
+            }
+        });
+    };
+
+    function bindFormEvnts(selector) {
+        contentListBySelect(modal, opts);
+        toggleRelated(modal);
+        contentListByBtn(modal, opts);
+        if (modal.find("#simplemde")[0]) {
+            new SimpeMdeEditor({
+                selector: modal.find("#simplemde")[0]
             });
-        },
+        }
+    };
 
+    var modalFuncs = {
+        buildList: buildList,
         _showForm: function(content, title, opts) {
             var modal = $("#formModal");
             modal.find(".modal-body").html(content);
@@ -293,14 +304,7 @@ define([
                     __files[opts.key] = this.files[0];
                 });
             }
-            this.contentListBySelect(modal, opts);
-            this.toggleRelated(modal);
-            this.contentListByBtn(modal, opts);
-            if (modal.find("#simplemde")[0]) {
-                new SimpeMdeEditor({
-                    selector: modal.find("#simplemde")[0]
-                });
-            }
+            bindFormEvnts(modal, opts);
             modal.modal('show');
             return modal;
         },
@@ -328,6 +332,7 @@ define([
     };
 
     return {
+        bindFormEvnts: bindFormEvnts,
         save: save,
         show: function(type, content, title, opts) {
             switch (type) {

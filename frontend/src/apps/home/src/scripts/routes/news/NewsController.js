@@ -4,24 +4,27 @@ define([
     "handlebars",
     "server",
     "scripts/helpers/Partial",
-    "scripts/helpers/List"
-], function($, skylarkjs, hbs, server, Partial, List) {
+    "scripts/helpers/List",
+    "text!scripts/routes/news/news.hbs"
+], function($, skylarkjs, hbs, server, Partial, List, template) {
     var spa = skylarkjs.spa,
-        langx = skylarkjs.langx;
+        langx = skylarkjs.langx,
+        __selector = $(langx.trim(template));
     var recommended = [{
         id: "recommended1",
         title: "去美国生宝宝 产后忌口"
     }];
+
+
     return spa.RouteController.inherit({
         klassName: "NewsController",
         repeaterId: "homeNewsRepeater",
         buildList: function() {
             return new List({
-                title: "新闻列表",
                 id: this.repeaterId,
                 key: "news",
                 defaultView: "thumbnail",
-                thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" src="{{cover}}" width="65"><span>{{name}}</span></div>',
+                thumbnail_template: langx.trim(__selector.find("#news-listItem-partial").html()),
                 needHeader: false,
                 columns: [{
                     label: '封面',
@@ -47,7 +50,7 @@ define([
                 list = this.buildList();
             e.content = _ec[0];
             list.getDom().appendTo(_ec.find(".repeater-container").empty());
-            _ec.delegate(".article-item", "click", function(e) {
+            _ec.delegate(".item", "click", function(e) {
                 var id = $(e.currentTarget).data("id");
                 window.go("/news/" + id, true);
             });

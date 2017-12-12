@@ -175,7 +175,7 @@ define([
                     if (options.key) action = action + "&&" + key + "=" + options[key];
                 }
 
-                server().connect(opts.key, "get", "index").then(function(data) {
+                server().connect(opts.key, "get", action).then(function(data) {
                     var items = data.rows || [];
                     var totalItems = data.total;
                     var totalPosts = Math.ceil(totalItems / pageSize);

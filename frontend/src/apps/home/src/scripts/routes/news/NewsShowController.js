@@ -5,8 +5,8 @@ define([
     "simplemde",
     "server",
     "./data",
-    "text!scripts/routes/news/show.hbs"
-], function($, skylarkjs, hbs, SimpleMDE, server, data, showTpl) {
+    "text!scripts/routes/news/news.hbs"
+], function($, skylarkjs, hbs, SimpleMDE, server, data, template) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx;
     return spa.RouteController.inherit({
@@ -20,7 +20,7 @@ define([
             });
         },
         rendering: function(e) {
-            var selector = $(langx.trim(showTpl));
+            var selector = $(langx.trim(template));
             var tpl = hbs.compile(langx.trim(selector.find("#news-show-main").html()).replace("{{&gt;", "{{>"));
 
             e.content = $(tpl({

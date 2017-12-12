@@ -5,8 +5,8 @@ define([
     "simplemde",
     "server",
     "./data",
-    "text!scripts/routes/fqa/show.hbs"
-], function($, skylarkjs, hbs, SimpleMDE, server, data, showTpl) {
+    "text!scripts/routes/fqa/qa.hbs"
+], function($, skylarkjs, hbs, SimpleMDE, server, data, template) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx;
     return spa.RouteController.inherit({
@@ -15,12 +15,12 @@ define([
         preparing: function(e) {
             var self = this,
                 id = e.route.getNamedValue()[1];
-            e.result = server().connect("posts", "get", "show?id=" + id).then(function(post) {
+            e.result = server().connect("qas", "get", "show?id=" + id).then(function(post) {
                 self.post = post;
             });
         },
         rendering: function(e) {
-            var selector = $(langx.trim(showTpl));
+            var selector = $(langx.trim(template));
             var tpl = hbs.compile(langx.trim(selector.find("#fqa-show-main").html()).replace("{{&gt;", "{{>"));
 
             e.content = $(tpl({

@@ -74,7 +74,13 @@ define([
                 modal.off('shown.bs.modal').on('shown.bs.modal', function() {
                     modal.find("#tpl").off("change").on("change", function() {
                         var value = this.value;
-                        if (value) $(tplHelper.getForm(value)()).appendTo(modal.find("#contentForm .tpl-container").empty());
+                        if (value) {
+                            $(tplHelper.getForm(value)()).appendTo(modal.find("#contentForm .tpl-container").empty());
+                            modalFunc.bindFormEvnts(modal, {
+                                key: "contents",
+                                file: true
+                            });
+                        }
                     });
                 });
             });

@@ -122,7 +122,7 @@
     <script id="datepicker-tpl-partial" type="text/x-handlebars-template">
         <div class="datepicker col-sm-10" {{#unless doNotInit}}data-initialize="datepicker"{{/unless}} id="{{#if id}}{{id}}{{else}}datepickerIllustration{{/if}}">
             <div class="input-group">
-                <input class="form-control" id="{{#if id}}{{id}}Input{{else}}myDatepickerInput{{/if}}" name="{{#if name}}{{name}}{{#if id}}{{id}}Input{{else}}myDatepickerInput{{/if}}{{/if}}" type="text"/>
+                <input class="form-control" name="publishedDate" type="text" value="{{publishedDate}}"/>
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-calendar"></span>
@@ -217,5 +217,19 @@
                 {{#if helptext}}<p class="help-block">{{helptext}}</p>{{/if}}
             </div>
         </div>
+    </script>
+
+
+    <script id="wizard-tpl-partial" type="text/x-handlebars-template">
+        <section id="wizard">
+            <h2>Wizard</h2>
+            <div class="thin-box">
+                <section>
+                {{#each wizards}}
+                    {{> wizard this }}
+                {{/each}}
+                </section>
+            </div>
+        </section>
     </script>
 </div>

@@ -75,6 +75,7 @@ define([
             selector.find(".repeater-add button").off("click").on("click", function(e) {
                 modal.show("form", $(tpl()), "添加文章", {
                     key: "qas",
+                    file: true,
                     callback: function() {
                         selector.repeater('render');
                     }
