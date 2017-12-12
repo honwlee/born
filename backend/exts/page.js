@@ -8,7 +8,7 @@ function parse() {
     return JSON.parse(fs.readFileSync(configPath, 'utf8'));
 };
 
-function writeConfig(page) {
+function writeConfig(page, name) {
     let configData = parse();
     let route = configData.routes[page.name];
     if (route) {
