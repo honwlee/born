@@ -1,319 +1,339 @@
 <div>
     <script id="page-select-partial" type="text/x-handlebars-template">
-        <div class="form-group page-selector">
-            <label class="col-sm-2 control-label">页面</label>
+    <div class="form-group page-selector">
+        <label class="col-sm-2 control-label">页面</label>
+        <div class="col-sm-10">
+            <select class="form-control" name="page" id="pageSelect">
+                {{#each pages}}
+                <option value="{{name}}">{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+    </script>
+    <script id="page-form-partial" type="text/x-handlebars-template">
+    <form class="form-horizontal admin-form form" id="pageForm" role="form">
+        <div class="form-group">
             <div class="col-sm-10">
-                <select class="form-control" name="page" id="pageSelect">
-                    {{#each pages}}
-                        <option value="{{name}}">{{name}}</option>
+                <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="name">名称</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" value="{{name}}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">页面类型</label>
+            <div class="col-sm-10">
+                <select class="form-control related" name="type" id="type" data-related=".parent-page-selector@sub@pages">
+                    <option value="main" select=true>主页面</option>
+                    <option value="sub">子页面</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group hide parent-page-selector">
+            <label class="col-sm-2 control-label">父页面</label>
+            <div class="col-sm-10">
+                <select class="form-control hide" name="parent" id="parentPageSelect">
+                    
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="name">路由</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="pathto" value="{{pathto}}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">隐藏</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="checkbox" name="hide" value="{{hide}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">位置</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" value="{{postion}}" name="postion">
+            </div>
+        </div>
+    </form>
+    </script>
+    <script id="content-form-partial" type="text/x-handlebars-template">
+    <form class="form-horizontal admin-form form" id="contentForm" role="form">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="name">名称</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" value="{{name}}" />
+            </div>
+        </div>
+        {{> page-select-partial}}
+        <div class="form-group">
+            <label class="col-sm-2 control-label">页面模板</label>
+            <div class="col-sm-10">
+                <select class="form-control tpl-selector" name="tpl" id="tpl">
+                    <option value="0">-请选择-</option>
+                    {{#each tpls}}
+                    {{#if @index}}
+                    <option value="{{name}}">{{cnName}}</option>
+                    {{ else }}
+                    <option value="{{name}}" select=true>{{cnName}}</option>
+                    {{/if}}
                     {{/each}}
                 </select>
             </div>
         </div>
-    </script> 
-     <script id="page-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="name">名称</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="name" value="{{name}}" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="title">标题</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="title" value="{{title}}" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">页面类型</label>
-                <div class="col-sm-10">
-                    <select class="form-control related" name="type" id="type" data-related=".parent-page-selector@sub@pages">
-                        <option value="main" select=true>主页面</option>
-                        <option value="sub">子页面</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group hide parent-page-selector">
-                <label class="col-sm-2 control-label">父页面</label>
-                <div class="col-sm-10">
-                    <select class="form-control hide" name="parent" id="parentPageSelect">
-                        
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="name">路由</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="pathto" value="{{pathto}}" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">隐藏</label>
-                <div class="col-sm-10">
-                    <input class="form-control" type="checkbox" name="hide" value="{{hide}}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">位置</label>
-                <div class="col-sm-10">
-                    <input class="form-control" type="text" value="{{postion}}" name="postion">
-                </div>
-            </div>
-        </form>
-    </script>
-    <script id="content-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="contentForm" role="form">
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="name">名称</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="name" value="{{name}}" />
-                </div>
-            </div>
-            {{> page-select-partial}}
-            <div class="form-group">
-                <label class="col-sm-2 control-label">页面模板</label>
-                <div class="col-sm-10">
-                    <select class="form-control tpl-selector" name="tpl" id="tpl">
-                        <option value="0">-请选择-</option>
-                        {{#each tpls}}
-                            {{#if @index}}
-                                <option value="{{name}}">{{cnName}}</option>
-                            {{ else }} 
-                                <option value="{{name}}" select=true>{{cnName}}</option>
-                            {{/if}}
-                        {{/each}}
-                    </select>
-                </div>
-            </div>
-            <div class="tpl-container sub-form"></div>
-        </form>
+        <div class="tpl-container sub-form"></div>
+    </form>
     </script>
     <script id="page-cog-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
-            <div class="form-group">
-                <label class="col-sm-2 control-label">内容类型</label>
-                <div class="col-sm-10">
-                    <select class="form-control related" name="type" id="type" data-related=".parent-page-selector@sub@pages">
-                        <option value="slide" select=true>slide</option>
-                        <option value="post">文章</option>
-                        <option value="photo">图片</option>
-                    </select>
-                </div>
+    <form class="form-horizontal admin-form form" id="pageForm" role="form">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">内容类型</label>
+            <div class="col-sm-10">
+                <select class="form-control related" name="type" id="type" data-related=".parent-page-selector@sub@pages">
+                    <option value="slide" select=true>slide</option>
+                    <option value="post">文章</option>
+                    <option value="photo">图片</option>
+                </select>
             </div>
-            <div class="form-group hide parent-page-selector">
-                <label class="col-sm-2 control-label">选择slide</label>
-                <div class="col-sm-10">
-                    <select class="form-control hide" name="parent" id="parentPageSelect">
-                        
-                    </select>
-                </div>
-            </div> 
-            <div class="form-group hide parent-page-selector">
-                <label class="col-sm-2 control-label">选择文章</label>
-                <div class="col-sm-10">
-                    <select class="form-control hide" name="parent" id="parentPageSelect">
-                        
-                    </select>
-                </div>
-            </div> 
-            <div class="form-group hide parent-page-selector">
-                <label class="col-sm-2 control-label">选择图片</label>
-                <div class="col-sm-10">
-                    <select class="form-control hide" name="parent" id="parentPageSelect">
-                        
-                    </select>
-                </div>
-            </div> 
-        </form>
+        </div>
+        <div class="form-group hide parent-page-selector">
+            <label class="col-sm-2 control-label">选择slide</label>
+            <div class="col-sm-10">
+                <select class="form-control hide" name="parent" id="parentPageSelect">
+                    
+                </select>
+            </div>
+        </div>
+        <div class="form-group hide parent-page-selector">
+            <label class="col-sm-2 control-label">选择文章</label>
+            <div class="col-sm-10">
+                <select class="form-control hide" name="parent" id="parentPageSelect">
+                    
+                </select>
+            </div>
+        </div>
+        <div class="form-group hide parent-page-selector">
+            <label class="col-sm-2 control-label">选择图片</label>
+            <div class="col-sm-10">
+                <select class="form-control hide" name="parent" id="parentPageSelect">
+                    
+                </select>
+            </div>
+        </div>
+    </form>
     </script>
     <script id="post-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
-            <div class="form-group">
+    <form class="form-horizontal admin-form form" id="pageForm" role="form">
+     <div class="form-group">
                 <div class="col-sm-10">
                     <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="title">标题</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="title" value="{{title}}" placeholder="请输入页面标题" />
-                </div>
+        <div class="form-group">
+            <div class="col-sm-10">
+                <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="content">页面内容</label>
-                <div class="col-sm-10 textarea content">
-                    <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-                </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" placeholder="请输入页面标题" />
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="publishedDate">发布时间</label> {{> datepicker-tpl-partial formName='publishedDate'}}
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="content">页面内容</label>
+            <div class="col-sm-10 textarea content">
+                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="file">封面图片</label>
-                <div class="col-sm-10">
-                    <input type="file" class="form-control file" name="file" id="file" />
-                    <p class="fieldset info text-right"><span class="text-warning text-info">图片格式只支持gif、jpg或者png！</span></p>
-                </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="publishedDate">发布时间</label> {{> datepicker-tpl-partial formName='publishedDate'}}
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">封面图片</label>
+            <div class="col-sm-10">
+                <input type="file" class="form-control file" name="file" id="file" />
+                <p class="fieldset info text-right"><span class="text-warning text-info">图片格式只支持gif、jpg或者png！</span></p>
             </div>
-        </form>
+        </div>
+    </form>
     </script>
     <script id="photo-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
-             <div class="form-group">
-                <label class="col-sm-2 control-label" for="name">名称</label>
+    <form class="form-horizontal admin-form form" id="pageForm" role="form">
+     <div class="form-group">
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="name" value="{{name}}" />
+                    <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="name">描述</label>
-                <div class="col-sm-10">
-                    <textarea class="form-control" name="description" value="{{description}}"></textarea>
-                </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="name">名称</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" value="{{name}}" />
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="file">图片</label>
-                <div class="col-sm-10">
-                    <input type="file" class="form-control file" name="file" id="file" />
-                    <p class="fieldset info text-right"><span class="text-warning text-info">图片格式只支持gif、jpg或者png！</span></p>
-                </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="name">描述</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" name="description" value="{{description}}"></textarea>
             </div>
-            <div class="form-group text-center">
-                <img src="{{imagePath}}" />
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">图片</label>
+            <div class="col-sm-10">
+                <input type="file" class="form-control file" name="file" id="file" />
+                <p class="fieldset info text-right"><span class="text-warning text-info">图片格式只支持gif、jpg或者png！</span></p>
             </div>
-        </form> 
+        </div>
+        <div class="form-group text-center">
+            <img src="{{imagePath}}" />
+        </div>
+    </form>
     </script>
     <script id="slide-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
-             <div class="form-group">
-                <label class="col-sm-2 control-label" for="name">名称</label>
+    <form class="form-horizontal admin-form form" id="pageForm" role="form">
+    <div class="form-group">
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="name" value="{{name}}" />
+                    <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="file">选择图片</label>
-                <div class="col-sm-10">
-                    <button class="btn btn-primary select-content-list" data-type="photos" type="button">点击选择</button>
-                </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="name">名称</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" value="{{name}}" />
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="file">已选择的图片</label>
-                <div class="col-sm-10 result-container">
-                    
-                </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">选择图片</label>
+            <div class="col-sm-10">
+                <button class="btn btn-primary select-content-list" data-type="photos" type="button">点击选择</button>
             </div>
-            {{> page-select-partial}}
-        </form> 
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">已选择的图片</label>
+            <div class="col-sm-10 result-container">
+                
+            </div>
+        </div>
+        {{> page-select-partial}}
+    </form>
     </script>
     <script id="news-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
-                </div>
+    <form class="form-horizontal admin-form form" id="pageForm" role="form">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="title">标题</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="title" value="{{title}}" />
-                </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
             </div>
-             <div class="form-group">
-                <label class="col-sm-2 control-label" for="link">新闻链接</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="link" value="{{link}}" />
-                </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="link">新闻链接</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="link" value="{{link}}" />
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="content">新闻内容</label>
-                <div class="col-sm-10 textarea content">
-                    <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-                </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="content">新闻内容</label>
+            <div class="col-sm-10 textarea content">
+                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="publishedDate">发布时间</label> {{> datepicker-tpl-partial formName='publishedDate'}}
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="publishedDate">发布时间</label> {{> datepicker-tpl-partial formName='publishedDate'}}
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">封面图片</label>
+            <div class="col-sm-10">
+                <input type="file" class="form-control file" name="file" id="file" />
+                <p class="fieldset info text-right"><span class="text-warning text-info">图片格式只支持gif、jpg或者png！</span></p>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="file">封面图片</label>
-                <div class="col-sm-10">
-                    <input type="file" class="form-control file" name="file" id="file" />
-                    <p class="fieldset info text-right"><span class="text-warning text-info">图片格式只支持gif、jpg或者png！</span></p>
-                </div>
-            </div>
-        </form>
+        </div>
+    </form>
     </script>
     <script id="qa-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
-            <div class="form-group">
+    <form class="form-horizontal admin-form form" id="pageForm" role="form">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" placeholder="请输入文章标题" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="content">新闻内容</label>
+            <div class="col-sm-10 textarea content">
+                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="publishedDate">发布时间</label> {{> datepicker-tpl-partial formName='publishedDate'}}
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">封面图片</label>
+            <div class="col-sm-10">
+                <input type="file" class="form-control file" name="file" id="file" />
+                <p class="fieldset info text-right"><span class="text-warning text-info">图片格式只支持gif、jpg或者png！</span></p>
+            </div>
+        </div>
+    </form>
+    </script>
+    <script id="grid-form-partial" type="text/x-handlebars-template">
+    <form class="form-horizontal admin-form form" id="pageForm" role="form">
+     <div class="form-group">
                 <div class="col-sm-10">
                     <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="title">标题</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="title" value="{{title}}" placeholder="请输入文章标题" />
-                </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="name">名称</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" value="{{name}}" />
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="content">新闻内容</label>
-                <div class="col-sm-10 textarea content">
-                    <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-                </div>
+        </div>
+        {{> page-select-partial}}
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Grid模板</label>
+            <div class="col-sm-10">
+                <select class="form-control" name="tpl" id="tpl" >
+                    <option value="tpl1" select=true>模板一</option>
+                    <option value="tpl2">模板二</option>
+                </select>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="publishedDate">发布时间</label> {{> datepicker-tpl-partial formName='publishedDate'}}
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Grid内容</label>
+            <div class="col-sm-10">
+                <select class="form-control muti-content" name="content" id="content">
+                    <option value="news" select=true>新闻</option>
+                    <option value="qas">问答</option>
+                    <option value="posts">文章</option>
+                    <option value="photos">图片</option>
+                </select>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="file">封面图片</label>
-                <div class="col-sm-10">
-                    <input type="file" class="form-control file" name="file" id="file" />
-                    <p class="fieldset info text-right"><span class="text-warning text-info">图片格式只支持gif、jpg或者png！</span></p>
-                </div>
-            </div>
-        </form>
-    </script>
-    <script id="grid-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
-             <div class="form-group">
-                <label class="col-sm-2 control-label" for="name">名称</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="name" value="{{name}}" />
-                </div>
-            </div>
-            {{> page-select-partial}}
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Grid模板</label>
-                <div class="col-sm-10">
-                    <select class="form-control" name="tpl" id="tpl" >
-                        <option value="tpl1" select=true>模板一</option>
-                        <option value="tpl2">模板二</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Grid内容</label>
-                <div class="col-sm-10">
-                    <select class="form-control muti-content" name="content" id="content">
-                        <option value="news" select=true>新闻</option>
-                        <option value="qas">问答</option>
-                        <option value="posts">文章</option>
-                        <option value="photos">图片</option>
-                    </select>
-                </div>
-            </div>
-        </form> 
+        </div>
+    </form>
     </script>
 </div>

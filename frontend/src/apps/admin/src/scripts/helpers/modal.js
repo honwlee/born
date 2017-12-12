@@ -328,6 +328,7 @@ define([
     };
 
     return {
+        save: save,
         show: function(type, content, title, opts) {
             switch (type) {
                 case "form":

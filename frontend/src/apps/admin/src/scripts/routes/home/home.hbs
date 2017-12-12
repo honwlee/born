@@ -1,0 +1,49 @@
+<div>
+    <script id="home-manage-partial" type="text/x-handlebars-template">
+    <div class="container">
+        <form class="form-horizontal admin-form form col-md-offset-2 col-md-8 col-sm-10 col-xs-12" role="form">
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="name">网站名称</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="name" value="{{name}}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="contact">联系电话</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="contact" value="{{contact}}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="footer">页脚内容</label>
+                <div class="col-sm-10">
+                    <textarea type="text" class="form-control" name="footer">{{footer}}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="file">网站logo</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control file" name="file" id="file" />
+                    <p class="fieldset info text-right">
+                        <span class="text-warning text-info">图片格式只支持gif、jpg或者png！</span>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="file">logo预览</label>
+                <div class="col-sm-10">
+                    <img  class="col-sm-5 col-sm-5 col-xs-12" src="{{src}}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default pull-right save-btn button" type="button">保存</button>
+            </div>
+        </form>
+    </div>
+    </script>
+</div>

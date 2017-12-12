@@ -9,7 +9,7 @@ define([
         router = skylarkjs.router;
     var currentNav,
         currentSubs = {},
-        __routesData,
+        __sitesData,
         setActive = function(name) {
             if (currentNav) $(currentNav).removeClass("active");
             currentNav = $("." + name + "-nav");
@@ -92,11 +92,21 @@ define([
             }
         };
 
+    function update(data) {
+        $("#logo").attr({
+            src: data.src,
+            title: data.name,
+            alt: data.name
+        });
+        $("#contact").html(data.contact);
+        $("#footerTwo").html(data.footer);
+    };
+
     return spa.PluginController.inherit({
 
         preparing: function(e) {
-            e.result = server().connect("pages", "get", "config").then(function(data) {
-                __routesData = data;
+            e.result = server().connect("sites", "get", "config").then(function(data) {
+                __sitesData = data;
             });
         },
 
@@ -104,7 +114,7 @@ define([
             var spa = evt.spa,
                 // basePath = (spa.getConfig("baseUrl") || "").replace(/.*(\/$)/, ""),
                 // routes = spa.getConfig("routes"),
-                routes = __routesData,
+                routes = __sitesData.routes,
                 _el = $("#sk-navbar"),
                 goToPath = function(name) {
                     var path = routes[name].pathto;
@@ -152,6 +162,7 @@ define([
             partial.get("gallery-partial");
             var div = $("<div>").html(handlebars.compile("{{> gallery-partial}}")({}));
             document.body.appendChild(div[0].firstChild);
+            update(__sitesData.site);
         },
         routed: function() {}
     });
