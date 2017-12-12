@@ -15,9 +15,7 @@ module.exports = {
     },
 
     show: function(req, res) {
-        let opt = {};
-        opt[req.query.key] = req.query.value;
-        let site = Site.findByReg(opt);
+        let site = Site.first();
         if (site) {
             res.json(site);
         } else {
