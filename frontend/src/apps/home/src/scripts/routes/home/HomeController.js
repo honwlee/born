@@ -138,12 +138,12 @@ define([
                 _ec = $(tpl({
                     pages: preparePage()
                 }));
-            $(components.slide(this.pageData.slide)).prependTo(_ec.find(".home-slide-container"))
+            $(components.slide(this.pageData.slide)).prependTo(_ec.find(".home-slide-container"));
             e.content = _ec[0];
         },
 
         rendered: function() {
-
+            $('.carousel').carousel()
         },
 
         entered: function() {},
