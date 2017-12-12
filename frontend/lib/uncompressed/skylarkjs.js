@@ -979,7 +979,7 @@
         var _uid = 1;
 
         function uid(obj) {
-            return obj._uid || obj.id || (obj._uid = _uid++);
+            return obj._uid || (obj._uid = _uid++);
         }
 
         function uniq(array) {

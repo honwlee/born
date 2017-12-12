@@ -1,67 +1,69 @@
 <div>
     <script id="repeater-tpl-partial" type="text/x-handlebars-template">
         <div class="repeater"{{#each data}} data-{{name}}="{{value}}"{{/each}} id="{{#if id}}{{id}}{{else}}myRepeater{{/if}}">
-            <div class="repeater-header">
-                <div class="repeater-header-left">
-                    <span class="repeater-title">{{#if title}}{{title}}{{else}}Awesome Repeater{{/if}}</span>
-                    <div class="repeater-search">
-                        <div class="search input-group">
-                            <input type="search" class="form-control" placeholder="Search"/>
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <span class="{{#unless mctheme}}glyphicon glyphicon-search{{else}}fuelux-icon fuelux-icon-search{{/unless}}"></span>
-                                    <span class="sr-only">Search</span>
-                                </button>
-                            </span>
+            {{#if needHeader}}
+                <div class="repeater-header">
+                    <div class="repeater-header-left">
+                        <span class="repeater-title">{{#if title}}{{title}}{{else}}Awesome Repeater{{/if}}</span>
+                        <div class="repeater-search">
+                            <div class="search input-group">
+                                <input type="search" class="form-control" placeholder="Search"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <span class="{{#unless mctheme}}glyphicon glyphicon-search{{else}}fuelux-icon fuelux-icon-search{{/unless}}"></span>
+                                        <span class="sr-only">Search</span>
+                                    </button>
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="repeater-header-right">
-                    {{#if filterShow}}
-                        <div class="btn-group selectlist repeater-filters" data-resize="auto">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                <span class="selected-label">&nbsp;</span>
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Filters</span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                {{#each filters}}
-                                    <li data-value="{{value}}" {{#if selected}}data-selected="true"{{/if}}><a href="#">{{text}}</a></li>
-                                {{/each}}
-                            </ul>
-                            <input class="hidden hidden-field" name="filterSelection" readonly="readonly" aria-hidden="true" type="text"/>
-                        </div>
-                    {{/if}}
-                    {{#if multiView}}
-                        <div class="btn-group repeater-views" data-toggle="buttons">
-                            {{#if listShow}}
-                                <label class="btn btn-default active">
-                                    <input name="repeaterViews" type="radio" value="list"><span class="{{#unless mctheme}}glyphicon glyphicon-list{{else}}fuelux-icon fuelux-icon-gridview-list{{/unless}}"></span>
+                    <div class="repeater-header-right">
+                        {{#if filterShow}}
+                            <div class="btn-group selectlist repeater-filters" data-resize="auto">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <span class="selected-label">&nbsp;</span>
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Filters</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    {{#each filters}}
+                                        <li data-value="{{value}}" {{#if selected}}data-selected="true"{{/if}}><a href="#">{{text}}</a></li>
+                                    {{/each}}
+                                </ul>
+                                <input class="hidden hidden-field" name="filterSelection" readonly="readonly" aria-hidden="true" type="text"/>
+                            </div>
+                        {{/if}}
+                        {{#if multiView}}
+                            <div class="btn-group repeater-views" data-toggle="buttons">
+                                {{#if listShow}}
+                                    <label class="btn btn-default active">
+                                        <input name="repeaterViews" type="radio" value="list"><span class="{{#unless mctheme}}glyphicon glyphicon-list{{else}}fuelux-icon fuelux-icon-gridview-list{{/unless}}"></span>
+                                    </label>
+                                {{/if}}
+                                {{#if thumbShow}}
+                                    <label class="btn btn-default">
+                                        <input name="repeaterViews" type="radio" value="thumbnail"><span class="{{#unless mctheme}}glyphicon glyphicon-th{{else}}fuelux-icon fuelux-icon-gridview-thumbnail{{/unless}}"></span>
+                                    </label>
+                                {{/if}}
+                            </div>
+                        {{/if}}
+                        {{#if addBtn}} 
+                            <div class="btn-group repeater-add">
+                                <button class="btn btn-default">
+                                    <span class="glyphicon glyphicon-plus"></span>
                                 </label>
-                            {{/if}}
-                            {{#if thumbShow}}
-                                <label class="btn btn-default">
-                                    <input name="repeaterViews" type="radio" value="thumbnail"><span class="{{#unless mctheme}}glyphicon glyphicon-th{{else}}fuelux-icon fuelux-icon-gridview-thumbnail{{/unless}}"></span>
-                                </label>
-                            {{/if}}
-                        </div>
-                    {{/if}}
-                    {{#if addBtn}} 
-                        <div class="btn-group repeater-add">
-                            <button class="btn btn-default">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </label>
-                        </div>
-                    {{/if}}
-                    {{#if refreshBtn}}
-                        <div class="btn-group repeater-refresh">
-                            <button class="btn btn-default">
-                                <span class="glyphicon glyphicon-refresh"></span>
-                            </button>
-                        </div>
-                    {{/if}}
+                            </div>
+                        {{/if}}
+                        {{#if refreshBtn}}
+                            <div class="btn-group repeater-refresh">
+                                <button class="btn btn-default">
+                                    <span class="glyphicon glyphicon-refresh"></span>
+                                </button>
+                            </div>
+                        {{/if}}
+                    </div>
                 </div>
-            </div>
+            {{/if}}
             <div class="repeater-viewport">
                 <div class="repeater-canvas"></div>
                 <div class="loader repeater-loader"></div>
@@ -118,7 +120,7 @@
     </script>
 
     <script id="datepicker-tpl-partial" type="text/x-handlebars-template">
-        <div class="datepicker" {{#unless doNotInit}}data-initialize="datepicker"{{/unless}} id="{{#if id}}{{id}}{{else}}myDatepicker{{/if}}">
+        <div class="datepicker col-sm-10" {{#unless doNotInit}}data-initialize="datepicker"{{/unless}} id="{{#if id}}{{id}}{{else}}datepickerIllustration{{/if}}">
             <div class="input-group">
                 <input class="form-control" id="{{#if id}}{{id}}Input{{else}}myDatepickerInput{{/if}}" name="{{#if name}}{{name}}{{#if id}}{{id}}Input{{else}}myDatepickerInput{{/if}}{{/if}}" type="text"/>
                 <div class="input-group-btn">

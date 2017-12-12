@@ -3,13 +3,15 @@ define([
     "skylarkjs",
     "lodash",
     "./Partial",
-    "./modal",
     "text!./_fueluxPartials.hbs",
     "server",
     "handlebars"
-], function($, skylarkjs, _, partial, modal, fueluxTpl, server, hbs) {
+], function($, skylarkjs, _, partial, fueluxTpl, server, hbs) {
     var langx = skylarkjs.langx;
     var __selector = $(langx.trim(fueluxTpl));
+    partial.get("repeater-tpl-partial", __selector);
+    partial.get("datepicker-tpl-partial", __selector);
+    partial.get("checkbox-tpl-partial", __selector);
 
     function customColumnRenderer(helpers, callback) {
         // Determine what column is being rendered and review 
@@ -105,7 +107,7 @@ define([
     var List = langx.Evented.inherit({
         klass: "List",
         init: function(opts) {
-            partial.get("repeater-tpl-partial", __selector);
+
             var tpl = hbs.compile("{{> repeater-tpl-partial}}"),
                 selector = this.selector = $(tpl({
                     itemsPerPage: [
@@ -144,6 +146,7 @@ define([
                     addBtn: opts.addBtn === false ? false : true,
                     refreshBtn: opts.refreshBtn === false ? false : true,
                     title: opts.title,
+                    needHeader: opts.needHeader == false ? false : true,
                     multiView: opts.multiView === true ? true : false,
                     listShow: opts.listShow === false ? false : true,
                     thumbShow: opts.thumbShow === false ? false : true,
@@ -158,7 +161,7 @@ define([
 
         initDataSource: function(opts) {
             return function(options, callback) {
-                var pageIndex = options.pageIndex + 1;
+                var pageIndex = options.pageIndex;
                 var pageSize = options.pageSize;
                 var options = {
                     limit: pageSize,
@@ -213,27 +216,32 @@ define([
             if (opts.thumbnail_template) obj.thumbnail_template = opts.thumbnail_template;
             if (opts.list_selectable) obj.list_selectable = opts.list_selectable;
             if (opts.actions) {
-                var actions = [];
-                opts.actions.forEach(function(a) {
-                    if (defaultActions[a.name]) {
-                        actions.push(defaultActions[a.name]({
-                            container: container,
-                            key: opts.key,
-                            callback: a.callback,
-                            tpl: a.tpl,
-                            title: a.title
-                        }));
-                    } else {
-                        actions.push(a);
-                    }
+                require(["scripts/helpers/modal"], function(modal) {
+                    var actions = [];
+                    opts.actions.forEach(function(a) {
+                        if (defaultActions[a.name]) {
+                            actions.push(defaultActions[a.name]({
+                                container: container,
+                                key: opts.key,
+                                callback: a.callback,
+                                tpl: a.tpl,
+                                title: a.title
+                            }));
+                        } else {
+                            actions.push(a);
+                        }
+                    });
+                    obj.list_actions = {
+                        width: 37,
+                        items: actions
+                    };
+                    container.repeater(obj);
                 });
-                obj.list_actions = {
-                    width: 37,
-                    items: actions
-                };
-            }
 
-            container.repeater(obj);
+
+            } else {
+                container.repeater(obj);
+            }
             // container.repeater('infinitescrolling', true, { hybrid: true });
         }
     });

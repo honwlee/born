@@ -12,7 +12,6 @@ define([
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         formSelector = $(langx.trim(formTpl));
-    partial.get("date-picker-partial");
     partial.get("page-cog-partial", formSelector);
     partial.get("page-form-partial", formSelector);
     var tpl = hbs.compile("{{> page-form-partial}}");

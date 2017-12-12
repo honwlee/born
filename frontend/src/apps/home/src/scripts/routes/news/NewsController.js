@@ -3,8 +3,9 @@ define([
     "skylarkjs",
     "handlebars",
     "server",
-    "scripts/helpers/Partial"
-], function($, skylarkjs, hbs, server, Partial) {
+    "scripts/helpers/Partial",
+    "scripts/helpers/List"
+], function($, skylarkjs, hbs, server, Partial, List) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx;
     var recommended = [{
@@ -13,24 +14,39 @@ define([
     }];
     return spa.RouteController.inherit({
         klassName: "NewsController",
-        news: null,
-        preparing: function(e) {
-            var self = this;
-            e.result = server().connect("news", "get", "index").then(function(data) {
-                self.news = data.rows;
+        repeaterId: "homeNewsRepeater",
+        buildList: function() {
+            return new List({
+                title: "新闻列表",
+                id: this.repeaterId,
+                key: "news",
+                defaultView: "thumbnail",
+                thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" src="{{cover}}" width="65"><span>{{name}}</span></div>',
+                needHeader: false,
+                columns: [{
+                    label: '封面',
+                    property: 'cover',
+                    sortable: true
+                }, {
+                    label: 'title',
+                    property: 'page',
+                    sortable: false
+                }]
             });
         },
+
         rendering: function(e) {
             Partial.get("info-list-partial");
             var tpl = hbs.compile("{{> info-list-partial}}"),
                 self = this,
                 _ec = $(tpl({
-                    data: this.news,
                     routeName: "news",
                     latest: recommended,
                     recommended: recommended
-                }));
+                })),
+                list = this.buildList();
             e.content = _ec[0];
+            list.getDom().appendTo(_ec.find(".repeater-container").empty());
             _ec.delegate(".article-item", "click", function(e) {
                 var id = $(e.currentTarget).data("id");
                 window.go("/news/" + id, true);

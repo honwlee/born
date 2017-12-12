@@ -12,7 +12,6 @@ define([
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         formSelector = $(langx.trim(formTpl));
-    partial.get("date-picker-partial");
     partial.get("qa-form-partial", formSelector);
     var tpl = hbs.compile("{{> qa-form-partial}}");
     return spa.RouteController.inherit({
