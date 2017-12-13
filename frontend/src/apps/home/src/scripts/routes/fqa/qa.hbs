@@ -1,26 +1,24 @@
 <div>
     <script id="fqa-show-main" type="text/x-handlebars-template">
-        <div class="container">
+          <div class="fqa-wrap">
+        <div class="container panel">
             <textarea class="hide"></textarea>
-            <section class="case_intro">
+            <section class="case_container">
                 <div class="row">
-                    <div class="col-12 col-md-9 offset-md-3 col-lg-7 offset-lg-3">
-                        <h1 class="display-1">{{title}}</h1>
+                    <div class="col-md-12  col-lg-12">
+                        <h1 class="col-md-12 col-lg-12" class="" style="font-size: 24px;  color: #b72024;font-weight: normal;">{{title}}</h1>
+                        <div class="case_info  col-md-12">
+                            <p class="date">{{date}}</p>
+                        </div>
+                        <div class="col-md-12 col-lg-12 post_overview"></div>
+                        <div class="col-md-12  col-lg-12">
+                            <img src="{{imgUrl}}" />
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-md-9 offset-md-3 col-lg-7 offset-lg-3">
-                        <img src="{{imgUrl}}" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="case_info col-12 col-md-3 col-lg-3">
-                        <p>{{date}}</p>
-                    </div>
-                    <div class="col-12 col-md-9 col-lg-7 post_overview"></div>
                 </div>
             </section>
         </div>
+    </div>
     </script>
     <script id="qa-listItem-partial" type="text/x-handlebars-template">
         <div class="media panel-body item" data-id="{{id}}">

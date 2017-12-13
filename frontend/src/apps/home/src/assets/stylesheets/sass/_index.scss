@@ -1,7 +1,7 @@
 /**
- * 首页css样式表
- * 
- */
+* 首页css样式表
+*
+*/
 
 .logo {
     margin-top: -8px;
@@ -14,12 +14,6 @@
 }
 
 
-/*头部样式结束*/
-
-
-/*banner样式开始*/
-
-
 /*banner main*/
 
 .banner {
@@ -27,12 +21,6 @@
     min-width: 1170px;
     overflow: hidden;
 }
-
-
-/*海外病种*/
-
-
-/*banner样式结束*/
 
 
 /*页面主要内容开始*/
@@ -913,6 +901,20 @@
             }
         }
     }
+    // 单个文章 begin
+    .case_container {
+        .date {
+            font-size: 12px;
+            color: #7d7d7d;
+        }
+        .post_overview pre {
+            font-size: 16px;
+            padding: 0;
+            border: none;
+            background-color: transparent;
+        }
+    }
+    // 单个文章 end
 }
 
 .media-footer {

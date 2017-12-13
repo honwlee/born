@@ -11,12 +11,12 @@ define([
         langx = skylarkjs.langx;
     return spa.RouteController.inherit({
         klassName: "PostsShowController",
-        post: null,
+        qa: null,
         preparing: function(e) {
             var self = this,
                 id = e.route.getNamedValue()[1];
-            e.result = server().connect("qas", "get", "show?id=" + id).then(function(post) {
-                self.post = post;
+            e.result = server().connect("qas", "get", "show?id=" + id).then(function(qa) {
+                self.qa = qa;
             });
         },
         rendering: function(e) {
@@ -24,15 +24,15 @@ define([
             var tpl = hbs.compile(langx.trim(selector.find("#fqa-show-main").html()).replace("{{&gt;", "{{>"));
 
             e.content = $(tpl({
-                id: this.post.id,
-                title: this.post.title,
-                imgUrl: this.post.imgUrl,
-                date: new Date(this.post.date).toISOString().substring(0, 10)
+                id: this.qa.id,
+                title: this.qa.title,
+                imgUrl: this.qa.src,
+                date: new Date(this.qa.publishedDate).toISOString().substring(0, 10)
             }));
             var simplemde = new SimpleMDE({
                 element: e.content.find("textarea")[0]
             });
-            e.content.find(".post_overview").html(simplemde.markdown(this.post.content));
+            e.content.find(".post_overview").html(simplemde.markdown(this.qa.content));
             simplemde.toTextArea();
             simplemde = null;
         },

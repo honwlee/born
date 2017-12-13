@@ -12,14 +12,10 @@ module.exports = {
     },
 
     show: function(req, res) {
-        let opt = {};
-        opt[req.query.key] = req.query.value;
-        let qa = Qa.findByReg(opt);
-        if (qa) {
-            res.json(qa);
-        } else {
-            res.json({ status: false, msg: "no results!" });
-        }
+        let qa = Qa.findBy({
+            id: req.query.id
+        });
+        res.json(qa);
     },
 
     update: function(req, res) {

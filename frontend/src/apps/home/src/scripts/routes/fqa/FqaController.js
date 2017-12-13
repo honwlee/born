@@ -41,7 +41,7 @@ define([
             var tpl = hbs.compile("{{> info-list-partial}}"),
                 self = this,
                 _ec = $(tpl({
-                    routeName: "qas",
+                    routeName: "fqa",
                     latest: recommended,
                     recommended: recommended
                 })),
@@ -50,7 +50,7 @@ define([
             list.getDom().appendTo(_ec.find(".repeater-container").empty());
             _ec.delegate(".item", "click", function(e) {
                 var id = $(e.currentTarget).data("id");
-                window.go("/qas/" + id, true);
+                window.go("/fqa/" + id, true);
             });
         },
 
