@@ -51,12 +51,7 @@
                 "name": "process",
                 "navName": "赴美流程"
             },
-            "subs": [
-                "process-visa",
-                "process-cohospital",
-                "process-environment",
-                "process-certificate"
-            ],
+            "subs": ["process-visa", "process-cohospital", "process-environment", "process-certificate"],
             "controller": {
                 "type": "scripts/routes/process/ProcessController"
             }
@@ -194,9 +189,7 @@
                 "name": "about",
                 "navName": "关于我们"
             },
-            "subs": [
-                "about-contact"
-            ],
+            "subs": ["about-contact"],
             "controller": {
                 "type": "scripts/routes/about/AboutController"
             }

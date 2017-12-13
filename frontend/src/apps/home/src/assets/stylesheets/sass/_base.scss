@@ -21,6 +21,7 @@ body {
 $navHeight: 82px;
 #mainWrapper {
     opacity: 0;
+    position: relative;
     nav.navbar {
         margin-bottom: 0;
         height: $navHeight;
