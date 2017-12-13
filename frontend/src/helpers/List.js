@@ -171,9 +171,9 @@ define([
                     filter: options.filter.value || '',
                     search: options.search || ''
                 };
-                var action = "index?page=" + pageIndex;
+                var action = "index?page=" + (pageIndex + 1);
                 for (var key in options) {
-                    if (options.key) action = action + "&&" + key + "=" + options[key];
+                    if (options[key]) action = action + "&" + key + "=" + options[key];
                 }
 
                 server().connect(opts.key, "get", action).then(function(data) {

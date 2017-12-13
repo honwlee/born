@@ -1,3 +1,11 @@
 <div>
-    <div class="photoSwipeContainer"></div>
+    <script id="activity-main-partial" type="text/x-handlebars-template">
+        <div class="row justify-content-center repeater-container"></div>
+    </script>
+    <script id="activity-listItem-partial" type="text/x-handlebars-template">
+        <div class="thumbnail repeater-thumbnail item lightbox-item col-sm-2" data-link="{{src}}" data-id="{{id}}" data-toggle="lightbox" data-gallery="activity-gligiallery">
+            <img src="{{src}}" class="img-fluid">
+            <span>{{description}}</span>
+        </div>
+    </script>
 </div>

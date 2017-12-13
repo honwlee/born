@@ -7,8 +7,6 @@
         },
         "paths": {
             "server": "scripts/services/server",
-            "photoswipe": "https://cdn.bootcss.com/photoswipe/4.1.2/photoswipe.min",
-            "photoswipeUi": "https://cdn.bootcss.com/photoswipe/4.1.2/photoswipe-ui-default.min",
             "skylarkBs": "lib/uncompressed/skylark-bs-swt",
             "jquery": "lib/uncompressed/skylark-jquery",
             "simplemde": "https://cdn.bootcss.com/simplemde/1.11.2/simplemde.min",
