@@ -53,6 +53,14 @@ define([
                     property: 'title',
                     sortable: false
                 }, {
+                    label: '内容摘要',
+                    property: 'abstract',
+                    sortable: false
+                }, {
+                    label: '是否公开',
+                    property: 'published',
+                    sortable: false
+                }, {
                     label: '发布时间',
                     property: 'publishedDate',
                     sortable: true

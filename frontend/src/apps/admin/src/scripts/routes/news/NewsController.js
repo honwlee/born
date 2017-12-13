@@ -55,13 +55,21 @@ define([
                     property: 'title',
                     sortable: false
                 }, {
-                    label: '新闻内容',
-                    property: 'content',
+                    label: '内容摘要',
+                    property: 'abstract',
+                    sortable: false
+                }, {
+                    label: '是否公开',
+                    property: 'published',
                     sortable: false
                 }, {
                     label: '发布时间',
                     property: 'publishedDate',
                     sortable: true
+                }, {
+                    label: '创建时间',
+                    property: 'createdAt',
+                    sortable: false
                 }],
             });
         },

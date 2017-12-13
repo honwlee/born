@@ -10,6 +10,7 @@
                         <div class="case_info  col-md-12">
                             <p class="date">{{date}}</p>
                         </div>
+                                         <div class="col-md-12 abstract"><p class="abstract">{{abstract}}</p></div>
                         <div class="col-md-12 col-lg-12 post_overview"></div>
                         <div class="col-md-12  col-lg-12">
                             <img src="{{imgUrl}}" />
@@ -23,13 +24,13 @@
     <script id="qa-listItem-partial" type="text/x-handlebars-template">
         <div class="media panel-body item" data-id="{{id}}">
             <div class="media-left col-md-4">
-                <a href="#">
-                    <img class="media-object" src="{{src}}" alt="..." style="width:100%;">
+                <a >
+                    <img class="media-object" src="{{src}}" alt="{{title}}" style="width:100%;">
                 </a>
             </div>
             <div class="media-body media-right">
                 <h4 class="media-heading">{{title}}</h4>
-                <p class="text-tip"> {{content}}</p>
+            <p class="text-tip"> {{abstract}}</p>
                 <p class="media-footer">
                     <span>{{publishedDate}}</span>
                     <span class="pull-right">

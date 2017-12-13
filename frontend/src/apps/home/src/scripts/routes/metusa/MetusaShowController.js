@@ -26,7 +26,8 @@ define([
             e.content = $(tpl({
                 id: this.post.id,
                 title: this.post.title,
-                imgUrl: this.post.imgUrl,
+                abstract: this.post.abstract,
+                imgUrl: this.post.src,
                 date: new Date(this.post.publishedDate).toISOString().substring(0, 10)
             }));
             var simplemde = new SimpleMDE({

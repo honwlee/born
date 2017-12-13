@@ -26,6 +26,7 @@ define([
             e.content = $(tpl({
                 id: this.qa.id,
                 title: this.qa.title,
+                abstract: this.qa.abstract,
                 imgUrl: this.qa.src,
                 date: new Date(this.qa.publishedDate).toISOString().substring(0, 10)
             }));
