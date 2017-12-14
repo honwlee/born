@@ -2,29 +2,23 @@
 * 首页css样式表
 *
 */
-
 .logo {
     margin-top: -8px;
 }
-
-@media (max-width: 768px) {
+@media (max-width:768px) {
     .logo {
         height: 50px;
     }
 }
 
-
 /*banner main*/
-
 .banner {
     position: relative;
     min-width: 1170px;
     overflow: hidden;
 }
 
-
 /*页面主要内容开始*/
-
 .bg_one {
     width: 100%;
     background-color: #fff;
@@ -32,7 +26,6 @@
     margin-top: -4px;
     padding-top: 40px;
 }
-
 .bg_two {
     min-width: 1170px;
     width: 100%;
@@ -41,7 +34,6 @@
     height: 555px;
     padding-top: 40px;
 }
-
 .bg_three {
     min-width: 1170px;
     width: 100%;
@@ -49,7 +41,6 @@
     height: 670px;
     padding-top: 40px;
 }
-
 .bg_four {
     min-width: 1170px;
     width: 100%;
@@ -57,7 +48,6 @@
     height: 600px;
     padding-top: 40px;
 }
-
 .bg_five {
     min-width: 1170px;
     width: 100%;
@@ -65,7 +55,6 @@
     height: 870px;
     padding-top: 40px;
 }
-
 .bg_seven {
     min-width: 1170px;
     width: 100%;
@@ -74,7 +63,6 @@
     height: 780px;
     padding-top: 40px;
 }
-
 .bg_eight {
     min-width: 1170px;
     width: 100%;
@@ -82,7 +70,6 @@
     height: 580px;
     padding-top: 40px;
 }
-
 .bg_nine {
     min-width: 1170px;
     width: 100%;
@@ -90,7 +77,6 @@
     height: 760px;
     padding-top: 40px;
 }
-
 .bg_ten {
     min-width: 1170px;
     width: 100%;
@@ -99,13 +85,11 @@
     height: 600px;
     padding-top: 40px;
 }
-
 .part {
     width: 1170px;
     min-width: 1170px;
     margin: 0 auto;
 }
-
 .main_title {
     text-align: center;
     font-size: 40px;
@@ -113,16 +97,12 @@
     color: #ffffff;
     position: relative;
 }
-
-.main_title_three,
-.main_title_eleven {
+.main_title_three, .main_title_eleven {
     color: #010101;
 }
-
 .main_title_ten {
     color: #fff;
 }
-
 .main_title_one:after {
     content: " ";
     position: absolute;
@@ -133,7 +113,6 @@
     height: 4px;
     background-color: #b72024;
 }
-
 .main_title_two:after {
     content: " ";
     position: absolute;
@@ -144,7 +123,6 @@
     height: 4px;
     background-color: #b72024;
 }
-
 .main_title_three:after {
     content: " ";
     position: absolute;
@@ -155,7 +133,6 @@
     height: 4px;
     background-color: #b72024;
 }
-
 .main_title_four:after {
     content: " ";
     position: absolute;
@@ -166,7 +143,6 @@
     height: 4px;
     background-color: #b72024;
 }
-
 .main_title_five:after {
     content: " ";
     position: absolute;
@@ -177,7 +153,6 @@
     height: 4px;
     background-color: #b72024;
 }
-
 .main_title_seven:after {
     content: " ";
     position: absolute;
@@ -188,7 +163,6 @@
     height: 4px;
     background-color: #b72024;
 }
-
 .main_title_nine:after {
     content: " ";
     position: absolute;
@@ -199,7 +173,6 @@
     height: 4px;
     background-color: #b72024;
 }
-
 .main_title_ten:after {
     content: " ";
     position: absolute;
@@ -210,7 +183,6 @@
     height: 4px;
     background-color: #b72024;
 }
-
 .main_title_eleven:after {
     content: " ";
     position: absolute;
@@ -221,46 +193,40 @@
     height: 4px;
     background-color: #b72024;
 }
-
 .part_one {
     width: 1170px;
     margin: 0 auto;
 }
-
 .part_one_main {
     position: relative;
 }
-
 .part_one_title {
     width: 1170px;
     text-align: center;
     margin-top: 20px;
     font-size: 22px;
     line-height: 45px;
+
     span {
         width: 190px;
         display: inline-block;
         cursor: pointer;
     }
 }
-
 .part_one_title span.part_one_current {
     border-bottom: 3px solid #b72024;
     color: #b72024;
 }
-
 .part_one_title span:hover {
     color: #b72024;
 }
-
 .part_one_con {
-    background-color: #e5e5e5;
-    /* height: 173px; */
+    background-color: #e5e5e5;/* height: 173px; */
     opacity: 0.8676;
     margin-bottom: 40px;
+
     p {
-        background-color: #e5e5e5;
-        /* width: 740px; */
+        background-color: #e5e5e5;/* width: 740px; */
         line-height: 28px;
         overflow: hidden;
         padding: 20px;
@@ -268,13 +234,14 @@
         font-size: 16px;
     }
 }
-
 .part_one_list {
     margin-top: 14px;
+
     li {
         float: left;
         width: 383px;
         cursor: pointer;
+
         p {
             font-size: 21px;
             text-align: center;
@@ -284,28 +251,27 @@
         }
     }
 }
-
 .part_one_list li.part_one_margin {
+
     /* margin-right: 14px; */
     padding: 10px;
 }
-
 .part_one_list li.part_one_margin img {
+
     /* margin-right: 14px; */
     width: 100%;
 }
-
 .part_one_city {
     position: absolute;
     top: 0;
     right: 0px;
 }
-
 .part_two {
     width: 1170px;
     height: 325px;
     margin: 0 auto;
     margin-top: 90px;
+
     li {
         cursor: pointer;
         position: relative;
@@ -314,12 +280,12 @@
         height: 325px;
         background-color: #fff;
         margin-right: 11px;
+
         &:last-child {
             margin-right: 0;
         }
     }
 }
-
 .part_two_title {
     color: #323232;
     margin-top: 60px;
@@ -327,7 +293,6 @@
     line-height: 60px;
     text-align: center;
 }
-
 .part_two_row {
     display: inline-block;
     width: 183px;
@@ -335,7 +300,6 @@
     margin-left: 21px;
     margin-bottom: 16px;
 }
-
 .part_two {
     .row_bg1 {
         background-color: #eb6877;
@@ -356,7 +320,6 @@
         background-color: #fff;
     }
 }
-
 .pt_li1 {
     position: absolute;
     top: -52px;
@@ -367,7 +330,6 @@
     width: 104px;
     height: 104px;
 }
-
 .pt_li2 {
     position: absolute;
     top: -52px;
@@ -378,7 +340,6 @@
     width: 104px;
     height: 104px;
 }
-
 .pt_li3 {
     position: absolute;
     top: -52px;
@@ -389,7 +350,6 @@
     width: 104px;
     height: 104px;
 }
-
 .pt_li4 {
     position: absolute;
     top: -52px;
@@ -400,7 +360,6 @@
     width: 104px;
     height: 104px;
 }
-
 .pt_li5 {
     position: absolute;
     top: -52px;
@@ -411,27 +370,21 @@
     width: 104px;
     height: 104px;
 }
-
 .pt_li1hover {
     background: url(/wap_new/img/part2_01hover.png) no-repeat;
 }
-
 .pt_li2hover {
     background: url(/wap_new/img/part2_02hover.png) no-repeat;
 }
-
 .pt_li3hover {
     background: url(/wap_new/img/part2_03hover.png) no-repeat;
 }
-
 .pt_li4hover {
     background: url(/wap_new/img/part2_04hover.png) no-repeat;
 }
-
 .pt_li5hover {
     background: url(/wap_new/img/part2_05hover.png) no-repeat;
 }
-
 .part_two_con {
     height: 150px;
     overflow: hidden;
@@ -442,13 +395,11 @@
     font-size: 18px;
     line-height: 25px;
 }
-
 .part_three {
     width: 1170px;
     margin: 0 auto;
     color: #010101;
 }
-
 .part_three_about {
     width: 700px;
     margin-left: 235px;
@@ -456,7 +407,6 @@
     display: inline-block;
     margin-top: 20px;
 }
-
 .part_three_detail {
     position: relative;
     background: url(/assets/images/part3_01.png) no-repeat;
@@ -465,7 +415,6 @@
     height: 413px;
     margin-top: 79px;
 }
-
 .part_three_datailCon {
     position: relative;
     text-align: center;
@@ -475,7 +424,6 @@
     padding-top: 145px;
     color: #fff;
 }
-
 .pt_datail_title {
     text-align: center;
     font-size: 30px;
@@ -483,7 +431,6 @@
     display: inline-block;
     padding: 20px 0;
 }
-
 .pt_datail_con {
     height: 100px;
     overflow: hidden;
@@ -491,8 +438,8 @@
     display: inline-block;
     padding-top: 14px;
 }
-
 .pt_datail_page {
+
     /* position: absolute; */
     bottom: 0;
     left: 50%;
@@ -501,17 +448,15 @@
     font-size: 30px;
     line-height: 40px;
 }
-
-.part_three_left,
-.part_three_right {
+.part_three_left, .part_three_right {
     position: absolute;
     top: 0;
     font-size: 30px;
 }
-
 .part_three_left {
     left: 50%;
     margin-left: -350px;
+
     li p {
         float: left;
         text-align: right;
@@ -519,12 +464,13 @@
         color: #b72024;
     }
 }
-
 .part_three_right {
     left: 50%;
+
     li {
         width: 400px;
         float: left;
+
         img {
             float: left;
             margin-right: 20px;
@@ -535,37 +481,32 @@
         }
     }
 }
-
 .pt_left_03 {
     line-height: 100px;
     margin-top: -20px;
     cursor: pointer;
 }
-
 .pt_left_02 {
-    margin-left: -170px;
-    /* margin-top: -15px; */
+    margin-left: -170px;/* margin-top: -15px; */
     margin-top: 45px;
     cursor: pointer;
+
     p {
         margin-top: 18px;
         cursor: pointer;
     }
 }
-
 .pt_left_01 {
     margin-top: 41px;
     margin-left: -190px;
     line-height: 100px;
     cursor: pointer;
 }
-
 .pt_left_06 {
     margin-top: -20px;
     margin-left: 76px;
     cursor: pointer;
 }
-
 .part_three_right li.pt_left_05 {
     width: 310px;
     overflow: hidden;
@@ -573,7 +514,6 @@
     margin-top: 25px;
     cursor: pointer;
 }
-
 .part_three_right li.pt_left_04 {
     width: 310px;
     overflow: hidden;
@@ -581,15 +521,16 @@
     margin-left: 235px;
     cursor: pointer;
 }
-
 .part_four {
     width: 1170px;
     margin: 55px auto;
+
     li {
         float: left;
         margin-right: 16px;
         position: relative;
         cursor: pointer;
+
         &:last-child {
             margin-right: 0;
         }
@@ -618,14 +559,12 @@
         }
     }
 }
-
 .find_more_four {
     clear: both;
     width: 1170px;
     margin: 0 auto;
     padding-top: 70px;
 }
-
 .part_four_more {
     text-align: center;
     display: inline-block;
@@ -636,15 +575,16 @@
     border: 1px solid #b72024;
     border-radius: 5px;
 }
-
 .part_five {
     width: 1170px;
     margin: 55px auto;
+
     li {
         cursor: pointer;
         float: left;
         margin-right: 16px;
         position: relative;
+
         &.margin_none {
             margin-right: 0;
         }
@@ -663,14 +603,12 @@
         }
     }
 }
-
 .find_more_five {
     clear: both;
     width: 1170px;
     margin: 0 auto;
     padding-top: 70px;
 }
-
 .part_five_more {
     color: #b72024;
     text-align: center;
@@ -681,29 +619,26 @@
     line-height: 45px;
     border: 1px solid #b72024;
     border-radius: 5px;
+
     &:hover {
         background-color: #b72024;
         color: #fff;
     }
 }
-
 .img_img_desc {
     width: 277px;
     height: 135px;
     overflow: hidden;
 }
-
 .part_seven_main {
     width: 1170px;
     margin: 0 auto;
 }
-
 .part_seven_left {
     width: 577px;
     float: left;
     margin-top: 60px
 }
-
 .ps_left_title a {
     display: inline-block;
     padding-left: 20px;
@@ -716,7 +651,6 @@
     margin-top: -4px;
     font-size: 21px;
 }
-
 .ps_left_con {
     overflow: hidden;
     background-color: #fff;
@@ -724,16 +658,15 @@
     width: 100%;
     height: 100px;
     padding: 20px;
+
     p {
         line-height: 25px;
     }
 }
-
 .part_seven_right {
     width: 570px;
     float: right;
 }
-
 .ps_haddleTop {
     cursor: pointer;
     background: url(/wap_new/img/part7_03.png) no-repeat;
@@ -741,15 +674,16 @@
     width: 100%;
     height: 60px;
 }
-
 .ps_right_con {
     width: 100%;
     height: 476px;
     overflow: hidden;
+
     ul li {
         cursor: pointer;
         float: left;
         margin-right: 16px;
+
         &:nth-child(2n) {
             margin-right: 0;
             margin-bottom: 16px;
@@ -772,7 +706,6 @@
         margin-right: 0px;
     }
 }
-
 .ps_haddleBottom {
     cursor: pointer;
     background: url(/wap_new/img/part7_04.png) no-repeat;
@@ -781,9 +714,7 @@
     height: 60px;
 }
 
-
 /*第九栏的特别地方*/
-
 .part_five li p.part_nine_title {
     width: 280px;
     height: 66px;
@@ -792,33 +723,27 @@
     color: #323232;
     font-size: 18px;
 }
-
 .part_ten {
     width: 1170px;
     margin: 0 auto;
     margin-top: 50px;
 }
-
 .part_ten li {
     float: left;
     width: 234px;
     text-align: center;
 }
-
 .part_ten img {
     margin-bottom: 40px;
 }
-
 .part_ten_title {
     font-size: 36px;
     color: #b72024;
 }
-
 .part_ten_main {
     font-size: 21px;
     color: #b72024;
 }
-
 .part_ten_con {
     color: #fff;
     display: inline-block;
@@ -827,26 +752,21 @@
     margin-right: 40px;
 }
 
-
 /*页面主要内容结束*/
 
-
 /*页面主要内容开始*/
-
 .subject {
     width: 1170px;
     margin: 0 auto;
     color: #010101;
 }
-
-.metusa-wrap,
-.news-wrap,
-.fqa-wrap {
+.metusa-wrap, .news-wrap, .fqa-wrap {
     width: 100%;
     min-width: 1170px;
     padding-top: 25px;
     padding-bottom: 60px;
     background-color: #e7edf3;
+
     .left-list {
         .item {
             position: relative;
@@ -856,13 +776,22 @@
             clear: both;
             // margin-top: 20px;
             transition: 1s;
+
             &:hover {
                 border-bottom: 2px solid #b72024;
                 box-shadow: 0px 0px 10px #999;
             }
+            a {
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 140px;
+                // width: 200px;
+                display: block;
+            }
             img {
-                max-height: ;
-                max-width: ;
+                max-height: 140px;
+                // max-width:;
             }
             .text-tip {
                 margin-top: 10px;
@@ -871,7 +800,8 @@
                 line-height: 20px;
                 height: 80px;
                 @include word-ellipsis;
-                white-space: initial; //多行显示 配合高度
+                white-space: initial;
+                //多行显示 配合高度
             }
             .icon {
                 padding: 0 5px;
@@ -891,15 +821,18 @@
             color: #666666;
             display: block;
             overflow: hidden;
+
             &:hover {
                 color: #b72024;
             }
         }
         .more {
             width: 100%;
+
             a {
                 font-size: 14px;
                 color: #666;
+
                 &:hover {
                     color: #b72024;
                 }
@@ -928,7 +861,6 @@
     }
     // 单个文章 end
 }
-
 .media-footer {
     font-size: 12px;
     margin-top: 14px;
@@ -936,21 +868,19 @@
     line-height: 14px;
     width: 100%;
 }
-
 #info .pe_two {
     display: none;
 }
-
 #info .hover {
     display: block;
 }
-
 .div130_main_right {
     width: 790px;
     float: right;
     padding: 30px 30px 50px 30px;
     background-color: #fff;
     line-height: 1.8;
+
     h1 {
         font-size: 24px;
         text-align: center;
@@ -958,26 +888,18 @@
         font-weight: bold;
     }
 }
-
 .bg_three img {
-    -webkit-filter: sepia(100%);
-    /* webkit内核支持程度较好 */
-    -moz-filter: sepia(100%);
-    /* 其他内核现在并不支持，为了将来兼容性书写 */
+    -webkit-filter: sepia(100%);/* webkit内核支持程度较好 */
+    -moz-filter: sepia(100%);/* 其他内核现在并不支持，为了将来兼容性书写 */
     -ms-filter: sepia(100%);
     -o-filter: sepia(100%);
-    filter: sepia(100%);
-    /* 标准写法 */
+    filter: sepia(100%);/* 标准写法 */
 }
-
 .bg_three img {
-    -webkit-filter: hue-rotate(100%);
-    /* webkit内核支持程度较好 */
-    -moz-filter: hue-rotate(100%);
-    /* 其他内核现在并不支持，为了将来兼容性书写 */
+    -webkit-filter: hue-rotate(100%);/* webkit内核支持程度较好 */
+    -moz-filter: hue-rotate(100%);/* 其他内核现在并不支持，为了将来兼容性书写 */
     -ms-filter: hue-rotate(100%);
     -o-filter: hue-rotate(100%);
-    filter: hue-rotate(100%);
-    /* 标准写法 */
+    filter: hue-rotate(100%);/* 标准写法 */
     filter: sepia(8989%) saturate(2);
 }
