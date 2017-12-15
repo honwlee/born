@@ -1,10 +1,10 @@
 <div>
     <script id="homePage1-partial" type="text/x-handlebars-template">
-        <div class="bg_one">
-            <div class="part">
+        <div class="bg_one panel panel-default">
+            <div class="part panel-heading">
                 <p class="main_title main_title_eleven">{{title}}</p>
             </div>
-            <div class="part_one">
+            <div class="part_one panel-body">
                 <div class="part_one_main">
                     <div class="part_one_con">
                         <p id="one_con" style="margin-top: 30px;">
@@ -51,11 +51,11 @@
     </script>
 
     <script id="homePage2-partial" type="text/x-handlebars-template">
-        <div class="bg_two">
-            <div class="part">
+        <div class="bg_two panel panel-default">
+            <div class="part panel-heading">
                 <p class="main_title main_title_two">{{title}}</p>
             </div>
-            <ul class="part_two">
+            <ul class="part_two panel-body">
                 {{#each posts}}
                     <li data-id="{{id}}">
                         <div class="pt_li1"></div>
@@ -93,12 +93,12 @@
     </script>
 
     <script id="homePage3-partial" type="text/x-handlebars-template">
-        <div class="bg_seven">
+        <div class="bg_seven panel panel-default">
             <!-- 在美活动 -->
-            <div class="part">
+            <div class="part panel-heading">
                 <p class="main_title main_title_seven">在美活动</p>
             </div>
-            <div class="part_seven_main">
+            <div class="part_seven_main panel-body">
                 <div id="success_left" class="part_seven_left">
                     <img src="/assets/images/10361431_IMG_6166.jpeg" title="" height="267" width="577">
                     <p class="ps_left_title"><a href="http://www.xiduobaby.com/view-2846-12.html" title="新疆赴美生子生美国际月子中心庆祝美宝满月生个美宝好处多">新疆赴美生子生美国际月子中心庆祝美宝满月</a>
@@ -125,9 +125,9 @@
                     </div>
                     <!-- <div class="ps_haddleBottom"></div> -->
                 </div>
-                <div class="find_more_five">
-                    <a class="part_five_more part_more" href="/list-12/">查看更多</a>
-                </div>
+            </div>
+            <div class="find_more_five panel-footer">
+                <a class="part_five_more part_more" href="/list-12/">查看更多</a>
             </div>
         </div>
     </script>
@@ -146,25 +146,26 @@
             </div>
         </div>
     </script>
-    
 
     <script id="homePage4-partial" type="text/x-handlebars-template">
-        <div class="bg_four">
+        <div class="bg_four panel panel-default">
             <!-- 月子中心 -->
-            <div class="part">
-                <p class="main_title main_title_three">{{}}</p>
+            <div class="part panel-heading">
+                <p class="main_title main_title_three">{{title}}</p>
             </div>
-            <ul class="part_four">
-                {{#each photos}}
-                <li>
-                    <a target="_blank" href="{{src}}">
-                        <img src="{{src}}" title="" alt="" height="213" width="379">
-                    </a>
-                    <p style="line-height: 66px;" class="part_four_title">{{description}}</p>
-                </li>
-                {{/each}}
-            </ul>
-            <div class="find_more_four">
+            <div class="panel-body">
+                <ul class="part_four">
+                    {{#each photos}}
+                    <li>
+                        <a target="_blank" href="{{src}}">
+                            <img src="{{src}}" height="213" width="379">
+                        </a>
+                        <p style="line-height: 66px;" class="part_four_title">{{description}}</p>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="find_more_four panel-footer">
                 <a class="part_four_more part_more" href="javascript:go('/activity')">查看更多</a>
             </div>
         </div>
@@ -186,12 +187,12 @@
     </script>
 
     <script id="homePage5-partial" type="text/x-handlebars-template">
-        <div class="bg_three">
+        <div class="bg_three panel panel-default">
             <!-- 我们的优势 -->
-            <div class="part">
+            <div class="part panel-heading">
                 <p class="main_title main_title_three">{{title}}</p>
             </div>
-            <div class="part_three">
+            <div class="part_three panel-body">
                 <p class="part_three_about">
                     {{content}}
                 </p>
@@ -199,7 +200,7 @@
                     <div class="part_three_datailCon detail">
                         <p class="pt_datail_title title">{{first.title}}</p>
                         <p class="pt_datail_con content">{{first.content}}</p>
-                        <p class="pt_datail_page index">1/6</p>
+                        <p class="pt_datail_page page">1/6</p>
                     </div>
                     <ul class="part_three_left">
                         {{#each leftData}}
@@ -247,21 +248,23 @@
     </script>
 
     <script id="homePage6-partial" type="text/x-handlebars-template">
-        <div class="bg_ten">
+        <div class="bg_ten panel panel-default">
             <!-- 生美国际赴美的五心服务 -->
-            <div class="part">
+            <div class="part panel-heading">
                 <p class="main_title main_title_ten">BornInUSA 生美贴心服务</p>
             </div>
-            <ul class="part_ten">
-                {{#each intimateServicePage}}
-                <li>
-                    <img src="{{imgUrl}}" height="130" width="130">
-                    <p class="part_ten_title">{{title}}</p>
-                    <p class="part_ten_main">{{text}}</p>
-                    <p class="part_ten_con">{{con}}</p>
-                </li>
-                {{/each}}
-            </ul>
+            <div class="panel-body">
+                <ul class="part_ten">
+                    {{#each snippets}}
+                        <li>
+                            <img src="{{src}}" height="130" width="130">
+                            <p class="part_ten_title">{{title}}</p>
+                            <p class="part_ten_main">{{description}}</p>
+                            <p class="part_ten_con">{{content}}</p>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
         </div>
     </script>
     <script id="homePage6-form-partial" type="text/x-handlebars-template">
@@ -277,75 +280,30 @@
                 <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
             </div>
         </div>
-
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">标题</label>
+            <label class="col-sm-2 control-label" for="file">选择段落内容</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
+                <button class="btn btn-primary select-content-list" data-type="snippets" type="button">点击选择</button>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">内容</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">标题</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">内容</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">标题</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">内容</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">标题</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">内容</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-            </div>
-        </div>
+        </div> 
     </script>
     <script id="homePage7-partial" type="text/x-handlebars-template">
         <div class="homenews hidden-xs">
             <!-- 新闻消息 -->
-            <div class="homenewsCon">
-                <h5 class="homenewsTitle">
-                    <span><img src="/assets/images/homenewstitle.png" alt=""></span>
-                    <a href="javascript:void(0)" class="prev"></a>
-                    <a href="javascript:void(0)" class="next"></a>
-                </h5>
-                <div class="tbC">
+            <div class="homenewsCon panel panel-default">
+                <div class="panel-heading">
+                    <div class="homenewsTitle">
+                        <span><img src="/assets/images/homenewstitle.png" alt=""></span>
+                        <a class="more" href="javascript:go('/news')">查看更多</a>
+                    </div>
+                </div>
+                
+                <div class="tbC panel-body">
                     <div class="tempWrap">
                         <div class="slidecon">
                             <ul class="list-unstyled clearfix">
-                                {{#each newsPage}}
-                                <li class="clearfix">
-                                    <a>
+                                {{#each news}}
+                                    <li class="clearfix">
                                         <div class="con panel-body">
                                             <div class="inner">
                                                 <h6 class="slidetitle">{{title}}
@@ -358,41 +316,8 @@
                                         <div class="imgright">
                                             <img src="{{imgUrl}}" alt="">
                                         </div>
-                                    </a>
-                                </li>
+                                    </li>
                                 {{/each}}
-                                <li class="clearfix">
-                                    <a>
-                                        <div class="imgright">
-                                            <img src="/assets/images/news/0.png" alt="">
-                                        </div>
-                                        <div class="panel-body con">
-                                            <div class="inner">
-                                                <h6 class="slidetitle">​特朗普VS伊朗：中东或更加动荡 美战略负担将增加
-                                                    <i class="arrowI"></i>
-                                                </h6>
-                                                <p>2017年1~9月，中美贸易总额2.89万亿人民币，增长了18.7%，其中中国对美出口增长了16.5%，从美国进口则增长了25%。 </p>
-                                                <div class="morelink">morelink</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="clearfix">
-                                    <a>
-                                        <div class="imgright">
-                                            <img src="/assets/images/news/0.png" alt="">
-                                        </div>
-                                        <div class="panel-body con">
-                                            <div class="inner">
-                                                <h6 class="slidetitle">​特朗普VS伊朗：中东或更加动荡 美战略负担将增加
-                                                    <i class="arrowI"></i>
-                                                </h6>
-                                                <p>2017年1~9月，中美贸易总额2.89万亿人民币，增长了18.7%，其中中国对美出口增长了16.5%，从美国进口则增长了25%。 </p>
-                                                <div class="morelink">morelink</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </div>
