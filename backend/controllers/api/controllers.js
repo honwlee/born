@@ -1,14 +1,16 @@
 'use strict';
 module.exports = {
     users: {
-        module: require("./UserController")
+        module: require("./UserController"),
+        uploadPath: "users"
     },
     attachments: {
         module: require("./AttachmentController"),
         uploadPath: "attachments"
     },
     slides: {
-        module: require("./SlideController")
+        module: require("./SlideController"),
+        uploadPath: "slides"
     },
     events: {
         module: require("./EventController")
@@ -20,32 +22,42 @@ module.exports = {
         module: require("./MessageController")
     },
     news: {
-        module: require("./NewsController")
+        module: require("./NewsController"),
+        uploadPath: "news"
     },
     pages: {
         module: require("./PageController"),
-        uploadPath: "attachments"
+        uploadPath: "pages"
     },
     photos: {
         module: require("./PhotoController"),
         uploadPath: "photos"
     },
     posts: {
-        module: require("./PostController")
+        module: require("./PostController"),
+        uploadPath: "posts"
     },
     products: {
         module: require("./ProductController")
     },
     contents: {
-        module: require("./ContentController")
+        module: require("./ContentController"),
+        uploadPath: "contents"
     },
     grids: {
-        module: require("./GridController")
+        module: require("./GridController"),
+        uploadPath: "grids"
     },
     qas: {
-        module: require("./QaController")
+        module: require("./QaController"),
+        uploadPath: "qas"
     },
     sites: {
-        module: require("./SiteController")
+        module: require("./SiteController"),
+        uploadPath: "sites"
+    },
+    snippets: {
+        module: require("./SnippetController"),
+        uploadPath: "snippets"
     }
 }

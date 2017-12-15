@@ -16,8 +16,8 @@ exports.News = class News extends Model {
     static findByReg(args) {
         return Model.findByReg("news", args);
     }
-    static where(key, value) {
-        return Model.where("news", key, value);
+    static where(key, value, chainAble) {
+        return Model.where("news", key, value, chainAble);
     }
     static create(args) {
         return Model.create("news", args);

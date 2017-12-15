@@ -129,6 +129,16 @@
             "controller": {
                 "type": "scripts/routes/qas/QasController"
             }
+        },
+        "snippets": {
+            "pathto": "/snippets",
+            "data": {
+                "name": "snippets",
+                "navName": "段内容管理"
+            },
+            "controller": {
+                "type": "scripts/routes/snippets/SnippetsController"
+            }
         }
     }
 }

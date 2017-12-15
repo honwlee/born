@@ -152,20 +152,20 @@
         <div class="bg_four">
             <!-- 月子中心 -->
             <div class="part">
-                <p class="main_title main_title_three">美国待产环境</p>
+                <p class="main_title main_title_three">{{}}</p>
             </div>
             <ul class="part_four">
-                {{#each environmentPage}}
+                {{#each photos}}
                 <li>
-                    <a target="_blank" href="{{href}}">
-                        <img src="{{imgUrl}}" title="" alt="" height="213" width="379">
+                    <a target="_blank" href="{{src}}">
+                        <img src="{{src}}" title="" alt="" height="213" width="379">
                     </a>
-                    <p style="line-height: 66px;" class="part_four_title">{{text}}</p>
+                    <p style="line-height: 66px;" class="part_four_title">{{description}}</p>
                 </li>
                 {{/each}}
             </ul>
             <div class="find_more_four">
-                <a class="part_four_more part_more" href="/show-3/">查看更多</a>
+                <a class="part_four_more part_more" href="javascript:go('/activity')">查看更多</a>
             </div>
         </div>
     </script>
@@ -178,9 +178,9 @@
         </div>
 
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择文章</label>
+            <label class="col-sm-2 control-label" for="file">选择图片</label>
             <div class="col-sm-10">
-                <button class="btn btn-primary select-content-list" data-type="posts" type="button">点击选择</button>
+                <button class="btn btn-primary select-content-list" data-type="photos" type="button">点击选择</button>
             </div>
         </div>
     </script>
@@ -189,39 +189,40 @@
         <div class="bg_three">
             <!-- 我们的优势 -->
             <div class="part">
-                <p class="main_title main_title_three">我们的优势</p>
+                <p class="main_title main_title_three">{{title}}</p>
             </div>
             <div class="part_three">
                 <p class="part_three_about">
-                    业界知名专家“洛杉矶胖爸爸”创立，首次提出赴美生子诚实签，倡导安全合法赴美生子，品质保障。国内城市设立办事处，定期全国巡回面对面咨询，让孕妈更加放心安心。
+                    {{content}}
                 </p>
                 <div class="part_three_detail">
-                    <div class="part_three_datailCon">
-                        <p class="pt_datail_title">直营品牌保障</p>
-                        <p class="pt_datail_con">洛杉矶老牌直营月子中心，国内外同一服务团队。正规注册公司，安全有保障。</p>
-                        <p class="pt_datail_page">1/6</p>
+                    <div class="part_three_datailCon detail">
+                        <p class="pt_datail_title title">{{first.title}}</p>
+                        <p class="pt_datail_con content">{{first.content}}</p>
+                        <p class="pt_datail_page index">1/6</p>
                     </div>
                     <ul class="part_three_left">
-                        {{#each advantagesLeftPage}}
-                        <li class="{{class}}">
-                            <p>{{title}}</p>
-                            <img data-main="{{dataMain}}" src="{{imgUrl}}" height="104px" width="104px">
-                        </li>
+                        {{#each leftData}}
+                            <li class="left-item item" data-index="{{@index}}">
+                                <p class="item-title">{{title}}</p>
+                                <img src="{{src}}" height="104px" width="104px">
+                                <p class="item-content hide">{{content}}</p>
+                            </li>
                         {{/each}}
                     </ul>
                     <ul class="part_three_right">
-                        {{#each advantagesRightPage}}
-                        <li class="{{class}}">
-                            <img data-main="{{dataMain}}" src="{{imgUrl}}" height="104px" width="104px">
-                            <p>{{title}}</p>
-                        </li>
+                        {{#each rightData}}
+                            <li class="right-item item"  data-index="{{@index}}" data-right="true">
+                                <img src="{{src}}" height="104px" width="104px">
+                                <p class="item-title">{{title}}</p>
+                                <p class="item-content hide">{{content}}</p>
+                            </li>
                         {{/each}}
                     </ul>
                 </div>
             </div>
         </div>
     </script>
-
 
     <script id="homePage5-form-partial" type="text/x-handlebars-template">
         <div class="form-group">
@@ -232,84 +233,17 @@
         </div>
 
         <div class="form-group">
-            <label class="col-sm-2 control-label">优势内容</label>
+            <label class="col-sm-2 control-label">内容</label>
             <div class="col-sm-10">
                 <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">优势标题一</label>
+            <label class="col-sm-2 control-label" for="file">选择段落内容</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
+                <button class="btn btn-primary select-content-list" data-type="snippets" type="button">点击选择</button>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">优势内容一</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">优势标题二</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">优势内容二</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">优势标题三</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">优势内容三</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">优势标题四</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">优势内容四</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">优势标题五</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">优势内容五</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">优势标题六</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">优势内容六</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-            </div>
-        </div>
+        </div> 
     </script>
 
     <script id="homePage6-partial" type="text/x-handlebars-template">

@@ -81,6 +81,7 @@ define([
                 clickAction: function(helpers, callback, e) {
                     modal.show("form", $(opts.tpl(helpers.rowData)), opts.title, {
                         key: opts.key,
+                        file: true,
                         callback: function() {
                             opts.container.repeater('render');
                             if (opts.callback) opts.callback();

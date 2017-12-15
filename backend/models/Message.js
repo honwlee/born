@@ -16,8 +16,8 @@ exports.Message = class Message extends Model {
     static findByReg(args) {
         return Model.findByReg("messages", args);
     }
-    static where(key, value) {
-        return Model.where("messages", key, value);
+    static where(key, value, chainAble) {
+        return Model.where("messages", key, value, chainAble);
     }
     static create(args) {
         return Model.create("messages", args);

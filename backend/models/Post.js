@@ -16,8 +16,8 @@ exports.Post = class Post extends Model {
     static findByReg(args) {
         return Model.findByReg("posts", args);
     }
-    static where(key, value) {
-        return Model.where("posts", key, value);
+    static where(key, value, chainAble) {
+        return Model.where("posts", key, value, chainAble);
     }
     static create(args) {
         return Model.create("posts", args);

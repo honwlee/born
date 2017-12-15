@@ -29,7 +29,7 @@ define([
                 _ec = $(tpl({}));
             $(components.slide(this.pageData.slide)).prependTo(_ec.find(".home-slide-container"));
             self.pageData.contents.forEach(function(content) {
-                $(tplHelper.getContent(content.tpl)(content.sub)).appendTo(_ec.find(".pages"));
+                tplHelper.show(content.tpl, content.sub).appendTo(_ec.find(".pages"));
             });
             e.content = _ec[0];
         },

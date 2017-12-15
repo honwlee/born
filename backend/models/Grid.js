@@ -16,8 +16,8 @@ exports.Grid = class Grid extends Model {
     static findByReg(args) {
         return Model.findByReg("grids", args);
     }
-    static where(key, value) {
-        return Model.where("grids", key, value);
+    static where(key, value, chainAble) {
+        return Model.where("grids", key, value, chainAble);
     }
     static create(args) {
         return Model.create("grids", args);

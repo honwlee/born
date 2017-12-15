@@ -175,6 +175,17 @@ define([
                     sortable: true
                 }],
                 fields: ["id", "description", "src", "name"]
+            },
+            snippets: {
+                type: "snippets",
+                title: "选择段内容",
+                id: "selectSnippetListR",
+                columns: [{
+                    label: '名称',
+                    property: 'name',
+                    sortable: true
+                }],
+                fields: ["id"]
             }
         }
         var cmodal = $("#chooseModal");
@@ -340,6 +351,7 @@ define([
         buildList: buildList,
         _showForm: function(content, title, opts) {
             var modal = $("#formModal");
+            opts.file = opts.file === false ? false : true;
             modal.find(".modal-body").empty().html(content);
             modal.find(".modal-title").empty().html(title);
             modal.find("#datepickerIllustration").datepicker();

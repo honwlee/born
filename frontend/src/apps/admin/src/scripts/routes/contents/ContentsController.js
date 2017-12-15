@@ -21,7 +21,7 @@ define([
         __currentTplKey = null,
         wizardTpl = hbs.compile("{{> wizard-tpl-partial}}");
 
-    function bindCurrentTplEvts(modal, key) {
+    function bindCurrentTplEvts(modal, key, callback) {
         var container = modal.find(".tpl-container");
         if (__currentTplKey) {
             tplHelper.getTplByKey(__currentTplKey).bindEvnts(container, __currentTplKey, true);
@@ -36,6 +36,7 @@ define([
         tplObj.bindEvnts(container);
         modal.find(".save-btn").off("click").on("click", function() {
             tplObj.save(modal);
+            callback();
         });
     }
 
@@ -120,14 +121,11 @@ define([
                     key: "contents",
                     file: true,
                     callback: function() {
-                        selector.repeater('render');
+
                     }
                 });
                 wizard.on('finished.fu.wizard', function() {
-                    modalFunc.save("contents", modal, {
-                        _file: __file
-                    }, function(data) {
-                        __file = null;
+                    modalFunc.save("contents", modal, {}, function(data) {
                         toastr.success("已保存！");
                     });
                 }).on('actionclicked.fu.wizard', function(e, data) {
@@ -140,7 +138,10 @@ define([
 
                 modal.find("#tpl").off("change").on("change", function() {
                     if (this.value) {
-                        bindCurrentTplEvts(modal, this.value);
+                        bindCurrentTplEvts(modal, this.value, function() {
+                            toastr.success("已保存！");
+                            selector.repeater('render');
+                        });
                         wizard.wizard("next");
                     }
                 });
