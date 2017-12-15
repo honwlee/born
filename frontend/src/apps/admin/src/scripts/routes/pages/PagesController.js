@@ -120,8 +120,6 @@ define([
                             });
                             modal.delegate(".remove", "click", function(e) {
                                 $(this).parent().parent().remove();
-                                // var before = parent.prev();
-                                // parent.insertBefore(before);
                             });
 
                             modal.delegate(".up", "click", function(e) {

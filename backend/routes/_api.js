@@ -19,7 +19,7 @@ module.exports = function(app, router, ensureAuthenticated, rootPath) {
     if (!fs.existsSync(rootPath)) mkdirp(rootPath);
     // api
     Object.keys(ctrls).forEach(function(key) {
-        ["update", "create", "show", "delete", "index", "config", "select"].forEach(function(name) {
+        ["update", "create", "show", "delete", "index", "config", "select", "public"].forEach(function(name) {
             let item = ctrls[key];
             let matcher = name.match(/^(update|create|delete)/)
             if (matcher) {
