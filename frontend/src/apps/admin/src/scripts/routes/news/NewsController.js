@@ -7,14 +7,18 @@ define([
     "scripts/helpers/modal",
     "scripts/helpers/Partial",
     "scripts/helpers/List",
-    "text!scripts/helpers/_formPartial.hbs"
-], function($, skylarkjs, hbs, _, server, modal, partial, List, formTpl) {
+    "text!scripts/helpers/_formPartial.hbs",
+    "text!scripts/helpers/_itemPartial.hbs"
+], function($, skylarkjs, hbs, _, server, modal, partial, List, formTpl, itemTpl) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
+        itemSelector = $(langx.trim(itemTpl)),
         formSelector = $(langx.trim(formTpl));
-    partial.get("date-picker-partial");
+
     partial.get("news-form-partial", formSelector);
+    partial.get("news-item-partial", itemSelector);
     var tpl = hbs.compile("{{> news-form-partial}}");
+    var itemT = hbs.compile("{{> news-item-partial}}");
     return spa.RouteController.inherit({
         klassName: "NewsController",
         repeaterId: "newsRepeater",
@@ -38,7 +42,7 @@ define([
                 }, {
                     name: "show",
                     title: "查看新闻",
-                    tpl: tpl,
+                    tpl: itemT,
                     callback: function() {
 
                     }

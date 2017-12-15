@@ -7,13 +7,17 @@ define([
     "scripts/helpers/modal",
     "scripts/helpers/Partial",
     "scripts/helpers/List",
-    "text!scripts/helpers/_formPartial.hbs"
-], function($, skylarkjs, hbs, _, server, modal, partial, List, formTpl) {
+    "text!scripts/helpers/_formPartial.hbs",
+    "text!scripts/helpers/_itemPartial.hbs"
+], function($, skylarkjs, hbs, _, server, modal, partial, List, formTpl, itemTpl) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
-        formSelector = $(langx.trim(formTpl));
+        formSelector = $(langx.trim(formTpl)),
+        itemSelector = $(langx.trim(itemTpl));
     partial.get("qa-form-partial", formSelector);
+    partial.get("qa-item-partial", itemSelector);
     var tpl = hbs.compile("{{> qa-form-partial}}");
+    var itemT = hbs.compile("{{> qa-item-partial}}");
     return spa.RouteController.inherit({
         klassName: "QaController",
         repeaterId: "QaRepeater",
@@ -36,7 +40,7 @@ define([
                 }, {
                     name: "show",
                     title: "查看文章",
-                    tpl: tpl,
+                    tpl: itemT,
                     callback: function() {
 
                     }
