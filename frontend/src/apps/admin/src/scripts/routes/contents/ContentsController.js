@@ -117,7 +117,7 @@ define([
                     ]
                 };
                 var wizard = $(wizardTpl(obj)).wizard();
-                modal = modalFunc.show("normalForm", wizard, "添加slide", {
+                modal = modalFunc.show("normalForm", wizard, "添加页面内容", {
                     key: "contents",
                     file: true,
                     callback: function() {
