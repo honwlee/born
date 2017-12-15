@@ -114,8 +114,14 @@ define([
                             modal.off('hidden.bs.modal').on('hidden.bs.modal', function() {
                                 modalFunc.contentListByBtn(ps, {}, true);
                                 modalFunc.contentListByBtn(cs, {}, true);
+                                modal.undelegate(".remove", "click");
                                 modal.undelegate(".up", "click");
                                 modal.undelegate(".down", "click");
+                            });
+                            modal.delegate(".remove", "click", function(e) {
+                                $(this).parent().parent().remove();
+                                // var before = parent.prev();
+                                // parent.insertBefore(before);
                             });
 
                             modal.delegate(".up", "click", function(e) {

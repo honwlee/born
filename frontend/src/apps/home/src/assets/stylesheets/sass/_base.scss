@@ -8,6 +8,15 @@ body {
     height: 100%;
     width: 100%;
     overflow: auto;
+    -moz-user-select: none;
+    /*火狐*/
+    -webkit-user-select: none;
+    /*webkit浏览器*/
+    -ms-user-select: none;
+    /*IE10*/
+    -khtml-user-select: none;
+    /*早期浏览器*/
+    user-select: none;
 }
 
 @mixin word-ellipsis {
@@ -115,7 +124,7 @@ $navHeight: 82px;
             padding: 0 5px;
             max-width: 170px;
             max-height: 78px;
-            display:inline
+            display: inline
         }
     }
     #main {
