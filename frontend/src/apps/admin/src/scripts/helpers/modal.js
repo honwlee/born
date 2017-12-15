@@ -32,8 +32,8 @@ define([
         return data;
     };
 
-    function save(name, selector, opt, callback) {
-        var action = "create",
+    function save(name, selector, extralObj, callback, actionName) {
+        var action = actionName || "create",
             data = {};
         var formData = new FormData();
         var parseData = parseForm(selector);
@@ -44,23 +44,23 @@ define([
         }
         if (data.id) action = "update";
         //将文件信息追加到其中
-        if (opt._file) {
-            formData.append('file', opt._file);
+        if (extralObj._file) {
+            formData.append('file', extralObj._file);
             //利用split切割，拿到上传文件的格式
-            var src = opt._file.name,
+            var src = extralObj._file.name,
                 formart = src.split(".")[1];
             //使用if判断上传文件格式是否符合
             if (!(/(gif|jpg|jpeg|png)$/i).test(formart)) {
                 return toastr.error("缩略图格式只支持gif、jpg或者png！");
             }
         }
-        delete opt._file;
-        if (opt._content) {
-            formData.append("_content", JSON.stringify(opt._content));
+        delete extralObj._file;
+        if (extralObj._content) {
+            formData.append("_content", JSON.stringify(extralObj._content));
         }
-        delete opt._content;
-        for (var key in opt) {
-            formData.append(key, opt[key]);
+        delete extralObj._content;
+        for (var key in extralObj) {
+            formData.append(key, extralObj[key]);
         }
 
         var url = "/api/" + name + "/" + action;
@@ -92,11 +92,12 @@ define([
         xhr.send(formData);
     };
 
-    function buildList(obj, opts, callback) {
+    function buildList(obj, opts, callback, actionName) {
         require(["scripts/helpers/List"], function(List) {
             var list = new List({
                 title: obj.title,
                 id: obj.id,
+                actionName: actionName,
                 search: opts.search,
                 list_selectable: opts.list_selectable,
                 key: obj.type,
@@ -108,7 +109,7 @@ define([
         });
     };
 
-    function showList(formModal, type, opts) {
+    function showList(formModal, type, opts, actionName) {
         var data = {
             posts: {
                 type: "posts",
@@ -214,7 +215,7 @@ define([
                     }
 
                 });
-            });
+            }, actionName);
         });
         cmodal.modal('show');
 
@@ -284,8 +285,8 @@ define([
         _s.off("click");
         if (off) return;
         _s.on("click", function(e) {
-            var type = $(e.currentTarget).data("type");
-            showList(selector, type, opts);
+            var data = $(e.currentTarget).data();
+            showList(selector, data.type, opts, data.action);
         });
     };
 
@@ -356,17 +357,19 @@ define([
             modal.find(".modal-title").empty().html(title);
             modal.find("#datepickerIllustration").datepicker();
             modal.find(".save-btn").off("click").on("click", function() {
+                var extralObj = {
+                    _content: __content[opts.key],
+                    _file: __files[opts.key]
+                };
+                if (opts.beforeSave) opts.beforeSave(extralObj);
                 if (checkForm(opts.checkKeys || [], modal)) {
-                    save(opts.key, modal, {
-                        _content: __content[opts.key],
-                        _file: __files[opts.key]
-                    }, function(data) {
+                    save(opts.key, modal, extralObj, function(data) {
                         __content[opts.key] = null;
                         __files[opts.key] = null;
                         toastr.success("已保存！");
-                        if (opts.callback) opts.callback(data);
+                        if (opts.afterSave) opts.afterSave(data);
                         modal.modal('hide');
-                    });
+                    }, opts.action);
                 }
             });
 

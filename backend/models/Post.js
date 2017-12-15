@@ -20,6 +20,7 @@ exports.Post = class Post extends Model {
         return Model.where("posts", key, value, chainAble);
     }
     static create(args) {
+        console.log(args.category);
         return Model.create("posts", args);
     }
     static update(args) {

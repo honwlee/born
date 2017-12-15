@@ -14,6 +14,7 @@ define([
         langx = skylarkjs.langx,
         itemSelector = $(langx.trim(itemTpl)),
         formSelector = $(langx.trim(formTpl));
+    partial.get("category-select-partial", formSelector);
     partial.get("post-form-partial", formSelector);
     partial.get("post-item-partial", itemSelector);
     var tpl = hbs.compile("{{> post-form-partial}}");
@@ -22,31 +23,34 @@ define([
         klassName: "PostController",
         repeaterId: "postRepeater",
         list: null,
+        title: "文章列表",
+        addTitle: "添加文章",
         preparing: function(e) {
             var self = this;
         },
 
         buildList: function(post) {
             this.list = new List({
-                title: "文章列表",
-                id: "postRepeater",
+                title: this.title,
+                id: this.repeaterId,
                 key: "posts",
+                actionName: this.actionName,
                 actions: [{
                     name: "delete",
-                    title: "删除文章",
+                    title: "删除",
                     callback: function() {
 
                     }
                 }, {
                     name: "show",
-                    title: "查看文章",
+                    title: "查看",
                     tpl: itemT,
                     callback: function() {
 
                     }
                 }, {
                     name: "edit",
-                    title: "编辑文章",
+                    title: "编辑",
                     tpl: tpl,
                     callback: function() {
 
@@ -76,20 +80,20 @@ define([
             });
         },
 
-        addPage: function() {
-
-        },
-
         rendering: function(e) {
             this.buildList();
             var self = this,
                 selector = this.list.getDom();
             selector.find(".repeater-add button").off("click").on("click", function(e) {
-                modal.show("form", $(tpl()), "添加文章", {
+                modal.show("form", $(tpl()), this.addTitle, {
                     key: "posts",
                     file: true,
-                    callback: function() {
+                    action: self.actionName ? "post_" + self.actionName : "create",
+                    afterSave: function() {
                         selector.repeater('render');
+                    },
+                    beforeSave: function() {
+
                     }
                 });
             });

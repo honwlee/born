@@ -13,27 +13,21 @@ define([
         langx = skylarkjs.langx,
         formSelector = $(langx.trim(formTpl));
     partial.get("page-select-partial", formSelector);
-    partial.get("grid-form-partial", formSelector);
-    var tpl = hbs.compile("{{> grid-form-partial}}");
+    partial.get("link-form-partial", formSelector);
+    var tpl = hbs.compile("{{> link-form-partial}}");
     return spa.RouteController.inherit({
-        klassName: "GridsController",
-        repeaterId: "gridsRepeater",
+        klassName: "LinksController",
+        repeaterId: "linksRepeater",
         list: null,
-        preparing: function(e) {
-            var self = this;
-            e.result = server().connect("pages", "get", "select").then(function(pages) {
-                self.pages = pages;
-            });
-        },
 
         buildList: function(post) {
             this.list = new List({
-                title: "图片列表",
+                title: "链接列表",
                 id: this.repeaterId,
-                key: "grids",
+                key: "links",
                 actions: [{
                     name: "delete",
-                    title: "删除Grid",
+                    title: "删除",
                     tpl: "",
                     callback: function() {
 
@@ -43,10 +37,6 @@ define([
                     label: '名称',
                     property: 'name',
                     sortable: true
-                }, {
-                    label: '所属页面',
-                    property: 'page',
-                    sortable: false
                 }]
             });
         },
@@ -62,11 +52,11 @@ define([
             selector.find(".repeater-add button").off("click").on("click", function(e) {
                 modal.show("form", $(tpl({
                     pages: self.pages
-                })), "添加文章", {
+                })), "添加链接", {
                     list_selectable: "multi",
-                    key: "grids",
+                    key: "links",
                     file: true,
-                    callback: function() {
+                    afterSave: function() {
                         selector.repeater('render');
                     },
                     listSCallback: function(modal, items) {

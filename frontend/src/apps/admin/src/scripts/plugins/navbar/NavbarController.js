@@ -149,12 +149,18 @@ define([
                 routes = spa.getConfig("routes"),
                 _el = $("#sk-navbar"),
                 goToPath = function(name) {
-                    var path = routes[name].pathto;
-                    if (router.go(path)) {
-                        // 监听routed已经实现
-                        // setActive(name);
-                        showThrob();
-                    }
+                    server().connect("auth", "get", "check").then(function(result) {
+                        if (result) {
+                            var path = routes[name].pathto;
+                            if (router.go(path)) {
+                                // 监听routed已经实现
+                                // setActive(name);
+                                showThrob();
+                            }
+                        } else {
+                            window.go("/signin");
+                        }
+                    });
                 };
             var ul = $("<ul>").attr({
                 class: "nav navbar-nav"

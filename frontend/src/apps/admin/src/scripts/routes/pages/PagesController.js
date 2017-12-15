@@ -169,7 +169,7 @@ define([
 
                 modalFunc.show("form", $(tpl()), "添加页面", {
                     key: "pages",
-                    callback: function() {
+                    afterSave: function() {
                         selector.repeater('render');
                     },
                     modalEvts: function(_modal) {

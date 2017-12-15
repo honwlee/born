@@ -12,15 +12,10 @@ module.exports = {
     },
 
     public: function(req, res) {
-        let result = parse("news", req, res, ["title"], true);
-        res.json({
-            total: result.total,
-            rows: result.rows.filter(function(s) {
-                return s.published;
-            }).value()
-        })
+        parse("news", req, res, ["title"], {
+            published: 'true'
+        });
     },
-
 
     show: function(req, res) {
         let news = News.findBy({

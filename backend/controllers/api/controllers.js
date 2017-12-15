@@ -4,22 +4,15 @@ module.exports = {
         module: require("./UserController"),
         uploadPath: "users"
     },
-    attachments: {
-        module: require("./AttachmentController"),
-        uploadPath: "attachments"
+    categories: {
+        module: require("./CategoryController")
     },
     slides: {
         module: require("./SlideController"),
         uploadPath: "slides"
     },
-    events: {
-        module: require("./EventController")
-    },
-    keywords: {
-        module: require("./KeywordController")
-    },
-    messages: {
-        module: require("./MessageController")
+    links: {
+        module: require("./LinkController")
     },
     news: {
         module: require("./NewsController"),
@@ -35,18 +28,19 @@ module.exports = {
     },
     posts: {
         module: require("./PostController"),
-        uploadPath: "posts"
-    },
-    products: {
-        module: require("./ProductController")
+        uploadPath: "posts",
+        extralNames: ["meet", "activity", "process", "service", "about", "env"],
+        extraPrefix: [{
+            name: "post_",
+            method: "post"
+        }, {
+            name: "public_",
+            method: "get"
+        }]
     },
     contents: {
         module: require("./ContentController"),
         uploadPath: "contents"
-    },
-    grids: {
-        module: require("./GridController"),
-        uploadPath: "grids"
     },
     qas: {
         module: require("./QaController"),

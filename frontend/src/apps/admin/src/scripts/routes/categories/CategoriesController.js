@@ -12,31 +12,22 @@ define([
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         formSelector = $(langx.trim(formTpl));
-    partial.get("snippets-form-partial", formSelector);
-    var tpl = hbs.compile("{{> snippets-form-partial}}");
+    partial.get("category-form-partial", formSelector);
+    var tpl = hbs.compile("{{> category-form-partial}}");
     return spa.RouteController.inherit({
-        klassName: "SnippetsController",
-        repeaterId: "snippetsRepeater",
+        klassName: "CategoriesController",
+        repeaterId: "categoriesRepeater",
         list: null,
-        preparing: function(e) {
-            var self = this;
-        },
 
-        buildList: function() {
+        buildList: function(post) {
             this.list = new List({
-                title: "文章列表",
+                title: "分类列表",
                 id: this.repeaterId,
-                key: "snippets",
+                key: "categories",
                 actions: [{
                     name: "delete",
                     title: "删除",
-                    callback: function() {
-
-                    }
-                }, {
-                    name: "show",
-                    title: "查看",
-                    tpl: tpl,
+                    tpl: "",
                     callback: function() {
 
                     }
@@ -49,23 +40,15 @@ define([
                     }
                 }],
                 columns: [{
-                    label: '标题',
-                    property: 'title',
-                    sortable: false
+                    label: '名称',
+                    property: 'name',
+                    sortable: true
                 }, {
-                    label: '内容',
-                    property: 'content',
-                    sortable: false
-                }, {
-                    label: '是否公开',
-                    property: 'published',
+                    label: 'usage',
+                    property: 'usage',
                     sortable: false
                 }]
             });
-        },
-
-        addPage: function() {
-
         },
 
         rendering: function(e) {
@@ -73,11 +56,17 @@ define([
             var self = this,
                 selector = this.list.getDom();
             selector.find(".repeater-add button").off("click").on("click", function(e) {
-                modal.show("form", $(tpl()), "添加段内容", {
-                    key: "snippets",
+                modal.show("form", $(tpl({
+                    pages: self.pages
+                })), "添加分类", {
+                    list_selectable: "multi",
+                    key: "categories",
                     file: true,
                     afterSave: function() {
                         selector.repeater('render');
+                    },
+                    listSCallback: function(modal, items) {
+
                     }
                 });
             });

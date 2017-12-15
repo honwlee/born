@@ -90,7 +90,7 @@ define([
                 modal.show("form", $(tpl()), "添加新闻", {
                     key: "news",
                     file: true,
-                    callback: function() {
+                    afterSave: function() {
                         selector.repeater('render');
                     }
                 });

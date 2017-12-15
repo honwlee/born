@@ -1,7 +1,10 @@
 'use strict';
 const Post = require('../../models/Post').Post;
+const _ = require('lodash');
+const Category = require('../../models/Category').Category;
 const parse = require('../../exts/parseList').parse;
 const validate = require('../../exts/validation').validate;
+
 module.exports = {
     index: function(req, res) {
         parse("posts", req, res, ["title"]);
@@ -12,13 +15,9 @@ module.exports = {
     },
 
     public: function(req, res) {
-        let result = parse("posts", req, res, ["title"], true);
-        res.json({
-            total: result.total,
-            rows: result.rows.filter(function(s) {
-                return s.published;
-            }).value()
-        })
+        parse("posts", req, res, ["title"], {
+            published: true
+        });
     },
 
     show: function(req, res) {
@@ -48,3 +47,27 @@ module.exports = {
         res.json(Post.importData());
     }
 }
+
+_(["meet", "activity", "process", "service", "about", "env"]).each(function(name) {
+    console.log(name);
+    module.exports[name] = function(req, res) {
+        parse("posts", req, res, ["title"], {
+            category: name
+        });
+    };
+    module.exports["post_" + name] = function(req, res) {
+        let category = Category.findOrCreate("name", {
+            name: name,
+            usage: 2
+        });
+        req.body.category = name;
+        req.body.file = req.file;
+        validate(Post, { title: req.body.title }, req, res);
+    };
+    module.exports["public_" + name] = function(req, res) {
+        parse("posts", req, res, ["title"], {
+            published: 'true',
+            category: name
+        });
+    };
+});

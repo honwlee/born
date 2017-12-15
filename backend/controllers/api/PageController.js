@@ -54,15 +54,10 @@ module.exports = {
     },
 
     public: function(req, res) {
-        let result = parse("pages", req, res, ["name", "type"], true);
-        res.json({
-            total: result.total,
-            rows: result.rows.filter(function(s) {
-                return s.published;
-            }).value()
-        })
+        parse("pages", req, res, ["name", "type"], {
+            published: 'true'
+        });
     },
-
 
     select: function(req, res) {
         let pages = Page.findAll({

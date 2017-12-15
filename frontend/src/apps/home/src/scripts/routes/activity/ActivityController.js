@@ -61,7 +61,8 @@ define([
         buildList: function() {
             return new List({
                 id: this.repeaterId,
-                key: "photos",
+                key: "posts",
+                actionName: "public_activity",
                 defaultView: "thumbnail",
                 thumbnail_template: langx.trim(__selector.find("#activity-listItem-partial").html()),
                 needHeader: false,

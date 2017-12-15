@@ -12,7 +12,7 @@ function getFullURL(req) {
     return '' + root + req.originalUrl;
 }
 module.exports = {
-    parse: function(name, req, res, queryKeys, notRes) {
+    parse: function(name, req, res, queryKeys, filterOpts) {
         let dbpath = path.join(__dirname, "../dbs"),
             dbms = require('../lib/dbms/'),
             _ = require('lodash'),
@@ -50,10 +50,27 @@ module.exports = {
             // Full-text search
             // q = q.toLowerCase();
             chain = chain.filter(function(obj) {
-                for (var key in queryKeys) {
+                for (var key in queryKey) {
                     if (obj[queryKeys[key]] === q) return true;
                 }
             });
+        }
+
+        if (filterOpts) {
+            chain = chain.filter(function(obj) {
+                let result = true;
+                for (var key in filterOpts) {
+                    console.log(result);
+                    console.log("obj:" + obj[key]);
+                    console.log("filer:" + filterOpts[key]);
+                    console.log(obj[key] == filterOpts[key]);
+                    result = result && (obj[key] == filterOpts[key]);
+                    console.log(result);
+                }
+                console.log(result);
+                return result;
+            });
+            console.log(chain.value());
         }
 
         Object.keys(req.query).forEach(function(key) {
@@ -149,18 +166,10 @@ module.exports = {
             _limit = parseInt(_limit, 10);
             chain = chain.slice(_start, _start + _limit);
         }
-        if (notRes) {
-            return {
-                total: total,
-                rows: chain
-            }
-        } else {
-            res.json({
-                total: total,
-                rows: chain.value()
-            });
-        }
 
+        res.json({
+            total: total,
+            rows: chain.value()
+        });
     }
-
 }

@@ -88,7 +88,7 @@ define([
                 modal.show("form", $(tpl()), "添加文章", {
                     key: "qas",
                     file: true,
-                    callback: function() {
+                    afterSave: function() {
                         selector.repeater('render');
                     }
                 });

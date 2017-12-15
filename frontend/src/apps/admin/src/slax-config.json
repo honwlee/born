@@ -54,27 +54,77 @@
             "pathto": "/pages",
             "data": {
                 "name": "pages",
-                "navName": "页面管理"
+                "navName": "页面"
             },
             "controller": {
                 "type": "scripts/routes/pages/PagesController"
             }
         },
-        "posts": {
-            "pathto": "/posts",
+        "processPost": {
+            "pathto": "/process",
             "data": {
-                "name": "posts",
-                "navName": "文章管理"
+                "name": "processPost",
+                "navName": "赴美流程"
             },
             "controller": {
-                "type": "scripts/routes/posts/PostsController"
+                "type": "scripts/routes/posts/ProcessController"
+            }
+        },
+        "envPost": {
+            "pathto": "/enviroment",
+            "data": {
+                "name": "envPost",
+                "navName": "待产环境"
+            },
+            "controller": {
+                "type": "scripts/routes/posts/EnvController"
+            }
+        },
+        "meetPost": {
+            "pathto": "/meet",
+            "data": {
+                "name": "meetPost",
+                "navName": "遇见美利坚"
+            },
+            "controller": {
+                "type": "scripts/routes/posts/MeetController"
+            }
+        },
+        "aboutPost": {
+            "pathto": "/about",
+            "data": {
+                "name": "aboutPost",
+                "navName": "关于我们"
+            },
+            "controller": {
+                "type": "scripts/routes/posts/AboutController"
+            }
+        },
+        "activityPost": {
+            "pathto": "/activity",
+            "data": {
+                "name": "activityPost",
+                "navName": "在美活动"
+            },
+            "controller": {
+                "type": "scripts/routes/posts/ActivityController"
+            }
+        },
+        "servicePost": {
+            "pathto": "/service",
+            "data": {
+                "name": "servicePost",
+                "navName": "服务"
+            },
+            "controller": {
+                "type": "scripts/routes/posts/ServiceController"
             }
         },
         "photos": {
             "pathto": "/photos",
             "data": {
                 "name": "photos",
-                "navName": "图片管理"
+                "navName": "图片"
             },
             "controller": {
                 "type": "scripts/routes/photos/PhotosController"
@@ -84,7 +134,7 @@
             "pathto": "/news",
             "data": {
                 "name": "news",
-                "navName": "新闻管理"
+                "navName": "新闻"
             },
             "controller": {
                 "type": "scripts/routes/news/NewsController"
@@ -94,27 +144,27 @@
             "pathto": "/slides",
             "data": {
                 "name": "slides",
-                "navName": "Slides管理"
+                "navName": "Slide"
             },
             "controller": {
                 "type": "scripts/routes/slides/SlidesController"
             }
         },
-        "grids": {
-            "pathto": "/grids",
+        "categories": {
+            "pathto": "/categories",
             "data": {
-                "name": "grids",
-                "navName": "Grid管理"
+                "name": "categories",
+                "navName": "分类"
             },
             "controller": {
-                "type": "scripts/routes/grids/GridsController"
+                "type": "scripts/routes/categories/CategoriesController"
             }
         },
         "contents": {
             "pathto": "/contents",
             "data": {
                 "name": "contents",
-                "navName": "页面内容管理"
+                "navName": "页面内容"
             },
             "controller": {
                 "type": "scripts/routes/contents/ContentsController"
@@ -124,7 +174,7 @@
             "pathto": "/qas",
             "data": {
                 "name": "qas",
-                "navName": "QA内容管理"
+                "navName": "QA"
             },
             "controller": {
                 "type": "scripts/routes/qas/QasController"
@@ -134,10 +184,20 @@
             "pathto": "/snippets",
             "data": {
                 "name": "snippets",
-                "navName": "段内容管理"
+                "navName": "段内容"
             },
             "controller": {
                 "type": "scripts/routes/snippets/SnippetsController"
+            }
+        },
+        "links": {
+            "pathto": "/links",
+            "data": {
+                "name": "links",
+                "navName": "链接"
+            },
+            "controller": {
+                "type": "scripts/routes/links/LinksController"
             }
         }
     }

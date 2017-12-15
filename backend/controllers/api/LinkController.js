@@ -1,25 +1,25 @@
 'use strict';
-const Grid = require('../../models/Grid').Grid;
+const Link = require('../../models/Link').Link;
 const parse = require('../../exts/parseList').parse;
 const validate = require('../../exts/validation').validate;
 module.exports = {
     index: function(req, res) {
-        parse("grids", req, res, ["name"]);
+        parse("links", req, res, ["name"]);
     },
 
     select: function(req, res) {
-        let grids = Grid.findAll({
+        let links = Link.findAll({
             type: "main"
         });
-        res.json(grids);
+        res.json(links);
     },
 
     show: function(req, res) {
         let opt = {};
         opt[req.query.key] = req.query.value;
-        let grid = Grid.findByReg(opt);
-        if (grid) {
-            res.json(grid);
+        let link = Link.findByReg(opt);
+        if (link) {
+            res.json(link);
         } else {
             res.json({ status: false, msg: "no results!" });
         }
@@ -27,21 +27,21 @@ module.exports = {
 
     update: function(req, res) {
         req.body.file = req.file;
-        let grid = Grid.update(req.body);
-        res.json({ status: true, result: grid });
+        let link = Link.update(req.body);
+        res.json({ status: true, result: link });
     },
 
     create: function(req, res) {
         req.body.file = req.file;
-        validate(Grid, { name: req.body.name }, req, res);
+        validate(Link, { name: req.body.name }, req, res);
     },
 
     delete: function(req, res) {
-        Grid.delete(req.body);
+        Link.delete(req.body);
         res.json({ status: true, msg: "删除成功！" });
     },
 
     import: function(req, res) {
-        res.json(Grid.importData());
+        res.json(Link.importData());
     }
 }

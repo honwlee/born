@@ -11,8 +11,20 @@
             </div>
         </div>
     </script>
+    <script id="category-select-partial" type="text/x-handlebars-template">
+        <div class="form-group category-selector">
+            <label class="col-sm-2 control-label">类别</label>
+            <div class="col-sm-10">
+                <select class="form-control" name="category" id="categorySelect">
+                    {{#each categories}}
+                        <option value="{{id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+    </script>
     <script id="page-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
+        <form class="form-horizontal admin-form form" role="form">
             <div class="form-group">
                 <div class="col-sm-10">
                     <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
@@ -68,7 +80,7 @@
         </form>
     </script>
     <script id="content-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="contentForm" role="form">
+        <form class="form-horizontal admin-form form" role="form">
             <div class="form-group">
                 <div class="col-sm-10">
                     <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
@@ -163,7 +175,7 @@
         </div>
     </script>
     <script id="post-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
+        <form class="form-horizontal admin-form form" role="form">
             <div class="form-group">
                 <div class="col-sm-10">
                     <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
@@ -204,7 +216,7 @@
         </form>
     </script>
     <script id="photo-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
+        <form class="form-horizontal admin-form form" role="form">
             <div class="form-group">
                     <div class="col-sm-10">
                         <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
@@ -232,10 +244,11 @@
             <div class="form-group text-center">
                 <img src="{{imagePath}}" />
             </div>
+            {{> category-select-partial}}
         </form>
     </script>
     <script id="slide-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
+        <form class="form-horizontal admin-form form" mrole="form">
             <div class="form-group">
                     <div class="col-sm-10">
                         <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
@@ -250,7 +263,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label" for="file">选择图片</label>
                 <div class="col-sm-10">
-                    <button class="btn btn-primary select-content-list" data-type="photos" type="button">点击选择</button>
+                    <button class="btn btn-primary select-content-list" data-type="photos" data-action="" type="button">点击选择</button>
                 </div>
             </div>
             <div class="form-group">
@@ -262,7 +275,7 @@
         </form>
     </script>
     <script id="news-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
+        <form class="form-horizontal admin-form form" role="form">
             <div class="form-group">
                 <div class="col-sm-10">
                     <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
@@ -309,7 +322,7 @@
         </form>
     </script>
     <script id="snippets-form-partial" type="text/x-handlebars-template">
-        <form class="form-horizontal admin-form form" id="pageForm" role="form">
+        <form class="form-horizontal admin-form form" role="form">
             <div class="form-group">
                 <div class="col-sm-10">
                     <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
@@ -347,7 +360,7 @@
         </form>
     </script>
     <script id="qa-form-partial" type="text/x-handlebars-template">
-    <form class="form-horizontal admin-form form" id="pageForm" role="form">
+    <form class="form-horizontal admin-form form" role="form">
         <div class="form-group">
             <div class="col-sm-10">
                 <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
@@ -387,39 +400,49 @@
         </div>
     </form>
     </script>
-    <script id="grid-form-partial" type="text/x-handlebars-template">
-    <form class="form-horizontal admin-form form" id="pageForm" role="form">
-     <div class="form-group">
+    <script id="category-form-partial" type="text/x-handlebars-template">
+        <form class="form-horizontal admin-form form" role="form">
+            <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
+                    </div>
+                </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="name">名称</label>
                 <div class="col-sm-10">
-                    <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
+                    <input type="text" class="form-control" name="name" value="{{name}}" />
                 </div>
             </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="name">名称</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="name" value="{{name}}" />
+            <div class="form-group">
+                <label class="col-sm-2 control-label">usage</label>
+                <div class="col-sm-10">
+                    <select class="form-control" name="usage">
+                        <option value="1" select=true>Root</option>
+                        <option value="2">Sub</option>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Grid模板</label>
-            <div class="col-sm-10">
-                <select class="form-control" name="tpl" id="tpl" >
-                    <option value="tpl1" select=true>模板一</option>
-                    <option value="tpl2">模板二</option>
-                </select>
+        </form>
+    </script>
+    <script id="link-form-partial" type="text/x-handlebars-template">
+        <form class="form-horizontal admin-form form" role="form">
+            <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="hidden" class="form-control" name="id" id="id" value="{{id}}" />
+                    </div>
+                </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="name">名称</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="name" value="{{name}}" />
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Grid内容</label>
-            <div class="col-sm-10">
-                <select class="form-control muti-content" name="content" id="content">
-                    <option value="news" select=true>新闻</option>
-                    <option value="qas">问答</option>
-                    <option value="posts">文章</option>
-                    <option value="photos">图片</option>
-                </select>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="link">链接</label>
+                <div class="col-sm-10">
+                     <input type="text" class="form-control" name="link" value="{{link}}" />
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
     </script>
 </div>

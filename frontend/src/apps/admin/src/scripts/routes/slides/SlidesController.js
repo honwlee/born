@@ -66,7 +66,7 @@ define([
                     list_selectable: "multi",
                     key: "slides",
                     file: true,
-                    callback: function() {
+                    afterSave: function() {
                         selector.repeater('render');
                     },
                     listSCallback: function(modal, items) {

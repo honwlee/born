@@ -9,17 +9,20 @@ define([
 ], function($, skylarkjs, _, partial, SimpleMDE, server, hbs) {
     var langx = skylarkjs.langx;
 
-    function _replaceSelection(cm, active, startEnd, url) {
+    function _replaceSelection(cm, active, startEnd, url, alt) {
         if (/editor-preview-active/.test(cm.getWrapperElement().lastChild.className))
             return;
 
         var text;
-        var start = startEnd[0];
-        var end = startEnd[1];
+        var start = startEnd[2];
+        var end = startEnd[3];
         var startPoint = cm.getCursor("start");
         var endPoint = cm.getCursor("end");
         if (url) {
             end = end.replace("#url#", url);
+        }
+        if (alt) {
+            start = start.replace("![", "![" + alt);
         }
         if (active) {
             text = cm.getLine(startPoint.line);
@@ -51,7 +54,7 @@ define([
                 thumbnail_selectable: "multi",
                 key: "photos",
                 list_selectable: "multi",
-                thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" src="{{src}}" width="65"><span>{{name}}</span></div>',
+                thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" src="{{src}}" alt="{{name}}" width="65"><span>{{name}}</span></div>',
                 addBtn: false,
                 multiView: false,
                 columns: [{
@@ -89,8 +92,10 @@ define([
             var cm = editor.codemirror;
             var stat = editor.getState(cm);
             var options = editor.options;
-            var url = items[0].data.src;
-            _replaceSelection(cm, stat.image, options.insertTexts.image, url);
+            var url = $(items[0]).find("img").attr("src");
+            var alt = $(items[0]).find("img").attr("alt");
+
+            _replaceSelection(cm, stat.image, options.insertTexts.image, url, alt);
             modal.modal("hide");
         });
     };

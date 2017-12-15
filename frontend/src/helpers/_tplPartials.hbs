@@ -45,7 +45,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label" for="file">选择文章</label>
             <div class="col-sm-10">
-                <button class="btn btn-primary select-content-list" data-type="posts" type="button">点击选择</button>
+                <button class="btn btn-primary select-content-list" data-type="posts" data-action="public_meet" type="button">点击选择</button>
             </div>
         </div>
     </script>
@@ -127,7 +127,7 @@
                 </div>
             </div>
             <div class="find_more_five panel-footer">
-                <a class="part_five_more part_more" href="/list-12/">查看更多</a>
+                <a class="part_five_more part_more" href="javascripts:go('/activity')">查看更多</a>
             </div>
         </div>
     </script>
@@ -142,25 +142,24 @@
         <div class="form-group">
             <label class="col-sm-2 control-label" for="file">选择文章</label>
             <div class="col-sm-10">
-                <button class="btn btn-primary select-content-list" data-type="posts" type="button">点击选择</button>
+                <button class="btn btn-primary select-content-list" data-type="posts" data-action="public_activity" type="button">点击选择</button>
             </div>
         </div>
     </script>
 
     <script id="homePage4-partial" type="text/x-handlebars-template">
         <div class="panel panel-default">
-            <!-- 月子中心 -->
             <div class="part panel-heading">
                 <p class="main_title main_title_three">{{title}}</p>
             </div>
             <div class="panel-body">
                 <ul class="part_four">
-                    {{#each photos}}
+                    {{#each posts}}
                     <li>
                         <a target="_blank" href="{{src}}">
                             <img src="{{src}}" height="213" width="379">
                         </a>
-                        <p style="line-height: 66px;" class="part_four_title">{{description}}</p>
+                        <p style="line-height: 66px;" class="part_four_title">{{title}}</p>
                     </li>
                     {{/each}}
                 </ul>
@@ -181,7 +180,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label" for="file">选择图片</label>
             <div class="col-sm-10">
-                <button class="btn btn-primary select-content-list" data-type="photos" type="button">点击选择</button>
+                <button class="btn btn-primary select-content-list" data-type="posts" data-action="public_env" type="button">点击选择</button>
             </div>
         </div>
     </script>

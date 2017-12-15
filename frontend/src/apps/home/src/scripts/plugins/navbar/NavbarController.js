@@ -9,6 +9,7 @@ define([
         router = skylarkjs.router;
     var currentNav,
         currentSubs = {},
+        __isDelayed,
         __sitesData,
         setActive = function(name) {
             if (currentNav) $(currentNav).removeClass("active");
@@ -107,8 +108,11 @@ define([
     return spa.PluginController.inherit({
 
         preparing: function(e) {
-            e.result = server().connect("sites", "get", "config").then(function(data) {
-                __sitesData = data;
+            e.result = server().connect("system", "get", "check").then(function(data) {
+                __isDelayed = data.checked;
+                return server().connect("sites", "get", "config").then(function(data) {
+                    __sitesData = data;
+                });
             });
         },
 
@@ -159,6 +163,19 @@ define([
             });
             for (var key in routes) {
                 initItems(routes, key, ul);
+            }
+            partial.get("modal-partial");
+            var modal = $("<div>").html(handlebars.compile("{{> modal-partial}}")());
+            document.body.appendChild(modal[0]);
+            if (__isDelayed) {
+                partial.get("error-partial");
+                var error = $("<div>").attr({
+                    class: "container"
+                }).html(handlebars.compile("{{> error-partial}}")({}));
+                var contentM = modal.find("#contentModal");
+                contentM.find(".modal-body").html(error);
+                contentM.find(".modal-title").html("出错啦！");
+                contentM.modal("show");
             }
             _el.html(ul);
             if (__sitesData.site && __sitesData.site.id) update(__sitesData.site);

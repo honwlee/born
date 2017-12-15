@@ -24,7 +24,7 @@ define([
 
         buildList: function(post) {
             this.list = new List({
-                thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" src="{{src}}" width="65"><span>{{name}}</span></div>',
+                thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" alt="{{name}}" src="{{src}}" width="65"><span>{{name}}</span></div>',
                 thumbnail_selectable: true,
                 title: "图片列表",
                 id: "photoRepeater",
@@ -61,7 +61,7 @@ define([
                 modal.show("form", $(tpl()), "添加文章", {
                     key: "photos",
                     file: true,
-                    callback: function() {
+                    afterSave: function() {
                         selector.repeater('render');
                     }
                 });

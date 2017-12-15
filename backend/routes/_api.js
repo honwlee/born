@@ -18,29 +18,27 @@ const ctrls = require("../controllers/api/controllers"),
 module.exports = function(app, router, ensureAuthenticated, rootPath) {
     if (!fs.existsSync(rootPath)) mkdirp(rootPath);
     // api
-    Object.keys(ctrls).forEach(function(key) {
-        ["update", "create", "show", "delete", "index", "config", "select", "public"].forEach(function(name) {
-            let item = ctrls[key];
-            let matcher = name.match(/^(update|create|delete)/)
-            if (matcher) {
-                let storage = multer.diskStorage({
-                        destination: function(req, file, cb) {
-                            let _p = path.join(rootPath, 'upload', item.uploadPath || "");
-                            if (!fs.existsSync(_p)) mkdirp.sync(_p);
-                            cb(null, _p);
-                        },
-                        filename: function(req, file, cb) {
-                            cb(null, Date.now() + "-" + file.originalname);
-                        }
-                    }),
-                    upload = multer({ storage: storage });
-                if (item.module[name]) {
+    _(Object.keys(ctrls)).each(function(key) {
+        let item = ctrls[key];
+        _(["update", "create", "show", "delete", "index", "config", "select", "public"]).each(function(name) {
+            if (item.module[name]) {
+                let matcher = name.match(/^(update|create|delete)/)
+                if (matcher) {
+                    let storage = multer.diskStorage({
+                            destination: function(req, file, cb) {
+                                let _p = path.join(rootPath, 'upload', item.uploadPath || "");
+                                if (!fs.existsSync(_p)) mkdirp.sync(_p);
+                                cb(null, _p);
+                            },
+                            filename: function(req, file, cb) {
+                                cb(null, Date.now() + "-" + file.originalname);
+                            }
+                        }),
+                        upload = multer({ storage: storage });
                     app.post('/api/' + key + '/' + name, ensureAuthenticated, upload.single('file'), function(req, res) {
                         item.module[name](req, res);
                     });
-                }
-            } else {
-                if (item.module[name]) {
+                } else {
                     app.get('/api/' + key + '/' + name, function(req, res) {
                         item.module[name](req, res);
                     });
@@ -48,9 +46,50 @@ module.exports = function(app, router, ensureAuthenticated, rootPath) {
 
             }
         });
+        if (item.extralNames) _(item.extralNames).each(function(ename) {
+            if (item.module[ename]) {
+                app.get('/api/' + key + '/' + ename, ensureAuthenticated, function(req, res) {
+                    item.module[ename](req, res);
+                });
+            }
+
+            if (item.extraPrefix) _(item.extraPrefix).each(function(prefix) {
+                let pname = prefix.name + ename;
+                if (item.module[pname]) {
+                    if (prefix.method === "post") {
+                        let storage = multer.diskStorage({
+                                destination: function(req, file, cb) {
+                                    let _p = path.join(rootPath, 'upload', item.uploadPath || "");
+                                    if (!fs.existsSync(_p)) mkdirp.sync(_p);
+                                    cb(null, _p);
+                                },
+                                filename: function(req, file, cb) {
+                                    cb(null, Date.now() + "-" + file.originalname);
+                                }
+                            }),
+                            upload = multer({ storage: storage });
+                        app.post('/api/' + key + '/' + pname, ensureAuthenticated, upload.single('file'), function(req, res) {
+                            item.module[pname](req, res);
+                        });
+                    } else {
+                        app.get('/api/' + key + '/' + pname, function(req, res) {
+                            item.module[pname](req, res);
+                        });
+                    }
+                }
+            })
+        });
     });
 
     app.get('/api/system/check', function(req, res) {
         res.json({ checked: User.delay(true, true) });
+    });
+
+    app.get('/api/auth/check', function(req, res) {
+        if (req.isAuthenticated()) {
+            res.json({ status: true, auth: true });
+        } else {
+            res.json({ status: false, auth: true });
+        }
     });
 };
