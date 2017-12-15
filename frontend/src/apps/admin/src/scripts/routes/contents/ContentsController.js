@@ -22,10 +22,10 @@ define([
         wizardTpl = hbs.compile("{{> wizard-tpl-partial}}");
 
     function bindCurrentTplEvts(modal, key) {
+        var container = modal.find(".tpl-container");
         if (__currentTplKey) {
             tplHelper.getTplByKey(__currentTplKey).bindEvnts(container, __currentTplKey, true);
         }
-        var container = modal.find(".tpl-container").empty();
         $(tplHelper.getForm(key)()).appendTo(container.empty());
         modalFunc.bindFormEvnts(container, {
             key: "contents",

@@ -41,7 +41,7 @@ module.exports = {
     create: function(req, res) {
         req.body.file = req.file;
         let site = Site.first();
-        if (site.id) {
+        if (site && site.id) {
             site = Site.update(req.body);
             res.json({ status: true, result: site });
         } else {

@@ -159,9 +159,6 @@ define([
                 initItems(routes, key, ul);
             }
             _el.html(ul);
-            partial.get("gallery-partial");
-            var div = $("<div>").html(handlebars.compile("{{> gallery-partial}}")({}));
-            document.body.appendChild(div[0].firstChild);
             if (__sitesData.site && __sitesData.site.id) update(__sitesData.site);
         },
         routed: function() {}

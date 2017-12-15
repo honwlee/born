@@ -184,12 +184,9 @@ define([
             });
 
             _el.html(ul);
-            partial.get("gallery-partial");
             partial.get("modal-partial");
-            var div = $("<div>").html(handlebars.compile("{{> gallery-partial}}")({}));
             var modal = $("<div>").html(handlebars.compile("{{> modal-partial}}")());
             document.body.appendChild(modal[0]);
-            document.body.appendChild(div[0].firstChild);
             if (__isDelayed) {
                 partial.get("error-partial");
                 var error = $("<div>").attr({
