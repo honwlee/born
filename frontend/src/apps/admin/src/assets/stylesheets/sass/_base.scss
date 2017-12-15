@@ -25,8 +25,9 @@ a {
     }
 }
 
-.fuelux .repeater[data-viewtype="list"] .repeater-canvas.actions-enabled {
+.fuelux .repeater .repeater-canvas.actions-enabled {
     min-height: 180px;
+    overflow-x: hidden !important;
 }
 
 footer {

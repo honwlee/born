@@ -1,0 +1,20 @@
+.tab-container {
+    .navbar .fa-plus {
+        padding-right: 5px;
+    }
+    .list-content {
+        .lists {
+            padding: 0 15px;
+        }
+        .list-item {
+            list-style: none;
+            padding: 7px;
+            &:nth-child(2n) {
+                background: #eee;
+            }
+            &:hover {
+                background: #eee;
+            }
+        }
+    }
+}

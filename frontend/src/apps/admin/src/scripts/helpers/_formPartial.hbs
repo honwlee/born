@@ -100,11 +100,11 @@
     </script>
 
     <script id="page-cog-list-item-partial" type="text/x-handlebars-template">
-        <li class="list-item" data-id="{{id}}">
+        <li class="list-item col-md-12" data-id="{{id}}">
             <span>{{name}}</span>
-            <div class="actions">
-                <i class="up">上移</i>
-                <i class="down">下移</i>
+            <div class="pull-right actions">
+               <span class="btn btn-default btn-xs up"><i class="fa fa-arrow-up"></i>上移</span>
+               <span class="btn btn-default btn-xs down"> <i class="fa fa-arrow-down"></i>下移</span>
             </div>
         </li>
     </script>
@@ -130,7 +130,7 @@
                         </div>
                     </nav>
                     <div class="list-content">
-                        <ul class="lists">
+                        <ul class="row lists">
                             {{#each subs}}
                                {{> page-cog-list-item-partial}} 
                             {{/each}}
