@@ -16,6 +16,9 @@ exports.Slide = class Slide extends Model {
     static findByReg(args) {
         return Model.findByReg("slides", args);
     }
+    static where(key, value) {
+        return Model.where("slides", key, value);
+    }
     static create(args) {
         if (args._content) args._content = JSON.parse(args._content);
         return Model.create("slides", args);

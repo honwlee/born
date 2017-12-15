@@ -23,6 +23,7 @@ define([
             return new List({
                 id: this.repeaterId,
                 key: "news",
+                actionName: "public",
                 defaultView: "thumbnail",
                 thumbnail_template: langx.trim(__selector.find("#news-listItem-partial").html()),
                 needHeader: false,

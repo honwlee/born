@@ -37,7 +37,7 @@ module.exports = {
     },
 
     delete: function(req, res) {
-        Banner.delete(req.body);
+        Content.delete(req.body);
         res.json({ status: true, msg: "删除成功！" });
     },
 

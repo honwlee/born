@@ -3115,7 +3115,7 @@ define('skylark-utils/finder',[
 
     local.pseudos = {
         // custom pseudos
-        'checkbox': function(elm){
+        'checkbox': function(elm) {
             return elm.type === "checkbox";
         },
         'checked': function(elm) {
@@ -3175,7 +3175,7 @@ define('skylark-utils/finder',[
             return !!elm.parentNode;
         },
 
-        'radio': function(elm){
+        'radio': function(elm) {
             return elm.type === "radio";
         },
 
@@ -3188,7 +3188,7 @@ define('skylark-utils/finder',[
         }
     };
 
-    ["first","eq","last"].forEach(function(item){
+    ["first", "eq", "last"].forEach(function(item) {
         local.pseudos[item].isArrayFilter = true;
     });
 
@@ -3213,7 +3213,7 @@ define('skylark-utils/finder',[
         if (attributes = cond.attributes) {
             for (var i = 0; i < attributes.length; i++) {
                 if (attributes[i].operator) {
-                    nativeSelector += ("[" + attributes[i].key + attributes[i].operator + JSON.stringify(attributes[i].value)  +"]");
+                    nativeSelector += ("[" + attributes[i].key + attributes[i].operator + JSON.stringify(attributes[i].value) + "]");
                 } else {
                     nativeSelector += ("[" + attributes[i].key + "]");
                 }
@@ -3247,7 +3247,7 @@ define('skylark-utils/finder',[
 
     };
 
-    local.check = function(node, cond, idx, nodes,arrayFilte) {
+    local.check = function(node, cond, idx, nodes, arrayFilte) {
         var tag,
             id,
             classes,
@@ -3310,14 +3310,14 @@ define('skylark-utils/finder',[
 
     local.match = function(node, selector) {
 
-        var parsed ;
+        var parsed;
 
         if (langx.isString(selector)) {
             parsed = local.Slick.parse(selector);
         } else {
-            parsed = selector;            
+            parsed = selector;
         }
-        
+
         if (!parsed) {
             return true;
         }
@@ -3331,7 +3331,7 @@ define('skylark-utils/finder',[
             (currentExpression = expressions[i]); i++) {
             if (currentExpression.length == 1) {
                 var exp = currentExpression[0];
-                if (this.check(node,exp)) {
+                if (this.check(node, exp)) {
                     return true;
                 }
                 simpleExpCounter++;
@@ -3353,9 +3353,25 @@ define('skylark-utils/finder',[
     };
 
 
-    local.filter = function(nodes, selector) {
-        var parsed = local.Slick.parse(selector);
+    local.filterSingle = function(nodes, exp) {
+        var matchs = filter.call(nodes, function(node, idx) {
+            return local.check(node, exp, idx, nodes, false);
+        });
 
+        matchs = filter.call(matchs, function(node, idx) {
+            return local.check(node, exp, idx, matchs, true);
+        });
+        return matchs;
+    };
+
+    local.filter = function(nodes, selector) {
+        var parsed;
+
+        if (langx.isString(selector)) {
+            parsed = local.Slick.parse(selector);
+        } else {
+            return local.filterSingle(nodes, selector);
+        }
 
         // simple (single) selectors
         var expressions = parsed.expressions,
@@ -3367,13 +3383,7 @@ define('skylark-utils/finder',[
             if (currentExpression.length == 1) {
                 var exp = currentExpression[0];
 
-                var matchs = filter.call(nodes, function(node, idx) {
-                    return local.check(node, exp, idx, nodes,false);
-                });    
-
-                matchs = filter.call(matchs, function(node, idx) {
-                    return local.check(node, exp, idx, matchs,true);
-                });    
+                var matchs = local.filterSingle(nodes, exp);
 
                 ret = langx.uniq(ret.concat(matchs));
             } else {
@@ -3382,8 +3392,8 @@ define('skylark-utils/finder',[
         }
 
         return ret;
- 
-    };    
+
+    };
 
     local.combine = function(elm, bit) {
         var op = bit.combinator,
@@ -3452,14 +3462,14 @@ define('skylark-utils/finder',[
                         nodes = filter.call(nodes, function(item, idx) {
                             return local.check(item, {
                                 pseudos: [divided.customPseudos[i]]
-                            }, idx, nodes,false)
+                            }, idx, nodes, false)
                         });
 
                         nodes = filter.call(nodes, function(item, idx) {
                             return local.check(item, {
                                 pseudos: [divided.customPseudos[i]]
-                            }, idx, nodes,true)
-                        });                        
+                            }, idx, nodes, true)
+                        });
                     }
                 }
                 break;
@@ -3508,36 +3518,36 @@ define('skylark-utils/finder',[
             }
             if (root) {
                 if (rootIsSelector) {
-                    if (matches(node,root)) {
+                    if (matches(node, root)) {
                         break;
                     }
                 } else if (node == root) {
                     break;
                 }
-            } 
+            }
         }
         return null;
     }
 
-    function ancestors(node, selector,root) {
+    function ancestors(node, selector, root) {
         var ret = [],
             rootIsSelector = root && langx.isString(root);
         while (node = node.parentNode) {
-                ret.push(node);
+            ret.push(node);
             if (root) {
                 if (rootIsSelector) {
-                    if (matches(node,root)) {
+                    if (matches(node, root)) {
                         break;
                     }
                 } else if (node == root) {
                     break;
                 }
-            } 
+            }
 
         }
 
         if (selector) {
-            ret = local.filter(ret,selector);
+            ret = local.filter(ret, selector);
         }
         return ret;
     }
@@ -3557,7 +3567,7 @@ define('skylark-utils/finder',[
             }
         }
         if (selector) {
-            ret = local.filter(ret,selector);
+            ret = local.filter(ret, selector);
         }
         return ret;
     }
@@ -3652,8 +3662,8 @@ define('skylark-utils/finder',[
             }
             return local.match(elm, selector);
         } else if (langx.isArrayLike(selector)) {
-            return langx.inArray(elm,selector);
-        } else if (langx.isPlainObject(selector)){    
+            return langx.inArray(elm, selector);
+        } else if (langx.isPlainObject(selector)) {
             return local.check(elm, selector);
         } else {
             return elm === selector;
@@ -3792,7 +3802,6 @@ define('skylark-utils/finder',[
 
     return skylark.finder = finder;
 });
-
 define('skylark-utils/datax',[
     "./skylark",
     "./langx",

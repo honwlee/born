@@ -16,10 +16,15 @@ exports.Content = class Content extends Model {
     static findByReg(args) {
         return Model.findByReg("contents", args);
     }
+    static where(key, value, chainAble) {
+        return Model.where("contents", key, value, chainAble);
+    }
     static create(args) {
+        if (args.sub) args.sub = JSON.parse(args.sub);
         return Model.create("contents", args);
     }
     static update(args) {
+        if (args.sub) args.sub = JSON.parse(args.sub);
         return Model.update("contents", "id", args);
     }
     static delete(args) {

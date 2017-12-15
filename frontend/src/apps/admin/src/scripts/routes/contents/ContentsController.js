@@ -17,12 +17,28 @@ define([
     partial.get("page-select-partial", formSelector);
     partial.get("content-form-partial", formSelector);
     var tpl = hbs.compile("{{> content-form-partial}}"),
+        __file = {},
+        __currentTplKey = null,
         wizardTpl = hbs.compile("{{> wizard-tpl-partial}}");
 
-    var checkActive = function(selector) {
-        var result = true;
-        result = result && modal.find("input[name=name]").val();
-    };
+    function bindCurrentTplEvts(modal, key) {
+        if (__currentTplKey) {
+            tplHelper.getTplByKey(__currentTplKey).bindEvnts(container, __currentTplKey, true);
+        }
+        var container = modal.find(".tpl-container").empty();
+        $(tplHelper.getForm(key)()).appendTo(container.empty());
+        modalFunc.bindFormEvnts(container, {
+            key: "contents",
+            file: true
+        });
+        var tplObj = tplHelper.getTplByKey(key);
+        __currentTplKey = key;
+        tplObj.bindEvnts(container);
+        modal.find(".save-btn").off("click").on("click", function() {
+            tplObj.save(modal);
+        });
+    }
+
     return spa.RouteController.inherit({
         klassName: "ContentsController",
         repeaterId: "contentsRepeater",
@@ -68,7 +84,7 @@ define([
             var self = this,
                 selector = this.list.getDom();
             selector.find(".repeater-add button").off("click").on("click", function(e) {
-                var wizard = $(wizardTpl({
+                var obj = {
                     id: "contentWizard",
                     steps: [{
                             step: 1,
@@ -79,19 +95,28 @@ define([
                             content: $(tpl({
                                 pages: self.pages,
                                 tpls: tplHelper.tpls
-                            })).html()
+                            }))[0].outerHTML,
+                            beforeAction: function(e, _modal) {
+                                if (!modalFunc.checkForm(["name"], _modal)) {
+                                    e.preventDefault();
+                                }
+                            }
                         },
                         {
                             step: 2,
                             stepBadge: 2,
                             stepLabel: '模板内容',
                             styles: 'bg-info alert',
-                            title: 'Choose Recipients',
-                            content: "<form class='tpl-container form-horizontal sub-form'></form>"
+                            title: '',
+                            content: "<form class='tpl-container form-horizontal sub-form'></form>",
+                            afterAction: function(e, _modal) {
+
+                            }
                         }
                     ]
-                })).wizard();
-                var modal = modalFunc.show("form", wizard, "添加slide", {
+                };
+                var wizard = $(wizardTpl(obj)).wizard();
+                modal = modalFunc.show("normalForm", wizard, "添加slide", {
                     key: "contents",
                     file: true,
                     callback: function() {
@@ -105,22 +130,22 @@ define([
                         __file = null;
                         toastr.success("已保存！");
                     });
+                }).on('actionclicked.fu.wizard', function(e, data) {
+                    var config = obj.steps.filter(function(s) { return s.step === data.step; })[0];
+                    if (config.beforeAction) config.beforeAction(e, modal);
+                }).on('changed.fu.wizard', function(e, data) {
+                    var config = obj.steps.filter(function(s) { return s.step === data.step; })[0];
+                    if (config.afterAction) config.afterAction(e, modal);
                 });
-                modal.off('shown.bs.modal').on('shown.bs.modal', function() {
-                    modal.find("#tpl").off("change").on("change", function() {
-                        var value = this.value;
 
-                        if (value) {
-                            wizard.wizard("next");
-                            var container = modal.find(".tpl-container");
-                            $(tplHelper.getForm(value)()).appendTo(container.empty());
-                            modalFunc.bindFormEvnts(container, {
-                                key: "contents",
-                                file: true
-                            });
-                        }
-                    });
+                modal.find("#tpl").off("change").on("change", function() {
+                    if (this.value) {
+                        bindCurrentTplEvts(modal, this.value);
+                        wizard.wizard("next");
+                    }
                 });
+
+
             });
             selector.find(".repeater-refresh button").off("click").on("click", function(e) {
                 selector.repeater('render');

@@ -16,6 +16,9 @@ exports.Keyword = class Keyword extends Model {
     static findByReg(args) {
         return Model.findByReg("keywords", args);
     }
+    static where(key, value) {
+        return Model.where("keywords", key, value);
+    }
     static create(args) {
         return Model.create("keywords", args);
     }

@@ -21,6 +21,7 @@ define([
             return new List({
                 id: this.repeaterId,
                 key: "posts",
+                actionName: "public",
                 defaultView: "thumbnail",
                 thumbnail_template: langx.trim(__selector.find("#metusa-listItem-partial").html()),
                 needHeader: false,

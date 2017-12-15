@@ -16,6 +16,9 @@ exports.Attachment = class Attachment extends Model {
     static findByReg(args) {
         return Model.findByReg("attachments", args);
     }
+    static where(key, value, chainAble) {
+        return Model.where("attachments", key, value, chainAble);
+    }
     static create(args) {
         return Model.create("attachments", args);
     }

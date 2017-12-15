@@ -22,6 +22,7 @@ define([
                 id: this.repeaterId,
                 key: "qas",
                 defaultView: "thumbnail",
+                actionName: "public",
                 thumbnail_template: langx.trim(__selector.find("#qa-listItem-partial").html()),
                 needHeader: false,
                 columns: [{

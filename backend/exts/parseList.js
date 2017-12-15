@@ -12,7 +12,7 @@ function getFullURL(req) {
     return '' + root + req.originalUrl;
 }
 module.exports = {
-    parse: function(name, req, res, queryKeys) {
+    parse: function(name, req, res, queryKeys, notRes) {
         let dbpath = path.join(__dirname, "../dbs"),
             dbms = require('../lib/dbms/'),
             _ = require('lodash'),
@@ -149,11 +149,18 @@ module.exports = {
             _limit = parseInt(_limit, 10);
             chain = chain.slice(_start, _start + _limit);
         }
+        if (notRes) {
+            return {
+                total: total,
+                rows: chain
+            }
+        } else {
+            res.json({
+                total: total,
+                rows: chain.value()
+            });
+        }
 
-        res.json({
-            total: total,
-            rows: chain.value()
-        });
     }
 
 }

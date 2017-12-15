@@ -3,10 +3,11 @@ define([
     "skylarkjs",
     "handlebars",
     "server",
+    "scripts/helpers/tplHelper",
     "scripts/helpers/components/components",
     "text!scripts/routes/home/_pages.hbs",
     "text!scripts/routes/home/home.hbs"
-], function($, skylarkjs, hbs, server, components, pagesTpl, homeTpl) {
+], function($, skylarkjs, hbs, server, tplHelper, components, pagesTpl, homeTpl) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         pageSelector = $(langx.trim(pagesTpl)),
@@ -136,9 +137,12 @@ define([
             var tpl = hbs.compile(langx.trim(selector.find("#home-main").html()).replace("{{&gt;", "{{>")),
                 self = this,
                 _ec = $(tpl({
-                    pages: preparePage()
+                    // pages: preparePage()
                 }));
             $(components.slide(this.pageData.slide)).prependTo(_ec.find(".home-slide-container"));
+            self.pageData.contents.forEach(function(content) {
+                $(tplHelper.getContent(content.tpl)(content.sub)).appendTo(_ec.find(".pages"));
+            });
             e.content = _ec[0];
         },
 

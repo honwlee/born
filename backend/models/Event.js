@@ -16,6 +16,9 @@ exports.Event = class Event extends Model {
     static findByReg(args) {
         return Model.findByReg("events", args);
     }
+    static where(key, value) {
+        return Model.where("events", key, value);
+    }
     static create(args) {
         return Model.create("events", args);
     }

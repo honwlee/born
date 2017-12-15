@@ -17,6 +17,9 @@ exports.Page = class Page extends Model {
     static findByReg(args) {
         return Model.findByReg("pages", args);
     }
+    static where(key, value, chainAble) {
+        return Model.where("pages", key, value, chainAble);
+    }
     static create(args) {
         args.pathto = args.pathto.match(/^\//) ? args.pathto : "/" + args.pathto;
         if (args.parent) {
@@ -31,7 +34,7 @@ exports.Page = class Page extends Model {
         return result;
     }
     static update(args) {
-        result = Model.update("pages", "id", args);
+        let result = Model.update("pages", "id", args);
         pageExt.update(result);
         return result;
     }

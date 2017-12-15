@@ -16,6 +16,9 @@ exports.Qa = class Qa extends Model {
     static findByReg(args) {
         return Model.findByReg("qas", args);
     }
+    static where(key, value) {
+        return Model.where("qas", key, value);
+    }
     static create(args) {
         return Model.create("qas", args);
     }

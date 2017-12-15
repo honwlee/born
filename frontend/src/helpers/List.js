@@ -171,10 +171,13 @@ define([
                     filter: options.filter.value || '',
                     search: options.search || ''
                 };
-                var action = "index?page=" + (pageIndex + 1);
+                actionName = opts.actionName || "index";
+                var action = actionName + "?page=" + (pageIndex + 1);
                 for (var key in options) {
                     if (options[key]) action = action + "&" + key + "=" + options[key];
                 }
+
+                if (opts.search) action = action + opts.search;
 
                 server().connect(opts.key, "get", action).then(function(data) {
                     var items = data.rows || [];

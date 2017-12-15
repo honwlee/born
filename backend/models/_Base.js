@@ -8,6 +8,7 @@ const path = require('path'),
     jsondb = dbms(dbpath, {
         master_file_name: "master.json"
     }),
+    _ = require('lodash'),
     shortid = require('shortid'),
     uploadPath = path.join(__dirname, "../../public"),
     refresh = function() {
@@ -58,6 +59,17 @@ class Model {
             }
             return result;
         }).value();
+    }
+
+    static where(name, key, value, chainAble) {
+        let chain = jsondb.get(name).filter(function(r) {
+            return _.includes(value, r[key]);
+        });
+        if (chainAble) {
+            return chain;
+        } else {
+            return chain.value();
+        }
     }
 
     static create(name, args) {

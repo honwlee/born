@@ -8,31 +8,40 @@ define([
     "handlebars"
 ], function(skylarkjs, partial, SimpeMdeEditor, $, server, toastr, handlebars) {
     var __files = {},
+        langx = skylarkjs.langx,
         __content = {};
 
-    function save(name, selector, opt, callback) {
-        var action = "create",
-            data = {};
-        var formData = new FormData();
+    function parseForm(selector) {
+        var data = {}
         selector.find("input").each(function() {
             if (this.type == "file") return;
             var s = $(this),
                 val = s.val();
             if (this.type === "checkbox") val = s.is(":checked");
-            if (s.attr("name")) formData.append(s.attr("name"), val);
             if (s.attr("name")) data[s.attr("name")] = val;
         });
         selector.find("select").each(function() {
             var s = $(this);
             if (s.hasClass("hide")) return;
-            if (s.attr("name")) formData.append(s.attr("name"), s.val());
             if (s.attr("name")) data[s.attr("name")] = s.val();
         });
         selector.find("textarea").each(function() {
             var s = $(this);
-            if (s.attr("name")) formData.append(s.attr("name"), s.val());
             if (s.attr("name")) data[s.attr("name")] = s.val();
         });
+        return data;
+    };
+
+    function save(name, selector, opt, callback) {
+        var action = "create",
+            data = {};
+        var formData = new FormData();
+        var parseData = parseForm(selector);
+        langx.mixin(data, parseData);
+
+        for (var key in parseData) {
+            formData.append(key, parseData[key]);
+        }
         if (data.id) action = "update";
         //将文件信息追加到其中
         if (opt._file) {
@@ -88,6 +97,7 @@ define([
             var list = new List({
                 title: obj.title,
                 id: obj.id,
+                search: opts.search,
                 list_selectable: opts.list_selectable,
                 key: obj.type,
                 addBtn: false,
@@ -110,6 +120,28 @@ define([
                     sortable: false
                 }],
                 fields: ["id"]
+            },
+            pages: {
+                type: "pages",
+                title: "选择子页面",
+                id: "selectSubPageListR",
+                columns: [{
+                    label: '名称',
+                    property: 'name',
+                    sortable: false
+                }],
+                fields: ["id", "name"]
+            },
+            contents: {
+                type: "contents",
+                title: "选择模板内容",
+                id: "selectContentListR",
+                columns: [{
+                    label: '名称',
+                    property: 'name',
+                    sortable: false
+                }],
+                fields: ["id", "name"]
             },
             news: {
                 type: "news",
@@ -146,7 +178,7 @@ define([
             }
         }
         var cmodal = $("#chooseModal");
-        cmodal.find(".modal-title").html("图片列表");
+        cmodal.find(".modal-title").html(data[type].title);
         cmodal.off('shown.bs.modal').on('shown.bs.modal', function() {
             buildList(data[type], opts, function(list) {
                 var s = list.getDom();
@@ -154,7 +186,7 @@ define([
                 cmodal.find(".save-btn").off("click").on("click", function() {
                     var items = s.repeater('list_getSelectedItems');
                     if (items.length) {
-                        __content[opts.key] = {
+                        var formatData = __content[opts.key] = {
                             type: type,
                             items: items.map(function(item) {
                                 var ret = {};
@@ -165,7 +197,7 @@ define([
                             })
                         };
                         cmodal.modal("hide");
-                        if (opts.listSCallback) opts.listSCallback(formModal, items);
+                        if (opts.listSCallback) opts.listSCallback(formModal, items, formatData);
                     } else {
                         toastr.warning("请选择一项！");
                     }
@@ -177,15 +209,15 @@ define([
 
     };
 
-    var validates = {
-        warrantyID: {
-            emptyMsg: "质保ID不能为空",
+    var __validates = {
+        name: {
+            emptyMsg: "名称不能为空",
             numsMsg: "用户名不能少于6位",
             numlMsg: "用户名不能多于14位",
             snMsg: "用户名必须以字母开头",
             validateMsg: "用户名不能包含字符",
-            check: function(value) {
-                var _us = $("#warrantyID");
+            check: function(modal) {
+                var _us = modal.find("input[name=name]");
                 if (!_us.val()) {
                     //     if (value.length < 6) {
                     //         _us.focus();
@@ -209,13 +241,25 @@ define([
                 }
                 return { error: false };
             }
+        },
+        title: {
+            emptyMsg: "标题不能为空",
+            check: function(modal) {
+                var _us = modal.find("input[name=title]");
+                if (!_us.val()) {
+                    _us.focus();
+                    return { error: true, msg: this.emptyMsg };
+                }
+                return { error: false };
+            }
         }
     };
 
-    function contentListBySelect(selector, opts) {
+    function contentListBySelect(selector, opts, off) {
         selector.find("select.muti-content").each(function() {
             var s = $(this);
-            s.off("change").on("change", function() {
+            s.off("change");
+            if (!off) s.on("change", function() {
                 var value = this.value;
                 server().connect(value, "get", "select").then(function(data) {
                     showList(selector, value, opts);
@@ -224,8 +268,11 @@ define([
         });
     };
 
-    function contentListByBtn(selector, opts) {
-        selector.find("button.select-content-list").off("click").on("click", function(e) {
+    function contentListByBtn(selector, opts, off) {
+        var _s = selector.find("button.select-content-list");
+        _s.off("click");
+        if (off) return;
+        _s.on("click", function(e) {
             var type = $(e.currentTarget).data("type");
             showList(selector, type, opts);
         });
@@ -257,10 +304,10 @@ define([
         });
     };
 
-    function bindFormEvnts(modal, opts) {
-        contentListBySelect(modal, opts);
+    function bindFormEvnts(modal, opts, off) {
+        contentListBySelect(modal, opts, off);
         toggleRelated(modal);
-        contentListByBtn(modal, opts);
+        contentListByBtn(modal, opts, off);
         if (modal.find("#simplemde")[0]) {
             new SimpeMdeEditor({
                 selector: modal.find("#simplemde")[0]
@@ -268,14 +315,36 @@ define([
         }
     };
 
+    function checkForm(keys, modal, validates) {
+        validates = validates || __validates;
+        var status = true;
+        for (var i in keys) {
+            var key = keys[i];
+            if (validates[key]) {
+                var result = validates[key].check(modal);
+                if (result.error) {
+                    toastr.error(result.msg);
+                    status = false;
+                    break;
+                } else {
+                    continue;
+                }
+            } else {
+                continue;
+            }
+        };
+        return status;
+    };
+
     var modalFuncs = {
         buildList: buildList,
         _showForm: function(content, title, opts) {
             var modal = $("#formModal");
             modal.find(".modal-body").html(content);
+
             modal.find("#datepickerIllustration").datepicker();
             modal.find(".save-btn").off("click").on("click", function() {
-                var __save = function() {
+                if (checkForm(opts.checkKeys || [], modal)) {
                     save(opts.key, modal, {
                         _content: __content[opts.key],
                         _file: __files[opts.key]
@@ -287,16 +356,6 @@ define([
                         modal.modal('hide');
                     });
                 }
-                if (validates[opts.key]) {
-                    var result = validates[opts.key].check();
-                    if (result.error) {
-                        toastr.error(result.msg);
-                    } else {
-                        __save();
-                    }
-                } else {
-                    __save();
-                }
             });
 
             if (opts.file) {
@@ -304,10 +363,21 @@ define([
                     __files[opts.key] = this.files[0];
                 });
             }
-            bindFormEvnts(modal, opts);
+            if (opts.bindFormEvnts != false) bindFormEvnts(modal, opts);
+            if (opts.modalEvts) opts.modalEvts(modal);
             modal.modal('show');
             return modal;
         },
+
+        _showNormalForm: function(content, title, opts) {
+            var modal = $("#formModal");
+            modal.find(".modal-title").html(title);
+            modal.find(".modal-body").html(content);
+            if (opts && opts.modalEvts) opts.modalEvts(modal);
+            modal.modal('show');
+            return modal;
+        },
+
         _showContent: function(content, title) {
             var modal = $("#contentModal");
             modal.find(".modal-body").html(content);
@@ -332,20 +402,33 @@ define([
     };
 
     return {
+        contentListByBtn: contentListByBtn,
+        contentListBySelect: contentListBySelect,
+        parseForm: parseForm,
+        addValidate: function(key, opts) {
+            __validates[key] = opts;
+        },
+        checkForm: checkForm,
         bindFormEvnts: bindFormEvnts,
         save: save,
         show: function(type, content, title, opts) {
+            var modal;
             switch (type) {
                 case "form":
-                    return modalFuncs._showForm(content, title, opts);
+                    modal = modalFuncs._showForm(content, title, opts);
                     break;
                 case "content":
-                    return modalFuncs._showContent(content, title, opts);
+                    modal = modalFuncs._showContent(content, title, opts);
+                    break;
+                case "normalForm":
+                    modal = modalFuncs._showNormalForm(content, title, opts);
                     break;
                 default:
-                    return modalFuncs._showDelete(content, title, opts);
+                    modal = modalFuncs._showDelete(content, title, opts);
                     break;
             }
+
+            return modal;
         }
     }
 });

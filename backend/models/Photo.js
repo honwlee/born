@@ -16,6 +16,9 @@ exports.Photo = class Photo extends Model {
     static findByReg(args) {
         return Model.findByReg("photos", args);
     }
+    static where(key, value, chainAble) {
+        return Model.where("photos", key, value, chainAble);
+    }
     static create(args) {
         return Model.create("photos", args);
     }

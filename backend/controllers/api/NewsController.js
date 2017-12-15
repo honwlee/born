@@ -11,6 +11,17 @@ module.exports = {
         parse("news", req, res, ["title"]);
     },
 
+    public: function(req, res) {
+        let result = parse("news", req, res, ["title"], true);
+        res.json({
+            total: result.total,
+            rows: result.rows.filter(function(s) {
+                return s.published;
+            }).value()
+        })
+    },
+
+
     show: function(req, res) {
         let news = News.findBy({
             id: req.query.id

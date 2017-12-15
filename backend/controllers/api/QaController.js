@@ -11,6 +11,17 @@ module.exports = {
         parse("qas", req, res, ["title"]);
     },
 
+    public: function(req, res) {
+        let result = parse("qas", req, res, ["title"], true);
+        res.json({
+            total: result.total,
+            rows: result.rows.filter(function(s) {
+                return s.published;
+            }).value()
+        })
+    },
+
+
     show: function(req, res) {
         let qa = Qa.findBy({
             id: req.query.id

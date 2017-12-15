@@ -16,6 +16,16 @@ module.exports = {
         parse("photos", req, res, ["name"]);
     },
 
+    public: function(req, res) {
+        let result = parse("photos", req, res, ["name"], true);
+        res.json({
+            total: result.total,
+            rows: result.rows.filter(function(s) {
+                return s.published;
+            }).value()
+        })
+    },
+
     show: function(req, res) {
         let opt = {};
         opt[req.query.key] = req.query.value;
