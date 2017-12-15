@@ -100,6 +100,8 @@ define([
         });
         $("#contact").html(data.contact);
         $("#footerTwo").html(data.footer);
+        $("meta[name=keyword]").attr("content", data.keyword);
+        $("meta[name=description]").attr("content", data.description);
     };
 
     return spa.PluginController.inherit({

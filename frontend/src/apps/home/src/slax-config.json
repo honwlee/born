@@ -1,1 +1,219 @@
-{"name":"born","title":"BornInUSA·生美国际-中美直营的赴美生子咨询服务商-赴美生子-南京赴美生子-赴美生子机构-赴美生子月子中心","runtime":{"skylarkjs":{"version":"0.9.5"},"paths":{"server":"scripts/services/server","skylarkBs":"lib/uncompressed/skylark-bs-swt","jquery":"lib/uncompressed/skylark-jquery","simplemde":"https://cdn.bootcss.com/simplemde/1.11.2/simplemde.min","toastr":"https://cdn.bootcss.com/toastr.js/latest/js/toastr.min","lodash":"https://cdn.bootcss.com/lodash.js/4.17.4/lodash.min","handlebars":"https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.amd.min","text":"https://cdn.bootcss.com/require-text/2.0.12/text.min"}},"page":{"routeViewer":"#main"},"spaModule":"scripts/helpers/spa","plugins":{"app":{"hookers":"starting started","controller":{"type":"scripts/plugins/app/AppController"}},"navbar":{"hookers":"starting","controller":{"type":"scripts/plugins/navbar/NavbarController"}}},"routes":{"home":{"pathto":"/","data":{"name":"home","navName":"首页"},"controller":{"type":"scripts/routes/home/HomeController"}},"process":{"pathto":"/process","data":{"name":"process","navName":"赴美流程"},"subs":["process-visa","process-cohospital","process-environment","process-certificate"],"controller":{"type":"scripts/routes/process/ProcessController"}},"process-visa":{"sub":true,"pathto":"/process/visa","data":{"name":"process-visa","navName":"签证申请"},"controller":{"type":"scripts/routes/process/subs/VisaController"}},"process-environment":{"sub":true,"pathto":"/process/environment","data":{"name":"process-environment","navName":"待产环境"},"controller":{"type":"scripts/routes/process/subs/EnvironmentController"}},"process-cohospital":{"sub":true,"pathto":"/process/cohospital","data":{"name":"process-cohospital","navName":"合作医院"},"controller":{"type":"scripts/routes/process/subs/CohospitalController"}},"process-certificate":{"sub":true,"pathto":"/process/certificate","data":{"name":"process-certificate","navName":"证件办理"},"controller":{"type":"scripts/routes/process/subs/CertificateController"}},"activity":{"pathto":"/activity","data":{"name":"activity","navName":"在美活动"},"controller":{"type":"scripts/routes/activity/ActivityController"}},"service":{"pathto":"/service","data":{"name":"service","navName":"回国服务"},"controller":{"type":"scripts/routes/service/ServiceController"}},"metusa":{"pathto":"/metusa","data":{"name":"metusa","navName":"遇见美利坚"},"controller":{"type":"scripts/routes/metusa/MetusaController"}},"metusaShow":{"hide":true,"pathto":"/metusa/:id","data":{"name":"metusaShow","navName":"查看"},"controller":{"type":"scripts/routes/metusa/MetusaShowController"}},"news":{"pathto":"/news","data":{"name":"news","navName":"新闻资讯"},"controller":{"type":"scripts/routes/news/NewsController"}},"newsShow":{"pathto":"/news/:id","hide":true,"data":{"name":"newsShow","navName":"查看新闻"},"controller":{"type":"scripts/routes/news/NewsShowController"}},"fqa":{"pathto":"/fqa","data":{"name":"fqa","navName":"赴美回答"},"controller":{"type":"scripts/routes/fqa/FqaController"}},"fqaShow":{"hide":true,"pathto":"/fqa/:id","data":{"name":"fqaShow","navName":"查看回答"},"controller":{"type":"scripts/routes/fqa/FqaShowController"}},"about":{"pathto":"/about","data":{"name":"about","navName":"关于我们"},"subs":["about-contact"],"controller":{"type":"scripts/routes/about/AboutController"}},"about-contact":{"sub":true,"pathto":"/about/contact","data":{"name":"about-contact","navName":"联系我们"},"controller":{"type":"scripts/routes/about/subs/ContactController"}}}}
+{
+    "name": "born",
+    "title": "BornInUSA·生美国际-中美直营的赴美生子咨询服务商-赴美生子-南京赴美生子-赴美生子机构-赴美生子月子中心",
+    "runtime": {
+        "skylarkjs": {
+            "version": "0.9.5"
+        },
+        "paths": {
+            "server": "scripts/services/server",
+            "skylarkBs": "lib/uncompressed/skylark-bs-swt",
+            "jquery": "lib/uncompressed/skylark-jquery",
+            "simplemde": "https://cdn.bootcss.com/simplemde/1.11.2/simplemde.min",
+            "toastr": "https://cdn.bootcss.com/toastr.js/latest/js/toastr.min",
+            "lodash": "https://cdn.bootcss.com/lodash.js/4.17.4/lodash.min",
+            "handlebars": "https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.amd.min",
+            "text": "https://cdn.bootcss.com/require-text/2.0.12/text.min"
+        }
+    },
+    "page": {
+        "routeViewer": "#main"
+    },
+    "spaModule": "scripts/helpers/spa",
+    "plugins": {
+        "app": {
+            "hookers": "starting started",
+            "controller": {
+                "type": "scripts/plugins/app/AppController"
+            }
+        },
+        "navbar": {
+            "hookers": "starting",
+            "controller": {
+                "type": "scripts/plugins/navbar/NavbarController"
+            }
+        }
+    },
+    "routes": {
+        "home": {
+            "pathto": "/",
+            "data": {
+                "name": "home",
+                "navName": "首页"
+            },
+            "controller": {
+                "type": "scripts/routes/home/HomeController"
+            }
+        },
+        "home1": {
+            "pathto": "/home1",
+            "data": {
+                "name": "home1",
+                "navName": "首页1"
+            },
+            "controller": {
+                "type": "scripts/routes/home/HomeController1"
+            }
+        },
+        "process": {
+            "pathto": "/process",
+            "data": {
+                "name": "process",
+                "navName": "赴美流程"
+            },
+            "subs": ["process-visa", "process-cohospital", "process-environment", "process-certificate"],
+            "controller": {
+                "type": "scripts/routes/process/ProcessController"
+            }
+        },
+        "process-visa": {
+            "sub": true,
+            "pathto": "/process/visa",
+            "data": {
+                "name": "process-visa",
+                "navName": "签证申请"
+            },
+            "controller": {
+                "type": "scripts/routes/process/subs/VisaController"
+            }
+        },
+        "process-environment": {
+            "sub": true,
+            "pathto": "/process/environment",
+            "data": {
+                "name": "process-environment",
+                "navName": "待产环境"
+            },
+            "controller": {
+                "type": "scripts/routes/process/subs/EnvironmentController"
+            }
+        },
+        "process-cohospital": {
+            "sub": true,
+            "pathto": "/process/cohospital",
+            "data": {
+                "name": "process-cohospital",
+                "navName": "合作医院"
+            },
+            "controller": {
+                "type": "scripts/routes/process/subs/CohospitalController"
+            }
+        },
+        "process-certificate": {
+            "sub": true,
+            "pathto": "/process/certificate",
+            "data": {
+                "name": "process-certificate",
+                "navName": "证件办理"
+            },
+            "controller": {
+                "type": "scripts/routes/process/subs/CertificateController"
+            }
+        },
+        "activity": {
+            "pathto": "/activity",
+            "data": {
+                "name": "activity",
+                "navName": "在美活动"
+            },
+            "controller": {
+                "type": "scripts/routes/activity/ActivityController"
+            }
+        },
+        "service": {
+            "pathto": "/service",
+            "data": {
+                "name": "service",
+                "navName": "回国服务"
+            },
+            "controller": {
+                "type": "scripts/routes/service/ServiceController"
+            }
+        },
+        "metusa": {
+            "pathto": "/metusa",
+            "data": {
+                "name": "metusa",
+                "navName": "遇见美利坚"
+            },
+            "controller": {
+                "type": "scripts/routes/metusa/MetusaController"
+            }
+        },
+        "metusaShow": {
+            "hide": true,
+            "pathto": "/metusa/:id",
+            "data": {
+                "name": "metusaShow",
+                "navName": "查看"
+            },
+            "controller": {
+                "type": "scripts/routes/metusa/MetusaShowController"
+            }
+        },
+        "news": {
+            "pathto": "/news",
+            "data": {
+                "name": "news",
+                "navName": "新闻资讯"
+            },
+            "controller": {
+                "type": "scripts/routes/news/NewsController"
+            }
+        },
+        "newsShow": {
+            "pathto": "/news/:id",
+            "hide": true,
+            "data": {
+                "name": "newsShow",
+                "navName": "查看新闻"
+            },
+            "controller": {
+                "type": "scripts/routes/news/NewsShowController"
+            }
+        },
+        "fqa": {
+            "pathto": "/fqa",
+            "data": {
+                "name": "fqa",
+                "navName": "赴美回答"
+            },
+            "controller": {
+                "type": "scripts/routes/fqa/FqaController"
+            }
+        },
+        "fqaShow": {
+            "hide": true,
+            "pathto": "/fqa/:id",
+            "data": {
+                "name": "fqaShow",
+                "navName": "查看回答"
+            },
+            "controller": {
+                "type": "scripts/routes/fqa/FqaShowController"
+            }
+        },
+        "about": {
+            "pathto": "/about",
+            "data": {
+                "name": "about",
+                "navName": "关于我们"
+            },
+            "subs": ["about-contact"],
+            "controller": {
+                "type": "scripts/routes/about/AboutController"
+            }
+        },
+        "about-contact": {
+            "sub": true,
+            "pathto": "/about/contact",
+            "data": {
+                "name": "about-contact",
+                "navName": "联系我们"
+            },
+            "controller": {
+                "type": "scripts/routes/about/subs/ContactController"
+            }
+        }
+    }
+}

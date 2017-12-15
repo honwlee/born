@@ -340,8 +340,8 @@ define([
         buildList: buildList,
         _showForm: function(content, title, opts) {
             var modal = $("#formModal");
-            modal.find(".modal-body").html(content);
-
+            modal.find(".modal-body").empty().html(content);
+            modal.find(".modal-title").empty().html(title);
             modal.find("#datepickerIllustration").datepicker();
             modal.find(".save-btn").off("click").on("click", function() {
                 if (checkForm(opts.checkKeys || [], modal)) {
@@ -371,8 +371,8 @@ define([
 
         _showNormalForm: function(content, title, opts) {
             var modal = $("#formModal");
-            modal.find(".modal-title").html(title);
-            modal.find(".modal-body").html(content);
+            modal.find(".modal-title").empty().html(title);
+            modal.find(".modal-body").empty().html(content);
             if (opts && opts.modalEvts) opts.modalEvts(modal);
             modal.modal('show');
             return modal;
@@ -380,14 +380,14 @@ define([
 
         _showContent: function(content, title) {
             var modal = $("#contentModal");
-            modal.find(".modal-body").html(content);
-            modal.find(".modal-title").html(title);
+            modal.find(".modal-body").empty().html(content);
+            modal.find(".modal-title").empty().html(title);
             modal.modal('show');
             return modal;
         },
         _showDelete: function(content, title, opts) {
             var modal = $("#confirmDeleteModal");
-            modal.find(".modal-title").html(title);
+            modal.find(".modal-title").empty().html(title);
             modal.find(".btn-ok").off("click").on("click", function() {
                 server().connect(opts.key, "post", "delete", {
                     id: opts.id

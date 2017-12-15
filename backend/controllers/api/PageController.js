@@ -21,7 +21,6 @@ module.exports = {
         });
         let contents = Content.where("id", page.contents, true);
         let _contents = contents.map(function(c) {
-            let tableName = c.sub._content.type;
             let obj = {
                 id: c.id,
                 page: c.page,
@@ -32,9 +31,11 @@ module.exports = {
                     content: c.sub.content
                 }
             };
-            let sIds = _(c.sub._content.items).map(function(i) { return i.id; }).value();
-            console.log(sIds);
-            obj.sub[tableName] = Model.where(tableName, "id", sIds);
+            if (c.sub._content) {
+                let tableName = c.sub._content.type;
+                let sIds = _(c.sub._content.items).map(function(i) { return i.id; }).value();
+                obj.sub[tableName] = Model.where(tableName, "id", sIds);
+            }
             return obj;
         }).value();
         let subs = Page.where("id", page.subs);

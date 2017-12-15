@@ -112,8 +112,8 @@ define([
                             });
 
                             modal.off('hidden.bs.modal').on('hidden.bs.modal', function() {
-                                modalFunc.contentListByBtn(ps, {}, off);
-                                modalFunc.contentListByBtn(cs, {}, off);
+                                modalFunc.contentListByBtn(ps, {}, true);
+                                modalFunc.contentListByBtn(cs, {}, true);
                                 modal.undelegate(".up", "click");
                                 modal.undelegate(".down", "click");
                             });
