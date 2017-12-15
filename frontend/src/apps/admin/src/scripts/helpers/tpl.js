@@ -15,21 +15,21 @@ define([
 
     return {
         tpls: [{
-                name: "page1",
-                cnName: d.page1.cnName,
+                name: "homePage1",
+                cnName: d.homePage1.cnName,
                 bindEvnts: function(selector, off) {
                     modalFunc.contentListByBtn(selector, {
                         key: "contents",
                         listSCallback: function(modal, items, data) {
-                            __content.page1 = langx.clone(data);
+                            __content.homePage1 = langx.clone(data);
                         },
                         list_selectable: "multi"
                     }, off);
                 },
                 save: function(selector) {
                     var parseData = modalFunc.parseForm(selector.find(".sub-form"));
-                    parseData._content = __content.page1;
-                    __content.page1 = null;
+                    parseData._content = __content.homePage1;
+                    __content.homePage1 = null;
 
                     if (modalFunc.checkForm(["name"], modal)) {
                         modalFunc.save("contents", selector.find(".form"), {
@@ -41,8 +41,8 @@ define([
                     }
                 }
             }, {
-                name: "page2",
-                cnName: d.page2.cnName,
+                name: "homePage2",
+                cnName: d.homePage2.cnName,
                 bindEvnts: function(selector, off) {
                     modalFunc.contentListByBtn(selector, {
                         key: "contents",
@@ -68,8 +68,8 @@ define([
                 }
             },
             {
-                name: "page3",
-                cnName: d.page3.cnName,
+                name: "homePage3",
+                cnName: d.homePage3.cnName,
                 bindEvnts: function(selector, off) {
                     modalFunc.contentListByBtn(selector, {
                         key: "contents",
@@ -95,8 +95,8 @@ define([
                 }
             },
             {
-                name: "page4",
-                cnName: d.page4.cnName,
+                name: "homePage4",
+                cnName: d.homePage4.cnName,
                 bindEvnts: function(selector, off) {
                     modalFunc.contentListByBtn(selector, {
                         key: "contents",
@@ -122,8 +122,8 @@ define([
                 }
             },
             {
-                name: "page5",
-                cnName: d.page5.cnName,
+                name: "homePage3",
+                cnName: d.homePage3.cnName,
                 bindEvnts: function(selector, off) {
                     modalFunc.contentListByBtn(selector, {
                         key: "contents",
@@ -149,8 +149,8 @@ define([
                 }
             },
             {
-                name: "page6",
-                cnName: d.page6.cnName,
+                name: "homePage5",
+                cnName: d.homePage5.cnName,
                 bindEvnts: function(selector, off) {
                     modalFunc.contentListByBtn(selector, {
                         key: "contents",
@@ -176,8 +176,35 @@ define([
                 }
             },
             {
-                name: "page7",
-                cnName: d.page7.cnName,
+                name: "homePage6",
+                cnName: d.homePage6.cnName,
+                bindEvnts: function(selector, off) {
+                    modalFunc.contentListByBtn(selector, {
+                        key: "contents",
+                        listSCallback: function(modal, items, data) {
+                            __content.page1 = langx.clone(data);
+                        },
+                        list_selectable: "multi"
+                    }, off);
+                },
+                save: function(selector) {
+                    var parseData = modalFunc.parseForm(selector.find(".sub-form"));
+                    parseData._content = __content.page1;
+                    __content.page1 = null;
+
+                    if (modalFunc.checkForm(["name"], modal)) {
+                        modalFunc.save("contents", selector.find(".form"), {
+                            sub: JSON.stringify(parseData)
+                        }, function(data) {
+                            toastr.success("已保存！");
+                            modal.modal('hide');
+                        });
+                    }
+                }
+            },
+            {
+                name: "homePage7",
+                cnName: d.homePage7.cnName,
                 bindEvnts: function(selector, off) {
                     modalFunc.contentListByBtn(selector, {
                         key: "contents",
@@ -202,6 +229,7 @@ define([
                     }
                 }
             }
+
         ],
         getTplByKey: tplHelper.getTplByKey,
         getForm: tplHelper.getForm,

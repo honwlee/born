@@ -23,33 +23,35 @@ define([
     }
     return {
         data: {
-            page1: {
-                name: "page1",
-                cnName: "模板一",
+            homePage1: {
+                name: "homePage1",
+                cnName: "生美国际赴美生子",
             },
-            page2: {
-                name: "page2",
-                cnName: "模板二"
+            homePage2: {
+                name: "homePage2",
+                cnName: "我们的服务"
             },
-            page3: {
-                name: "page3",
-                cnName: "模板三"
+            homePage3: {
+                name: "homePage3",
+                cnName: "在美活动"
             },
-            page4: {
-                name: "page4",
-                cnName: "模板四"
+
+            homePage4: {
+                name: "homePage4",
+                cnName: "美国待产环境"
             },
-            page5: {
-                name: "page5",
-                cnName: "模板五"
+            homePage5: {
+                name: "homePage5",
+                cnName: "我们的优势"
             },
-            page6: {
-                name: "page6",
-                cnName: "模板六"
+
+            homePage6: {
+                name: "homePage6",
+                cnName: "贴心服务"
             },
-            page7: {
-                name: "page7",
-                cnName: "模板七"
+            homePage7: {
+                name: "homePage7",
+                cnName: "新闻资讯"
             }
         },
         getTplByKey: function(key) {
