@@ -1,341 +1,328 @@
 <div>
     <script id="homePage1-partial" type="text/x-handlebars-template">
-        <div class="panel panel-default">
-            <div class="part panel-heading">
-                <p class="main_title main_title_eleven">{{title}}</p>
-            </div>
-            <div class="part_one panel-body">
-                <div class="part_one_main">
-                    <div class="part_one_con">
-                        <p id="one_con" style="margin-top: 30px;">
-                            {{content}}
+    <div class="panel-default">
+        <div class="part">
+            <h1 class="main_title main_title_eleven">{{title}}</h1>
+        </div>
+        <div class="part_one panel-body">
+            <div class="part_one_main">
+                <div class="part_one_con">
+                    <p id="one_con" style="margin-top: 30px;">
+                        {{content}}
+                    </p>
+                </div>
+                <ul id="list" class="row part_one_list">
+                    {{#each posts}}
+                    <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <a target="_blank">
+                            <img src="{{src}}">
+                        </a>
+                        <p>
+                            <a target="_blank" href="/metusa/{{id}}">{{title}}</a>
                         </p>
-                    </div>
-                    <ul id="list" class="part_one_list">
-                        {{#each posts}}
-                            <li class="part_one_margin">
-                                <a target="_blank">
-                                    <img src="{{src}}" height="216" width="383">
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+    </script>
+    <script id="homePage1-form-partial" type="text/x-handlebars-template">
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="title">标题</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="title" value="{{title}}" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">内容</label>
+        <div class="col-sm-10">
+            <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="file">选择文章</label>
+        <div class="col-sm-10">
+            <button class="btn btn-primary select-content-list" data-type="posts" data-action="public_meet" type="button">点击选择</button>
+        </div>
+    </div>
+    </script>
+    <script id="homePage2-partial" type="text/x-handlebars-template">
+    <div class="panel-default our-services">
+        <div class="part">
+            <h1 class="main_title main_title_two">{{title}}</h1>
+        </div>
+        <div class="container our-services-con">
+            <ul class="panel-body row ">
+                {{#each qas}}
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-12" data-id="{{id}}">
+                    <div class="pt_li1"></div>
+                    <p class="part_two_title">{{title}}</p>
+                    <p class="part_two_row"></p>
+                    <p class="part_two_con">
+                        <a href="javascript:go('/metusa/{{id}})'">{{abstract}}</a>
+                    </p>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        
+    </div>
+    </script>
+    <script id="homePage2-form-partial" type="text/x-handlebars-template">
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="title">标题</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="title" value="{{title}}" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">内容</label>
+        <div class="col-sm-10">
+            <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="file">选择服务</label>
+        <div class="col-sm-10">
+            <button class="btn btn-primary select-content-list" data-type="qas" type="button">点击选择</button>
+        </div>
+    </div>
+    </script>
+    <script id="homePage3-partial" type="text/x-handlebars-template">
+    <div class=" panel-default activity">
+        <!-- 在美活动 -->
+        <div class="part ">
+            <h1 class="main_title main_title_seven">{{title}}</h1>
+        </div>
+        <div class="container panel-body row active-con">
+            <div id="success_left" class="col-md-6 part_seven_left">
+                <img src="{{first.src}}" title="" height="267" width="577">
+                <p class="ps_left_title"><a href="javascripts:go('/activity/{{id}}')" title="{{first.title}}">{{title}}</a></p>
+                <div class="ps_left_con">{{first.abstract}}</div>
+            </div>
+            <div class="col-md-6 part_seven_right">
+                <div style="margin-top:60px;" class="ps_right_con">
+                    <ul>
+                        {{#each activePage}}
+                        <li data-id="{{id}}" class="col-md-6">
+                            <div class="img_img_desc">
+                                <a href="javascript:void(0)" title="{{title}}">
+                                    <img src="{{src}}" height="auto" width="277">
                                 </a>
-                                <p>
-                                    <a target="_blank" href="/metusa/{{id}}">{{title}}</a>
-                                </p>
-                            </li>
+                            </div>
+                            <a href="javascripts:go('/activity/{{id}}')" title="{{title}}">
+                                <p>{{abstract}}</p>
+                            </a>
+                        </li>
                         {{/each}}
                     </ul>
                 </div>
             </div>
         </div>
+        <div class="find_more_five">
+            <a class="part_five_more part_more" href="javascripts:go('/activity')">查看更多</a>
+        </div>
+    </div>
     </script>
-
-    <script id="homePage1-form-partial" type="text/x-handlebars-template">
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">标题</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
+    <script id="homePage3-form-partial" type="text/x-handlebars-template">
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="title">标题</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="title" value="{{title}}" />
         </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label">内容</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-            </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="file">选择文章</label>
+        <div class="col-sm-10">
+            <button class="btn btn-primary select-content-list" data-type="posts" data-action="public_activity" type="button">点击选择</button>
         </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择文章</label>
-            <div class="col-sm-10">
-                <button class="btn btn-primary select-content-list" data-type="posts" data-action="public_meet" type="button">点击选择</button>
-            </div>
-        </div>
+    </div>
     </script>
-
-    <script id="homePage2-partial" type="text/x-handlebars-template">
-        <div class="panel panel-default">
-            <div class="part panel-heading">
-                <p class="main_title main_title_two">{{title}}</p>
-            </div>
-            <ul class="part_two panel-body">
-                {{#each qas}}
-                    <li data-id="{{id}}">
-                        <div class="pt_li1"></div>
-                        <p class="part_two_title">{{title}}</p>
-                        <p class="part_two_row"></p>
-                        <p class="part_two_con">
-                            <a href="javascript:go('/metusa/{{id}})'">{{abstract}}</a>
-                        </p>
-                    </li>
+    <script id="homePage4-partial" type="text/x-handlebars-template">
+    <div class="panel-default">
+        <div class="part">
+            <h1 class="main_title main_title_three">{{title}}</h1>
+        </div>
+        <div class="container environment-con">
+            <ul class="row">
+                {{#each posts}}
+                <li class="col-md-4">
+                    <a target="_blank" href="{{src}}">
+                        <img src="{{src}}" height="213" width="379">
+                    </a>
+                    <p style="line-height: 66px;" class="part_four_title">{{title}}</p>
+                </li>
                 {{/each}}
             </ul>
         </div>
+        <div class="find_more_four">
+            <a class="part_four_more part_more" href="javascript:go('/activity')">查看更多</a>
+        </div>
+    </div>
     </script>
-
-    <script id="homePage2-form-partial" type="text/x-handlebars-template">
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">标题</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
+    <script id="homePage4-form-partial" type="text/x-handlebars-template">
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="title">标题</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="title" value="{{title}}" />
         </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label">内容</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-            </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="file">选择图片</label>
+        <div class="col-sm-10">
+            <button class="btn btn-primary select-content-list" data-type="posts" data-action="public_env" type="button">点击选择</button>
         </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择服务</label>
-            <div class="col-sm-10">
-                <button class="btn btn-primary select-content-list" data-type="qas" type="button">点击选择</button>
-            </div>
-        </div>
+    </div>
     </script>
-
-    <script id="homePage3-partial" type="text/x-handlebars-template">
-        <div class="panel panel-default">
-            <!-- 在美活动 -->
-            <div class="part panel-heading">
-                <p class="main_title main_title_seven">{{title}}</p>
-            </div>
-            <div class="part_seven_main panel-body">
-                <div id="success_left" class="part_seven_left">
-                    <img src="{{first.src}}" title="" height="267" width="577">
-                    <p class="ps_left_title"><a href="javascripts:go('/activity/{{id}}')" title="{{first.title}}">{{title}}</a></p>
-                    <div class="ps_left_con">{{first.abstract}}</div>
+    <script id="homePage5-partial" type="text/x-handlebars-template">
+    <div class="panel-default">
+        <!-- 我们的优势 -->
+        <div class="part">
+            <h1 class="main_title main_title_three">{{title}}</h1>
+        </div>
+        <div class="part_three panel-body">
+            <p class="part_three_about">
+                {{content}}
+            </p>
+            <div class="part_three_detail">
+                <div class="part_three_datailCon detail">
+                    <p class="pt_datail_title title">{{first.title}}</p>
+                    <p class="pt_datail_con content">{{first.content}}</p>
+                    <p class="pt_datail_page page">1/6</p>
                 </div>
-                <div class="part_seven_right">
-                    <div style="margin-top:60px;" class="ps_right_con">
-                        <ul>
-                            {{#each activePage}}
-                                <li data-id="{{id}}">
-                                    <div class="img_img_desc">
-                                        <a href="javascript:void(0)" title="{{title}}">
-                                            <img src="{{src}}" height="auto" width="277">
-                                        </a>
+                <ul class="part_three_left">
+                    {{#each leftData}}
+                    <li class="left-item item" data-index="{{@index}}">
+                        <p class="item-title">{{title}}</p>
+                        <img src="{{src}}" height="104px" width="104px">
+                        <p class="item-content hide">{{content}}</p>
+                    </li>
+                    {{/each}}
+                </ul>
+                <ul class="part_three_right">
+                    {{#each rightData}}
+                    <li class="right-item item"  data-index="{{@index}}" data-right="true">
+                        <img src="{{src}}" height="104px" width="104px">
+                        <p class="item-title">{{title}}</p>
+                        <p class="item-content hide">{{content}}</p>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+    </script>
+    <script id="homePage5-form-partial" type="text/x-handlebars-template">
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="title">标题</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="title" value="{{title}}" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">内容</label>
+        <div class="col-sm-10">
+            <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="file">选择段落内容</label>
+        <div class="col-sm-10">
+            <button class="btn btn-primary select-content-list" data-type="snippets" type="button">点击选择</button>
+        </div>
+    </div>
+    </script>
+    <script id="homePage6-partial" type="text/x-handlebars-template">
+    <div class="panel-default" style="background: url(/assets/images/part10_bg.jpg) no-repeat; background-size: 100% 640px; height: 600px; padding-top: 40px;">
+        <!-- 生美国际赴美的五心服务 -->
+        <div class="part">
+            <h1 class="main_title main_title_ten">BornInUSA 生美贴心服务</h1>
+        </div>
+        <div class="panel-body">
+            <ul class="part_ten">
+                {{#each snippets}}
+                <li>
+                    <img src="{{src}}" height="130" width="130">
+                    <p class="part_ten_title">{{title}}</p>
+                    <p class="part_ten_main">{{description}}</p>
+                    <p class="part_ten_con">{{content}}</p>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    </script>
+    <script id="homePage6-form-partial" type="text/x-handlebars-template">
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="title">标题</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="title" value="{{title}}" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">内容</label>
+        <div class="col-sm-10">
+            <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="file">选择段落内容</label>
+        <div class="col-sm-10">
+            <button class="btn btn-primary select-content-list" data-type="snippets" type="button">点击选择</button>
+        </div>
+    </div>
+    </script>
+    <script id="homePage7-partial" type="text/x-handlebars-template">
+    <div class="homenews hidden-xs">
+        <!-- 新闻消息 -->
+        <div class="homenewsCon panel-default">
+                <div class="homenewsTitle">
+                    <span><img src="/assets/images/homenewstitle.png" alt=""></span>
+                    <a class="pull-right more" href="javascript:go('/news')">查看更多</a>
+                </div>
+            
+            <div class="tbC panel-body">
+                <div class="tempWrap">
+                    <div class="slidecon">
+                        <ul class="list-unstyled row">
+                            {{#each news}}
+                            <li class="col-md-6 row">
+                                <div class="col-md-6  panel-body con">
+                                    <div class="inner">
+                                        <h6 class="slidetitle">{{title}}
+                                        <i class="arrowI"></i>
+                                        </h6>
+                                        <p>{{abstract}} </p>
                                     </div>
-                                    <a href="javascripts:go('/activity/{{id}}')" title="{{title}}">
-                                        <p>{{abstract}}</p>
-                                    </a>
-                                </li>
+                                </div>
+                                <div class="col-md-6 imgright ">
+                                    <img src="{{imgUrl}}" alt="{{title}}">
+                                </div>
+                            </li>
                             {{/each}}
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="find_more_five panel-footer">
-                <a class="part_five_more part_more" href="javascripts:go('/activity')">查看更多</a>
-            </div>
         </div>
-    </script>
-    <script id="homePage3-form-partial" type="text/x-handlebars-template">
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">标题</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择文章</label>
-            <div class="col-sm-10">
-                <button class="btn btn-primary select-content-list" data-type="posts" data-action="public_activity" type="button">点击选择</button>
-            </div>
-        </div>
-    </script>
-
-    <script id="homePage4-partial" type="text/x-handlebars-template">
-        <div class="panel panel-default">
-            <div class="part panel-heading">
-                <p class="main_title main_title_three">{{title}}</p>
-            </div>
-            <div class="panel-body">
-                <ul class="part_four">
-                    {{#each posts}}
-                    <li>
-                        <a target="_blank" href="{{src}}">
-                            <img src="{{src}}" height="213" width="379">
-                        </a>
-                        <p style="line-height: 66px;" class="part_four_title">{{title}}</p>
-                    </li>
-                    {{/each}}
-                </ul>
-            </div>
-            <div class="find_more_four panel-footer">
-                <a class="part_four_more part_more" href="javascript:go('/activity')">查看更多</a>
-            </div>
-        </div>
-    </script>
-    <script id="homePage4-form-partial" type="text/x-handlebars-template">
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">标题</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择图片</label>
-            <div class="col-sm-10">
-                <button class="btn btn-primary select-content-list" data-type="posts" data-action="public_env" type="button">点击选择</button>
-            </div>
-        </div>
-    </script>
-
-    <script id="homePage5-partial" type="text/x-handlebars-template">
-        <div class="panel panel-default">
-            <!-- 我们的优势 -->
-            <div class="part panel-heading">
-                <p class="main_title main_title_three">{{title}}</p>
-            </div>
-            <div class="part_three panel-body">
-                <p class="part_three_about">
-                    {{content}}
-                </p>
-                <div class="part_three_detail">
-                    <div class="part_three_datailCon detail">
-                        <p class="pt_datail_title title">{{first.title}}</p>
-                        <p class="pt_datail_con content">{{first.content}}</p>
-                        <p class="pt_datail_page page">1/6</p>
-                    </div>
-                    <ul class="part_three_left">
-                        {{#each leftData}}
-                            <li class="left-item item" data-index="{{@index}}">
-                                <p class="item-title">{{title}}</p>
-                                <img src="{{src}}" height="104px" width="104px">
-                                <p class="item-content hide">{{content}}</p>
-                            </li>
-                        {{/each}}
-                    </ul>
-                    <ul class="part_three_right">
-                        {{#each rightData}}
-                            <li class="right-item item"  data-index="{{@index}}" data-right="true">
-                                <img src="{{src}}" height="104px" width="104px">
-                                <p class="item-title">{{title}}</p>
-                                <p class="item-content hide">{{content}}</p>
-                            </li>
-                        {{/each}}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </script>
-
-    <script id="homePage5-form-partial" type="text/x-handlebars-template">
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">标题</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label">内容</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择段落内容</label>
-            <div class="col-sm-10">
-                <button class="btn btn-primary select-content-list" data-type="snippets" type="button">点击选择</button>
-            </div>
-        </div> 
-    </script>
-
-    <script id="homePage6-partial" type="text/x-handlebars-template">
-        <div class="panel panel-default">
-            <!-- 生美国际赴美的五心服务 -->
-            <div class="part panel-heading">
-                <p class="main_title main_title_ten">BornInUSA 生美贴心服务</p>
-            </div>
-            <div class="panel-body">
-                <ul class="part_ten">
-                    {{#each snippets}}
-                        <li>
-                            <img src="{{src}}" height="130" width="130">
-                            <p class="part_ten_title">{{title}}</p>
-                            <p class="part_ten_main">{{description}}</p>
-                            <p class="part_ten_con">{{content}}</p>
-                        </li>
-                    {{/each}}
-                </ul>
-            </div>
-        </div>
-    </script>
-    <script id="homePage6-form-partial" type="text/x-handlebars-template">
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">标题</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">内容</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择段落内容</label>
-            <div class="col-sm-10">
-                <button class="btn btn-primary select-content-list" data-type="snippets" type="button">点击选择</button>
-            </div>
-        </div> 
-    </script>
-    <script id="homePage7-partial" type="text/x-handlebars-template">
-        <div class="homenews hidden-xs">
-            <!-- 新闻消息 -->
-            <div class="homenewsCon panel panel-default">
-                <div class="panel-heading">
-                    <div class="homenewsTitle">
-                        <span><img src="/assets/images/homenewstitle.png" alt=""></span>
-                        <a class="more" href="javascript:go('/news')">查看更多</a>
-                    </div>
-                </div>
-                
-                <div class="tbC panel-body">
-                    <div class="tempWrap">
-                        <div class="slidecon">
-                            <ul class="list-unstyled clearfix">
-                                {{#each news}}
-                                    <li class="clearfix">
-                                        <div class="con panel-body">
-                                            <div class="inner">
-                                                <h6 class="slidetitle">{{title}}
-                                                    <i class="arrowI"></i>
-                                                </h6>
-                                                <p>{{abstract}} </p>
-                                            </div>
-                                        </div>
-                                        <div class="imgright">
-                                            <img src="{{imgUrl}}" alt="{{title}}">
-                                        </div>
-                                    </li>
-                                {{/each}}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
     </script>
     <script id="homePage7-form-partial" type="text/x-handlebars-template">
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="title">标题</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="title" value="{{title}}" />
-            </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="title">标题</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="title" value="{{title}}" />
         </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择新闻</label>
-            <div class="col-sm-10">
-                <button class="btn btn-primary select-content-list" data-type="news" type="button">点击选择</button>
-            </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="file">选择新闻</label>
+        <div class="col-sm-10">
+            <button class="btn btn-primary select-content-list" data-type="news" type="button">点击选择</button>
         </div>
+    </div>
     </script>
-    <script id=processPage1-partial" type="text/x-handlebars-template">
+     <script id=processPage1-partial" type="text/x-handlebars-template">
             <div class="col-sm-10 col-xs-12 col-clear-padding layou block">
                 <div class="tab-content">
                     <div class="tab-pane" id="pProcess">
