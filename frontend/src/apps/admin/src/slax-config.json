@@ -68,7 +68,7 @@
                 "navName": "文章管理"
             },
             "subs": [
-                "post-process"
+                "post-process,post-envPost,post-meetPost,post-meetPost,post-aboutPost,post-activityPost,post-servicePost"
             ],
             "controller": {
                 "type": "scripts/routes/posts/PostsController"
@@ -85,50 +85,55 @@
                 "type": "scripts/routes/posts/ProcessController"
             }
         },
-        "envPost": {
-            "pathto": "/enviroment",
+        "post-envPost": {
+            "sub": true,
+            "pathto": "/posts/enviroment",
             "data": {
-                "name": "envPost",
+                "name": "post-envPost",
                 "navName": "待产环境"
             },
             "controller": {
                 "type": "scripts/routes/posts/EnvController"
             }
         },
-        "meetPost": {
-            "pathto": "/meet",
+        "post-meetPost": {
+            "sub": true,
+            "pathto": "/posts/meet",
             "data": {
-                "name": "meetPost",
+                "name": "post-meetPost",
                 "navName": "遇见美利坚"
             },
             "controller": {
                 "type": "scripts/routes/posts/MeetController"
             }
         },
-        "aboutPost": {
-            "pathto": "/about",
+        "post-aboutPost": {
+            "sub": true,
+            "pathto": "/posts/about",
             "data": {
-                "name": "aboutPost",
+                "name": "post-aboutPost",
                 "navName": "关于我们"
             },
             "controller": {
                 "type": "scripts/routes/posts/AboutController"
             }
         },
-        "activityPost": {
-            "pathto": "/activity",
+        "post-activityPost": {
+            "sub": true,
+            "pathto": "/posts/activity",
             "data": {
-                "name": "activityPost",
+                "name": "post-activityPost",
                 "navName": "在美活动"
             },
             "controller": {
                 "type": "scripts/routes/posts/ActivityController"
             }
         },
-        "servicePost": {
-            "pathto": "/service",
+        "post-servicePost": {
+            "sub": true,
+            "pathto": "/posts/service",
             "data": {
-                "name": "servicePost",
+                "name": "post-servicePost",
                 "navName": "服务"
             },
             "controller": {
@@ -137,18 +142,23 @@
         },
         "photos": {
             "pathto": "/photos",
+            "isRouter": false,
             "data": {
                 "name": "photos",
                 "navName": "内容图片"
             },
+            "subs": [
+                "photos-slidePhotos"
+            ],
             "controller": {
                 "type": "scripts/routes/photos/PhotosController"
             }
         },
-        "slidePhotos": {
-            "pathto": "/slidePhotos",
+        "photos-slidePhotos": {
+            "sub": true,
+            "pathto": "/photos/slidePhotos",
             "data": {
-                "name": "slidePhotos",
+                "name": "photos-slidePhotos",
                 "navName": "slide图片"
             },
             "controller": {
@@ -198,12 +208,38 @@
         },
         "snippets": {
             "pathto": "/snippets",
+            "isRouter": false,
             "data": {
                 "name": "snippets",
                 "navName": "段内容"
             },
+            "subs": [
+                "snippets-vantage"
+            ],
             "controller": {
                 "type": "scripts/routes/snippets/SnippetsController"
+            }
+        },
+        "snippets-vantage": {
+            "sub": true,
+            "pathto": "/snippets/vantageSnippets",
+            "data": {
+                "name": "snippets-vantage",
+                "navName": "优势"
+            },
+            "controller": {
+                "type": "scripts/routes/snippets/VantageController"
+            }
+        },
+        "snippets-provide": {
+            "sub": true,
+            "pathto": "/snippets/provideSnippets",
+            "data": {
+                "name": "snippets-provide",
+                "navName": "贴心服务"
+            },
+            "controller": {
+                "type": "scripts/routes/snippets/ProvideController"
             }
         },
         "links": {
