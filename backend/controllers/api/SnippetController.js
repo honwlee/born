@@ -1,5 +1,7 @@
 'use strict';
 const Snippet = require('../../models/Snippet').Snippet;
+const _ = require('lodash');
+const Category = require('../../models/Category').Category;
 const parse = require('../../exts/parseList').parse;
 const validate = require('../../exts/validation').validate;
 module.exports = {
@@ -49,3 +51,28 @@ module.exports = {
         res.json(Snippet.importData());
     }
 }
+
+_(["vantage", "provide"]).each(function(name) {
+    console.log(name);
+    module.exports[name] = function(req, res) {
+        parse("snippets", req, res, ["title"], {
+            category: name
+        });
+    };
+    module.exports["post_" + name] = function(req, res) {
+        let category = Category.findOrCreate("name", {
+            name: name,
+            type: "snippet",
+            usage: 2
+        });
+        req.body.category = name;
+        req.body.file = req.file;
+        validate(Post, { title: req.body.title }, req, res);
+    };
+    module.exports["public_" + name] = function(req, res) {
+        parse("snippets", req, res, ["title"], {
+            published: 'true',
+            category: name
+        });
+    };
+});

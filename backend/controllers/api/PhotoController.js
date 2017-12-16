@@ -1,6 +1,8 @@
 'use strict';
 const Photo = require('../../models/Photo').Photo;
 const parse = require('../../exts/parseList').parse;
+const _ = require('lodash');
+const Category = require('../../models/Category').Category;
 const validate = require('../../exts/validation').validate;
 module.exports = {
     index: function(req, res) {
@@ -53,3 +55,28 @@ module.exports = {
         res.json(Photo.importData());
     }
 }
+
+_(["slide"]).each(function(name) {
+    console.log(name);
+    module.exports[name] = function(req, res) {
+        parse("photos", req, res, ["name"], {
+            category: name
+        });
+    };
+    module.exports["post_" + name] = function(req, res) {
+        let category = Category.findOrCreate("name", {
+            name: name,
+            type: "photo",
+            usage: 2
+        });
+        req.body.category = name;
+        req.body.file = req.file;
+        validate(Post, { title: req.body.title }, req, res);
+    };
+    module.exports["public_" + name] = function(req, res) {
+        parse("posts", req, res, ["title"], {
+            published: 'true',
+            category: name
+        });
+    };
+});

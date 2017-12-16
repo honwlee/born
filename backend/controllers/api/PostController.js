@@ -58,6 +58,7 @@ _(["meet", "activity", "process", "service", "about", "env"]).each(function(name
     module.exports["post_" + name] = function(req, res) {
         let category = Category.findOrCreate("name", {
             name: name,
+            type: "post",
             usage: 2
         });
         req.body.category = name;

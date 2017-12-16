@@ -18,6 +18,8 @@ define([
         klassName: "PhotoController",
         repeaterId: "photoRepeater",
         list: null,
+        title: "图片列表",
+        addTitle: "添加图片",
         preparing: function(e) {
             var self = this;
         },
@@ -26,7 +28,7 @@ define([
             this.list = new List({
                 thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" alt="{{name}}" src="{{src}}" width="65"><span>{{name}}</span></div>',
                 thumbnail_selectable: true,
-                title: "图片列表",
+                title: this.title,
                 id: "photoRepeater",
                 key: "photos",
                 actions: [{
@@ -49,18 +51,15 @@ define([
             });
         },
 
-        addPage: function() {
-
-        },
-
         rendering: function(e) {
             this.buildList();
             var self = this,
                 selector = this.list.getDom();
             selector.find(".repeater-add button").off("click").on("click", function(e) {
-                modal.show("form", $(tpl()), "添加文章", {
+                modal.show("form", $(tpl()), this.addTitle, {
                     key: "photos",
                     file: true,
+                    action: self.actionName ? "post_" + self.actionName : "create",
                     afterSave: function() {
                         selector.repeater('render');
                     }

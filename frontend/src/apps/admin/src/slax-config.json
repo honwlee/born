@@ -60,10 +60,25 @@
                 "type": "scripts/routes/pages/PagesController"
             }
         },
-        "processPost": {
-            "pathto": "/process",
+        "posts": {
+            "pathto": "/posts",
+            "isRouter": false,
             "data": {
-                "name": "processPost",
+                "name": "posts",
+                "navName": "文章管理"
+            },
+            "subs": [
+                "post-process"
+            ],
+            "controller": {
+                "type": "scripts/routes/posts/PostsController"
+            }
+        },
+        "post-process": {
+            "sub": true,
+            "pathto": "/posts/process",
+            "data": {
+                "name": "post-process",
                 "navName": "赴美流程"
             },
             "controller": {
@@ -124,10 +139,20 @@
             "pathto": "/photos",
             "data": {
                 "name": "photos",
-                "navName": "图片"
+                "navName": "内容图片"
             },
             "controller": {
                 "type": "scripts/routes/photos/PhotosController"
+            }
+        },
+        "slidePhotos": {
+            "pathto": "/slidePhotos",
+            "data": {
+                "name": "slidePhotos",
+                "navName": "slide图片"
+            },
+            "controller": {
+                "type": "scripts/routes/photos/SlideController"
             }
         },
         "news": {
