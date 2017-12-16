@@ -182,8 +182,8 @@ define([
                 title: "选择段内容",
                 id: "selectSnippetListR",
                 columns: [{
-                    label: '名称',
-                    property: 'name',
+                    label: '标题',
+                    property: 'title',
                     sortable: true
                 }],
                 fields: ["id"]

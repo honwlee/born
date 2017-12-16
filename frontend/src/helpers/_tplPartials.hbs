@@ -56,7 +56,7 @@
                 <p class="main_title main_title_two">{{title}}</p>
             </div>
             <ul class="part_two panel-body">
-                {{#each posts}}
+                {{#each qas}}
                     <li data-id="{{id}}">
                         <div class="pt_li1"></div>
                         <p class="part_two_title">{{title}}</p>
@@ -96,34 +96,31 @@
         <div class="panel panel-default">
             <!-- 在美活动 -->
             <div class="part panel-heading">
-                <p class="main_title main_title_seven">在美活动</p>
+                <p class="main_title main_title_seven">{{title}}</p>
             </div>
             <div class="part_seven_main panel-body">
                 <div id="success_left" class="part_seven_left">
-                    <img src="/assets/images/10361431_IMG_6166.jpeg" title="" height="267" width="577">
-                    <p class="ps_left_title"><a href="http://www.xiduobaby.com/view-2846-12.html" title="新疆赴美生子生美国际月子中心庆祝美宝满月生个美宝好处多">新疆赴美生子生美国际月子中心庆祝美宝满月</a>
-                    </p>
-                    <div class="ps_left_con">洛杉矶生美国际月子中心Rancho Cucamonga别墅里来自新疆乌鲁木齐的赴美产子客人为自家的小美宝庆祝满月啦 ， 妈妈这次是来美国生二宝的， 大宝是位小王子，二宝也是哦，哥俩以后可以一起...</div>
+                    <img src="{{first.src}}" title="" height="267" width="577">
+                    <p class="ps_left_title"><a href="javascripts:go('/activity/{{id}}')" title="{{first.title}}">{{title}}</a></p>
+                    <div class="ps_left_con">{{first.abstract}}</div>
                 </div>
                 <div class="part_seven_right">
-                    <!--    <div class="ps_haddleTop"></div> -->
                     <div style="margin-top:60px;" class="ps_right_con">
                         <ul>
                             {{#each activePage}}
-                            <li>
-                                <div class="img_img_desc">
-                                    <a href="{{href}}" title="{{title}}">
-                                        <img src="{{imgUrl}}" height="auto" width="277">
+                                <li data-id="{{id}}">
+                                    <div class="img_img_desc">
+                                        <a href="javascript:void(0)" title="{{title}}">
+                                            <img src="{{src}}" height="auto" width="277">
+                                        </a>
+                                    </div>
+                                    <a href="javascripts:go('/activity/{{id}}')" title="{{title}}">
+                                        <p>{{abstract}}</p>
                                     </a>
-                                </div>
-                                <a href="{{href}}" title="{{title}}">
-                                    <p>{{text}}</p>
-                                </a>
-                            </li>
+                                </li>
                             {{/each}}
                         </ul>
                     </div>
-                    <!-- <div class="ps_haddleBottom"></div> -->
                 </div>
             </div>
             <div class="find_more_five panel-footer">
@@ -308,12 +305,11 @@
                                                 <h6 class="slidetitle">{{title}}
                                                     <i class="arrowI"></i>
                                                 </h6>
-                                                <p>{{text}} </p>
-                                                <div class="morelink">morelink</div>
+                                                <p>{{abstract}} </p>
                                             </div>
                                         </div>
                                         <div class="imgright">
-                                            <img src="{{imgUrl}}" alt="">
+                                            <img src="{{imgUrl}}" alt="{{title}}">
                                         </div>
                                     </li>
                                 {{/each}}

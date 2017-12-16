@@ -34,7 +34,18 @@ define([
             },
             homePage3: {
                 name: "homePage3",
-                cnName: "在美活动"
+                cnName: "在美活动",
+                show: function(tpl, data) {
+                    var first = _.first(data.posts),
+                        length = data.length,
+                        active = _.slice(data.posts, 1, data.posts.length),
+                        _s = $(tpl({
+                            title: data.title,
+                            first: first,
+                            activePage: active,
+                        }));
+                    return _s;
+                }
             },
             homePage4: {
                 name: "homePage4",

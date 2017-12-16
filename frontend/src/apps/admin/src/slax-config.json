@@ -150,16 +150,7 @@
                 "type": "scripts/routes/slides/SlidesController"
             }
         },
-        "categories": {
-            "pathto": "/categories",
-            "data": {
-                "name": "categories",
-                "navName": "分类"
-            },
-            "controller": {
-                "type": "scripts/routes/categories/CategoriesController"
-            }
-        },
+
         "contents": {
             "pathto": "/contents",
             "data": {
