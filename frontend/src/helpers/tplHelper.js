@@ -84,6 +84,10 @@ define([
             homePage7: {
                 name: "homePage7",
                 cnName: "新闻资讯"
+            },
+            processPage1: {
+                name: "processPage1",
+                cnName: "主要流程"
             }
         },
         getTplByKey: function(key) {
