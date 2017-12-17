@@ -55,13 +55,14 @@
         <div class="container our-services-con">
             <ul class="panel-body row ">
                 {{#each qas}}
-                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-12" data-id="{{id}}">
-                    <div class="pt_li1"></div>
-                    <p class="part_two_title">{{title}}</p>
+                <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12" data-id="{{id}}">
+                 <div class="panel li-item" style="">
+                    <h2 class="part_two_title">{{title}}</h2>
                     <p class="part_two_row"></p>
                     <p class="part_two_con">
                         <a href="javascript:go('/metusa/{{id}})'">{{abstract}}</a>
                     </p>
+                    </div>
                 </li>
                 {{/each}}
             </ul>
@@ -102,7 +103,7 @@
                 <div class="ps_left_con">{{first.abstract}}</div>
             </div>
             <div class="col-md-6 part_seven_right">
-                <div style="margin-top:60px;" class="ps_right_con">
+                <div  class="ps_right_con">
                     <ul>
                         {{#each activePage}}
                         <li data-id="{{id}}" class="col-md-6">
@@ -120,7 +121,7 @@
                 </div>
             </div>
         </div>
-        <div class="find_more_five">
+        <div class="container find_more_five">
             <a class="part_five_more part_more" href="javascripts:go('/activity')">查看更多</a>
         </div>
     </div>
@@ -156,7 +157,7 @@
                 {{/each}}
             </ul>
         </div>
-        <div class="find_more_four">
+        <div class="container find_more_four">
             <a class="part_four_more part_more" href="javascript:go('/activity')">查看更多</a>
         </div>
     </div>
@@ -276,7 +277,7 @@
     <script id="homePage7-partial" type="text/x-handlebars-template">
     <div class="homenews hidden-xs">
         <!-- 新闻消息 -->
-        <div class="homenewsCon panel-default">
+        <div class="container  panel-default homenews-con">
                 <div class="homenewsTitle">
                     <span><img src="/assets/images/homenewstitle.png" alt=""></span>
                     <a class="pull-right more" href="javascript:go('/news')">查看更多</a>

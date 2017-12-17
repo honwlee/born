@@ -106,9 +106,7 @@
 }
 
 .part {
-    width: 1170px;
-    min-width: 1170px;
-    margin: 0 auto;
+margin-top: 50px;
 }
 
 .main_title {
@@ -309,21 +307,8 @@
 // our server
 .our-services-con {
     margin: 0 auto;
-    height: 325px;
+    // height: 325px;
     margin: 0 auto;
-    margin-top: 90px;
-    li {
-        cursor: pointer;
-        position: relative;
-        // width: 225px;
-        float: left;
-        height: 325px;
-        background-color: #fff;
-        margin-right: 11px;
-        &:last-child {
-            margin-right: 0;
-        }
-    }
     li:nth-child(1) .part_two_row {
         background-color: #eb6877;
     }
@@ -346,17 +331,14 @@
 
 .part_two_title {
     color: #323232;
-    margin-top: 60px;
-    font-size: 30px;
     line-height: 60px;
     text-align: center;
 }
 
 .part_two_row {
     display: inline-block;
-    width: 183px;
+    width: 100%;
     height: 4px;
-    margin-left: 21px;
     margin-bottom: 16px;
 }
 
@@ -445,7 +427,6 @@
     overflow: hidden;
     color: #010101;
     display: inline-block;
-    width: 183px;
     margin-left: 21px;
     font-size: 18px;
     line-height: 25px;
@@ -479,7 +460,7 @@
     text-align: center;
     width: 210px;
     height: 250px;
-    margin-left: 483px;
+    margin-left: 470px;
     padding-top: 145px;
     color: #fff;
 }
@@ -545,13 +526,47 @@
 }
 
 .part_three_left {
-    ul:nth-child(1) {
-        background: red;
-    }
     li:nth-child(1) {
-        background: #fff;
+        line-height: 100px;
+    margin-top: -20px;
+    cursor: pointer;
     }
+     li:nth-child(2) {
+           margin-left: -170px;
+    /* margin-top: -15px; */
+    margin-top: 45px;
+    cursor: pointer;
+    p {
+        margin-top: 18px;
+        cursor: pointer;
+    }
+     }
+     li:nth-child(3) {
+          margin-top: 41px;
+    margin-left: -190px;
+    line-height: 100px;
+    cursor: pointer;
+     }
 }
+.part_three_right{
+      li:nth-child(1) {
+            margin-top: -20px;
+    margin-left: 76px;
+    cursor: pointer;
+      }
+      li:nth-child(2) {width: 310px;
+    overflow: hidden;
+    margin-left: 200px;
+    margin-top: 25px;
+    cursor: pointer;}
+      li:nth-child(3) { width: 310px;
+    overflow: hidden;
+    margin-top: 48px;
+    margin-left: 235px;
+    cursor: pointer;}
+}
+
+
 
 .pt_left_03 {
     line-height: 100px;
@@ -633,8 +648,6 @@
 
 .find_more_four {
     clear: both;
-    width: 1170px;
-    margin: 0 auto;
     padding-top: 70px;
 }
 
@@ -678,9 +691,7 @@
 
 .find_more_five {
     clear: both;
-    width: 1170px;
     margin: 0 auto;
-    padding-top: 70px;
 }
 
 .part_five_more {
@@ -705,9 +716,6 @@
 }
 
 .part_seven_left {
-    width: 577px;
-    float: left;
-    margin-top: 60px
 }
 
 .ps_left_title a {
@@ -736,8 +744,6 @@
 }
 
 .part_seven_right {
-    width: 570px;
-    float: right;
 }
 
 .ps_haddleTop {
