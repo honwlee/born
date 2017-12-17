@@ -60,17 +60,10 @@ module.exports = {
             chain = chain.filter(function(obj) {
                 let result = true;
                 for (var key in filterOpts) {
-                    console.log(result);
-                    console.log("obj:" + obj[key]);
-                    console.log("filer:" + filterOpts[key]);
-                    console.log(obj[key] == filterOpts[key]);
                     result = result && (obj[key] == filterOpts[key]);
-                    console.log(result);
                 }
-                console.log(result);
                 return result;
             });
-            console.log(chain.value());
         }
 
         Object.keys(req.query).forEach(function(key) {

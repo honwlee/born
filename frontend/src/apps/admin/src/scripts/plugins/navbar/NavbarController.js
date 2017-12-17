@@ -74,7 +74,7 @@ define([
                             }).data({
                                 name: subData.name,
                                 sub: true,
-                                isRouter: page.isRouter == false ? false : true,
+                                isRouter: subPage.isRouter == false ? false : true,
                                 parent: _name,
                                 path: subPage.pathto
                             }).html(subData.navName)

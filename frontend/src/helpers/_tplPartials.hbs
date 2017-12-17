@@ -322,26 +322,39 @@
         </div>
     </div>
     </script>
-     <script id=processPage1-partial" type="text/x-handlebars-template">
-            <div class="col-sm-10 col-xs-12 col-clear-padding layou block">
-                <div class="tab-content">
-                    <div class="tab-pane" id="pProcess">
-                        <div class="layou_title">主要流程</div>
-                        <div class="triangle-down marbot25"></div>
-                        <div class="histWrap">
-                            <div class="histLeft">
-                                <dl class="cf">
-                                    <dt class="fl"><img src="{{src}}" width="140px"/></dt>
-                                    <dd class="overflow visbit">
-                                        <span class="hisSpan">{{title}}</span>
-                                        <p class="posit_p">{{text}}<span class="bgy bgy_p"></span></p>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <script id=processPage1-partial" type="text/x-handlebars-template">
+        <div class="histWrap">
+            <div class="histLeft">
+                {{#each leftData}}
+                    {{#if @index}}
+                        <dl class="martT cf">
+                    {{else}}
+                        <dl class="cf">
+                    {{/if}}
+                        <dt class="fl"><img src="{{src}}" width="140px"/></dt>
+                        <dd class="overflow visbit">
+                            <span class="hisSpan">{{title}}</span>
+                            <p class="posit_p">{{description}}<span class="bgy bgy_p"></span></p>
+                        </dd>
+                    </dl>
+                {{/each}}
             </div>
+            <div class="histLeft histrRight">
+                {{#each rightData}}
+                    {{#if @index}}
+                        <dl class="martT cf">
+                    {{else}}
+                        <dl class="cf">
+                    {{/if}}
+                        <dt class="fl"><img src="{{src}}" width="140px"/></dt>
+                        <dd class="overflow visbit">
+                            <span class="hisSpan">{{title}}</span>
+                            <p class="posit_p">{{description}}<span class="bgy bgy_p"></span></p>
+                        </dd>
+                    </dl>
+                {{/each}}
+            </div>
+        </div>
     </script>
     <script id="processPage1-form-partial" type="text/x-handlebars-template">
         <div class="form-group">
@@ -350,18 +363,113 @@
                 <input type="text" class="form-control" name="title" value="{{title}}" />
             </div>
         </div>
-
         <div class="form-group">
-            <label class="col-sm-2 control-label">内容</label>
+            <label class="col-sm-2 control-label" for="file">选择段内容</label>
             <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+                <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_flow" type="button">点击选择</button>
             </div>
         </div> 
+    </script>
+    
+    <script id=visaPage-partial" type="text/x-handlebars-template">
+        <div class="wrapRight-con">
+            {{#each snippets}}
+                <div class="ywbjTopTitle">
+                    <span> {{title}}</span>
+                </div>
+                <div class="content">{{content}}</div>
+            {{/each}}
+        </div>
+    </script>
+    <script id="visaPage-form-partial" type="text/x-handlebars-template">
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择图片</label>
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">选择段内容</label>
+            <div class="col-sm-10">
+                <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_visa" type="button">点击选择</button>
+            </div>
+        </div> 
+    </script>
+
+    <script id=hospitalPage-partial" type="text/x-handlebars-template">
+        <div class="wrapRight-con">
+            <div>{{description}}</div>
+            {{#each snippets}}
+                <div class="panel panel-default">
+                    <div class="ywbjTopTitle panel-heading">{{title}}</div>
+                    <div class="panel-body">
+                        {{content}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </script>
+    <script id="hospitalPage-form-partial" type="text/x-handlebars-template">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">选择段内容</label>
+            <div class="col-sm-10">
+                <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_hospital" type="button">点击选择</button>
+            </div>
+        </div> 
+    </script>
+
+    <script id=processEnvPage-partial" type="text/x-handlebars-template">
+        <div class="wrapRight-con">
+            
+        </div>
+    </script>
+    <script id="processEnvPage-form-partial" type="text/x-handlebars-template">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">选择文章</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="posts" data-action="public_env" type="button">点击选择</button>
             </div>
         </div> 
     </script>
+
+    <script id=certificatePage-partial" type="text/x-handlebars-template">
+        <div class="wrapRight-con">
+            <div>{{description}}</div>
+            {{#each snippets}}
+                <div class="panel panel-default">
+                    <div class="ywbjTopTitle panel-heading">{{title}}</div>
+                    <div class="panel-body">
+                        {{content}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </script>
+    <script id="certificatePage-form-partial" type="text/x-handlebars-template">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">选择段内容</label>
+            <div class="col-sm-10">
+                <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_certificate" type="button">点击选择</button>
+            </div>
+        </div> 
+    </script>
+
 </div>

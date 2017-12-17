@@ -52,7 +52,7 @@ module.exports = {
     }
 }
 
-_(["vantage", "provide"]).each(function(name) {
+_(["vantage", "provide", "visa", "hospital", "flow", "certificate"]).each(function(name) {
     console.log(name);
     module.exports[name] = function(req, res) {
         parse("snippets", req, res, ["title"], {

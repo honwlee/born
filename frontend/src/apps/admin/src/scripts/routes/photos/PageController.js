@@ -12,59 +12,50 @@ define([
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         formSelector = $(langx.trim(formTpl));
-    partial.get("snippets-form-partial", formSelector);
-    var tpl = hbs.compile("{{> snippets-form-partial}}");
+    partial.get("page-select-partial", formSelector);
+    partial.get("photo-with-page-form-partial", formSelector);
+    var tpl = hbs.compile("{{> photo-with-page-form-partial}}");
     return spa.RouteController.inherit({
-        klassName: "SnippetsController",
-        repeaterId: "snippetsRepeater",
+        klassName: "PhotoController",
+        repeaterId: "photoRepeater",
         list: null,
-        title: "流程列表",
-        addTitle: "添加流程",
+        title: "页面图片列表",
+        actionName: "page",
+        addTitle: "添加页面图片",
         preparing: function(e) {
             var self = this;
         },
 
-        buildList: function() {
+        buildList: function(post) {
             this.list = new List({
+                thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" alt="{{name}}" src="{{src}}" width="65"><span>{{name}}</span></div>',
+                thumbnail_selectable: true,
                 title: this.title,
-                id: this.repeaterId,
+                id: "photoRepeater",
                 actionName: this.actionName,
-                key: "snippets",
+                key: "photos",
                 actions: [{
                     name: "delete",
-                    title: "删除",
-                    callback: function() {
-
-                    }
-                }, {
-                    name: "show",
-                    title: "查看",
-                    tpl: tpl,
-                    callback: function() {
-
-                    }
-                }, {
-                    name: "edit",
-                    title: "编辑",
-                    tpl: tpl,
+                    title: "删除页面",
+                    tpl: "",
                     callback: function() {
 
                     }
                 }],
                 columns: [{
-                    label: '标题',
-                    property: 'title',
+                    label: '名称',
+                    property: 'name',
+                    sortable: true
+                }, {
+                    label: '图片地址',
+                    property: 'src',
                     sortable: false
                 }, {
-                    label: '简介',
-                    property: 'description',
+                    label: '所属页面',
+                    property: 'page',
                     sortable: false
                 }]
             });
-        },
-
-        addPage: function() {
-
         },
 
         rendering: function(e) {
@@ -73,9 +64,9 @@ define([
                 selector = this.list.getDom();
             selector.find(".repeater-add button").off("click").on("click", function(e) {
                 modal.show("form", $(tpl()), this.addTitle, {
-                    key: "snippets",
-                    action: self.actionName ? "post_" + self.actionName : "create",
+                    key: "photos",
                     file: true,
+                    action: self.actionName ? "post_" + self.actionName : "create",
                     afterSave: function() {
                         selector.repeater('render');
                     }

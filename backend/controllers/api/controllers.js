@@ -25,7 +25,7 @@ module.exports = {
     photos: {
         module: require("./PhotoController"),
         uploadPath: "photos",
-        extralNames: ["slide"],
+        extralNames: ["slide", "page"],
         extraPrefix: [{
             name: "post_",
             method: "post"
@@ -61,7 +61,7 @@ module.exports = {
     snippets: {
         module: require("./SnippetController"),
         uploadPath: "snippets",
-        extralNames: ["vantage", "provide"],
+        extralNames: ["vantage", "provide", "visa", "hospital", "flow", "certificate"],
         extraPrefix: [{
             name: "post_",
             method: "post"

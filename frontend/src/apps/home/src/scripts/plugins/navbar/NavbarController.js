@@ -179,6 +179,7 @@ define([
             }
             _el.html(ul);
             if (__sitesData.site && __sitesData.site.id) update(__sitesData.site);
+            $('[data-toggle="dropdown"]').dropdown();
         },
         routed: function() {}
     });

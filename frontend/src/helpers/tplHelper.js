@@ -86,8 +86,46 @@ define([
                 cnName: "新闻资讯"
             },
             processPage1: {
+                domId: "pProcess",
                 name: "processPage1",
-                cnName: "主要流程"
+                cnName: "主要流程",
+                show: function(tpl, data) {
+                    var leftData = [],
+                        rightData = [];
+                    _(data.snippets).each(function(d, index) {
+                        if (index % 2) {
+                            leftData.push(d);
+                        } else {
+                            rightData.push(d);
+                        }
+                    });
+                    var _s = $(tpl({
+                        title: data.title,
+                        leftData: leftData,
+                        rightData: rightData
+                    }));
+                    return _s;
+                }
+            },
+            visaPage: {
+                domId: "pVisa",
+                name: "visaPage",
+                cnName: "签证申请",
+            },
+            hospitalPage: {
+                domId: "pCohospital",
+                name: "hospitalPage",
+                cnName: "合作医院",
+            },
+            processEnvPage: {
+                domId: "pEnvironment",
+                name: "processEnvPage",
+                cnName: "待产环境",
+            },
+            certificatePage: {
+                domId: "pCertificate",
+                name: "certificatePage",
+                cnName: "证件办理",
             }
         },
         getTplByKey: function(key) {

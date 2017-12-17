@@ -29,6 +29,7 @@ define([
                 thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" alt="{{name}}" src="{{src}}" width="65"><span>{{name}}</span></div>',
                 thumbnail_selectable: true,
                 title: this.title,
+                actionName: this.actionName,
                 id: "photoRepeater",
                 key: "photos",
                 actions: [{

@@ -1,14 +1,33 @@
 define([
     "jquery",
     "skylarkjs",
-    "text!scripts/routes/process/process.html"
-], function($, skylarkjs, processTpl) {
+    "handlebars",
+    "server",
+    "scripts/helpers/tplHelper",
+    "text!scripts/routes/process/process.hbs"
+], function($, skylarkjs, hbs, server, tplHelper, processTpl) {
+    var spa = skylarkjs.spa,
+        langx = skylarkjs.langx,
+        selector = $(langx.trim(processTpl));
     var spa = skylarkjs.spa;
     return spa.RouteController.inherit({
         klassName: "ProcessController",
-
+        pageData: null,
+        preparing: function(e) {
+            var self = this;
+            e.result = server().connect("pages", "get", "show?key=name&&value=" + e.route.name).then(function(data) {
+                self.pageData = data;
+            });
+        },
         rendering: function(e) {
-            e.content = processTpl;
+            var tpl = hbs.compile(langx.trim(selector.find("#process-main").html()).replace("{{&gt;", "{{>")),
+                self = this,
+                _ec = $(tpl({}));
+            self.pageData.contents.forEach(function(content) {
+                var tplData = tplHelper.data[content.tpl];
+                tplHelper.show(content.tpl, content.sub).appendTo(_ec.find("#" + tplData.domId));
+            });
+            e.content = _ec[0];
         },
 
         rendered: function() {

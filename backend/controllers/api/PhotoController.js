@@ -56,7 +56,7 @@ module.exports = {
     }
 }
 
-_(["slide"]).each(function(name) {
+_(["slide", "page"]).each(function(name) {
     console.log(name);
     module.exports[name] = function(req, res) {
         parse("photos", req, res, ["name"], {

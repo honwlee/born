@@ -68,7 +68,13 @@
                 "navName": "文章管理"
             },
             "subs": [
-                "post-process,post-envPost,post-meetPost,post-meetPost,post-aboutPost,post-activityPost,post-servicePost"
+                "post-process",
+                "post-envPost",
+                "post-meetPost",
+                "post-meetPost",
+                "post-aboutPost",
+                "post-activityPost",
+                "post-servicePost"
             ],
             "controller": {
                 "type": "scripts/routes/posts/PostsController"
@@ -145,24 +151,48 @@
             "isRouter": false,
             "data": {
                 "name": "photos",
-                "navName": "内容图片"
+                "navName": "图片管理"
             },
             "subs": [
-                "photos-slidePhotos"
+                "photos-content",
+                "photos-slide",
+                "photos-page"
             ],
             "controller": {
                 "type": "scripts/routes/photos/PhotosController"
             }
         },
-        "photos-slidePhotos": {
+        "photos-content": {
             "sub": true,
-            "pathto": "/photos/slidePhotos",
+            "pathto": "/photos/content",
             "data": {
-                "name": "photos-slidePhotos",
+                "name": "photos-content",
+                "navName": "内容图片"
+            },
+            "controller": {
+                "type": "scripts/routes/photos/PhotosController"
+            }
+        },
+        "photos-slide": {
+            "sub": true,
+            "pathto": "/photos/slide",
+            "data": {
+                "name": "photos-slide",
                 "navName": "slide图片"
             },
             "controller": {
                 "type": "scripts/routes/photos/SlideController"
+            }
+        },
+        "photos-page": {
+            "sub": true,
+            "pathto": "/photos/page",
+            "data": {
+                "name": "photos-page",
+                "navName": "页面图片"
+            },
+            "controller": {
+                "type": "scripts/routes/photos/PageController"
             }
         },
         "news": {
@@ -211,10 +241,15 @@
             "isRouter": false,
             "data": {
                 "name": "snippets",
-                "navName": "段内容"
+                "navName": "段内容管理"
             },
             "subs": [
-                "snippets-vantage"
+                "snippets-vantage",
+                "snippets-provide",
+                "snippets-flow",
+                "snippets-hospital",
+                "snippets-visa",
+                "snippets-certificate"
             ],
             "controller": {
                 "type": "scripts/routes/snippets/SnippetsController"
@@ -222,7 +257,7 @@
         },
         "snippets-vantage": {
             "sub": true,
-            "pathto": "/snippets/vantageSnippets",
+            "pathto": "/snippets/vantage",
             "data": {
                 "name": "snippets-vantage",
                 "navName": "优势"
@@ -233,13 +268,57 @@
         },
         "snippets-provide": {
             "sub": true,
-            "pathto": "/snippets/provideSnippets",
+            "pathto": "/snippets/provide",
             "data": {
                 "name": "snippets-provide",
                 "navName": "贴心服务"
             },
             "controller": {
                 "type": "scripts/routes/snippets/ProvideController"
+            }
+        },
+        "snippets-flow": {
+            "sub": true,
+            "pathto": "/snippets/flow",
+            "data": {
+                "name": "snippets-flow",
+                "navName": "主要流程"
+            },
+            "controller": {
+                "type": "scripts/routes/snippets/FlowController"
+            }
+        },
+        "snippets-hospital": {
+            "sub": true,
+            "pathto": "/snippets/hospital",
+            "data": {
+                "name": "snippets-hospital",
+                "navName": "合作医院"
+            },
+            "controller": {
+                "type": "scripts/routes/snippets/FlowController"
+            }
+        },
+        "snippets-visa": {
+            "sub": true,
+            "pathto": "/snippets/visa",
+            "data": {
+                "name": "snippets-visa",
+                "navName": "签证办理"
+            },
+            "controller": {
+                "type": "scripts/routes/snippets/FlowController"
+            }
+        },
+        "snippets-certificate": {
+            "sub": true,
+            "pathto": "/snippets/certificate",
+            "data": {
+                "name": "snippets-certificate",
+                "navName": "证件办理"
+            },
+            "controller": {
+                "type": "scripts/routes/snippets/FlowController"
             }
         },
         "links": {
