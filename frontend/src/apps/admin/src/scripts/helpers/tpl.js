@@ -201,6 +201,141 @@ define([
                         });
                     }
                 }
+            },
+            {
+                name: "processPage1",
+                cnName: d.processPage1.cnName,
+                bindEvnts: function(selector, off) {
+                    modalFunc.contentListByBtn(selector, {
+                        key: "contents",
+                        listSCallback: function(modal, items, data) {
+                            __content.page1 = langx.clone(data);
+                        },
+                        list_selectable: "multi"
+                    }, off);
+                },
+                save: function(selector) {
+                    var parseData = modalFunc.parseForm(selector.find(".sub-form"));
+                    parseData._content = __content.page1;
+                    __content.page1 = null;
+
+                    if (modalFunc.checkForm(["name"], modal)) {
+                        modalFunc.save("contents", selector.find(".form"), {
+                            sub: JSON.stringify(parseData)
+                        }, function(data) {
+                            toastr.success("已保存！");
+                            modal.modal('hide');
+                        });
+                    }
+                }
+            },
+            {
+                name: "visaPage",
+                cnName: d.visaPage.cnName,
+                bindEvnts: function(selector, off) {
+                    modalFunc.contentListByBtn(selector, {
+                        key: "contents",
+                        listSCallback: function(modal, items, data) {
+                            __content.page1 = langx.clone(data);
+                        },
+                        list_selectable: "multi"
+                    }, off);
+                },
+                save: function(selector) {
+                    var parseData = modalFunc.parseForm(selector.find(".sub-form"));
+                    parseData._content = __content.page1;
+                    __content.page1 = null;
+
+                    if (modalFunc.checkForm(["name"], modal)) {
+                        modalFunc.save("contents", selector.find(".form"), {
+                            sub: JSON.stringify(parseData)
+                        }, function(data) {
+                            toastr.success("已保存！");
+                            modal.modal('hide');
+                        });
+                    }
+                }
+            },
+            {
+                name: "certificatePage",
+                cnName: d.certificatePage.cnName,
+                bindEvnts: function(selector, off) {
+                    modalFunc.contentListByBtn(selector, {
+                        key: "contents",
+                        listSCallback: function(modal, items, data) {
+                            __content.page1 = langx.clone(data);
+                        },
+                        list_selectable: "multi"
+                    }, off);
+                },
+                save: function(selector) {
+                    var parseData = modalFunc.parseForm(selector.find(".sub-form"));
+                    parseData._content = __content.page1;
+                    __content.page1 = null;
+
+                    if (modalFunc.checkForm(["name"], modal)) {
+                        modalFunc.save("contents", selector.find(".form"), {
+                            sub: JSON.stringify(parseData)
+                        }, function(data) {
+                            toastr.success("已保存！");
+                            modal.modal('hide');
+                        });
+                    }
+                }
+            },
+            {
+                name: "hospitalPage",
+                cnName: d.hospitalPage.cnName,
+                bindEvnts: function(selector, off) {
+                    modalFunc.contentListByBtn(selector, {
+                        key: "contents",
+                        listSCallback: function(modal, items, data) {
+                            __content.page1 = langx.clone(data);
+                        },
+                        list_selectable: "multi"
+                    }, off);
+                },
+                save: function(selector) {
+                    var parseData = modalFunc.parseForm(selector.find(".sub-form"));
+                    parseData._content = __content.page1;
+                    __content.page1 = null;
+
+                    if (modalFunc.checkForm(["name"], modal)) {
+                        modalFunc.save("contents", selector.find(".form"), {
+                            sub: JSON.stringify(parseData)
+                        }, function(data) {
+                            toastr.success("已保存！");
+                            modal.modal('hide');
+                        });
+                    }
+                }
+            },
+            {
+                name: "processEnvPage",
+                cnName: d.processEnvPage.cnName,
+                bindEvnts: function(selector, off) {
+                    modalFunc.contentListByBtn(selector, {
+                        key: "contents",
+                        listSCallback: function(modal, items, data) {
+                            __content.page1 = langx.clone(data);
+                        },
+                        list_selectable: "multi"
+                    }, off);
+                },
+                save: function(selector) {
+                    var parseData = modalFunc.parseForm(selector.find(".sub-form"));
+                    parseData._content = __content.page1;
+                    __content.page1 = null;
+
+                    if (modalFunc.checkForm(["name"], modal)) {
+                        modalFunc.save("contents", selector.find(".form"), {
+                            sub: JSON.stringify(parseData)
+                        }, function(data) {
+                            toastr.success("已保存！");
+                            modal.modal('hide');
+                        });
+                    }
+                }
             }
 
         ],

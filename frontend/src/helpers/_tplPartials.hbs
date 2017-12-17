@@ -309,20 +309,20 @@
     </div>
     </script>
     <script id="homePage7-form-partial" type="text/x-handlebars-template">
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="title">标题</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" name="title" value="{{title}}" />
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="file">选择新闻</label>
-        <div class="col-sm-10">
-            <button class="btn btn-primary select-content-list" data-type="news" type="button">点击选择</button>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">选择新闻</label>
+            <div class="col-sm-10">
+                <button class="btn btn-primary select-content-list" data-type="news" type="button">点击选择</button>
+            </div>
         </div>
-    </div>
     </script>
-    <script id=processPage1-partial" type="text/x-handlebars-template">
+    <script id="processPage1-partial" type="text/x-handlebars-template">
         <div class="histWrap">
             <div class="histLeft">
                 {{#each leftData}}
@@ -371,7 +371,7 @@
         </div> 
     </script>
     
-    <script id=visaPage-partial" type="text/x-handlebars-template">
+    <script id="visaPage-partial" type="text/x-handlebars-template">
         <div class="wrapRight-con">
             {{#each snippets}}
                 <div class="ywbjTopTitle">
@@ -396,7 +396,7 @@
         </div> 
     </script>
 
-    <script id=hospitalPage-partial" type="text/x-handlebars-template">
+    <script id="hospitalPage-partial" type="text/x-handlebars-template">
         <div class="wrapRight-con">
             <div>{{description}}</div>
             {{#each snippets}}
@@ -417,6 +417,12 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-2 control-label">内容</label>
+            <div class="col-sm-10">
+                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="file">选择段内容</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_hospital" type="button">点击选择</button>
@@ -424,7 +430,7 @@
         </div> 
     </script>
 
-    <script id=processEnvPage-partial" type="text/x-handlebars-template">
+    <script id="processEnvPage-partial" type="text/x-handlebars-template">
         <div class="wrapRight-con">
             
         </div>
@@ -444,7 +450,7 @@
         </div> 
     </script>
 
-    <script id=certificatePage-partial" type="text/x-handlebars-template">
+    <script id="certificatePage-partial" type="text/x-handlebars-template">
         <div class="wrapRight-con">
             <div>{{description}}</div>
             {{#each snippets}}

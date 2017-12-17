@@ -1,11 +1,12 @@
 define([
     "skylarkjs",
     "./Partial",
+    "./List",
     "jquery",
     "lodash",
     "handlebars",
     "text!./_tplPartials.hbs"
-], function(skylarkjs, partial, $, _, hbs, template) {
+], function(skylarkjs, partial, List, $, _, hbs, template) {
     var langx = skylarkjs.langx,
         __selector = $(langx.trim(template));
 
@@ -94,9 +95,9 @@ define([
                         rightData = [];
                     _(data.snippets).each(function(d, index) {
                         if (index % 2) {
-                            leftData.push(d);
-                        } else {
                             rightData.push(d);
+                        } else {
+                            leftData.push(d);
                         }
                     });
                     var _s = $(tpl({
@@ -121,6 +122,20 @@ define([
                 domId: "pEnvironment",
                 name: "processEnvPage",
                 cnName: "待产环境",
+                show: function(tpl, data) {
+                    var list = new List({
+                        title: "待产环境列表",
+                        id: "_prEnvPage",
+                        key: "posts",
+                        defaultView: "thumbnail",
+                        needHeader: false,
+                        thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" alt="{{name}}" src="{{src}}" width="65"><span>{{name}}</span></div>',
+                        actionName: "public_env"
+                    });
+                    var _s = $(tpl());
+                    list.getDom().appendTo(_s);
+                    return _s;
+                }
             },
             certificatePage: {
                 domId: "pCertificate",

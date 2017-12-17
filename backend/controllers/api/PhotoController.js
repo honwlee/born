@@ -71,10 +71,10 @@ _(["slide", "page"]).each(function(name) {
         });
         req.body.category = name;
         req.body.file = req.file;
-        validate(Post, { title: req.body.title }, req, res);
+        validate(Photo, { title: req.body.title }, req, res);
     };
     module.exports["public_" + name] = function(req, res) {
-        parse("posts", req, res, ["title"], {
+        parse("photos", req, res, ["title"], {
             published: 'true',
             category: name
         });

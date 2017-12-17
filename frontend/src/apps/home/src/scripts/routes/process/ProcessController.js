@@ -15,7 +15,7 @@ define([
         pageData: null,
         preparing: function(e) {
             var self = this;
-            e.result = server().connect("pages", "get", "show?key=name&&value=" + e.route.name).then(function(data) {
+            e.result = server().connect("pages", "get", "show?key=name&&value=process").then(function(data) {
                 self.pageData = data;
             });
         },

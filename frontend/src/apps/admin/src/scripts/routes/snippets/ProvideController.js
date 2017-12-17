@@ -11,6 +11,12 @@ define([
         repeaterId: "sProvideRepeater",
         title: "贴心服务列表",
         addTitle: "添加服务",
+        snippetTplOpts: {
+            needContent: true,
+            isNormalContent: true,
+            needDescription: true,
+            needCover: true
+        },
         actionName: "provide"
     });
 });

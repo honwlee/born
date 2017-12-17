@@ -1,16 +1,12 @@
 define([
     "jquery",
     "skylarkjs",
+    "../ProcessController",
     "text!scripts/routes/process/process.html"
-], function($, skylarkjs, processTpl) {
+], function($, skylarkjs, ProcessController, processTpl) {
     var spa = skylarkjs.spa;
-    return spa.RouteController.inherit({
+    return ProcessController.inherit({
         klassName: "ProcessCertificateController",
-
-        rendering: function(e) {
-            e.content = processTpl;
-        },
-
         rendered: function() {
             $('#pTabList a[href="#pCertificate"]').tab('show');
             $("#pTabList").find('a').off('shown.bs.tab').on('shown.bs.tab', function(e) {
@@ -23,6 +19,5 @@ define([
             });
             $('[data-toggle="dropdown"]').dropdown();
         },
-        exited: function() {}
     });
 });

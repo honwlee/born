@@ -11,6 +11,12 @@ define([
         repeaterId: "sCertificateRepeater",
         title: "证件办理列表",
         addTitle: "添加办理",
-        actionName: "certificate"
+        actionName: "certificate",
+        snippetTplOpts: {
+            needContent: true,
+            isNormalContent: false,
+            needDescription: false,
+            needCover: false
+        },
     });
 });

@@ -11,6 +11,12 @@ define([
         repeaterId: "sVantageRepeater",
         title: "优势列表",
         addTitle: "添加优势",
-        actionName: "vantage"
+        actionName: "vantage",
+        snippetTplOpts: {
+            needContent: false,
+            isNormalContent: false,
+            needDescription: true,
+            needCover: true
+        },
     });
 });

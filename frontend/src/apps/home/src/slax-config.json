@@ -60,7 +60,7 @@
             "pathto": "/process",
             "data": {
                 "name": "process",
-                "navName": "赴美流程"
+                "navName": "赴美流程 "
             },
             "subs": [
                 "process-visa",

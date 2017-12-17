@@ -296,7 +296,7 @@
                 "navName": "合作医院"
             },
             "controller": {
-                "type": "scripts/routes/snippets/FlowController"
+                "type": "scripts/routes/snippets/HospitalController"
             }
         },
         "snippets-visa": {
@@ -307,7 +307,7 @@
                 "navName": "签证办理"
             },
             "controller": {
-                "type": "scripts/routes/snippets/FlowController"
+                "type": "scripts/routes/snippets/VisaController"
             }
         },
         "snippets-certificate": {
@@ -318,7 +318,7 @@
                 "navName": "证件办理"
             },
             "controller": {
-                "type": "scripts/routes/snippets/FlowController"
+                "type": "scripts/routes/snippets/CertificateController"
             }
         },
         "links": {

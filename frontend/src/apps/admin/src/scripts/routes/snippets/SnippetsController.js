@@ -20,6 +20,12 @@ define([
         list: null,
         title: "流程列表",
         addTitle: "添加流程",
+        snippetTplOpts: {
+            needContent: true,
+            needDescription: true,
+            isNormalContent: true,
+            needCover: true
+        },
         preparing: function(e) {
             var self = this;
         },
@@ -72,7 +78,7 @@ define([
             var self = this,
                 selector = this.list.getDom();
             selector.find(".repeater-add button").off("click").on("click", function(e) {
-                modal.show("form", $(tpl()), this.addTitle, {
+                modal.show("form", $(tpl(self.snippetTplOpts)), this.addTitle, {
                     key: "snippets",
                     action: self.actionName ? "post_" + self.actionName : "create",
                     file: true,

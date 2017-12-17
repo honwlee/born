@@ -11,6 +11,12 @@ define([
         repeaterId: "sVisaRepeater",
         title: "签证办理列表",
         addTitle: "添加签证办理",
+        snippetTplOpts: {
+            needContent: true,
+            isNormalContent: false,
+            needDescription: false,
+            needCover: false
+        },
         actionName: "visa"
     });
 });

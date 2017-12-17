@@ -11,6 +11,12 @@ define([
         repeaterId: "sFlowRepeater",
         title: "流程列表",
         addTitle: "添加流程",
+        snippetTplOpts: {
+            needContent: false,
+            isNormalContent: false,
+            needDescription: true,
+            needCover: true
+        },
         actionName: "flow"
     });
 });

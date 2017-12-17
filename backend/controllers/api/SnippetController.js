@@ -67,7 +67,7 @@ _(["vantage", "provide", "visa", "hospital", "flow", "certificate"]).each(functi
         });
         req.body.category = name;
         req.body.file = req.file;
-        validate(Post, { title: req.body.title }, req, res);
+        validate(Snippet, { title: req.body.title }, req, res);
     };
     module.exports["public_" + name] = function(req, res) {
         parse("snippets", req, res, ["title"], {
