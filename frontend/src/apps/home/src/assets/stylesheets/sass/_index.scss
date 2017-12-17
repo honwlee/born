@@ -69,8 +69,6 @@
 .activity {
     width: 100%;
     background-color: rgb(0, 43, 127);
-    height: 780px;
-    padding-top: 40px;
     .active-con {
         margin: 0 auto;
     }
@@ -106,7 +104,7 @@
 }
 
 .part {
-margin-top: 50px;
+padding-top: 50px;
 }
 
 .main_title {
@@ -646,9 +644,9 @@ margin-top: 50px;
     }
 }
 
-.find_more_four {
+.find_more {
     clear: both;
-    padding-top: 70px;
+    padding:30px 0;
 }
 
 .part_four_more {
@@ -689,7 +687,7 @@ margin-top: 50px;
     }
 }
 
-.find_more_five {
+.find_more{
     clear: both;
     margin: 0 auto;
 }
