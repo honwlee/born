@@ -478,5 +478,69 @@
             </div>
         </div> 
     </script>
+    
+    <script id="aboutPage-partial" type="text/x-handlebars-template">
+        <div class="mainWrapRight">
+            <div class="wrapRight-con">
+            {{#each snippets}}
+                <div class="panel panel-default">
+                    <div class="ywbjTopTitle panel-heading">{{title}}</div>
+                    <div class="panel-body">
+                        {{content}}
+                    </div>
+                </div>
+            {{/each}}
+            </div>
+        </div>
+    </script>
+    <script id="aboutPage-form-partial" type="text/x-handlebars-template">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">选择段内容</label>
+            <div class="col-sm-10">
+                <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_about" type="button">点击选择</button>
+            </div>
+        </div> 
+    </script>
+
+    <script id="contactPage-partial" type="text/x-handlebars-template">
+        <div class="layou_title">{{title}}</div>
+            <div class="triangle-down marbot25"></div>
+            <div class="col-sm-10 col-xs-12 col-clear-padding">
+                <div class="mainWrapRight">
+                    <div class="wrapRight-con">
+                        <div class="ywbjTopTitle"><span>{{title}}</span></div>
+                        {{#each snippets}}
+                            <div class="panel panel-default">
+                                <div class="ywbjTopTitle panel-heading">{{title}}</div>
+                                <div class="panel-body">
+                                    {{content}}
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="contactPage-form-partial" type="text/x-handlebars-template">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">选择段内容</label>
+            <div class="col-sm-10">
+                <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_contact" type="button">点击选择</button>
+            </div>
+        </div> 
+    </script>
 
 </div>

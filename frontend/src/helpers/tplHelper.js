@@ -141,6 +141,16 @@ define([
                 domId: "pCertificate",
                 name: "certificatePage",
                 cnName: "证件办理",
+            },
+            aboutPage: {
+                domId: "aAbout",
+                name: "aboutPage",
+                cnName: "关于我们",
+            },
+            contactPage: {
+                domId: "aContact",
+                name: "contactPage",
+                cnName: "联系我们",
             }
         },
         getTplByKey: function(key) {

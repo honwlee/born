@@ -1,15 +1,11 @@
 define([
     "skylarkjs",
-    "text!scripts/routes/about/about.html"
-], function(skylarkjs, aboutTpl) {
+    "../AboutController"
+], function(skylarkjs, AboutController) {
     var spa = skylarkjs.spa,
         $ = skylarkjs.query;
-    return spa.RouteController.inherit({
+    return AboutController.inherit({
         klassName: "AboutContactController",
-
-        rendering: function(e) {
-            e.content = aboutTpl;
-        },
         rendered: function() {
             $('#aTabList a[href="#aContact"]').tab('show');
             $("#aTabList").find('a').off('shown.bs.tab').on('shown.bs.tab', function(e) {
@@ -21,8 +17,6 @@ define([
                 $this.tab();
             });
             $('[data-toggle="dropdown"]').dropdown();
-        },
-        entered: function() {},
-        exited: function() {}
+        }
     });
 });

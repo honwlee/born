@@ -37,7 +37,7 @@ module.exports = {
     posts: {
         module: require("./PostController"),
         uploadPath: "posts",
-        extralNames: ["meet", "activity", "process", "service", "about", "env"],
+        extralNames: ["meet", "activity", "process", "service", "env"],
         extraPrefix: [{
             name: "post_",
             method: "post"
@@ -61,7 +61,7 @@ module.exports = {
     snippets: {
         module: require("./SnippetController"),
         uploadPath: "snippets",
-        extralNames: ["vantage", "provide", "visa", "hospital", "flow", "certificate"],
+        extralNames: ["vantage", "provide", "visa", "hospital", "flow", "certificate", "about", "contact"],
         extraPrefix: [{
             name: "post_",
             method: "post"

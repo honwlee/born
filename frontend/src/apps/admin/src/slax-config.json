@@ -72,7 +72,6 @@
                 "post-envPost",
                 "post-meetPost",
                 "post-meetPost",
-                "post-aboutPost",
                 "post-activityPost",
                 "post-servicePost"
             ],
@@ -111,17 +110,6 @@
             },
             "controller": {
                 "type": "scripts/routes/posts/MeetController"
-            }
-        },
-        "post-aboutPost": {
-            "sub": true,
-            "pathto": "/posts/about",
-            "data": {
-                "name": "post-aboutPost",
-                "navName": "关于我们"
-            },
-            "controller": {
-                "type": "scripts/routes/posts/AboutController"
             }
         },
         "post-activityPost": {
@@ -249,7 +237,9 @@
                 "snippets-flow",
                 "snippets-hospital",
                 "snippets-visa",
-                "snippets-certificate"
+                "snippets-certificate",
+                "snippets-about",
+                "snippets-contact"
             ],
             "controller": {
                 "type": "scripts/routes/snippets/SnippetsController"
@@ -319,6 +309,28 @@
             },
             "controller": {
                 "type": "scripts/routes/snippets/CertificateController"
+            }
+        },
+        "snippets-about": {
+            "sub": true,
+            "pathto": "/snippets/about",
+            "data": {
+                "name": "snippets-about",
+                "navName": "关于我们"
+            },
+            "controller": {
+                "type": "scripts/routes/snippets/AboutController"
+            }
+        },
+        "snippets-contact": {
+            "sub": true,
+            "pathto": "/snippets/contact",
+            "data": {
+                "name": "snippets-contact",
+                "navName": "联系我们"
+            },
+            "controller": {
+                "type": "scripts/routes/snippets/ContactController"
             }
         },
         "links": {

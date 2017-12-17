@@ -48,7 +48,7 @@ module.exports = {
     }
 }
 
-_(["meet", "activity", "process", "service", "about", "env"]).each(function(name) {
+_(["meet", "activity", "process", "service", "env"]).each(function(name) {
     console.log(name);
     module.exports[name] = function(req, res) {
         parse("posts", req, res, ["title"], {
