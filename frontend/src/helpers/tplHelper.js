@@ -129,7 +129,7 @@ define([
                         key: "posts",
                         defaultView: "thumbnail",
                         needHeader: false,
-                        thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" alt="{{name}}" src="{{src}}" width="65"><span>{{name}}</span></div>',
+                        thumbnail_template: '<div class="thumbnail repeater-thumbnail col-md-6 col-sm-6 com-xs-12" style="background: {{color}};"><img class=""  alt="{{name}}" src="{{src}}" ><span>{{name}}</span></div>',
                         actionName: "public_env"
                     });
                     var _s = $(tpl());

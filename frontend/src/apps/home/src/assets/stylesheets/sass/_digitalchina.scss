@@ -329,7 +329,7 @@ ul {
     background: url(/assets/images/leftnavbg.jpg) no-repeat left top;
 }
 
-.leftNavCon ul li a {
+.leftNavCon ul li {
     display: block;
     height: 40px;
     line-height: 40px;
@@ -341,12 +341,12 @@ ul {
     &:hover,
     &.active a {
         color: #d60917;
-        background: #fbeced url(/assets/images/leftnavAbg.png) no-repeat 10px center;
-        background: #fbeced url(/assets/images/leftnavAbg.png) no-repeat 10px center;
+        // background: #fbeced url(/assets/images/leftnavAbg.png) no-repeat 10px center;
+        // background: #fbeced url(/assets/images/leftnavAbg.png) no-repeat 10px center;
     }
 }
 
-.leftNavCon ul li ul li a {
+.leftNavCon ul li ul li {
     background-image: none;
     height: auto;
     line-height: 22px;
