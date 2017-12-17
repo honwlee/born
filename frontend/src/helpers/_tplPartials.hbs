@@ -121,7 +121,7 @@
                 </div>
             </div>
         </div>
-        <div class="container find_more_five">
+        <div class="container find_more">
             <a class="part_five_more part_more" href="javascripts:go('/activity')">查看更多</a>
         </div>
     </div>
@@ -157,7 +157,7 @@
                 {{/each}}
             </ul>
         </div>
-        <div class="container find_more_four">
+        <div class="container find_more">
             <a class="part_four_more part_more" href="javascript:go('/activity')">查看更多</a>
         </div>
     </div>
@@ -235,7 +235,7 @@
     </div>
     </script>
     <script id="homePage6-partial" type="text/x-handlebars-template">
-    <div class="panel-default" style="background: url(/assets/images/part10_bg.jpg) no-repeat; background-size: 100% 640px; height: 600px; padding-top: 40px;">
+    <div class="panel-default" style="background: url(/assets/images/part10_bg.jpg) no-repeat; background-size: 100% 640px;">
         <!-- 生美国际赴美的五心服务 -->
         <div class="part">
             <h1 class="main_title main_title_ten">BornInUSA 生美贴心服务</h1>
@@ -283,22 +283,22 @@
                     <a class="pull-right more" href="javascript:go('/news')">查看更多</a>
                 </div>
             
-            <div class="tbC panel-body">
+            <div class="tbC">
                 <div class="tempWrap">
                     <div class="slidecon">
                         <ul class="list-unstyled row">
                             {{#each news}}
-                            <li class="col-md-6 row">
-                                <div class="col-md-6  panel-body con">
+                            <li class="col-md-6">
+                             <div class="col-md-6 img ">
+                                    <img src="{{src}}" alt="{{title}}">
+                                </div>
+                                <div class="col-md-6 con">
                                     <div class="inner">
                                         <h6 class="slidetitle">{{title}}
                                         <i class="arrowI"></i>
                                         </h6>
                                         <p>{{abstract}} </p>
                                     </div>
-                                </div>
-                                <div class="col-md-6 imgright ">
-                                    <img src="{{imgUrl}}" alt="{{title}}">
                                 </div>
                             </li>
                             {{/each}}
