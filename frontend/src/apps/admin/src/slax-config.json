@@ -71,7 +71,6 @@
                 "post-process",
                 "post-envPost",
                 "post-meetPost",
-                "post-meetPost",
                 "post-activityPost",
                 "post-servicePost"
             ],

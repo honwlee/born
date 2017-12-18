@@ -63,7 +63,7 @@ module.exports = {
 
     select: function(req, res) {
         let pages = Page.findAll({
-            type: "main"
+            type: "_main_"
         });
         res.json(pages);
     },

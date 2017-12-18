@@ -25,16 +25,16 @@ define([
     }
     return {
         data: {
-            homePage1: {
-                name: "homePage1",
+            homeDesc: {
+                name: "homeDesc",
                 cnName: "生美国际赴美生子"
             },
-            homePage2: {
-                name: "homePage2",
+            homeService: {
+                name: "homeService",
                 cnName: "我们的服务"
             },
-            homePage3: {
-                name: "homePage3",
+            homeActivity: {
+                name: "homeActivity",
                 cnName: "在美活动",
                 show: function(tpl, data) {
                     var first = _.first(data.posts),
@@ -52,8 +52,8 @@ define([
                     return _s;
                 }
             },
-            homePage4: {
-                name: "homePage4",
+            homeEnv: {
+                name: "homeEnv",
                 cnName: "美国待产环境",
                 show: function(tpl, data) {
                     var _s = $(tpl(data));
@@ -64,8 +64,8 @@ define([
                     return _s;
                 }
             },
-            homePage5: {
-                name: "homePage5",
+            homeVantage: {
+                name: "homeVantage",
                 cnName: "我们的优势",
                 show: function(tpl, data) {
                     var first = _.first(data.snippets),
@@ -90,12 +90,12 @@ define([
                     return _s;
                 }
             },
-            homePage6: {
-                name: "homePage6",
+            homeProvide: {
+                name: "homeProvide",
                 cnName: "贴心服务"
             },
-            homePage7: {
-                name: "homePage7",
+            homeNews: {
+                name: "homeNews",
                 cnName: "新闻资讯",
                 show: function(tpl, data) {
                     var _s = $(tpl(data));
@@ -106,9 +106,9 @@ define([
                     return _s;
                 }
             },
-            processPage1: {
+            processMain: {
                 domId: "pProcess",
-                name: "processPage1",
+                name: "processMain",
                 cnName: "主要流程",
                 show: function(tpl, data) {
                     var leftData = [],
@@ -128,19 +128,19 @@ define([
                     return _s;
                 }
             },
-            visaPage: {
+            processVisa: {
                 domId: "pVisa",
-                name: "visaPage",
+                name: "processVisa",
                 cnName: "签证申请",
             },
-            hospitalPage: {
+            processHospital: {
                 domId: "pCohospital",
-                name: "hospitalPage",
+                name: "processHospital",
                 cnName: "合作医院",
             },
-            processEnvPage: {
+            processEnv: {
                 domId: "pEnvironment",
-                name: "processEnvPage",
+                name: "processEnv",
                 cnName: "待产环境",
                 show: function(tpl, data) {
                     var list = new List({
@@ -157,9 +157,9 @@ define([
                     return _s;
                 }
             },
-            certificatePage: {
+            processCertificate: {
                 domId: "pCertificate",
-                name: "certificatePage",
+                name: "processCertificate",
                 cnName: "证件办理",
             },
             aboutPage: {
@@ -167,9 +167,9 @@ define([
                 name: "aboutPage",
                 cnName: "关于我们",
             },
-            contactPage: {
+            aboutContact: {
                 domId: "aContact",
-                name: "contactPage",
+                name: "aboutContact",
                 cnName: "联系我们",
             },
             retServicePage: {

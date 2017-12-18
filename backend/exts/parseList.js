@@ -50,7 +50,7 @@ module.exports = {
             // Full-text search
             // q = q.toLowerCase();
             chain = chain.filter(function(obj) {
-                for (var key in queryKey) {
+                for (var key in queryKeys) {
                     if (obj[queryKeys[key]] === q) return true;
                 }
             });
