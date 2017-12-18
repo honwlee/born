@@ -380,7 +380,10 @@ define([
             }
             if (opts.bindFormEvnts != false) bindFormEvnts(modal, opts);
             if (opts.modalEvts) opts.modalEvts(modal);
-            modal.modal('show');
+            modal.modal({
+                backdrop: "static",
+                show: true
+            });
             return modal;
         },
 
@@ -389,7 +392,10 @@ define([
             modal.find(".modal-title").empty().html(title);
             modal.find(".modal-body").empty().html(content);
             if (opts && opts.modalEvts) opts.modalEvts(modal);
-            modal.modal('show');
+            modal.modal({
+                backdrop: "static",
+                show: true
+            });
             return modal;
         },
 

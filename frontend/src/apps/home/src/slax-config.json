@@ -116,6 +116,17 @@
                 "type": "scripts/routes/activity/ActivityController"
             }
         },
+        "activityShow": {
+            "pathto": "/activity/:id",
+            "hide": true,
+            "data": {
+                "name": "activityShow",
+                "navName": "查看活动"
+            },
+            "controller": {
+                "type": "scripts/routes/activity/ActivityShowController"
+            }
+        },
         "service": {
             "pathto": "/service",
             "data": {
@@ -149,7 +160,7 @@
         },
         "postShow": {
             "hide": true,
-            "pathto": "/post/:id",
+            "pathto": "/posts/:id",
             "data": {
                 "name": "postShow",
                 "navName": "查看"

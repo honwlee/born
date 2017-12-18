@@ -62,7 +62,7 @@ _(["vantage", "provide", "visa", "hospital", "flow", "certificate", "about", "co
     module.exports["post_" + name] = function(req, res) {
         let category = Category.findOrCreate("name", {
             name: catName,
-            type: "snippet",
+            type: "snippets",
             usage: 2
         });
         req.body.category = catName;

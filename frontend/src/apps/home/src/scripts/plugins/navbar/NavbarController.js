@@ -27,9 +27,7 @@ define([
         showThrob = function() {
             var selector = $("#mainWrapper"),
                 throb = window.addThrob(selector[0], function() {
-                    router.one("routing", function(e) {
-                        window._goTop();
-                    });
+
                     router.one("routed", function() {
                         throb.remove();
                         selector.css("opacity", 1);
@@ -147,13 +145,19 @@ define([
                     }
                 }
             });
+            router.on("routing", function(e) {
+                window._goTop();
+            });
             router.on("routed", function(e) {
                 var curR = e.current.route;
+                var idM = curR.pathto.match(/\/(.*)\/:id$/);
                 // update nav dom with active class
                 if (curR.name.match(/-/)) {
                     var names = curR.name.split("-");
                     setActive(names[0]);
                     setSubActive(curR.name, names[0]);
+                } else if (idM) {
+                    setActive(idM[1]);
                 } else {
                     setActive(curR.name || "home");
                 }

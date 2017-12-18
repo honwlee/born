@@ -66,7 +66,7 @@ _(["slide", "page"]).each(function(name) {
     module.exports["post_" + name] = function(req, res) {
         let category = Category.findOrCreate("name", {
             name: catName,
-            type: "photo",
+            type: "photos",
             usage: 2
         });
         req.body.category = catName;

@@ -79,7 +79,8 @@ define([
                 name: 'edit',
                 html: '<span class="glyphicon glyphicon-edit"></span> 编辑',
                 clickAction: function(helpers, callback, e) {
-                    var _data = langx.clone(helpers.rowData);
+                    opts.tplOpts = opts.tplOpts || {};
+                    var _data = langx.mixin(langx.clone(helpers.rowData), opts.tplOpts);
                     modal.show("form", $(opts.tpl(_data)), opts.title, {
                         key: opts.key,
                         file: true,
@@ -230,6 +231,7 @@ define([
                                 container: container,
                                 key: opts.key,
                                 callback: a.callback,
+                                tplOpts: a.tplOpts,
                                 tpl: a.tpl,
                                 title: a.title
                             }));

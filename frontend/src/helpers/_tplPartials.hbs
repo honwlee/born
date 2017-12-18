@@ -97,24 +97,20 @@
             <h1 class="main_title main_title_seven">{{title}}</h1>
         </div>
         <div class="container panel-body row active-con">
-            <div id="success_left" class="col-md-6 part_seven_left">
+            <div id="success_left" class="col-md-6 part_seven_left activity-item" data-id="{{first.id}}">
                 <img src="{{first.src}}" title="" height="267" width="577">
-                <p class="ps_left_title"><a href="javascripts:go('/activity/{{id}}')" title="{{first.title}}">{{title}}</a></p>
+                <p class="ps_left_title">{{title}}</p>
                 <div class="ps_left_con">{{first.abstract}}</div>
             </div>
             <div class="col-md-6 part_seven_right">
                 <div  class="ps_right_con">
                     <ul>
                         {{#each activePage}}
-                        <li data-id="{{id}}" class="col-md-6">
+                        <li data-id="{{id}}" class="col-md-6 activity-item">
                             <div class="img_img_desc">
-                                <a href="javascript:void(0)" title="{{title}}">
-                                    <img src="{{src}}" height="auto" width="277">
-                                </a>
+                                <img src="{{src}}" height="auto" width="277">
                             </div>
-                            <a href="javascripts:go('/activity/{{id}}')" title="{{title}}">
-                                <p>{{abstract}}</p>
-                            </a>
+                            <p>{{title}}</p>
                         </li>
                         {{/each}}
                     </ul>
@@ -148,12 +144,10 @@
         <div class="container environment-con">
             <ul class="row">
                 {{#each posts}}
-                <li class="col-md-4">
-                    <a target="_blank" href="{{src}}">
+                    <li class="col-md-4 env-item" data-id="{{id}}">
                         <img src="{{src}}" height="213" width="379">
-                    </a>
-                    <p style="line-height: 66px;" class="part_four_title">{{title}}</p>
-                </li>
+                        <p style="line-height: 66px;" class="part_four_title">{{title}}</p>
+                    </li>
                 {{/each}}
             </ul>
         </div>
@@ -288,19 +282,19 @@
                     <div class="slidecon">
                         <ul class="list-unstyled row">
                             {{#each news}}
-                            <li class="col-md-6">
-                             <div class="col-md-6 img ">
-                                    <img src="{{src}}" alt="{{title}}">
-                                </div>
-                                <div class="col-md-6 con">
-                                    <div class="inner">
-                                        <h6 class="slidetitle">{{title}}
-                                        <i class="arrowI"></i>
-                                        </h6>
-                                        <p>{{abstract}} </p>
+                                <li class="col-md-6 news-item" data-id="{{id}}">
+                                    <div class="col-md-6 img ">
+                                        <img src="{{src}}" alt="{{title}}">
                                     </div>
-                                </div>
-                            </li>
+                                    <div class="col-md-6 con">
+                                        <div class="inner">
+                                            <h6 class="slidetitle">{{title}}
+                                            <i class="arrowI"></i>
+                                            </h6>
+                                            <p>{{abstract}} </p>
+                                        </div>
+                                    </div>
+                                </li>
                             {{/each}}
                         </ul>
                     </div>

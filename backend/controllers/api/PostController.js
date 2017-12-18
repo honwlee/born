@@ -58,7 +58,7 @@ _(["meet", "activity", "process", "env"]).each(function(name) {
     module.exports["post_" + name] = function(req, res) {
         let category = Category.findOrCreate("name", {
             name: catName,
-            type: "post",
+            type: "posts",
             usage: 2
         });
         req.body.category = catName;
@@ -66,6 +66,7 @@ _(["meet", "activity", "process", "env"]).each(function(name) {
         validate(Post, { title: req.body.title }, req, res);
     };
     module.exports["public_" + name] = function(req, res) {
+        console.log(catName);
         parse("posts", req, res, ["title"], {
             published: 'true',
             category: catName

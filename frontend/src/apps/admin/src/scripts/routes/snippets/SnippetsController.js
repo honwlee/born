@@ -53,6 +53,7 @@ define([
                     name: "edit",
                     title: "编辑",
                     tpl: tpl,
+                    tplOpts: this.snippetTplOpts,
                     callback: function() {
 
                     }

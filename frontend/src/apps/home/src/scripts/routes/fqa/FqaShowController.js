@@ -4,9 +4,8 @@ define([
     "handlebars",
     "simplemde",
     "server",
-    "./data",
     "text!scripts/routes/fqa/qa.hbs"
-], function($, skylarkjs, hbs, SimpleMDE, server, data, template) {
+], function($, skylarkjs, hbs, SimpleMDE, server, template) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx;
     return spa.RouteController.inherit({

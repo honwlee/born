@@ -4,12 +4,12 @@ define([
     "handlebars",
     "simplemde",
     "server",
-    "text!scripts/routes/metusa/metusa.hbs"
+    "text!scripts/routes/activity/activity.hbs"
 ], function($, skylarkjs, hbs, SimpleMDE, server, template) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx;
     return spa.RouteController.inherit({
-        klassName: "MetusaShowController",
+        klassName: "ActivityShowController",
         post: null,
         preparing: function(e) {
             var self = this,
@@ -20,7 +20,7 @@ define([
         },
         rendering: function(e) {
             var selector = $(langx.trim(template));
-            var tpl = hbs.compile(langx.trim(selector.find("#metusa-show-main").html()).replace("{{&gt;", "{{>"));
+            var tpl = hbs.compile(langx.trim(selector.find("#activity-show-partial").html()).replace("{{&gt;", "{{>"));
 
             e.content = $(tpl({
                 id: this.post.id,

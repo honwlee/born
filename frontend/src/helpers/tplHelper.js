@@ -45,19 +45,31 @@ define([
                             first: first,
                             activePage: active,
                         }));
+                    _s.delegate(".activity-item", "click", function(e) {
+                        var id = $(e.currentTarget).data("id");
+                        window.go("/activity/" + id, true);
+                    });
                     return _s;
                 }
             },
             homePage4: {
                 name: "homePage4",
-                cnName: "美国待产环境"
+                cnName: "美国待产环境",
+                show: function(tpl, data) {
+                    var _s = $(tpl(data));
+                    _s.delegate(".env-item", "click", function(e) {
+                        var id = $(e.currentTarget).data("id");
+                        window.go("/posts/" + id, true);
+                    });
+                    return _s;
+                }
             },
             homePage5: {
                 name: "homePage5",
                 cnName: "我们的优势",
                 show: function(tpl, data) {
                     var first = _.first(data.snippets),
-                        length = data.length,
+                        length = data.snippets.length,
                         divide = _.chunk(data.snippets, 3),
                         _s = $(tpl({
                             title: data.title,
@@ -84,7 +96,15 @@ define([
             },
             homePage7: {
                 name: "homePage7",
-                cnName: "新闻资讯"
+                cnName: "新闻资讯",
+                show: function(tpl, data) {
+                    var _s = $(tpl(data));
+                    _s.delegate(".news-item", "click", function(e) {
+                        var id = $(e.currentTarget).data("id");
+                        window.go("/news/" + id, true);
+                    });
+                    return _s;
+                }
             },
             processPage1: {
                 domId: "pProcess",
