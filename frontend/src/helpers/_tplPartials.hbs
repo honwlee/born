@@ -7,7 +7,7 @@
         <div class="part_one panel-body">
             <div class="part_one_main">
                 <div class="part_one_con">
-                    <div id="one_con" style="margin-top: 30px;">
+                    <div class="one_con">
                         {{{content}}}
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                 {{#each qas}}
                 <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12" data-id="{{id}}">
                  <div class="panel li-item" style="">
-                    <h2 class="part_two_title">{{title}}</h2>
+                    <h2 class="part_two_title text-overflow">{{title}}</h2>
                     <p class="part_two_row"></p>
                     <p class="part_two_con">
                         <a href="javascript:go('/metusa/{{id}})'">{{abstract}}</a>
@@ -110,7 +110,7 @@
                             <div class="img_img_desc">
                                 <img src="{{src}}" height="auto" width="277">
                             </div>
-                            <p>{{title}}</p>
+                            <p class="text-overflow">{{title}}</p>
                         </li>
                         {{/each}}
                     </ul>
@@ -173,13 +173,16 @@
     <script id="homeVantage-partial" type="text/x-handlebars-template">
     <div class="panel-default">
         <!-- 我们的优势 -->
+       
         <div class="part">
             <h1 class="main_title main_title_three">{{title}}</h1>
         </div>
         <div class="part_three panel-body">
-            <p class="part_three_about">
-                {{content}}
-            </p>
+            <div class="part_one_con">
+                <div class="one_con">
+                     {{content}}
+                </div>
+            </div>
             <div class="part_three_detail">
                 <div class="part_three_datailCon detail">
                     <p class="pt_datail_title title">{{first.title}}</p>
@@ -505,8 +508,6 @@
     </script>
 
     <script id="aboutContact-partial" type="text/x-handlebars-template">
-        <div class="layou_title">{{title}}</div>
-            <div class="triangle-down marbot25"></div>
             <div class="col-sm-10 col-xs-12 col-clear-padding">
                 <div class="mainWrapRight">
                     <div class="wrapRight-con">
@@ -544,7 +545,7 @@
         <div class="row">
             {{#each snippets}}
                 <div class="col-md-10 col-md-offset-1 col-xs-6">
-                    <h1 style="text-align: center; margin: 15px 0;">{{title}}</h1>
+                    <h3 class="text-center">{{title}}</h3>
                     <div class="content">{{{content}}}</div>
                 </div>
             {{/each}}

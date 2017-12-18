@@ -19,12 +19,27 @@ body {
     // user-select: none;
 }
 
+@mixin word-ellipsis-H {
+    word-break: break-all;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: initial;
+    //多行显示 配合高度
+}
+
 @mixin word-ellipsis {
     word-break: break-all;
     word-wrap: normal;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 $pageBg:#e7edf3;
