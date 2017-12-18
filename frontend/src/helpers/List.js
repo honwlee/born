@@ -3,16 +3,27 @@ define([
     "skylarkjs",
     "lodash",
     "./Partial",
-    "text!./_fueluxPartials.hbs",
     "server",
     "handlebars"
-], function($, skylarkjs, _, partial, fueluxTpl, server, hbs) {
+], function($, skylarkjs, _, partial, server, hbs) {
     var langx = skylarkjs.langx;
-    var __selector = $(langx.trim(fueluxTpl));
-    partial.get("repeater-tpl-partial", __selector);
-    partial.get("datepicker-tpl-partial", __selector);
-    partial.get("checkbox-tpl-partial", __selector);
-    partial.get("wizard-tpl-partial", __selector);
+
+    function formatDate(d) {
+        var padTwo = function(value) {
+                var s = '0' + value;
+                return s.substr(s.length - 2);
+            },
+            date = new Date(d);
+        return date.getFullYear() + "-" + padTwo(date.getDate()) + "-" + padTwo(date.getMonth() + 1);
+    }
+
+    function customRowRenderer(helpers, callback) {
+        // let's get the id and add it to the "tr" DOM element
+        var item = helpers.item;
+        item.attr('id', 'row' + helpers.rowData.id);
+
+        callback();
+    }
 
     function customColumnRenderer(helpers, callback) {
         // Determine what column is being rendered and review 
@@ -28,23 +39,24 @@ define([
         // This will default to output the text value of the row item
         // Determines markup for each column!
         switch (column) {
-            case 'name':
-                // let's combine name and description into a single column
-                customMarkup = '<a href="#">' + rowData.name + '</a><div class="small text-muted">' + '</div>';
+            // case 'name':
+            //     // let's combine name and description into a single column
+            //     customMarkup = '<a href="#">' + rowData.name + '</a><div class="small text-muted">' + '</div>';
+            //     break;
+            case "published":
+                customMarkup = rowData.published ? "是" : "否";
                 break;
-
-            case 'status':
-                // let's change the text color based on status
-                var color = '#000';
-                switch (helpers.item.text()) {
-                    case 'Yes':
-                        color = '#000000';
-                        break
-                    case 'No':
-                        color = '#FF0000';
-                        break;
-                }
-                customMarkup = '<span style="color:' + color + '">' + helpers.item.text() + '</span>';
+            case 'publishedDate':
+                customMarkup = formatDate(rowData.publishedDate);
+                break;
+            case 'createdAt':
+                customMarkup = formatDate(rowData.createdAt);
+                break;
+            case 'updatedAt':
+                customMarkup = formatDate(rowData.updatedAt);
+                break;
+            case 'src':
+                customMarkup = '<img src="' + rowData.src + '">';
                 break;
 
             default:
@@ -62,7 +74,7 @@ define([
             return {
                 name: 'delete',
                 html: '<span class="glyphicon glyphicon-trash"></span> 删除',
-                clickAction: function(helpers, callback, e) {
+                clickAction: opts.clickAction ? opts.clickAction : function(helpers, callback, e) {
                     modal.show("delete", "", opts.title, {
                         id: helpers.rowData.id,
                         key: opts.key,
@@ -78,7 +90,7 @@ define([
             return {
                 name: 'edit',
                 html: '<span class="glyphicon glyphicon-edit"></span> 编辑',
-                clickAction: function(helpers, callback, e) {
+                clickAction: opts.clickAction ? opts.clickAction : function(helpers, callback, e) {
                     opts.tplOpts = opts.tplOpts || {};
                     var _data = langx.mixin(langx.clone(helpers.rowData), opts.tplOpts);
                     modal.show("form", $(opts.tpl(_data)), opts.title, {
@@ -96,7 +108,7 @@ define([
             return {
                 name: 'show',
                 html: '<span class="glyphicon glyphicon-eye-open"></span> 查看',
-                clickAction: function(helpers, callback, e) {
+                clickAction: opts.clickAction ? opts.clickAction : function(helpers, callback, e) {
                     modal.show("content", $(opts.tpl(helpers.rowData)), opts.title, {
                         key: opts.key,
                         callback: function() {
@@ -211,7 +223,10 @@ define([
         },
 
         buildList: function(container, opts) {
-            var obj = {};
+            var obj = {
+                list_rowRendered: customRowRenderer,
+                list_columnRendered: customColumnRenderer
+            };
             if (opts.dataSource) {
                 obj.dataSource = opts.dataSource;
             } else {
@@ -231,6 +246,7 @@ define([
                                 container: container,
                                 key: opts.key,
                                 callback: a.callback,
+                                clickAction: a.clickAction,
                                 tplOpts: a.tplOpts,
                                 tpl: a.tpl,
                                 title: a.title

@@ -3,7 +3,8 @@ define([
     "scripts/helpers/Partial",
     "handlebars",
     "server",
-    "skylarkjs"
+    "skylarkjs",
+    "scripts/helpers/fueluxComponents"
 ], function($, partial, handlebars, server, skylarkjs) {
     var spa = skylarkjs.spa,
         router = skylarkjs.router,

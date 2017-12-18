@@ -1,5 +1,5 @@
 define([
-    "skylarkjs"
+    "skylarkjs",
 ], function(skylarkjs) {
     var spa = skylarkjs.spa,
         noder = skylarkjs.noder,

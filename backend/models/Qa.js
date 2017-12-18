@@ -20,9 +20,13 @@ exports.Qa = class Qa extends Model {
         return Model.where("qas", key, value, chainAble);
     }
     static create(args) {
+        if (!args.publishedDate) args.publishedDate = new Date();
+        args.publishedDate = new Date(args.publishedDate);
         return Model.create("qas", args);
     }
     static update(args) {
+        if (!args.publishedDate) args.publishedDate = new Date();
+        args.publishedDate = new Date(args.publishedDate);
         return Model.update("qas", "id", args);
     }
     static delete(args) {

@@ -20,10 +20,13 @@ exports.Post = class Post extends Model {
         return Model.where("posts", key, value, chainAble);
     }
     static create(args) {
-        console.log(args.category);
+        if (!args.publishedDate) args.publishedDate = new Date();
+        args.publishedDate = new Date(args.publishedDate);
         return Model.create("posts", args);
     }
     static update(args) {
+        if (!args.publishedDate) args.publishedDate = new Date();
+        args.publishedDate = new Date(args.publishedDate);
         return Model.update("posts", "id", args);
     }
     static delete(args) {

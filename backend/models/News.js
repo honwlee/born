@@ -20,9 +20,13 @@ exports.News = class News extends Model {
         return Model.where("news", key, value, chainAble);
     }
     static create(args) {
+        if (!args.publishedDate) args.publishedDate = new Date();
+        args.publishedDate = new Date(args.publishedDate);
         return Model.create("news", args);
     }
     static update(args) {
+        if (!args.publishedDate) args.publishedDate = new Date();
+        args.publishedDate = new Date(args.publishedDate);
         return Model.update("news", "id", args);
     }
     static delete(args) {

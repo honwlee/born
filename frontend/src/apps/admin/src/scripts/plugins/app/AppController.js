@@ -1,5 +1,5 @@
 define([
-    "skylarkjs"
+    "skylarkjs",
 ], function(skylarkjs) {
     var spa = skylarkjs.spa,
         noder = skylarkjs.noder,
@@ -67,21 +67,32 @@ define([
             if (main) {
                 throb = window.addThrob(main, function() {
                     require(["jquery"], function($) {
-                        require(["moment"], function() {
+                        require(["moment"], function(moment) {
+                            window.moment = moment;
                             require(["skylarkBs"], function() {
-                                main.style.opacity = 1;
-                                throb.remove();
-                                goTop($(".go-top-btn"));
-                                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                                    $("#sk-navbar").delegate(".nav-item", "click", function(e) {
-                                        $('#sk-navbar').collapse('hide');
+                                require(["template"], function(tpl) {
+                                    window.UMEDITOR_HOME_URL = "/admin/lib/umeditor/";
+                                    window.etpl = tpl;
+                                    require(["umeditorConfig"], function(config) {
+                                        require(["umeditor"], function(editor) {
+                                            require(["umeditorZh"], function() {
+                                                main.style.opacity = 1;
+                                                throb.remove();
+                                                goTop($(".go-top-btn"));
+                                                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                                                    $("#sk-navbar").delegate(".nav-item", "click", function(e) {
+                                                        $('#sk-navbar').collapse('hide');
+                                                    });
+                                                    $(".logo-nav").on("click", function() {
+                                                        $('#sk-navbar').collapse('hide');
+                                                    })
+                                                    $(".navbar").addClass("navbar-default");
+                                                }
+                                                deferred.resolve();
+                                            });
+                                        });
                                     });
-                                    $(".logo-nav").on("click", function() {
-                                        $('#sk-navbar').collapse('hide');
-                                    })
-                                    $(".navbar").addClass("navbar-default");
-                                }
-                                deferred.resolve();
+                                });
                             });
                         });
                     });

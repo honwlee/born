@@ -101,10 +101,14 @@ define([
                             bindBtnEvts("contents", cs);
 
                             modal.find(".save-btn").off("click").on("click", function() {
+                                var subs = ps.find("li").map(function(i, el) { return $(el).data("id"); })
+
+                                var contents = cs.find("li").each(function(i, el) { return $(el).data("id"); });
+
                                 server().connect("pages", "post", "update", {
                                     id: pageId,
-                                    subs: ps.find("li").map(function(i, el) { return $(el).data("id"); }),
-                                    contents: cs.find("li").map(function(i, el) { return $(el).data("id"); })
+                                    subs: subs.length ? subs : "empty",
+                                    contents: contents.length ? contents : "empty"
                                 }).then(function() {
                                     modal.modal("hide");
                                     toastr.success("保存成功！");

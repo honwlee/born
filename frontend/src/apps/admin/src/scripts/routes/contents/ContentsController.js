@@ -63,6 +63,22 @@ define([
                     callback: function() {
 
                     }
+                }, {
+                    override: true,
+                    name: 'edit',
+                    html: '<span class="glyphicon glyphicon-edit"></span> 编辑',
+                    clickAction: function(helpers, callback, e) {
+                        opts.tplOpts = opts.tplOpts || {};
+                        var _data = langx.mixin(langx.clone(helpers.rowData), opts.tplOpts);
+                        modal.show("form", $(opts.tpl(_data)), opts.title, {
+                            key: opts.key,
+                            file: true,
+                            callback: function() {
+                                opts.container.repeater('render');
+                                if (opts.callback) opts.callback();
+                            }
+                        });
+                    }
                 }],
                 columns: [{
                     label: '名称',

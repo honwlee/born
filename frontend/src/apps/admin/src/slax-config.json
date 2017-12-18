@@ -18,7 +18,25 @@
             "simplemde": "https://cdn.bootcss.com/simplemde/1.11.2/simplemde.min",
             "toastr": "https://cdn.bootcss.com/toastr.js/latest/js/toastr",
             "handlebars": "https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.amd.min",
-            "text": "https://cdn.bootcss.com/require-text/2.0.12/text.min"
+            "template": "lib/template.min",
+            "text": "https://cdn.bootcss.com/require-text/2.0.12/text.min",
+            "umeditor": "lib/umeditor/umeditor",
+            "umeditorConfig": "lib/umeditor/umeditor.config",
+            "umeditorZh": "lib/umeditor/lang/zh-cn/zh-cn"
+        },
+        "sihm": {
+            "template": {
+                "deps": ["lib/template.min"]
+            },
+            "umeditor": {
+                "deps": ["lib/umeditor/umeditor"]
+            },
+            "umeditorConfig": {
+                "deps": ["lib/umeditor/umeditor.config"]
+            },
+            "umeditorZh": {
+                "deps": ["lib/umeditor/lang/zh-cn/zh-cn"]
+            }
         }
     },
     "page": {
