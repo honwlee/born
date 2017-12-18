@@ -1,7 +1,10 @@
 .activity-wrap {
     background-color: $pageBg;
     .repeater {
-        border: none;
+        border: none !important;
+    }
+    .item-con {
+        margin-bottom: 10px;
     }
 }
 
@@ -12,19 +15,35 @@
     // .image-item {
     //     display: inline-table;
     // }
-    .repeater-canvas .item img:hover {
-        -webkit-animation: pulse 2s ease-out;
-        // -webkit-animation-iteration-count: infinite;
-        -ms-animation: pulse 2s ease-out;
-        // -ms-animation-iteration-count: infinite;
-        -moz-animation: pulse 2s ease-out;
-        // -moz-animation-iteration-count: infinite;
-        -o-animation: pulse 2s ease-out;
-        // -o-animation-iteration-count: infinite;
-        animation: pulse 2s ease-out;
-        // animation-iteration-count: infinite;
+    .repeater-canvas .item {
+        width: 100%;
+        overflow: hidden;
+        height: 260px;
+        margin-bottom: 10px;
+        img {}
     }
-    .spacer {
-        display: none;
+    .repeater-canvas .item img {
+        -o-transition: all 0.5s linear;
+        -ms-transition: all 0.5s linear;
+        -moz-transition: all 0.5s linear;
+        -webkit-transition: all 0.5s linear;
+        transition: all 0.5s linear;
+        -o-transform: scale3d(1, 1, 1);
+        -ms-transform: scale3d(1, 1, 1);
+        -moz-transform: scale3d(1, 1, 1);
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
     }
+    .repeater-canvas .item:hover img {
+        -o-transform: scale3d(1.2, 1.2, 1);
+        -ms-transform: scale3d(1.2, 1.2, 1);
+        -moz-transform: scale3d(1.2, 1.2, 1);
+        -webkit-transform: scale3d(1.2, 1.2, 1);
+        transform: scale3d(1.2, 1.2, 1);
+    }
+}
+
+.spacer {
+    //fuelux 
+    display: none;
 }
