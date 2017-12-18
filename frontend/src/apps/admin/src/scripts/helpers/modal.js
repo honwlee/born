@@ -9,6 +9,7 @@ define([
 ], function(skylarkjs, partial, SimpeMdeEditor, $, server, toastr, handlebars) {
     var __files = {},
         langx = skylarkjs.langx,
+        __smdeIds = {},
         __content = {};
 
     function parseForm(selector) {
@@ -26,8 +27,17 @@ define([
             if (s.attr("name")) data[s.attr("name")] = s.val();
         });
         selector.find("textarea").each(function() {
-            var s = $(this);
-            if (s.attr("name")) data[s.attr("name")] = s.val();
+            var s = $(this),
+                smdeId = s.attr("smdeId"),
+                value;
+            if (smdeId) {
+                var edit = __smdeIds[smdeId].edit;
+                value = edit.markdown(edit.value());
+                delete __smdeIds[smdeId];
+            } else {
+                value = s.val();
+            }
+            if (s.attr("name")) data[s.attr("name")] = value;
         });
         return data;
     };
@@ -320,10 +330,14 @@ define([
         contentListBySelect(modal, opts, off);
         toggleRelated(modal);
         contentListByBtn(modal, opts, off);
-        if (modal.find("#simplemde")[0]) {
-            new SimpeMdeEditor({
+
+        var smde = modal.find("#simplemde");
+        if (smde[0]) {
+            var _id = langx.uid(__smdeIds);
+            __smdeIds[_id] = new SimpeMdeEditor({
                 selector: modal.find("#simplemde")[0]
             });
+            smde.attr("smdeId", _id);
         }
     };
 

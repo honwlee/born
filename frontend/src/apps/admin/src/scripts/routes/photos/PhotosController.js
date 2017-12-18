@@ -18,6 +18,7 @@ define([
         klassName: "PhotoController",
         repeaterId: "photoRepeater",
         list: null,
+        actionName: "content",
         title: "图片列表",
         addTitle: "添加图片",
         preparing: function(e) {

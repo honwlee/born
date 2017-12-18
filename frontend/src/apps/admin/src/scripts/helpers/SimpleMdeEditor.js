@@ -53,6 +53,7 @@ define([
                 id: "photoModalRepeater",
                 thumbnail_selectable: "multi",
                 key: "photos",
+                actionName: "content",
                 list_selectable: "multi",
                 thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" src="{{src}}" alt="{{name}}" width="65"><span>{{name}}</span></div>',
                 addBtn: false,

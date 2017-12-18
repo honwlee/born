@@ -25,7 +25,7 @@ module.exports = {
     photos: {
         module: require("./PhotoController"),
         uploadPath: "photos",
-        extralNames: ["slide", "page"],
+        extralNames: ["slide", "page", "content"],
         extraPrefix: [{
             name: "post_",
             method: "post"
