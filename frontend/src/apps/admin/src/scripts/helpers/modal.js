@@ -57,10 +57,9 @@ define([
         if (extralObj._file) {
             formData.append('file', extralObj._file);
             //利用split切割，拿到上传文件的格式
-            var src = extralObj._file.name,
-                formart = src.split(".")[1];
+            var filename = extralObj._file.name;
             //使用if判断上传文件格式是否符合
-            if (!(/(gif|jpg|jpeg|png)$/i).test(formart)) {
+            if (!(/\.(gif|jpg|jpeg|png)$/i).test(filename)) {
                 return toastr.error("缩略图格式只支持gif、jpg或者png！");
             }
         }
