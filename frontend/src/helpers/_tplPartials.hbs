@@ -318,31 +318,31 @@
         </div>
     </script>
     <script id="processMain-partial" type="text/x-handlebars-template">
-        <div class="histWrap">
-            <div class="histLeft">
+        <div class="row histWrap">
+            <div class="col-md-6 col-sm-12 col-xs-12 histLeft">
                 {{#each leftData}}
                     {{#if @index}}
                         <dl class="martT cf">
                     {{else}}
                         <dl class="cf">
                     {{/if}}
-                        <dt class="fl"><img src="{{src}}" width="140px"/></dt>
-                        <dd class="overflow visbit">
+                        <dt class="hidden-sm hidden-xs fl"><img src="{{src}}" width="140px"/></dt>
+                        <dd class="col-md-7 col-sm-12 col-xs-12 overflow">
                             <span class="hisSpan">{{title}}</span>
                             <p class="posit_p">{{description}}<span class="bgy bgy_p"></span></p>
                         </dd>
                     </dl>
                 {{/each}}
             </div>
-            <div class="histLeft histrRight">
+            <div class="col-md-6 col-sm-12 col-xs-12 histLeft histrRight">
                 {{#each rightData}}
                     {{#if @index}}
                         <dl class="martT cf">
                     {{else}}
                         <dl class="cf">
                     {{/if}}
-                        <dt class="fl"><img src="{{src}}" width="140px"/></dt>
-                        <dd class="overflow visbit">
+                        <dt class="hidden-sm hidden-xs fl"><img src="{{src}}" width="140px"/></dt>
+                        <dd class="col-md-7 col-sm-12 col-xs-12 overflow">
                             <span class="hisSpan">{{title}}</span>
                             <p class="posit_p">{{description}}<span class="bgy bgy_p"></span></p>
                         </dd>

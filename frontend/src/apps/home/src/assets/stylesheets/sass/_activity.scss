@@ -1,3 +1,10 @@
+.activity-wrap {
+    background-color: $pageBg;
+    .repeater {
+        border: none;
+    }
+}
+
 .activity-repeater {
     // .repeater-thumbnail-cont {
     //     display: flex;
@@ -16,5 +23,8 @@
         // -o-animation-iteration-count: infinite;
         animation: pulse 2s ease-out;
         // animation-iteration-count: infinite;
+    }
+    .spacer {
+        display: none;
     }
 }

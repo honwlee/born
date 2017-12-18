@@ -3,10 +3,14 @@
         <div class="row justify-content-center repeater-container"></div>
     </script>
     <script id="activity-listItem-partial" type="text/x-handlebars-template">
-        <div class="repeater-thumbnail item lightbox-item col-sm-4" data-link="{{src}}" data-id="{{id}}" data-toggle="lightbox" data-gallery="activity-gligiallery">
-            <img src="{{src}}" class="img-fluid">
-            <h3>{{title}}</h3>
-            <p>{{description}}</p>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="thumbnail lightbox-item item" data-link="{{src}}" data-id="{{id}}" data-toggle="lightbox" data-gallery="activity-gligiallery">
+                <img src="{{src}}" class="img-fluid">
+                <div class="caption">
+                    <h3>{{title}}</h3>
+                    <p>{{description}}</p>
+                </div>
+            </div>
         </div>
     </script>
     <script id="activity-show-partial" type="text/x-handlebars-template">

@@ -104,7 +104,7 @@
 }
 
 .part {
-padding-top: 50px;
+    padding-top: 50px;
 }
 
 .main_title {
@@ -526,45 +526,48 @@ padding-top: 50px;
 .part_three_left {
     li:nth-child(1) {
         line-height: 100px;
-    margin-top: -20px;
-    cursor: pointer;
-    }
-     li:nth-child(2) {
-           margin-left: -170px;
-    /* margin-top: -15px; */
-    margin-top: 45px;
-    cursor: pointer;
-    p {
-        margin-top: 18px;
+        margin-top: -20px;
         cursor: pointer;
     }
-     }
-     li:nth-child(3) {
-          margin-top: 41px;
-    margin-left: -190px;
-    line-height: 100px;
-    cursor: pointer;
-     }
-}
-.part_three_right{
-      li:nth-child(1) {
-            margin-top: -20px;
-    margin-left: 76px;
-    cursor: pointer;
-      }
-      li:nth-child(2) {width: 310px;
-    overflow: hidden;
-    margin-left: 200px;
-    margin-top: 25px;
-    cursor: pointer;}
-      li:nth-child(3) { width: 310px;
-    overflow: hidden;
-    margin-top: 48px;
-    margin-left: 235px;
-    cursor: pointer;}
+    li:nth-child(2) {
+        margin-left: -170px;
+        /* margin-top: -15px; */
+        margin-top: 45px;
+        cursor: pointer;
+        p {
+            margin-top: 18px;
+            cursor: pointer;
+        }
+    }
+    li:nth-child(3) {
+        margin-top: 41px;
+        margin-left: -190px;
+        line-height: 100px;
+        cursor: pointer;
+    }
 }
 
-
+.part_three_right {
+    li:nth-child(1) {
+        margin-top: -20px;
+        margin-left: 76px;
+        cursor: pointer;
+    }
+    li:nth-child(2) {
+        width: 310px;
+        overflow: hidden;
+        margin-left: 200px;
+        margin-top: 25px;
+        cursor: pointer;
+    }
+    li:nth-child(3) {
+        width: 310px;
+        overflow: hidden;
+        margin-top: 48px;
+        margin-left: 235px;
+        cursor: pointer;
+    }
+}
 
 .pt_left_03 {
     line-height: 100px;
@@ -646,7 +649,7 @@ padding-top: 50px;
 
 .find_more {
     clear: both;
-    padding:30px 0;
+    padding: 30px 0;
 }
 
 .part_four_more {
@@ -687,7 +690,7 @@ padding-top: 50px;
     }
 }
 
-.find_more{
+.find_more {
     clear: both;
     margin: 0 auto;
 }
@@ -713,8 +716,7 @@ padding-top: 50px;
     overflow: hidden;
 }
 
-.part_seven_left {
-}
+.part_seven_left {}
 
 .ps_left_title a {
     display: inline-block;
@@ -741,8 +743,7 @@ padding-top: 50px;
     }
 }
 
-.part_seven_right {
-}
+.part_seven_right {}
 
 .ps_haddleTop {
     cursor: pointer;
@@ -855,7 +856,7 @@ padding-top: 50px;
     min-width: 1170px;
     padding-top: 25px;
     padding-bottom: 60px;
-    background-color: #e7edf3;
+    background-color: $pageBg;
     .left-list {
         .item {
             position: relative;

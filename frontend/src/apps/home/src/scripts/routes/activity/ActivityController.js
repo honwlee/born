@@ -31,14 +31,17 @@ define([
         },
 
         rendering: function(e) {
-            var div = $("<div>").attr({
-                    class: "container"
+            var wrap = $("<div>").attr({
+                    class: "activity-wrap"
                 }),
+                div = $("<div>").attr({
+                    class: "container"
+                }).appendTo(wrap),
                 _ec = $("<div>").attr({
-                    class: "row activity-repeater repeater-container"
+                    class: "row activity-repeater panel"
                 }).appendTo(div),
                 list = this.buildList();
-            e.content = div[0];
+            e.content = wrap[0];
             list.getDom().appendTo(_ec.empty());
             _ec.delegate('.lightbox-item', 'click', function(e) {
                 e.preventDefault();

@@ -2,7 +2,7 @@ define([
     "jquery",
     "skylarkjs",
     "../ProcessController",
-    "text!scripts/routes/process/process.html"
+    "text!scripts/routes/process/process.hbs"
 ], function($, skylarkjs, ProcessController, processTpl) {
     var spa = skylarkjs.spa;
     return ProcessController.inherit({
