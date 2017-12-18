@@ -7,9 +7,9 @@
         <div class="part_one panel-body">
             <div class="part_one_main">
                 <div class="part_one_con">
-                    <p id="one_con" style="margin-top: 30px;">
-                        {{content}}
-                    </p>
+                    <div id="one_con" style="margin-top: 30px;">
+                        {{{content}}}
+                    </div>
                 </div>
                 <ul id="list" class="row part_one_list">
                     {{#each posts}}
@@ -37,7 +37,7 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">内容</label>
         <div class="col-sm-10">
-            <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+            <textarea class="editable" id="simplemde" name="content">{{content}}</textarea>
         </div>
     </div>
     <div class="form-group">
@@ -80,7 +80,7 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">内容</label>
         <div class="col-sm-10">
-            <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+            <textarea class="editable" id="simplemde" name="content">{{content}}</textarea>
         </div>
     </div>
     <div class="form-group">
@@ -189,7 +189,7 @@
             <div class="part_three_detail">
                 <div class="part_three_datailCon detail">
                     <p class="pt_datail_title title">{{first.title}}</p>
-                    <p class="pt_datail_con content">{{first.content}}</p>
+                    <div class="pt_datail_con content">{{{first.content}}}</div>
                     <p class="pt_datail_page page">1/6</p>
                 </div>
                 <ul class="part_three_left">
@@ -197,7 +197,7 @@
                     <li class="left-item item" data-index="{{@index}}">
                         <p class="item-title">{{title}}</p>
                         <img src="{{src}}" height="104px" width="104px">
-                        <p class="item-content hide">{{content}}</p>
+                        <div class="item-content hide">{{{content}}}</div>
                     </li>
                     {{/each}}
                 </ul>
@@ -206,7 +206,7 @@
                     <li class="right-item item"  data-index="{{@index}}" data-right="true">
                         <img src="{{src}}" height="104px" width="104px">
                         <p class="item-title">{{title}}</p>
-                        <p class="item-content hide">{{content}}</p>
+                        <div class="item-content hide">{{{content}}}</div>
                     </li>
                     {{/each}}
                 </ul>
@@ -224,7 +224,7 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">内容</label>
         <div class="col-sm-10">
-            <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+            <textarea class="editable" id="simplemde" name="content">{{content}}</textarea>
         </div>
     </div>
     <div class="form-group">
@@ -247,7 +247,7 @@
                     <img src="{{src}}" height="130" width="130">
                     <p class="part_ten_title">{{title}}</p>
                     <p class="part_ten_main">{{description}}</p>
-                    <p class="part_ten_con">{{content}}</p>
+                    <div class="part_ten_con">{{{content}}}</div>
                 </li>
                 {{/each}}
             </ul>
@@ -264,7 +264,7 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">内容</label>
         <div class="col-sm-10">
-            <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+            <textarea class="editable" id="simplemde" name="content">{{content}}</textarea>
         </div>
     </div>
     <div class="form-group">
@@ -378,7 +378,7 @@
                 <div class="ywbjTopTitle">
                     <span> {{title}}</span>
                 </div>
-                <div class="content">{{content}}</div>
+                <div class="content">{{{content}}}</div>
             {{/each}}
         </div>
     </script>
@@ -405,7 +405,7 @@
                     <span class="">{{title}}</span>
                 </div>
                  <div class="content">
-                        {{content}}
+                        {{{content}}}
                     </div>
             {{/each}}
         </div>
@@ -420,7 +420,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">内容</label>
             <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content" value="{{content}}"></textarea>
+                <textarea class="editable" id="simplemde" name="content">{{content}}</textarea>
             </div>
         </div>
         <div class="form-group">
@@ -460,7 +460,7 @@
                    
                 </div>
                  <div class="content">
-                        {{content}}
+                        {{{content}}}
                     </div>
             {{/each}}
         </div>
@@ -488,8 +488,8 @@
                     <span class="">{{title}}</span>
                    
                 </div>
-                 <div class="">
-                        {{content}}
+                 <div class="content">
+                        {{{content}}}
                     </div>
             {{/each}}
             </div>
@@ -523,7 +523,7 @@
                                
                             </div>
                              <div class="content">
-                                    {{content}}
+                                    {{{content}}}
                                 </div>
                         {{/each}}
                     </div>
@@ -545,5 +545,29 @@
             </div>
         </div> 
     </script>
-
+    
+    <script id="retServicePage-partial" type="text/x-handlebars-template">
+        <div class="row">
+            {{#each snippets}}
+                <div class="col-md-10 col-md-offset-1 col-xs-6">
+                    <h1 style="text-align: center; margin: 15px 0;">{{title}}</h1>
+                    <div class="content">{{{content}}}</div>
+                </div>
+            {{/each}}
+        </div>
+    </script>
+    <script id="retServicePage-form-partial" type="text/x-handlebars-template">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">选择段内容</label>
+            <div class="col-sm-10">
+                <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_service" type="button">点击选择</button>
+            </div>
+        </div> 
+    </script>
 </div>

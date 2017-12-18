@@ -57,7 +57,9 @@ define([
             var self = this,
                 selector = this.list.getDom();
             selector.find(".repeater-add button").off("click").on("click", function(e) {
-                modal.show("form", $(tpl()), this.addTitle, {
+                modal.show("form", $(tpl({
+                    checked: true
+                })), this.addTitle, {
                     key: "photos",
                     file: true,
                     action: self.actionName ? "post_" + self.actionName : "create",

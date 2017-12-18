@@ -87,7 +87,9 @@ define([
             var self = this,
                 selector = this.list.getDom();
             selector.find(".repeater-add button").off("click").on("click", function(e) {
-                modal.show("form", $(tpl()), "添加新闻", {
+                modal.show("form", $(tpl({
+                    checked: true
+                })), "添加新闻", {
                     key: "news",
                     file: true,
                     afterSave: function() {

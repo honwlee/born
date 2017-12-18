@@ -48,27 +48,27 @@ module.exports = {
     }
 }
 
-_(["meet", "activity", "process", "service", "env"]).each(function(name) {
-    console.log(name);
+_(["meet", "activity", "process", "env"]).each(function(name) {
+    let catName = "posts_" + name;
     module.exports[name] = function(req, res) {
         parse("posts", req, res, ["title"], {
-            category: name
+            category: catName
         });
     };
     module.exports["post_" + name] = function(req, res) {
         let category = Category.findOrCreate("name", {
-            name: name,
+            name: catName,
             type: "post",
             usage: 2
         });
-        req.body.category = name;
+        req.body.category = catName;
         req.body.file = req.file;
         validate(Post, { title: req.body.title }, req, res);
     };
     module.exports["public_" + name] = function(req, res) {
         parse("posts", req, res, ["title"], {
             published: 'true',
-            category: name
+            category: catName
         });
     };
 });

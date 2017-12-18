@@ -1,16 +1,33 @@
 define([
+    "jquery",
     "skylarkjs",
-    "text!scripts/routes/service/service.html"
-], function(skylarkjs, serviceTpl) {
+    "handlebars",
+    "server",
+    "scripts/helpers/tplHelper",
+    "text!scripts/routes/service/service.hbs"
+], function($, skylarkjs, hbs, server, tplHelper, serviceTpl) {
     var spa = skylarkjs.spa,
-        $ = skylarkjs.query;
+        langx = skylarkjs.langx,
+        selector = $(langx.trim(serviceTpl));
     return spa.RouteController.inherit({
         klassName: "ServiceController",
-
-        rendering: function(e) {
-            e.content = serviceTpl;
+        pageData: null,
+        preparing: function(e) {
+            var self = this;
+            e.result = server().connect("pages", "get", "show?key=name&&value=" + e.route.name).then(function(data) {
+                self.pageData = data;
+            });
         },
 
+        rendering: function(e) {
+            var tpl = hbs.compile(langx.trim(selector.find("#service-main").html()).replace("{{&gt;", "{{>")),
+                self = this,
+                _ec = $(tpl({}));
+            self.pageData.contents.forEach(function(content) {
+                tplHelper.show(content.tpl, content.sub).appendTo(_ec.find(".container-service"));
+            });
+            e.content = _ec[0];
+        },
         entered: function() {},
         exited: function() {}
     });

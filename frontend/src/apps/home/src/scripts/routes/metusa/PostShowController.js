@@ -10,7 +10,7 @@ define([
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx;
     return spa.RouteController.inherit({
-        klassName: "MetusaShowController",
+        klassName: "PostsShowController",
         post: null,
         preparing: function(e) {
             var self = this,

@@ -57,26 +57,26 @@ module.exports = {
 }
 
 _(["slide", "page"]).each(function(name) {
-    console.log(name);
+    let catName = "photos_" + name;
     module.exports[name] = function(req, res) {
         parse("photos", req, res, ["name"], {
-            category: name
+            category: catName
         });
     };
     module.exports["post_" + name] = function(req, res) {
         let category = Category.findOrCreate("name", {
-            name: name,
+            name: catName,
             type: "photo",
             usage: 2
         });
-        req.body.category = name;
+        req.body.category = catName;
         req.body.file = req.file;
         validate(Photo, { title: req.body.title }, req, res);
     };
     module.exports["public_" + name] = function(req, res) {
         parse("photos", req, res, ["title"], {
             published: 'true',
-            category: name
+            category: catName
         });
     };
 });

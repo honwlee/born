@@ -51,6 +51,7 @@ define([
                 selector = this.list.getDom();
             selector.find(".repeater-add button").off("click").on("click", function(e) {
                 modal.show("form", $(tpl({
+                    checked: true,
                     pages: self.pages
                 })), "添加链接", {
                     list_selectable: "multi",

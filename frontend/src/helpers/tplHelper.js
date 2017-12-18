@@ -151,6 +151,10 @@ define([
                 domId: "aContact",
                 name: "contactPage",
                 cnName: "联系我们",
+            },
+            retServicePage: {
+                name: "retServicePage",
+                cnName: "回国服务",
             }
         },
         getTplByKey: function(key) {

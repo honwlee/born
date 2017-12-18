@@ -52,27 +52,27 @@ module.exports = {
     }
 }
 
-_(["vantage", "provide", "visa", "hospital", "flow", "certificate", "about", "contact"]).each(function(name) {
-    console.log(name);
+_(["vantage", "provide", "visa", "hospital", "flow", "certificate", "about", "contact", "service"]).each(function(name) {
+    let catName = "snippets_" + name;
     module.exports[name] = function(req, res) {
         parse("snippets", req, res, ["title"], {
-            category: name
+            category: catName
         });
     };
     module.exports["post_" + name] = function(req, res) {
         let category = Category.findOrCreate("name", {
-            name: name,
+            name: catName,
             type: "snippet",
             usage: 2
         });
-        req.body.category = name;
+        req.body.category = catName;
         req.body.file = req.file;
         validate(Snippet, { title: req.body.title }, req, res);
     };
     module.exports["public_" + name] = function(req, res) {
         parse("snippets", req, res, ["title"], {
             published: 'true',
-            category: name
+            category: catName
         });
     };
 });

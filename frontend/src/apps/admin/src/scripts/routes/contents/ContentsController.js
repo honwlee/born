@@ -116,16 +116,18 @@ define([
                         }
                     ]
                 };
-                var wizard = $(wizardTpl(obj)).wizard();
-                modal = modalFunc.show("normalForm", wizard, "添加页面内容", {
-                    key: "contents",
-                    file: true,
-                    callback: function() {
+                var wizard = $(wizardTpl(obj)).wizard(),
+                    modal = modalFunc.show("normalForm", wizard, "添加页面内容", {
+                        key: "contents",
+                        file: true,
+                        callback: function() {
 
-                    }
-                });
+                        }
+                    });
                 wizard.on('finished.fu.wizard', function() {
                     modalFunc.save("contents", modal, {}, function(data) {
+                        modal.modal("hide");
+                        selector.repeater('render');
                         toastr.success("已保存！");
                     });
                 }).on('actionclicked.fu.wizard', function(e, data) {

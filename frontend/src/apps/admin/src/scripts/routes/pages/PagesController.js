@@ -167,8 +167,13 @@ define([
                 selector = this.list.getDom();
             selector.find(".repeater-add button").off("click").on("click", function(e) {
 
-                modalFunc.show("form", $(tpl()), "添加页面", {
+                modalFunc.show("form", $(tpl({
+                    checked: false
+                })), "添加页面", {
                     key: "pages",
+                    beforeSave: function(extralObj) {
+                        extralObj.notUC = true;
+                    },
                     afterSave: function() {
                         selector.repeater('render');
                     },

@@ -30,12 +30,12 @@ exports.Page = class Page extends Model {
             args.pathto = parent.pathto + args.pathto;
         }
         let result = Model.create("pages", args);
-        pageExt.add(result);
+        if (!args.notUC) pageExt.add(result);
         return result;
     }
     static update(args) {
         let result = Model.update("pages", "id", args);
-        pageExt.update(result);
+        if (!args.notUC) pageExt.update(result);
         return result;
     }
     static delete(args) {

@@ -77,6 +77,7 @@ define([
             this.buildList();
             var self = this,
                 selector = this.list.getDom();
+            self.snippetTplOpts.checked = true;
             selector.find(".repeater-add button").off("click").on("click", function(e) {
                 modal.show("form", $(tpl(self.snippetTplOpts)), this.addTitle, {
                     key: "snippets",

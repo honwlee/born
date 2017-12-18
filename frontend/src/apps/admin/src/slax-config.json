@@ -239,7 +239,8 @@
                 "snippets-visa",
                 "snippets-certificate",
                 "snippets-about",
-                "snippets-contact"
+                "snippets-contact",
+                "snippets-service"
             ],
             "controller": {
                 "type": "scripts/routes/snippets/SnippetsController"
@@ -331,6 +332,17 @@
             },
             "controller": {
                 "type": "scripts/routes/snippets/ContactController"
+            }
+        },
+        "snippets-service": {
+            "sub": true,
+            "pathto": "/snippets/service",
+            "data": {
+                "name": "snippets-service",
+                "navName": "回国服务"
+            },
+            "controller": {
+                "type": "scripts/routes/snippets/ServiceController"
             }
         },
         "links": {

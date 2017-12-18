@@ -25,16 +25,18 @@ module.exports = {
                 id: c.id,
                 page: c.page,
                 tpl: c.tpl,
-                name: c.name,
-                sub: {
+                name: c.name
+            };
+            if (c.sub) {
+                obj.sub = {
                     title: c.sub.title,
                     content: c.sub.content
                 }
-            };
-            if (c.sub._content) {
-                let tableName = c.sub._content.type;
-                let sIds = _(c.sub._content.items).map(function(i) { return i.id; }).value();
-                obj.sub[tableName] = Model.where(tableName, "id", sIds);
+                if (c.sub._content) {
+                    let tableName = c.sub._content.type;
+                    let sIds = _(c.sub._content.items).map(function(i) { return i.id; }).value();
+                    obj.sub[tableName] = Model.where(tableName, "id", sIds);
+                }
             }
             return obj;
         }).value();
