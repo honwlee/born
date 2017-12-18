@@ -23,10 +23,12 @@ define([
             var tpl = hbs.compile(langx.trim(selector.find("#about-main").html()).replace("{{&gt;", "{{>")),
                 self = this,
                 _ec = $(tpl({}));
-            self.pageData.contents.forEach(function(content) {
-                var tplData = tplHelper.data[content.tpl];
-                tplHelper.show(content.tpl, content.sub).appendTo(_ec.find("#" + tplData.domId));
-            });
+            if (self.pageData) {
+                self.pageData.contents.forEach(function(content) {
+                    var tplData = tplHelper.data[content.tpl];
+                    tplHelper.show(content.tpl, content.sub).appendTo(_ec.find("#" + tplData.domId));
+                });
+            }
             e.content = _ec[0];
         },
 

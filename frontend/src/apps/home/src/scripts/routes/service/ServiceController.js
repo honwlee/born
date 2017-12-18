@@ -23,9 +23,11 @@ define([
             var tpl = hbs.compile(langx.trim(selector.find("#service-main").html()).replace("{{&gt;", "{{>")),
                 self = this,
                 _ec = $(tpl({}));
-            self.pageData.contents.forEach(function(content) {
-                tplHelper.show(content.tpl, content.sub).appendTo(_ec.find(".container-service"));
-            });
+            if (self.pageData) {
+                self.pageData.contents.forEach(function(content) {
+                    tplHelper.show(content.tpl, content.sub).appendTo(_ec.find(".container-service"));
+                });
+            }
             e.content = _ec[0];
         },
         entered: function() {},
