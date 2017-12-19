@@ -403,14 +403,15 @@
 
     <script id="processHospital-partial" type="text/x-handlebars-template">
         <div class="wrapRight-con">
-            <div>{{description}}</div>
+            <div class="title">{{title}}</div>
+            <div class="description">{{description}}</div>
             {{#each snippets}}
                 <div class="ywbjTopTitle">
                     <span class="">{{title}}</span>
                 </div>
-                 <div class="content">
-                        {{{content}}}
-                    </div>
+                <div class="content">
+                    {{{content}}}
+                </div>
             {{/each}}
         </div>
     </script>
@@ -440,7 +441,7 @@
             
         </div>
     </script>
-    <script id="processEnvPage-form-partial" type="text/x-handlebars-template">
+    <script id="processEnv-form-partial" type="text/x-handlebars-template">
         <div class="form-group">
             <label class="col-sm-2 control-label" for="title">标题</label>
             <div class="col-sm-10">
@@ -461,11 +462,10 @@
             {{#each snippets}}
                 <div class="ywbjTopTitle">
                     <span class="">{{title}}</span>
-                   
                 </div>
                  <div class="content">
-                        {{{content}}}
-                    </div>
+                    {{{content}}}
+                </div>
             {{/each}}
         </div>
     </script>
@@ -518,7 +518,6 @@
             <div class="col-sm-10 col-xs-12 col-clear-padding">
                 <div class="mainWrapRight">
                     <div class="wrapRight-con">
-                        <div class="ywbjTopTitle"><span>{{title}}</span></div>
                         {{#each snippets}}
                             <div class="ywbjTopTitle">
                                 <span class="">{{title}}</span>
