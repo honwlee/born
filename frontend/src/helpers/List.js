@@ -96,7 +96,7 @@ define([
                     modal.show("form", $(opts.tpl(_data)), opts.title, {
                         key: opts.key,
                         file: true,
-                        callback: function() {
+                        afterSave: function() {
                             opts.container.repeater('render');
                             if (opts.callback) opts.callback();
                         }
