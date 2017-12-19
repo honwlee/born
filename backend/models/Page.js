@@ -34,8 +34,8 @@ exports.Page = class Page extends Model {
         return result;
     }
     static update(args) {
-        if (args.subs == "empty") args.subs = [];
-        if (args.contents = "empty") args.contents = [];
+        args.subs = args.subs.split(",");
+        args.contents = args.contents.split(",");
         let result = Model.update("pages", "id", args);
         if (!args.notUC) pageExt.update(result);
         return result;

@@ -17,24 +17,32 @@ define([
     partial.get("page-select-partial", formSelector);
     partial.get("content-form-partial", formSelector);
     var tpl = hbs.compile("{{> content-form-partial}}"),
-        __file = {},
+        __file,
         __currentTplKey = null,
         wizardTpl = hbs.compile("{{> wizard-tpl-partial}}");
 
     function bindCurrentTplEvts(modal, key, callback) {
         var container = modal.find(".tpl-container");
         if (__currentTplKey) {
-            tplHelper.getTplByKey(__currentTplKey).bindEvnts(container, __currentTplKey, true);
+            // 清除事件监听
+            tplHelper.getTplByKey(__currentTplKey).bindEvnts(modal, container, true);
         }
         $(tplHelper.getForm(key)()).appendTo(container.empty());
+        // 处理form显示内容，比如初始化编辑器等
         modalFunc.bindFormEvnts(container, {
             key: "contents",
             file: true
         });
+        container.find("input.file").on("change", function(e) {
+            var type = $(e.currentTarget).data("type");
+            __file = this.files[0];
+        });
         var tplObj = tplHelper.getTplByKey(key);
         __currentTplKey = key;
-        tplObj.bindEvnts(container);
+        // 准备上传数据
+        tplObj.bindEvnts(modal, container);
         modal.find(".save-btn").off("click").on("click", function() {
+            // 上传
             tplObj.save(modal);
             callback();
         });
@@ -97,6 +105,7 @@ define([
         },
 
         rendering: function(e) {
+            __file = null;
             this.buildList();
             var self = this,
                 selector = this.list.getDom();
@@ -141,7 +150,10 @@ define([
                         }
                     });
                 wizard.on('finished.fu.wizard', function() {
-                    modalFunc.save("contents", modal, {}, function(data) {
+                    modalFunc.save("contents", modal, {
+                        _file: __file
+                    }, function(data) {
+                        __file = null;
                         modal.modal("hide");
                         selector.repeater('render');
                         toastr.success("已保存！");
@@ -175,4 +187,4 @@ define([
         entered: function() {},
         exited: function() {}
     });
-});
+})

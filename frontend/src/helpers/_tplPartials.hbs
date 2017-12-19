@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 control-label" for="file">选择文章</label>
+        <label class="col-sm-2 control-label">选择文章</label>
         <div class="col-sm-10">
             <button class="btn btn-primary select-content-list" data-type="posts" data-action="public_meet" type="button">点击选择</button>
         </div>
@@ -84,7 +84,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 control-label" for="file">选择服务</label>
+        <label class="col-sm-2 control-label">选择服务</label>
         <div class="col-sm-10">
             <button class="btn btn-primary select-content-list" data-type="qas" type="button">点击选择</button>
         </div>
@@ -130,7 +130,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 control-label" for="file">选择文章</label>
+        <label class="col-sm-2 control-label">选择文章</label>
         <div class="col-sm-10">
             <button class="btn btn-primary select-content-list" data-type="posts" data-action="public_activity" type="button">点击选择</button>
         </div>
@@ -164,7 +164,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 control-label" for="file">选择图片</label>
+        <label class="col-sm-2 control-label">选择图片</label>
         <div class="col-sm-10">
             <button class="btn btn-primary select-content-list" data-type="posts" data-action="public_env" type="button">点击选择</button>
         </div>
@@ -225,14 +225,14 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 control-label" for="file">选择段落内容</label>
+        <label class="col-sm-2 control-label">选择段落内容</label>
         <div class="col-sm-10">
             <button class="btn btn-primary select-content-list" data-type="snippets" type="button">点击选择</button>
         </div>
     </div>
     </script>
     <script id="homeProvide-partial" type="text/x-handlebars-template">
-    <div class="panel-default" style="background: url(/assets/images/part10_bg.jpg) no-repeat; background-size: 100% 640px;">
+    <div class="panel-default" style="background: url({{src}}) no-repeat; background-size: 100% 640px;">
         <!-- 生美国际赴美的五心服务 -->
         <div class="part">
             <h1 class="main_title main_title_ten">BornInUSA 生美贴心服务</h1>
@@ -252,24 +252,31 @@
     </div>
     </script>
     <script id="homeProvide-form-partial" type="text/x-handlebars-template">
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="title">标题</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" name="title" value="{{title}}" />
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">内容</label>
-        <div class="col-sm-10">
-            <textarea class="editable" id="simplemde" name="content">{{content}}</textarea>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">内容</label>
+            <div class="col-sm-10">
+                <textarea class="editable" id="simplemde" name="content">{{content}}</textarea>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="file">选择段落内容</label>
-        <div class="col-sm-10">
-            <button class="btn btn-primary select-content-list" data-type="snippets" type="button">点击选择</button>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="file">背景图片</label>
+            <div class="col-sm-10">
+                <input type="file" class="form-control file" name="file" id="file" data-type="provide-cover" />
+                <p class="fieldset info text-right"><span class="text-warning text-info">图片格式只支持gif、jpg或者png！</span></p>
+            </div>
         </div>
-    </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">选择段落内容</label>
+            <div class="col-sm-10">
+                <button class="btn btn-primary select-content-list" data-type="snippets" type="button">点击选择</button>
+            </div>
+        </div>
     </script>
     <script id="homeNews-partial" type="text/x-handlebars-template">
     <div class="homenews hidden-xs">
@@ -314,7 +321,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择新闻</label>
+            <label class="col-sm-2 control-label">选择新闻</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="news" type="button">点击选择</button>
             </div>
@@ -362,7 +369,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择段内容</label>
+            <label class="col-sm-2 control-label">选择段内容</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_flow" type="button">点击选择</button>
             </div>
@@ -387,7 +394,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择段内容</label>
+            <label class="col-sm-2 control-label">选择段内容</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_visa" type="button">点击选择</button>
             </div>
@@ -421,7 +428,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择段内容</label>
+            <label class="col-sm-2 control-label">选择段内容</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_hospital" type="button">点击选择</button>
             </div>
@@ -441,7 +448,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择文章</label>
+            <label class="col-sm-2 control-label">选择文章</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="posts" data-action="public_env" type="button">点击选择</button>
             </div>
@@ -470,7 +477,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择段内容</label>
+            <label class="col-sm-2 control-label">选择段内容</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_certificate" type="button">点击选择</button>
             </div>
@@ -500,7 +507,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择段内容</label>
+            <label class="col-sm-2 control-label">选择段内容</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_about" type="button">点击选择</button>
             </div>
@@ -534,7 +541,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择段内容</label>
+            <label class="col-sm-2 control-label">选择段内容</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_contact" type="button">点击选择</button>
             </div>
@@ -559,7 +566,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="file">选择段内容</label>
+            <label class="col-sm-2 control-label">选择段内容</label>
             <div class="col-sm-10">
                 <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_service" type="button">点击选择</button>
             </div>

@@ -11,11 +11,19 @@ define([
 ], function(skylarkjs, partial, $, server, toastr, modalFunc, hbs, tplHelper, template) {
     var langx = skylarkjs.langx,
         __content = {},
+        __file,
         d = tplHelper.data,
-        bindEvntsFunc = function(name, selector, off, opts) {
+        bindEvntsFunc = function(parent, name, selector, off, opts) {
             opts = opts || {
                 list_selectable: "multi"
             };
+            // 监听parent文件事件
+            selector.find("input.file").on("change", function(e) {
+                __file = this.files[0];
+            });
+            parent.off('hidden.bs.modal').on('hidden.bs.modal', function() {
+                __file = null;
+            });
             modalFunc.contentListByBtn(selector, {
                 key: "contents",
                 listSCallback: function(modal, items, data) {
@@ -32,6 +40,7 @@ define([
 
             if (modalFunc.checkForm(["name"], selector)) {
                 modalFunc.save("contents", selector.find(".form"), {
+                    _file: __file,
                     sub: JSON.stringify(parseData)
                 }, function(data) {
                     toastr.success("已保存！");
@@ -50,8 +59,8 @@ define([
             retObj.tpls.push({
                 name: k,
                 cnName: _d.cnName,
-                bindEvnts: function(selector, off) {
-                    bindEvntsFunc(k, selector, off);
+                bindEvnts: function(parent, selector, off) {
+                    bindEvntsFunc(parent, k, selector, off);
                 },
                 save: function(selector) {
                     saveFunc(k, selector);
