@@ -48,7 +48,15 @@ module.exports = {
     },
     contents: {
         module: require("./ContentController"),
-        uploadPath: "contents"
+        uploadPath: "contents",
+        extralNames: ["home", "service", "process", "about"],
+        extraPrefix: [{
+            name: "post_",
+            method: "post"
+        }, {
+            name: "public_",
+            method: "get"
+        }]
     },
     qas: {
         module: require("./QaController"),

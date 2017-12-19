@@ -27,15 +27,18 @@ define([
         data: {
             homeDesc: {
                 name: "homeDesc",
-                cnName: "生美国际赴美生子"
+                cnName: "生美国际赴美生子",
+                category: "home"
             },
             homeService: {
                 name: "homeService",
-                cnName: "我们的服务"
+                cnName: "我们的服务",
+                category: "home"
             },
             homeActivity: {
                 name: "homeActivity",
                 cnName: "在美活动",
+                category: "home",
                 show: function(tpl, data) {
                     var first = _.first(data.posts),
                         length = data.length,
@@ -55,6 +58,7 @@ define([
             homeEnv: {
                 name: "homeEnv",
                 cnName: "美国待产环境",
+                category: "home",
                 show: function(tpl, data) {
                     var _s = $(tpl(data));
                     _s.delegate(".env-item", "click", function(e) {
@@ -67,6 +71,7 @@ define([
             homeVantage: {
                 name: "homeVantage",
                 cnName: "我们的优势",
+                category: "home",
                 show: function(tpl, data) {
                     var first = _.first(data.snippets),
                         length = data.snippets.length,
@@ -93,6 +98,7 @@ define([
             homeProvide: {
                 name: "homeProvide",
                 cnName: "贴心服务",
+                category: "home",
                 show: function(tpl, sub, main) {
                     var src = (main.src || "").replace(/\\/g, "/");
                     sub.src = src;
@@ -116,6 +122,7 @@ define([
                 domId: "pProcess",
                 name: "processMain",
                 cnName: "主要流程",
+                category: "process",
                 show: function(tpl, data) {
                     var leftData = [],
                         rightData = [];
@@ -138,16 +145,19 @@ define([
                 domId: "pVisa",
                 name: "processVisa",
                 cnName: "签证申请",
+                category: "process",
             },
             processHospital: {
                 domId: "pCohospital",
                 name: "processHospital",
                 cnName: "合作医院",
+                category: "process",
             },
             processEnv: {
                 domId: "pEnvironment",
                 name: "processEnv",
                 cnName: "待产环境",
+                category: "process",
                 show: function(tpl, data) {
                     var list = new List({
                         title: "待产环境列表",
@@ -169,20 +179,24 @@ define([
                 domId: "pCertificate",
                 name: "processCertificate",
                 cnName: "证件办理",
+                category: "process",
             },
             aboutPage: {
                 domId: "aAbout",
                 name: "aboutPage",
                 cnName: "关于我们",
+                category: "about",
             },
             aboutContact: {
                 domId: "aContact",
                 name: "aboutContact",
                 cnName: "联系我们",
+                category: "about",
             },
             retServicePage: {
                 name: "retServicePage",
                 cnName: "回国服务",
+                category: "service",
             }
         },
         getTplByKey: function(key) {

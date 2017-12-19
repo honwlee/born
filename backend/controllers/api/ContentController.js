@@ -1,6 +1,8 @@
 'use strict';
 const Content = require('../../models/Content').Content;
 const parse = require('../../exts/parseList').parse;
+const _ = require('lodash');
+const Category = require('../../models/Category').Category;
 const validate = require('../../exts/validation').validate;
 module.exports = {
     index: function(req, res) {
@@ -45,3 +47,28 @@ module.exports = {
         res.json(Content.importData());
     }
 }
+_(["home", "service", "process", "about"]).each(function(name) {
+    let catName = "contents_" + name;
+    module.exports[name] = function(req, res) {
+        parse("contents", req, res, ["title"], {
+            category: catName
+        });
+    };
+    module.exports["post_" + name] = function(req, res) {
+        let category = Category.findOrCreate("name", {
+            name: catName,
+            type: "contents",
+            usage: 2
+        });
+        req.body.category = catName;
+        req.body.file = req.file;
+        validate(Post, { title: req.body.title }, req, res);
+    };
+    module.exports["public_" + name] = function(req, res) {
+        console.log(catName);
+        parse("contents", req, res, ["title"], {
+            published: 'true',
+            category: catName
+        });
+    };
+});

@@ -7,8 +7,8 @@
         },
         {
             "id": 2,
-            "name": "attachments",
-            "spaceFileName": "_attachments.json",
+            "name": "categories",
+            "spaceFileName": "_categories.json",
             "autoOpen": true
         },
         {
@@ -19,70 +19,52 @@
         },
         {
             "id": 4,
-            "name": "events",
-            "spaceFileName": "_events.json",
-            "autoOpen": true
-        },
-        {
-            "id": 5,
-            "name": "keywords",
-            "spaceFileName": "_keywords.json",
-            "autoOpen": true
-        },
-        {
-            "id": 6,
-            "name": "messages",
-            "spaceFileName": "_messages.json",
-            "autoOpen": true
-        },
-        {
-            "id": 7,
             "name": "news",
             "spaceFileName": "_news.json",
             "autoOpen": true
         },
         {
-            "id": 8,
+            "id": 5,
             "name": "pages",
             "spaceFileName": "_pages.json",
             "autoOpen": true
         },
         {
-            "id": 9,
+            "id": 6,
             "name": "photos",
             "spaceFileName": "_photos.json",
             "autoOpen": true
         },
         {
-            "id": 10,
+            "id": 7,
             "name": "posts",
             "spaceFileName": "_posts.json",
             "autoOpen": true
         },
         {
-            "id": 11,
-            "name": "products",
-            "spaceFileName": "_products.json",
-            "autoOpen": true
-        }, {
-            "id": 12,
-            "name": "grids",
-            "spaceFileName": "_grids.json",
-            "autoOpen": true
-        }, {
-            "id": 13,
+            "id": 8,
             "name": "contents",
             "spaceFileName": "_contents.json",
             "autoOpen": true
         }, {
-            "id": 14,
+            "id": 9,
             "name": "qas",
             "spaceFileName": "_qas.json",
             "autoOpen": true
         }, {
-            "id": 15,
+            "id": 10,
             "name": "sites",
             "spaceFileName": "_sites.json",
+            "autoOpen": true
+        }, {
+            "id": 11,
+            "name": "snippets",
+            "spaceFileName": "_snippets.json",
+            "autoOpen": true
+        }, {
+            "id": 12,
+            "name": "links",
+            "spaceFileName": "_links.json",
             "autoOpen": true
         }
     ]

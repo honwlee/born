@@ -200,12 +200,63 @@
 
         "contents": {
             "pathto": "/contents",
+            "isRouter": false,
             "data": {
                 "name": "contents",
                 "navName": "页面内容"
             },
+            "subs": [
+                "contents-about",
+                "contents-home",
+                "contents-process",
+                "contents-service"
+            ],
             "controller": {
                 "type": "scripts/routes/contents/ContentsController"
+            }
+        },
+        "contents-about": {
+            "sub": true,
+            "pathto": "/contents/about",
+            "data": {
+                "name": "contents-about",
+                "navName": "关于我们"
+            },
+            "controller": {
+                "type": "scripts/routes/contents/AboutController"
+            }
+        },
+        "contents-home": {
+            "sub": true,
+            "pathto": "/contents/home",
+            "data": {
+                "name": "contents-home",
+                "navName": "主页"
+            },
+            "controller": {
+                "type": "scripts/routes/contents/HomeController"
+            }
+        },
+        "contents-process": {
+            "sub": true,
+            "pathto": "/contents/process",
+            "data": {
+                "name": "contents-process",
+                "navName": "赴美流程"
+            },
+            "controller": {
+                "type": "scripts/routes/contents/ProcessController"
+            }
+        },
+        "contents-service": {
+            "sub": true,
+            "pathto": "/contents/service",
+            "data": {
+                "name": "contents-service",
+                "navName": "回国服务"
+            },
+            "controller": {
+                "type": "scripts/routes/contents/ServiceController"
             }
         },
         "qas": {

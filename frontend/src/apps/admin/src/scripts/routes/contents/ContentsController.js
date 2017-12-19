@@ -21,7 +21,7 @@ define([
         __currentTplKey = null,
         wizardTpl = hbs.compile("{{> wizard-tpl-partial}}");
 
-    function bindCurrentTplEvts(modal, key, callback) {
+    function bindCurrentTplEvts(modal, key, callback, actionName) {
         var container = modal.find(".tpl-container");
         if (__currentTplKey) {
             // 清除事件监听
@@ -43,7 +43,9 @@ define([
         tplObj.bindEvnts(modal, container);
         modal.find(".save-btn").off("click").on("click", function() {
             // 上传
-            tplObj.save(modal);
+            tplObj.save(modal, {
+                _file: __file
+            }, actionName);
             callback();
         });
     }
@@ -52,6 +54,9 @@ define([
         klassName: "ContentsController",
         repeaterId: "contentsRepeater",
         list: null,
+        title: "页面模板内容列表",
+        addTitle: "添加页面模板内容",
+        actionName: "home",
         preparing: function(e) {
             var self = this;
             e.result = server().connect("pages", "get", "select").then(function(pages) {
@@ -64,6 +69,7 @@ define([
                 title: "模板内容",
                 id: this.repeaterId,
                 key: "contents",
+                actionName: this.actionName,
                 actions: [{
                     name: "delete",
                     title: "删除模板",
@@ -94,7 +100,7 @@ define([
                     sortable: true
                 }, {
                     label: '所属页面',
-                    property: 'page',
+                    property: 'category',
                     sortable: false
                 }]
             });
@@ -120,7 +126,7 @@ define([
                             title: '基本内容',
                             content: $(tpl({
                                 pages: self.pages,
-                                tpls: tplHelper.tpls
+                                tpls: tplHelper.tpls.filter(function(tpl) { return tpl.category === this.actionName; })
                             }))[0].outerHTML,
                             beforeAction: function(e, _modal) {
                                 if (!modalFunc.checkForm(["name"], _modal)) {
@@ -142,7 +148,7 @@ define([
                     ]
                 };
                 var wizard = $(wizardTpl(obj)).wizard(),
-                    modal = modalFunc.show("normalForm", wizard, "添加页面内容", {
+                    modal = modalFunc.show("normalForm", wizard, this.addTitle, {
                         key: "contents",
                         file: true,
                         callback: function() {
@@ -153,11 +159,10 @@ define([
                     modalFunc.save("contents", modal, {
                         _file: __file
                     }, function(data) {
-                        __file = null;
                         modal.modal("hide");
                         selector.repeater('render');
                         toastr.success("已保存！");
-                    });
+                    }, this.actionName);
                 }).on('actionclicked.fu.wizard', function(e, data) {
                     var config = obj.steps.filter(function(s) { return s.step === data.step; })[0];
                     if (config.beforeAction) config.beforeAction(e, modal);
@@ -167,16 +172,18 @@ define([
                 });
 
                 modal.find("#tpl").off("change").on("change", function() {
+                    __file = null;
                     if (this.value) {
                         bindCurrentTplEvts(modal, this.value, function() {
                             toastr.success("已保存！");
                             selector.repeater('render');
-                        });
+                        }, self.actionName);
                         wizard.wizard("next");
                     }
                 });
-
-
+                modal.off('hidden.bs.modal').on('hidden.bs.modal', function() {
+                    __file = null;
+                });
             });
             selector.find(".repeater-refresh button").off("click").on("click", function(e) {
                 selector.repeater('render');

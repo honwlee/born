@@ -17,13 +17,7 @@ define([
             opts = opts || {
                 list_selectable: "multi"
             };
-            // 监听parent文件事件
-            selector.find("input.file").on("change", function(e) {
-                __file = this.files[0];
-            });
-            parent.off('hidden.bs.modal').on('hidden.bs.modal', function() {
-                __file = null;
-            });
+
             modalFunc.contentListByBtn(selector, {
                 key: "contents",
                 listSCallback: function(modal, items, data) {
@@ -33,16 +27,15 @@ define([
             }, off);
         },
 
-        saveFunc = function(name, selector) {
+        saveFunc = function(name, selector, opts) {
             var parseData = modalFunc.parseForm(selector.find(".sub-form"));
             parseData._content = __content[name];
             __content[name] = null;
-
+            var saveParam = langx.mixin({
+                sub: JSON.stringify(parseData)
+            }, opts || {});
             if (modalFunc.checkForm(["name"], selector)) {
-                modalFunc.save("contents", selector.find(".form"), {
-                    _file: __file,
-                    sub: JSON.stringify(parseData)
-                }, function(data) {
+                modalFunc.save("contents", selector.find(".form"), saveParam, function(data) {
                     toastr.success("已保存！");
                     selector.modal('hide');
                 });
@@ -58,12 +51,13 @@ define([
         (function(_d, k) {
             retObj.tpls.push({
                 name: k,
+                category: _d.category,
                 cnName: _d.cnName,
                 bindEvnts: function(parent, selector, off) {
                     bindEvntsFunc(parent, k, selector, off);
                 },
-                save: function(selector) {
-                    saveFunc(k, selector);
+                save: function(selector, opts) {
+                    saveFunc(k, selector, opts);
                 }
             });
         })(d[key], key)
