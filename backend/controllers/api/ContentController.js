@@ -50,7 +50,7 @@ module.exports = {
 _(["home", "service", "process", "about"]).each(function(name) {
     let catName = "contents_" + name;
     module.exports[name] = function(req, res) {
-        parse("contents", req, res, ["title"], {
+        parse("contents", req, res, ["name"], {
             category: catName
         });
     };
@@ -62,11 +62,11 @@ _(["home", "service", "process", "about"]).each(function(name) {
         });
         req.body.category = catName;
         req.body.file = req.file;
-        validate(Post, { title: req.body.title }, req, res);
+        validate(Content, { name: req.body.name }, req, res);
     };
     module.exports["public_" + name] = function(req, res) {
         console.log(catName);
-        parse("contents", req, res, ["title"], {
+        parse("contents", req, res, ["name"], {
             published: 'true',
             category: catName
         });

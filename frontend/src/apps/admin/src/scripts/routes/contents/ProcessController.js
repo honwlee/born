@@ -12,5 +12,6 @@ define([
         title: "赴美流程模板内容列表",
         addTitle: "添加页面模板内容",
         actionName: "process",
+        postAction: "post_process"
     });
 });

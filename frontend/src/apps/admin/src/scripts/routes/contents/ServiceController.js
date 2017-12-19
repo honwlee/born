@@ -12,5 +12,6 @@ define([
         title: "回国服务内容列表",
         addTitle: "添加页面模板内容",
         actionName: "service",
+        postAction: "post_service"
     });
 });
