@@ -69,8 +69,28 @@
 .activity {
     width: 100%;
     background-color: rgb(0, 43, 127);
-    .active-con {
+    .activity-con {
+        background-color: rgb(255, 255, 255);
         margin: 0 auto;
+        img {
+            border-radius: 2px;
+        }
+        .left-title {
+            max-height: 52px;
+            @include word-ellipsis-H;
+        }
+        .left-abstract {
+            max-height: 62px;
+            @include word-ellipsis-H;
+        }
+        .right-title {
+            @include word-ellipsis;
+        }
+        .right-con {
+            padding-left: 0;
+            padding-right: 0;
+            overflow: hidden;
+        }
     }
 }
 
@@ -327,11 +347,17 @@
     li:nth-child(6) .part_two_row {
         background-color: #fff;
     }
+    li:nth-child(7) .part_two_row {
+        background-color: #eb6877;
+    }
+    li:nth-child(8) .part_two_row {
+        background-color: #f8b551;
+    }
 }
 
 .part_two_title {
     color: #323232;
-    line-height: 60px;
+    // line-height: 60px;
     text-align: center;
 }
 
@@ -714,7 +740,7 @@
 }
 
 .img_img_desc {
-    height: 135px;
+    height: 160px;
     overflow: hidden;
 }
 
@@ -736,10 +762,8 @@
 .ps_left_con {
     overflow: hidden;
     background-color: #fff;
-    width: 537px;
     width: 100%;
     height: 100px;
-    padding: 20px;
     p {
         line-height: 25px;
     }
@@ -757,7 +781,6 @@
 
 .ps_right_con {
     width: 100%;
-    height: 476px;
     overflow: hidden;
     ul li {
         cursor: pointer;
@@ -772,8 +795,6 @@
         p {
             // width: 277px;
             overflow: hidden;
-            height: 74px;
-            line-height: 74px;
             text-align: center;
             background-color: #fff;
             color: #b72024;
@@ -855,9 +876,6 @@
 .news-wrap,
 .fqa-wrap {
     width: 100%;
-    min-width: 1170px;
-    padding-top: 25px;
-    padding-bottom: 60px;
     background-color: $pageBg;
     .left-list {
         .item {
