@@ -14,7 +14,7 @@
                 <ul id="list" class="row part_one_list">
                     {{#each posts}}
                     <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <a target="_blank">
+                        <a target="_blank" href="/metusa/{{id}}">
                             <img src="{{src}}">
                         </a>
                         <p>
@@ -60,7 +60,7 @@
                     <h3 class="part_two_title text-overflow">{{title}}</h3>
                     <p class="part_two_row"></p>
                     <p class="part_two_con">
-                        <a href="javascript:go('/fqa/{{id}}')">{{abstract}}</a>
+                        <a target="_blank" href="/fqa/{{id}}">{{abstract}}</a>
                     </p>
                     </div>
                 </li>
@@ -118,7 +118,7 @@
             </div>
         </div>
         <div class="container find_more">
-            <a class="part_five_more part_more" href="javascripts:go('/activity')">查看更多</a>
+            <a class="part_five_more part_more" target="_blank" href="/activity">查看更多</a>
         </div>
     </div>
     </script>
@@ -145,14 +145,16 @@
             <ul class="row">
                 {{#each posts}}
                     <li class="col-md-4 env-item" data-id="{{id}}">
-                        <img src="{{src}}" height="213" width="379">
+                        <a target="_blank" href="/posts/#{{id}}">
+                            <img src="{{src}}" height="213" width="379">
+                        </a>
                         <p style="line-height: 66px;" class="part_four_title">{{title}}</p>
                     </li>
                 {{/each}}
             </ul>
         </div>
         <div class="container find_more">
-            <a class="part_four_more part_more" href="javascript:go('/activity')">查看更多</a>
+            <a class="part_four_more part_more" target="_blank" href="/process/environment">查看更多</a>
         </div>
     </div>
     </script>
@@ -284,7 +286,7 @@
         <div class="container  panel-default homenews-con">
                 <div class="homenewsTitle">
                     <span><img src="/assets/images/homenewstitle.png" alt=""></span>
-                    <a class="pull-right more" href="javascript:go('/news')">查看更多</a>
+                    <a class="pull-right more" target="_blank" href="/news">查看更多</a>
                 </div>
             
             <div class="tbC">
@@ -294,7 +296,9 @@
                             {{#each news}}
                                 <li class="col-md-6 news-item" data-id="{{id}}">
                                     <div class="col-md-6 img ">
-                                        <img src="{{src}}" alt="{{title}}">
+                                        <a target="_blank" href="/news/#{{id}}">
+                                            <img src="{{src}}" alt="{{title}}">
+                                        </a>
                                     </div>
                                     <div class="col-md-6 con">
                                         <div class="inner">

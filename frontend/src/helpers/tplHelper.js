@@ -108,6 +108,7 @@ define([
             },
             homeNews: {
                 name: "homeNews",
+                category: "home",
                 cnName: "新闻资讯",
                 show: function(tpl, data) {
                     var _s = $(tpl(data));
@@ -166,7 +167,7 @@ define([
                         defaultView: "thumbnail",
                         needHeader: false,
                         // thumbnail_template: '<div class="thumbnail repeater-thumbnail col-md-6 col-sm-6 com-xs-12" style="background: {{color}};"><img class=""  alt="{{name}}" src="{{src}}" ><span>{{name}}</span></div>',
-                        thumbnail_template: '<div class = "col-md-4 col-sm-6 col-xs-12" ><div class = "thumbnail" ><img src = "{{src}}"alt = "{{title}}" ><div class = "caption" > <h5>{{title}} </h5></div> </div> </div>',
+                        thumbnail_template: '<div class = "col-md-4 col-sm-6 col-xs-12" ><div class="thumbnail" ><a target="_blank" href="/posts/{{id}}"><img src="{{src}}" alt="{{title}}" ></a><div class="caption"><h5>{{title}}</h5></div></div></div>',
 
                         actionName: "public_env"
                     });

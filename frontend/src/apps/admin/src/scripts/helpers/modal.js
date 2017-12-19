@@ -405,7 +405,7 @@ define([
                     if (this.moment) {
                         return moment(date).format(this.momentFormat);
                     } else {
-                        return date.getFullYear() + "-" + padTwo(date.getDate()) + "-" + padTwo(date.getMonth() + 1);
+                        return date.getFullYear() + "-" + padTwo(date.getMonth() + 1) + "-" + padTwo(date.getDate());
                     }
                 }
             });

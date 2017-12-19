@@ -14,7 +14,7 @@ define([
                 return s.substr(s.length - 2);
             },
             date = new Date(d);
-        return date.getFullYear() + "-" + padTwo(date.getDate()) + "-" + padTwo(date.getMonth() + 1);
+        return date.getFullYear() + "-" + padTwo(date.getMonth() + 1) + "-" + padTwo(date.getDate());
     }
 
     function customRowRenderer(helpers, callback) {
