@@ -11,6 +11,7 @@ define([
         repeaterId: "photSlideRepeater",
         title: "slide图片列表",
         addTitle: "添加slide图片",
+        needPageSelect: false,
         actionName: "slide"
     });
 });

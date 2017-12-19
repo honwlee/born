@@ -186,7 +186,7 @@
             <div class="part_three_detail">
                 <div class="part_three_datailCon detail">
                     <p class="pt_datail_title title">{{first.title}}</p>
-                    <div class="pt_datail_con content">{{{first.content}}}</div>
+                    <div class="pt_datail_con content">{{{first.description}}}</div>
                     <p class="pt_datail_page page">1/6</p>
                 </div>
                 <ul class="part_three_left">
@@ -194,7 +194,7 @@
                     <li class="left-item item" data-index="{{@index}}">
                         <p class="item-title">{{title}}</p>
                         <img src="{{src}}" height="104px" width="104px">
-                        <div class="item-content hide">{{{content}}}</div>
+                        <div class="item-content hide">{{{description}}}</div>
                     </li>
                     {{/each}}
                 </ul>
@@ -203,7 +203,7 @@
                     <li class="right-item item"  data-index="{{@index}}" data-right="true">
                         <img src="{{src}}" height="104px" width="104px">
                         <p class="item-title">{{title}}</p>
-                        <div class="item-content hide">{{{content}}}</div>
+                        <div class="item-content hide">{{{description}}}</div>
                     </li>
                     {{/each}}
                 </ul>

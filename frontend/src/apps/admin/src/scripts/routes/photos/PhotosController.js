@@ -12,6 +12,7 @@ define([
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         formSelector = $(langx.trim(formTpl));
+    partial.get("page-select-partial", formSelector);
     partial.get("photo-form-partial", formSelector);
     var tpl = hbs.compile("{{> photo-form-partial}}");
     return spa.RouteController.inherit({
@@ -21,8 +22,12 @@ define([
         actionName: "content",
         title: "图片列表",
         addTitle: "添加图片",
+        needPageSelect: false,
         preparing: function(e) {
             var self = this;
+            e.result = server().connect("pages", "get", "select").then(function(pages) {
+                self.pages = pages;
+            });
         },
 
         buildList: function(post) {
@@ -59,6 +64,8 @@ define([
                 selector = this.list.getDom();
             selector.find(".repeater-add button").off("click").on("click", function(e) {
                 modal.show("form", $(tpl({
+                    pages: self.pages,
+                    needPageSelect: self.needPageSelect,
                     checked: true
                 })), this.addTitle, {
                     key: "photos",
