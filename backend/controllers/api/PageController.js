@@ -3,6 +3,7 @@ const _ = require('lodash');
 const Page = require('../../models/Page').Page;
 const Slide = require('../../models/Slide').Slide;
 const Content = require('../../models/Content').Content;
+const Photo = require('../../models/Photo').Photo;
 const parse = require('../../exts/parseList').parse;
 const pageExt = require("../../exts/page");
 const validate = require('../../exts/validation').validate;
@@ -19,6 +20,9 @@ module.exports = {
         let slides = Slide.findAll({
             page: page.name
         });
+        let photo = Photo.findAll({
+            page: page.name
+        })[0];
         let contents = Content.where("id", page.contents, true);
         let _contents = contents.map(function(c) {
             let obj = {
@@ -43,6 +47,7 @@ module.exports = {
         let subs = Page.where("id", page.subs);
         if (page) {
             res.json({
+                banner: photo.src,
                 page: page,
                 subs: subs,
                 contents: _contents,

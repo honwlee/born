@@ -22,7 +22,9 @@ define([
         rendering: function(e) {
             var tpl = hbs.compile(langx.trim(selector.find("#process-main").html()).replace("{{&gt;", "{{>")),
                 self = this,
-                _ec = $(tpl({}));
+                _ec = $(tpl({
+                    banner: self.pageData.banner
+                }));
             if (self.pageData) {
                 self.pageData.contents.forEach(function(content) {
                     var tplData = tplHelper.data[content.tpl];
