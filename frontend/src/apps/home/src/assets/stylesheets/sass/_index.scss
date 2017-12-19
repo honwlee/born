@@ -244,7 +244,7 @@
 }
 
 .part_one {
-    width: 1170px;
+    // width: 1170px;
     margin: 0 auto;
 }
 
@@ -295,8 +295,6 @@
 .part_one_list {
     margin-top: 14px;
     li {
-        float: left;
-        width: 383px;
         cursor: pointer;
         p {
             font-size: 21px;

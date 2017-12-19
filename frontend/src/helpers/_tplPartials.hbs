@@ -4,7 +4,8 @@
         <div class="part">
             <h1 class="main_title main_title_eleven">{{title}}</h1>
         </div>
-        <div class="part_one panel-body">
+        <div class="container">
+        <div class="panel-body">
             <div class="part_one_main">
                 <div class="part_one_con">
                     <div class="one_con">
@@ -14,7 +15,7 @@
                 <ul id="list" class="row part_one_list">
                     {{#each posts}}
                     <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <a target="_blank">
+                        <a target="_blank" href="/metusa/{{id}}">
                             <img src="{{src}}">
                         </a>
                         <p>
@@ -24,7 +25,7 @@
                     {{/each}}
                 </ul>
             </div>
-        </div>
+        </div></div>
     </div>
     </script>
     <script id="homeDesc-form-partial" type="text/x-handlebars-template">
@@ -171,7 +172,7 @@
     </div>
     </script>
     <script id="homeVantage-partial" type="text/x-handlebars-template">
-    <div class="panel-default">
+    <div class="hidden-xs panel-default">
         <!-- 我们的优势 -->
        
         <div class="part">
