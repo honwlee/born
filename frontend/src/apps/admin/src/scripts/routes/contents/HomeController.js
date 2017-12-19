@@ -12,5 +12,6 @@ define([
         title: "页面模板内容列表",
         addTitle: "添加页面模板内容",
         actionName: "home",
+        postAction: "post_home"
     });
 });

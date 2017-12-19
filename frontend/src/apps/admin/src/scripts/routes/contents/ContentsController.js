@@ -56,7 +56,8 @@ define([
         list: null,
         title: "页面模板内容列表",
         addTitle: "添加页面模板内容",
-        actionName: "home",
+        postAction: "create",
+        actionName: "index",
         preparing: function(e) {
             var self = this;
             e.result = server().connect("pages", "get", "select").then(function(pages) {
@@ -162,7 +163,7 @@ define([
                         modal.modal("hide");
                         selector.repeater('render');
                         toastr.success("已保存！");
-                    }, this.actionName);
+                    }, this.postAction);
                 }).on('actionclicked.fu.wizard', function(e, data) {
                     var config = obj.steps.filter(function(s) { return s.step === data.step; })[0];
                     if (config.beforeAction) config.beforeAction(e, modal);
@@ -177,7 +178,7 @@ define([
                         bindCurrentTplEvts(modal, this.value, function() {
                             toastr.success("已保存！");
                             selector.repeater('render');
-                        }, self.actionName);
+                        }, self.postAction);
                         wizard.wizard("next");
                     }
                 });

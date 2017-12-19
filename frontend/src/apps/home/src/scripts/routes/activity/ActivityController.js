@@ -32,7 +32,7 @@ define([
 
         rendering: function(e) {
             var wrap = $("<div>").attr({
-                    class: "activity-wrap"
+                    class: "panel-body activity-wrap"
                 }),
                 div = $("<div>").attr({
                     class: "container"

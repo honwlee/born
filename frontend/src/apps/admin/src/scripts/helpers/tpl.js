@@ -27,7 +27,7 @@ define([
             }, off);
         },
 
-        saveFunc = function(name, selector, opts) {
+        saveFunc = function(name, selector, opts, actionName) {
             var parseData = modalFunc.parseForm(selector.find(".sub-form"));
             parseData._content = __content[name];
             __content[name] = null;
@@ -38,7 +38,7 @@ define([
                 modalFunc.save("contents", selector.find(".form"), saveParam, function(data) {
                     toastr.success("已保存！");
                     selector.modal('hide');
-                });
+                }, actionName);
             }
         };
     var retObj = {
@@ -56,8 +56,8 @@ define([
                 bindEvnts: function(parent, selector, off) {
                     bindEvntsFunc(parent, k, selector, off);
                 },
-                save: function(selector, opts) {
-                    saveFunc(k, selector, opts);
+                save: function(selector, opts, actionName) {
+                    saveFunc(k, selector, opts, actionName);
                 }
             });
         })(d[key], key)
