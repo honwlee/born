@@ -20,9 +20,15 @@
     <link href="https://cdn.bootcss.com/simplemde/1.11.2/simplemde.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
     <script src="https://cdn.bootcss.com/require.js/2.3.5/require.js" data-main="/admin/lib/uncompressed/skylarkjs.js"></script>
+    <script>
+        require.config({
+            waitSeconds: 240
+        });
+    </script>
 </head>
 
 <body class="fuelux">
+
     <div class="main-wrapper" id="mainWrapper">
         <nav class="navbar navbar-fixed-top topNavInner hidden-xs clearfix">
             <div class="container">

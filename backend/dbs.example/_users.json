@@ -1,11 +1,3 @@
 {
-    "users": [{
-        "display": "admin",
-        "username": "admin",
-        "password": "$2a$08$6D6ZxIoA3AGVILOJOznOFOmPuLjbf8leTQLrPiWzvWJJqkmggUPF6",
-        "isAdmin": true,
-        "isSuperAdmin": true,
-        "isActive": true,
-        "id": "HkskeNnyG"
-    }]
+    "users": []
 }
