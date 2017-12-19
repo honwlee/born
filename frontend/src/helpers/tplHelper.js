@@ -92,7 +92,13 @@ define([
             },
             homeProvide: {
                 name: "homeProvide",
-                cnName: "贴心服务"
+                cnName: "贴心服务",
+                show: function(tpl, sub, main) {
+                    var src = (main.src || "").replace(/\\/g, "/");
+                    sub.src = src;
+                    var _s = $(tpl(sub));
+                    return _s;
+                }
             },
             homeNews: {
                 name: "homeNews",
@@ -184,12 +190,12 @@ define([
         },
         getForm: getFormTpl,
         getContent: getContentTpl,
-        show: function(name, data) {
+        show: function(name, sub, main) {
             var tpl = this.getContent(name)
             if (this.data[name].show) {
-                return this.data[name].show(tpl, data);
+                return this.data[name].show(tpl, sub, main);
             } else {
-                return $(tpl(data));
+                return $(tpl(sub));
             }
         }
     };

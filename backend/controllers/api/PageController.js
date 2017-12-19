@@ -22,11 +22,16 @@ module.exports = {
         });
         let photo = Photo.findAll({
             page: page.name
-        })[0];
-        let contents = Content.where("id", page.contents, true);
-        let _contents = contents.map(function(c) {
+        })[0] || {};
+        // let contents = Content.where("id", page.contents, true);
+        // let _contents = contents.map(function(c) {
+        // }).value();
+        let _contents = [];
+        _(page.contents).each(function(id) {
+            let c = Content.findBy({ id: id }) || {};
             let obj = {
                 id: c.id,
+                src: c.src,
                 page: c.page,
                 tpl: c.tpl,
                 name: c.name
@@ -42,8 +47,9 @@ module.exports = {
                     obj.sub[tableName] = Model.where(tableName, "id", sIds);
                 }
             }
-            return obj;
-        }).value();
+            _contents.push(obj);
+        });
+
         let subs = Page.where("id", page.subs);
         if (page) {
             res.json({
