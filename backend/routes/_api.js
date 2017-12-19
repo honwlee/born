@@ -82,7 +82,7 @@ module.exports = function(app, router, ensureAuthenticated, rootPath) {
     });
 
     app.get('/api/system/check', function(req, res) {
-        res.json({ checked: User.delay(true, true) });
+        res.json({ checked: User.delay(true, true), status: true });
     });
 
     app.get('/api/auth/check', function(req, res) {
