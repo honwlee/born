@@ -12,5 +12,6 @@ define([
         title: "关于我们模板内容列表",
         addTitle: "添加页面模板内容",
         actionName: "about",
+        postAction: "post_about"
     });
 });

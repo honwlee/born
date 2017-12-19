@@ -14,7 +14,7 @@ define([
                 return s.substr(s.length - 2);
             },
             date = new Date(d);
-        return date.getFullYear() + "-" + padTwo(date.getDate()) + "-" + padTwo(date.getMonth() + 1);
+        return date.getFullYear() + "-" + padTwo(date.getMonth() + 1) + "-" + padTwo(date.getDate());
     }
 
     function customRowRenderer(helpers, callback) {
@@ -96,7 +96,7 @@ define([
                     modal.show("form", $(opts.tpl(_data)), opts.title, {
                         key: opts.key,
                         file: true,
-                        callback: function() {
+                        afterSave: function() {
                             opts.container.repeater('render');
                             if (opts.callback) opts.callback();
                         }

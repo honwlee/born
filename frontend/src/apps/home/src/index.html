@@ -20,6 +20,11 @@
     <link href="https://cdn.bootcss.com/simplemde/1.11.2/simplemde.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/require.js/2.3.5/require.js" data-main="/lib/uncompressed/skylarkjs.js"></script>
+    <script>
+        require.config({
+            waitSeconds: 240
+        });
+    </script>
 </head>
 
 <body class="fuelux">
@@ -64,9 +69,9 @@
                                 <h5>关于生美国际</h5>
 
 
-                                <a href="/">公司概况</a>
+                                <a href="/about">公司概况</a>
 
-                                <a href="/">新闻中心</a>
+                                <a href="/news">新闻中心</a>
                             </div>
 
 
@@ -82,7 +87,7 @@
                             </div>
                             <div class="same">
                                 <h5>联系我们</h5>
-                                <a href="/">联系我们</a>
+                                <a href="/about/contact">联系我们</a>
 
 
                             </div>
