@@ -78,14 +78,17 @@
 
 .histLeft {
     border-right: 2px solid #006699;
+    dl {
+        height: 246px;
+    }
     dt {
         width: 140px;
         float: left;
     }
     .hisSpan {
         display: block;
-        width: 120px;
-        height: 33px;
+        // width: 120px;
+        // height: 33px;
         background: url("/assets/images/bgT.png") no-repeat;
         background-size: 100% 100%;
         text-align: center;
@@ -112,7 +115,10 @@
 }
 
 .histrRight {
-    padding-top: 204px;
+    padding-top: 80px;
+    dl {
+        height: 140px;
+    }
     dt {
         float: right;
         margin-left: 22px;
@@ -127,7 +133,7 @@
 }
 
 .martRT {
-    margin-top: 140px;
+    margin-top: 150px;
 }
 
 #map {
