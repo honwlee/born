@@ -48,22 +48,23 @@ define([
             if (page.sub) return;
             if (page.subs) {
                 var li = $("<li>").attr({
-                    class: name + "-nav subs"
+                    class: name + "-nav subs dropdown"
                 }).addContent(
                     $("<a>").attr({
-                        class: "nav-item"
+                        class: "nav-item dropdown-toggle"
                     }).data({
                         name: name,
                         isRouter: page.isRouter == false ? false : true,
-                        path: path
-                    }).html(navName)
+                        path: path,
+                        toggle: "dropdown"
+                    }).html(navName + '<b class="caret"></b>').data("toggle", "dropdown")
                 ).appendTo(ul);
 
-                var div = $("<div>").attr({
-                    class: "sameOne"
-                }).appendTo(li).html("<ul class='list-unstyled'></ul>");
+                var subUl = $("<ul>").attr({
+                    class: "list-unstyled dropdown-menu"
+                }).appendTo(li);
 
-                (function(_page, _name, _div) {
+                (function(_page, _name, _ul) {
                     _page.subs.forEach(function(sub) {
                         var subPage = routes[sub],
                             subData = subPage.data;
@@ -79,9 +80,9 @@ define([
                                 parent: _name,
                                 path: subPage.pathto
                             }).html(subData.navName)
-                        ).appendTo(_div.find("ul"));
+                        ).appendTo(_ul);
                     });
-                })(page, name, div);
+                })(page, name, subUl);
             } else {
                 $("<li>").attr({
                     class: name + "-nav "
@@ -275,6 +276,17 @@ define([
             }
             modal.find(".modal .modal-dialog").css("width", "800px");
             skylarkBsExts();
+            $(function() {
+                $("#mainNav").collapse({
+                    toggle: false
+                });
+                $('ul.nav a.dropdown-toggle').dropdown();
+                $('ul.nav li.dropdown').hover(function() {
+                    $(this).find('.dropdown-menu').stop(true, true).fadeIn(500, 200);
+                }, function() {
+                    $(this).find('.dropdown-menu').stop(true, true).fadeOut(500, 200);
+                });
+            });
         },
         routed: function() {}
     });

@@ -19,6 +19,7 @@
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/simplemde/1.11.2/simplemde.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/js-polyfills/0.1.41/polyfill.min.js"></script>
     <script src="https://cdn.bootcss.com/require.js/2.3.5/require.js" data-main="/lib/uncompressed/skylarkjs.js"></script>
     <script>
         require.config({
@@ -29,16 +30,16 @@
 
 <body class="fuelux">
     <div class="main-wrapper" id="mainWrapper">
-        <nav class="navbar navbar-fixed-top topNavInner hidden-xs clearfix">
+        <nav class="navbar navbar-fixed-top" id="mainNav">
             <div class="container">
                 <div class="navbar-header">
                     <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#sk-navbar" aria-controls="sk-navbar" aria-expanded="false">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                    <a class="logo-nav navbar-brand" href="javascript:go('/')"><img id="logo" class="logo" /></a>
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="logo-nav navbar-brand" href="javascript:go('/')"><img id="logo" class="logo hide" title="生美国际" /></a>
                 </div>
                 <div class="hidden-sm hidden-xs navtopinfo">
                     <p class="panel-body gp_code">联系电话：<span id="contact"></span></p>

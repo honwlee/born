@@ -1,6 +1,7 @@
 'use strict';
 const Model = require("./_Base").Model,
     path = require('path'),
+    _ = require('lodash'),
     pageExt = require('../exts/page'),
     fs = require('fs');
 
@@ -34,8 +35,8 @@ exports.Page = class Page extends Model {
         return result;
     }
     static update(args) {
-        args.subs = args.subs ? args.subs.split(",") : [];
-        args.contents = args.contents ? args.contents.split(",") : [];
+        args.subs = _.uniq(args.subs ? args.subs.split(",") : []);
+        args.contents = _.uniq(args.contents ? args.contents.split(",") : []);
         let result = Model.update("pages", "id", args);
         if (!args.notUC) pageExt.update(result);
         return result;
