@@ -19,3 +19,30 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
         @content;
     }
 }
+
+// home page begin
+@include respond-to($tablet-portrait) {
+    .part {
+        padding: 0;
+    }
+    .part_two_con {
+        max-height: 150px;
+    }
+    .find_more {
+        padding: 0;
+    }
+}
+
+@include respond-to($large-desktop) {
+    .part {
+        padding: 50px;
+    }
+    .part_two_con {
+        height: 150px;
+    }
+    .find_more {
+        padding: 30px 0;
+    }
+}
+
+//home page end

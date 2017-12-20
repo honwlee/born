@@ -62,10 +62,6 @@
     background-color: rgb(0, 43, 127);
 }
 
-.part {
-    padding-top: 50px;
-}
-
 .main_title {
     text-align: center;
     font-size: 40px;
@@ -173,7 +169,6 @@
     background-color: #e5e5e5;
     // height: 120px;
     opacity: 0.8676;
-    padding: 20px;
     margin-bottom: 40px;
     @include word-ellipsis-H;
     //多行显示 配合高度
@@ -266,7 +261,6 @@
     display: inline-block;
     width: 100%;
     height: 4px;
-    margin-bottom: 16px;
 }
 
 //
@@ -350,11 +344,9 @@
 }
 
 .part_two_con {
-    height: 150px;
     overflow: hidden;
     color: #010101;
     display: inline-block;
-    margin-left: 21px;
     font-size: 18px;
     line-height: 25px;
 }
@@ -533,7 +525,6 @@
 
 .find_more {
     clear: both;
-    padding: 30px 0;
     margin: 0 auto;
 }
 
@@ -636,18 +627,6 @@
 
 /*生美国际赴美的五心服务*/
 
-.part_ten {
-    width: 1170px;
-    margin: 0 auto;
-    margin-top: 50px;
-}
-
-.part_ten li {
-    float: left;
-    width: 234px;
-    text-align: center;
-}
-
 .part_ten img {
     margin-bottom: 40px;
 }
@@ -666,8 +645,6 @@
     color: #fff;
     display: inline-block;
     margin-top: 20px;
-    margin-left: 40px;
-    margin-right: 40px;
 }
 
 
@@ -766,6 +743,9 @@
             padding: 0;
             border: none;
             background-color: transparent;
+        }
+        .post_overview img {
+            width: 100%;
         }
     }
     // 单个文章 end

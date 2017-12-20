@@ -1,63 +1,89 @@
-$bgColor: #2e6da4;
+$bgColor: #fff;
 $fontColor: #fff;
+$defaultFColor:#0F0F0F;
+$navHeight: 82px;
+$navTabletPortrait: 52px;
+$activeFColor:#d71728;
+$subBg:#d71728;
+$subActiveBg:#f9192f;
 nav.navbar {
-    height: 50px;
+    // height: $navHeight;
     z-index: 40;
     margin-bottom: 0;
     background-color: $bgColor;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
     transition: background-color 0.3s ease-in-out;
+    .dropdown-menu {
+        display: block;
+        min-width: initial;
+        &:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            margin-left: -5px;
+            top: -5px;
+            width: 0px;
+            height: 0px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid $subBg;
+            font-size: 0px;
+            line-height: 0px;
+        }
+        li a {
+            font-size: 14px;
+        }
+    }
     li {
         cursor: pointer;
+        text-align: center;
         &.dropdown {
             ul {
-                background-color: $bgColor;
+                padding-top: 0;
+                padding-bottom: 0;
+                background-color: $subBg;
             }
             li {
-                &:hover,
-                &.active {
-                    background-color: #ccc;
+                a {
+                    color: $fontColor;
+                    padding: 13px 14px;
+                    &:hover {
+                        background-color: transparent;
+                        background-image: none;
+                        background-color: $subActiveBg;
+                    }
+                }
+                &:hover {
+                    background-color: $subBg;
+                    a {
+                        background-color: $subActiveBg;
+                    }
+                }
+                &.active a {
+                    color: $fontColor;
+                    background-image: none;
+                    background-color: $subActiveBg;
                 }
             }
         }
+        &.active a {
+            color: $activeFColor;
+        }
         a {
-            color: $fontColor;
-        }
-        &:hover,
-        &.active {
-            color: #333;
-        }
-    }
-    .navbar-toggle {
-        background-color: $bgColor;
-        .icon-bar {
-            background-color: $fontColor;
+            color: $defaultFColor;
+            font-size: 17px;
+            padding: 10px 15px;
+            &:hover {
+                background-color: transparent;
+            }
         }
     }
     @include respond-to($except-phone) {
         .navbar-nav {
             float: right;
-            li a:hover {
-                border-bottom: 2px solid #42b983;
-            }
+            li a:hover {}
         }
-        .active {
-            border-bottom: 2px solid #42b983;
-        }
-    }
-    @include respond-to($tablet-portrait) {
-        .navbar {
-            .navbar-collapse {
-                background-color: $fontColor;
-                z-index: 30;
-            }
-        }
-        .container {
-            background-color: $fontColor;
-        }
-        .active {
-            background-color: #ccc;
-        }
+        .active {}
     }
     .logo-nav {
         padding: 10px;
@@ -66,5 +92,42 @@ nav.navbar {
         position: relative;
         bottom: 4px;
         padding: 0 5px;
+    }
+}
+
+@include respond-to($except-phone) {
+    .navbar {
+        height: $navHeight;
+    }
+    #mainWrapper #main {
+        margin-top: $navHeight;
+    }
+}
+
+@include respond-to($tablet-portrait) {
+    .navbar {
+        height: $navTabletPortrait;
+        .navbar-collapse {
+            background-color: $fontColor;
+            z-index: 30;
+        }
+        .navbar-toggle {
+            background-color: $subBg;
+            .icon-bar {
+                background-color: $fontColor !important;
+            }
+        }
+    }
+    #mainWrapper #main {
+        margin-top: $navTabletPortrait;
+    }
+    .container {
+        // background-color: $fontColor;
+    }
+    .active {
+        background-color: $subActiveBg;
+        a {
+            color: $fontColor;
+        }
     }
 }
