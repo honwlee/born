@@ -44,7 +44,7 @@ define([
             //     customMarkup = '<a href="#">' + rowData.name + '</a><div class="small text-muted">' + '</div>';
             //     break;
             case "published":
-                customMarkup = rowData.published ? "是" : "否";
+                customMarkup = rowData.published == "true" ? "是" : "否";
                 break;
             case 'publishedDate':
                 customMarkup = formatDate(rowData.publishedDate);
