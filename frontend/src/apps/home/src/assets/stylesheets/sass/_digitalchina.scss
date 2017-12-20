@@ -70,7 +70,6 @@ ul {
 .homenews {
     width: 100%;
     height: 600px;
-    background: url(/assets/images/homenewsbg.jpg) no-repeat center top;
     margin-top: 30px;
     padding-bottom: 70px;
 }
@@ -146,28 +145,6 @@ ul {
         padding-bottom: 12px;
         display: inline-block;
     }
-    .prev {
-        position: absolute;
-        right: 29px;
-        bottom: 0;
-        width: 28px;
-        height: 28px;
-        background: url(/assets/images/newsnp.jpg) no-repeat 0 0;
-        &:hover {
-            background: url(/assets/images/newsnp.jpg) no-repeat -28px 0;
-        }
-    }
-    .next {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 28px;
-        height: 28px;
-        background: url(/assets/images/newsnp.jpg) no-repeat 0 -28px;
-        &:hover {
-            background: url(/assets/images/newsnp.jpg) no-repeat -28px -28px;
-        }
-    }
 }
 
 .footerOne {
@@ -205,58 +182,6 @@ ul {
     .innerCon .right {
         float: right;
     }
-    .innerCon .right .footerweibo {
-        float: left;
-        margin-right: 30px;
-        display: block;
-        width: 41px;
-        height: 41px;
-        background: url(/assets/images/footerweibo.png) no-repeat;
-    }
-    .innerCon .right .footerweibo:hover {
-        background: url(/assets/images/footerweibohover.png) no-repeat;
-    }
-    .innerCon .right .footerweixin {
-        position: relative;
-        padding-bottom: 14px;
-        cursor: pointer;
-        float: left;
-        width: 41px;
-        height: 41px;
-        background: url(/assets/images/footerweixin.png) no-repeat;
-        box-sizing: content-box;
-    }
-    .innerCon .right .footerweixin:hover {
-        background: url(/assets/images/footerweixinhover.png) no-repeat;
-    }
-    .innerCon .right .footerweixin .code {
-        display: none;
-        position: absolute;
-        top: 54px;
-        right: 0;
-        width: 111px;
-        height: 111px;
-    }
-    .innerCon .right .footerweixin .code:before {
-        content: '';
-        position: absolute;
-        right: 15px;
-        top: -8px;
-        width: 0px;
-        height: 0px;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-bottom: 8px solid #fff;
-        font-size: 0px;
-        line-height: 0px;
-    }
-    .innerCon .right .footerweixin:hover .code {
-        display: block;
-    }
-    .innerCon .right .footerweixin:hover .code img {
-        display: block;
-        border-radius: 5px;
-    }
 }
 
 .footer .footerTwo {
@@ -266,27 +191,6 @@ ul {
         text-align: center;
         color: #828282;
         margin: 0;
-    }
-}
-
-.footercode {
-    text-align: center;
-    position: relative;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    a {
-        display: inline-block;
-        width: 50px;
-        height: 50px;
-        margin: 0 15px;
-    }
-    a.mobi-code {
-        background: url(/assets/images/mobiweixin.png) no-repeat;
-        background-size: 100%;
-    }
-    a.mobi-weibo {
-        background: url(/assets/images/mobiweibo.png) no-repeat;
-        background-size: 100%;
     }
 }
 
@@ -396,11 +300,6 @@ ul {
     opacity: 0.8;
 }
 
-.ywbjTitlePic img {
-    display: block;
-    width: 100%;
-}
-
 .ywbjTopTitle {
     margin: 25px 0 20px 0;
     font-size: 16px;
@@ -415,49 +314,4 @@ ul {
         position: relative;
         top: 3px;
     }
-}
-
-.ywbjCont {
-    font-size: 14px;
-    color: #666;
-    p {
-        text-indent: 2em;
-        padding-bottom: 10px;
-        strong {
-            color: #333;
-        }
-    }
-    .img {
-        text-align: center;
-        padding: 25px 0;
-    }
-    .txtDL {
-        padding-bottom: 30px;
-        dd {
-            background: url(/assets/images/liIcon2.png) 30px 8px no-repeat;
-            padding-left: 42px;
-        }
-    }
-    .yxszBox .txtLeft {
-        float: left;
-        width: 450px;
-    }
-    .yxszBox .pic {
-        float: right;
-        margin-right: 20px;
-    }
-    .link {
-        font-size: 15px;
-        font-style: italic;
-        color: #d7182a;
-        font-weight: bold;
-        margin-top: 10px;
-        a {
-            color: #d7182a;
-        }
-    }
-}
-
-.itstContent {
-    margin-top: -25px;
 }

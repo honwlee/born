@@ -99,12 +99,11 @@
         </div>
         <div class="container panel-body panel row activity-con">
             <div id="success_left" class="col-md-6 col-sm-6 col-xs-12 activity-item" data-id="{{first.id}}">
-                <img src="{{first.src}}" title="" height="267" width="577">
+                <img src="{{first.src}}" title="" height="267" width="100%">
                 <h3 class="left-title">{{title}}</h3>
                 <div class="left-abstract">{{first.abstract}}</div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12 right-con">
-                <div  class="right-con">
                     <ul>
                         {{#each activePage}}
                         <li data-id="{{id}}" class="col-md-6 col-sm-6 col-xs-12 activity-item">
@@ -115,7 +114,6 @@
                         </li>
                         {{/each}}
                     </ul>
-                </div>
             </div>
         </div>
         <div class="container find_more">
