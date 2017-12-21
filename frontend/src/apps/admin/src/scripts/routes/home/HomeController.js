@@ -20,8 +20,8 @@ define([
         preparing: function(e) {
             var self = this;
             e.result = server().connect("sites", "get", "config").then(function(data) {
-                self.site = data.site;
-                self.site.snippets = data.snippets;
+                self.site = data.site || {};
+                self.site.snippets = data.snippets || [];
             });
         },
         rendering: function(e) {
