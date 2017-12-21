@@ -241,19 +241,18 @@
             </div>
             <div class="panel-body">
                 <ul class="container">
-                    
-                    {{#each snippets}}
-                        {{#if @index}} 
-                            <li class="col-lg-2 col-md-2 col-sm-2 text-center">
-                        {{else}} 
-                            <li class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 text-center">
-                        {{/if}}
-                        <img src="{{src}}" height="130" width="130">
-                        <p class="part_ten_title">{{title}}</p>
-                        <p class="part_ten_main">{{description}}</p>
-                        <div class="part_ten_con">{{{content}}}</div>
-                    </li>
-                    {{/each}}
+
+                    {{#each snippets}} {{#if @index}}
+                    <li class="col-lg-2 col-md-2 col-sm-2 text-center">
+                        {{else}}
+                        <li class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 text-center">
+                            {{/if}}
+                            <img src="{{src}}" height="130" width="130">
+                            <p class="part_ten_title">{{title}}</p>
+                            <p class="part_ten_main">{{description}}</p>
+                            <div class="part_ten_con">{{{content}}}</div>
+                        </li>
+                        {{/each}}
                 </ul>
             </div>
         </div>
@@ -279,7 +278,7 @@
             </div>
         </div>
     </script>
-    
+
     <script id="homeNews-partial" type="text/x-handlebars-template">
         <div class="homenews">
             <!-- 新闻消息 -->
@@ -528,46 +527,75 @@
                 </div>
             </div>
         </div>
-</div>
-</script>
-<script id="aboutContact-form-partial" type="text/x-handlebars-template">
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="title">标题</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" name="title" value="{{title}}" />
+    </script>
+    <script id="aboutContact-form-partial" type="text/x-handlebars-template">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">选择段内容</label>
-        <div class="col-sm-10">
-            <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_contact" type="button">点击选择</button>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">选择段内容</label>
+            <div class="col-sm-10">
+                <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_contact" type="button">点击选择</button>
+            </div>
         </div>
-    </div>
-</script>
+    </script>
 
-<script id="retServicePage-partial" type="text/x-handlebars-template">
-    <div class="row">
-        {{#each snippets}}
-        <div class="col-md-10 col-md-offset-1 col-xs-12">
-            <h3 class="text-center">{{title}}</h3>
-            <div class="content">{{{content}}}</div>
+     <script id="aboutJob-partial" type="text/x-handlebars-template">
+        <div class="col-sm-10 col-xs-12 col-clear-padding">
+            <div class="mainWrapRight">
+                <div class="wrapRight-con">
+                    {{#each snippets}}
+                        <div class="ywbjTopTitle">
+                            <span class="">{{title}}</span>
+                        </div>
+                        <div class="content">
+                            {{{content}}}
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
         </div>
-        {{/each}}
-    </div>
-</script>
-<script id="retServicePage-form-partial" type="text/x-handlebars-template">
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="title">标题</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" name="title" value="{{title}}" />
+    </script>
+    <script id="aboutJob-form-partial" type="text/x-handlebars-template">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">选择段内容</label>
-        <div class="col-sm-10">
-            <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_service" type="button">点击选择</button>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">选择段内容</label>
+            <div class="col-sm-10">
+                <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_job" type="button">点击选择</button>
+            </div>
         </div>
-    </div>
-</script>
+    </script>
 
+    <script id="retServicePage-partial" type="text/x-handlebars-template">
+        <div class="row">
+            {{#each snippets}}
+            <div class="col-md-10 col-md-offset-1 col-xs-12">
+                <h3 class="text-center">{{title}}</h3>
+                <div class="content">{{{content}}}</div>
+            </div>
+            {{/each}}
+        </div>
+    </script>
+    <script id="retServicePage-form-partial" type="text/x-handlebars-template">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">选择段内容</label>
+            <div class="col-sm-10">
+                <button class="btn btn-primary select-content-list" data-type="snippets" data-action="public_service" type="button">点击选择</button>
+            </div>
+        </div>
+    </script>
 </div>

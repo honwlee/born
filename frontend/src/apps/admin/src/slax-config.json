@@ -273,6 +273,7 @@
                 "snippets-certificate",
                 "snippets-about",
                 "snippets-contact",
+                "snippets-job",
                 "snippets-service",
                 "snippets-link"
             ],
@@ -377,6 +378,17 @@
             },
             "controller": {
                 "type": "scripts/routes/snippets/ContactController"
+            }
+        },
+        "snippets-job": {
+            "sub": true,
+            "pathto": "/snippets/job",
+            "data": {
+                "name": "snippets-job",
+                "navName": "工作机会"
+            },
+            "controller": {
+                "type": "scripts/routes/snippets/JobController"
             }
         },
         "snippets-service": {

@@ -52,7 +52,7 @@ module.exports = {
     }
 }
 
-_(["vantage", "provide", "visa", "hospital", "flow", "certificate", "about", "contact", "service", "link"]).each(function(name) {
+_(["vantage", "provide", "visa", "hospital", "flow", "certificate", "about", "contact", "job", "service", "link"]).each(function(name) {
     let catName = "snippets_" + name;
     module.exports[name] = function(req, res) {
         parse("snippets", req, res, ["title"], {

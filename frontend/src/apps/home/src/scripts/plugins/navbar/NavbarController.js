@@ -46,23 +46,21 @@ define([
             if (page.sub) return;
             if (page.subs) {
                 var li = $("<li>").attr({
-                    class: name + "-nav subs dropdown"
+                    class: name + "-nav subs"
                 }).addContent(
                     $("<a>").attr({
-                        class: "nav-item dropdown-toggle"
+                        class: "nav-item"
                     }).data({
                         name: name,
-                        isRouter: page.isRouter == false ? false : true,
-                        path: path,
-                        toggle: "dropdown"
-                    }).html(navName + '<b class="caret"></b>').data("toggle", "dropdown")
+                        path: path
+                    }).html(navName)
                 ).appendTo(ul);
 
-                var subUl = $("<ul>").attr({
-                    class: "list-unstyled dropdown-menu"
-                }).appendTo(li);
+                var div = $("<div>").attr({
+                    class: "sameOne"
+                }).appendTo(li).html("<ul class='list-unstyled'></ul>");
 
-                (function(_page, _name, _ul) {
+                (function(_page, _name, _div) {
                     _page.subs.forEach(function(sub) {
                         var subPage = routes[sub],
                             subData = subPage.data;
@@ -77,9 +75,9 @@ define([
                                 parent: _name,
                                 path: subPage.pathto
                             }).html(subData.navName)
-                        ).appendTo(_ul);
+                        ).appendTo(_div.find("ul"));
                     });
-                })(page, name, subUl);
+                })(page, name, div);
             } else {
                 $("<li>").attr({
                     class: name + "-nav "
@@ -99,15 +97,11 @@ define([
             src: data.src,
             title: data.name,
             alt: data.name
-        }).removeClass("hide");
+        });
         $("#contact").html(data.contact);
         $("#footerTwo").html(data.footer);
         $("meta[name=keyword]").attr("content", data.keyword);
         $("meta[name=description]").attr("content", data.description);
-        partial.get("footerLink-partial");
-        $("#footerOne").empty().html(handlebars.compile("{{> footerLink-partial}}")({
-            snippets: __sitesData.snippets
-        }));
     };
 
     return spa.PluginController.inherit({
@@ -190,12 +184,7 @@ define([
             }
             _el.html(ul);
             if (__sitesData.site && __sitesData.site.id) update(__sitesData.site);
-            $(function() {
-                $("#mainNav").collapse({
-                    toggle: false
-                });
-                $('ul.nav a.dropdown-toggle').dropdown();
-            });
+            $('[data-toggle="dropdown"]').dropdown();
         },
         routed: function() {}
     });

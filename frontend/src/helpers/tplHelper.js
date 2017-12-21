@@ -205,6 +205,12 @@ define([
                 cnName: "联系我们",
                 category: "about",
             },
+            aboutJob: {
+                domId: "aJob",
+                name: "aboutJob",
+                cnName: "工作机会",
+                category: "about",
+            },
             retServicePage: {
                 name: "retServicePage",
                 cnName: "回国服务",

@@ -49,14 +49,25 @@
             "pathto": "/process",
             "data": {
                 "name": "process",
-                "navName": "赴美流程 "
+                "navName": "赴美流程"
             },
             "subs": [
+                "process-process",
                 "process-visa",
                 "process-cohospital",
                 "process-environment",
                 "process-certificate"
             ],
+            "controller": {
+                "type": "scripts/routes/process/ProcessController"
+            }
+        },
+        "process-process": {
+            "pathto": "/process",
+            "data": {
+                "name": "process-process",
+                "navName": "赴美流程"
+            },
             "controller": {
                 "type": "scripts/routes/process/ProcessController"
             }
@@ -193,7 +204,7 @@
             "pathto": "/fqa",
             "data": {
                 "name": "fqa",
-                "navName": "赴美回答"
+                "navName": "赴美问答"
             },
             "controller": {
                 "type": "scripts/routes/fqa/FqaController"
@@ -217,8 +228,20 @@
                 "navName": "关于我们"
             },
             "subs": [
-                "about-contact"
+                "about-about",
+                "about-contact",
+                "about-job"
             ],
+            "controller": {
+                "type": "scripts/routes/about/AboutController"
+            }
+        },
+        "about-about": {
+            "pathto": "/about",
+            "data": {
+                "name": "about-about",
+                "navName": "关于我们"
+            },
             "controller": {
                 "type": "scripts/routes/about/AboutController"
             }
@@ -232,6 +255,17 @@
             },
             "controller": {
                 "type": "scripts/routes/about/subs/ContactController"
+            }
+        },
+        "about-job": {
+            "sub": true,
+            "pathto": "/about/job",
+            "data": {
+                "name": "about-job",
+                "navName": "工作机会"
+            },
+            "controller": {
+                "type": "scripts/routes/about/subs/JobController"
             }
         }
     }

@@ -52,7 +52,7 @@ module.exports = {
     contents: {
         module: require("./ContentController"),
         uploadPath: "contents",
-        extralNames: ["home", "service", "process", "about", "link"],
+        extralNames: ["home", "service", "process", "about"],
         extraPrefix: [{
             name: "post_",
             method: "post"
@@ -72,7 +72,7 @@ module.exports = {
     snippets: {
         module: require("./SnippetController"),
         uploadPath: "snippets",
-        extralNames: ["vantage", "provide", "visa", "hospital", "flow", "certificate", "about", "contact", "service", "link"],
+        extralNames: ["vantage", "provide", "visa", "hospital", "flow", "certificate", "about", "contact", "job", "service", "link"],
         extraPrefix: [{
             name: "post_",
             method: "post"

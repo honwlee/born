@@ -47,7 +47,7 @@ module.exports = {
         res.json(Content.importData());
     }
 }
-_(["home", "service", "process", "about", "link"]).each(function(name) {
+_(["home", "service", "process", "about"]).each(function(name) {
     let catName = "contents_" + name;
     module.exports[name] = function(req, res) {
         parse("contents", req, res, ["name"], {
