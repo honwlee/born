@@ -86,6 +86,7 @@ define([
                     action: self.actionName ? "post_" + self.actionName : "create",
                     file: true,
                     afterSave: function() {
+                        __content = null;
                         selector.repeater('render');
                     }
                 };
@@ -96,9 +97,6 @@ define([
                     opts.beforeSave = function(obj) {
                         obj._content = __content;
                     };
-                    opts.afterSave = function() {
-                        __content = null;
-                    }
                 }
                 modal.show("form", $(tpl(self.snippetTplOpts)), this.addTitle, opts);
             });

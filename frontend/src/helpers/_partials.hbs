@@ -4,76 +4,28 @@
             <h3 class="text-danger">系统出错了，请联系管理员！</h3>
         </div>
     </script>
-    <script id="photoSwipe-partial" type="text/x-handlebars-template">
-        <section class="features photo-container" id="photosContainer">
-            <div class="container">
-                <div class="section section--head">
-                    <div class="row">
-                        <div class="items-container">
-                            {{#each photos}} {{> photoSwipe-item-partial}} {{/each}}
+
+    <script id="footerLink-partial" type="text/x-handlebars-template">
+        <div class="innner">
+            <div class="innerCon clearfix">
+                <div class="left clearfix">
+                    {{#each snippets}}
+                        <div class="same">
+                            <h5>{{title}}</h5>
+                            {{#each links}}
+                                {{#if src}} 
+                                    <a href="{{link}}"><img src="{{src}}"></a> 
+                                {{else}}
+                                    <a href="{{link}}">{{name}}</a>
+                                {{/if}}
+                            {{/each}}
                         </div>
-                    </div>
+                    {{/each}}
                 </div>
-            </div>
-        </section>
-    </script>
-    <script id="photoSwipe-item-partial" type="text/x-handlebars-template">
-        <a href="{{normal}}" data-size="{{size}}" data-med="{{big}}" data-med-size="{{size}}" class="{{imgClass}}">
-            <img src="{{mini}}" alt="" />
-            <figure>{{desc}}</figure>
-        </a>
-    </script>
-
-    <script id="gallery-partial" type="text/x-handlebars-template">
-        <div id="gallery" class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="pswp__bg"></div>
-
-            <div class="pswp__scroll-wrap">
-
-                <div class="pswp__container">
-                    <div class="pswp__item"></div>
-                    <div class="pswp__item"></div>
-                    <div class="pswp__item"></div>
-                </div>
-
-                <div class="pswp__ui pswp__ui--hidden">
-
-                    <div class="pswp__top-bar">
-
-                        <div class="pswp__counter"></div>
-
-                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                        <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                        <div class="pswp__preloader">
-                            <div class="pswp__preloader__icn">
-                                <div class="pswp__preloader__cut">
-                                    <div class="pswp__preloader__donut"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                        <div class="pswp__share-tooltip"></div>
-                    </div>
-
-                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-                    <div class="pswp__caption">
-                        <div class="pswp__caption__center">
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </script>
+
     <script id="info-list-partial" type="text/x-handlebars-template">
         <div class="wrap fqa-wrap panel-body clearfix">
             <div class="container">

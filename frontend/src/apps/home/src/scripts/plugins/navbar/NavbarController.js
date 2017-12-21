@@ -104,6 +104,10 @@ define([
         $("#footerTwo").html(data.footer);
         $("meta[name=keyword]").attr("content", data.keyword);
         $("meta[name=description]").attr("content", data.description);
+        partial.get("footerLink-partial");
+        $("#footerOne").empty().html(handlebars.compile("{{> footerLink-partial}}")({
+            snippets: __sitesData.snippets
+        }));
     };
 
     return spa.PluginController.inherit({

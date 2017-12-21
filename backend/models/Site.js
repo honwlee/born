@@ -20,9 +20,11 @@ exports.Site = class Site extends Model {
         return Model.findByReg("sites", args);
     }
     static create(args) {
+        if (args._content) args._content = JSON.parse(args._content);
         return Model.create("sites", args);
     }
     static update(args) {
+        if (args._content) args._content = JSON.parse(args._content);
         return Model.update("sites", "id", args);
     }
     static delete(args) {

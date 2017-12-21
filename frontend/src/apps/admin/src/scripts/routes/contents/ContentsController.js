@@ -129,7 +129,7 @@ define([
                             title: '基本内容',
                             content: $(tpl({
                                 pages: self.pages,
-                                tpls: tplHelper.tpls.filter(function(tpl) { return tpl.category === this.actionName; })
+                                tpls: tplHelper.tpls.filter(function(tpl) { return tpl.category === self.actionName; })
                             }))[0].outerHTML,
                             beforeAction: function(e, _modal) {
                                 if (!modalFunc.checkForm(["name"], _modal)) {

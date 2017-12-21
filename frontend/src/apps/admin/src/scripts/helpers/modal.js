@@ -321,7 +321,7 @@ define([
                     showList(selector, value, {
                         search: opts.search ? opts.search : false,
                         list_selectable: opts.list_selectable || "multi",
-                        listSCallback: opts.list_selectable
+                        listSCallback: opts.listSCallback
                     });
                 });
             });
@@ -338,7 +338,7 @@ define([
             showList(selector, data.type, {
                 search: opts.search ? opts.search : false,
                 list_selectable: opts.list_selectable || "multi",
-                listSCallback: opts.list_selectable
+                listSCallback: opts.listSCallback
             }, data.action);
         });
     };
