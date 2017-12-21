@@ -27,50 +27,44 @@
     </script>
 
     <script id="info-list-partial" type="text/x-handlebars-template">
-        <div class="wrap fqa-wrap panel-body clearfix">
+        <div class="wrap {{routeName}}-wrap panel-body clearfix">
             <div class="container">
                 <div class="row ">
-                    <div class="col-md-8 left-list">
+                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 left-list">
                         <div class="panel panel-body home-repeater-container repeater-container">
                            
                         </div>
                     </div>
-                    <div class="col-md-4 right-list">
+                    <div class="hidden-xs col-sm-4 col-md-4 col-lg-4 col-md-4 right-list">
                         <div class="panel panel-default">
                             <div class="panel-heading list-title">美国相关资讯推荐</div>
-                            <div class="panel-body">
-                                <ul class="rec-list list-unstyled">
+                                <ul class="list-group list-unstyled rec-list">
                                 {{#each recommended.news}}
-                                    <li class="list-item">
+                                    <li class="list-group-item text-overflow list-item">
                                         <a class="title" href="/{{../routeName}}/{{id}}" title="{{title}}">{{title}}</a> {{/each}}
                                     </li>
                                 </ul>
-                            </div>
                             <div class="panel-footer text-right more"><a href="/news">查看更多</a></div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading list-title">热门文章推荐</div>
-                            <div class="panel-body">
-                                <ul class="rec-list list-unstyled">
+                                <ul class="list-group list-unstyled rec-list">
                                     {{#each recommended.posts}}
-                                    <li class="list-item">
+                                    <li class="list-group-item text-overflow list-item">
                                         <a class="title" href="/{{../routeName}}/{{id}}" title="{{title}}">{{title}}</a> 
                                     </li>
                                     {{/each}}
                                 </ul>
-                            </div>
                             <div class="panel-footer text-right more"><a href="/metusa">查看更多</a></div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading list-title">热门问答推荐</div>
-                            <div class="panel-body">
-                                <ul class="rec-list list-unstyled">
+                                <ul class="list-group list-unstyled rec-list">
                                 {{#each recommended.qas}}
-                                    <li class="list-item">
+                                    <li class="list-group-item text-overflow list-item">
                                         <a class="title" href="/{{../routeName}}/{{id}}" title="{{title}}">{{title}}</a> {{/each}}
                                     </li>
                                 </ul>
-                            </div>
                             <div class="panel-footer text-right more"><a href="/fqa">查看更多</a></div>
                         </div>
                     </div>

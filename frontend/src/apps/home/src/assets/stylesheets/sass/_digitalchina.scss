@@ -185,6 +185,7 @@ ul {
 .footer .footerTwo {
     padding: 22px 0;
     background: #394048;
+    color: #fff;
     p {
         text-align: center;
         color: #828282;
@@ -203,7 +204,7 @@ ul {
     }
 }
 
-.mainWrapCon {
+.about-container {
     background: $pageBg;
     padding-bottom: 70px;
     .position-current {
@@ -214,10 +215,6 @@ ul {
             color: #666666;
         }
     }
-}
-
-.mainWrapInner {
-    padding-top: 30px;
 }
 
 .h4TitleLeft {
@@ -266,7 +263,7 @@ ul {
         color: #666666;
         margin-bottom: 25px;
         line-height: 22px;
-        text-indent: 2em;
+        // text-indent: 2em;
     }
     .manageDiv {
         background: #fff;

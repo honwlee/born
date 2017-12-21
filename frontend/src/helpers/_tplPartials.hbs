@@ -234,15 +234,20 @@
         </div>
     </script>
     <script id="homeProvide-partial" type="text/x-handlebars-template">
-        <div class="panel-default" style="background: url({{src}}) no-repeat; background-size: 100% 640px;">
+        <div class="panel-default hidden-xs" style="background: url({{src}}) no-repeat; background-size: 100% 640px;">
             <!-- 生美国际赴美的五心服务 -->
             <div class="part">
                 <h1 class="main_title main_title_ten">{{title}}</h1>
             </div>
             <div class="panel-body">
-                <ul class="part_ten">
+                <ul class="container">
+                    
                     {{#each snippets}}
-                    <li>
+                        {{#if @index}} 
+                            <li class="col-lg-2 col-md-2 col-sm-2 text-center">
+                        {{else}} 
+                            <li class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 text-center">
+                        {{/if}}
                         <img src="{{src}}" height="130" width="130">
                         <p class="part_ten_title">{{title}}</p>
                         <p class="part_ten_main">{{description}}</p>
@@ -328,7 +333,7 @@
     </script>
     <script id="processMain-partial" type="text/x-handlebars-template">
         <div class="row histWrap">
-            <div class="col-md-6 col-sm-12 col-xs-12 histLeft">
+            <div class="col-md-6 col-sm-6 col-xs-6 histLeft">
                 {{#each leftData}} {{#if @index}}
                 <dl class="martT cf">
                     {{else}}
@@ -342,7 +347,7 @@
                     </dl>
                     {{/each}}
             </div>
-            <div class="col-md-6 col-sm-12 col-xs-12 histLeft histrRight">
+            <div class="col-md-6 col-sm-6 col-xs-6 histLeft histrRight">
                 {{#each rightData}} {{#if @index}}
                 <dl class="martRT cf">
                     {{else}}

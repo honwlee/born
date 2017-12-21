@@ -14,7 +14,7 @@ nav.navbar {
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
     transition: background-color 0.3s ease-in-out;
     .dropdown-menu {
-        display: block;
+        display: none;
         min-width: initial;
         &:before {
             content: '';
@@ -37,6 +37,9 @@ nav.navbar {
     li {
         cursor: pointer;
         text-align: center;
+        &:hover .dropdown-menu {
+            display: block;
+        }
         &.dropdown {
             ul {
                 padding-top: 0;
@@ -116,17 +119,17 @@ nav.navbar {
                 background-color: $fontColor !important;
             }
         }
+        .active {
+            background-color: $subActiveBg;
+            a {
+                color: $fontColor;
+            }
+        }
     }
     #mainWrapper #main {
         margin-top: $navTabletPortrait;
     }
     .container {
         // background-color: $fontColor;
-    }
-    .active {
-        background-color: $subActiveBg;
-        a {
-            color: $fontColor;
-        }
     }
 }

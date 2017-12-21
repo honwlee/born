@@ -1,46 +1,48 @@
 <div>
     <script id="process-main" type="text/x-handlebars-template">
-        <div class="panel-body process-container">
+        <div class="process-container">
             <div class="banner block">
                 <img width="100%" src="{{banner}}" />
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-2 col-xs-12 col-clear-padding">
-                        <div class="leftNavCon">
-                            <!-- 业务布局左侧菜单 -->
-                            <h4 class="h4TitleLeft">赴美流程</h4>
-                            <div class="leftNavall">
-                                <ul class="list-unstyled" id="pTabList">
-                                    <li class="col-sm-12 col-xs-12 mobi-clear-padding col-clear-padding">
-                                        <a href="#pProcess" data-toggle="tab" aria-expanded="false" data-path="/process">主要流程</a>
-                                    </li>
-                                    <li class="col-sm-12 col-xs-12 mobi-clear-padding col-clear-padding">
-                                        <a href="#pVisa" data-toggle="tab" aria-expanded="false" data-path="/process/visa">签证申请</a>
-                                    </li>
-                                    <li class="col-sm-12 col-xs-12 mobi-clear-padding col-clear-padding">
-                                        <a href="#pCohospital" data-toggle="tab" aria-expanded="false" data-path="/process/cohospital">合作医院</a>
-                                    </li>
-                                    <li class="col-sm-12 col-xs-12 mobi-clear-padding col-clear-padding">
-                                        <a href="#pEnvironment" data-toggle="tab" aria-expanded="false" data-path="/process/environment">待产环境</a>
-                                    </li>
-                                    <li class="col-sm-12 col-xs-12 mobi-clear-padding col-clear-padding">
-                                        <a href="#pCertificate" data-toggle="tab" aria-expanded="false" data-path="/process/certificate">证件办理</a>
-                                    </li>
-                                </ul>
+            <div class="panel-body">
+                <div class="panel-body panel container">
+                    <div class="row">
+                        <div class="col-sm-2 col-xs-12">
+                            <div class="leftNavCon">
+                                <!-- 业务布局左侧菜单 -->
+                                <h4 class="hidden-xs h4TitleLeft">赴美流程</h4>
+                                <div class="leftNavall">
+                                    <ul class="list-unstyled" id="pTabList">
+                                        <li class="col-sm-12 col-xs-12">
+                                            <a href="#pProcess" data-toggle="tab" aria-expanded="false" data-path="/process">主要流程</a>
+                                        </li>
+                                        <li class="col-sm-12 col-xs-12">
+                                            <a href="#pVisa" data-toggle="tab" aria-expanded="false" data-path="/process/visa">签证申请</a>
+                                        </li>
+                                        <li class="col-sm-12 col-xs-12">
+                                            <a href="#pCohospital" data-toggle="tab" aria-expanded="false" data-path="/process/cohospital">合作医院</a>
+                                        </li>
+                                        <li class="col-sm-12 col-xs-12">
+                                            <a href="#pEnvironment" data-toggle="tab" aria-expanded="false" data-path="/process/environment">待产环境</a>
+                                        </li>
+                                        <li class="col-sm-12 col-xs-12">
+                                            <a href="#pCertificate" data-toggle="tab" aria-expanded="false" data-path="/process/certificate">证件办理</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-sm-10 col-xs-12 col-clear-padding">
-                        <div class="tab-content">
-                            <div class="tab-pane" id="pProcess">
-                                <div class="layou_title">主要流程</div>
+                        <div class="col-sm-10 col-xs-12">
+                            <div class="tab-content">
+                                <div class="tab-pane" id="pProcess">
+                                    <div class="layou_title">主要流程</div>
+                                </div>
+                                <div class="tab-pane" id="pVisa"></div>
+                                <div class="tab-pane" id="pCohospital"></div>
+                                <div class="tab-pane" id="pEnvironment"></div>
+                                <div class="tab-pane" id="pCertificate"></div>
                             </div>
-                            <div class="tab-pane" id="pVisa"></div>
-                            <div class="tab-pane" id="pCohospital"></div>
-                            <div class="tab-pane" id="pEnvironment"></div>
-                            <div class="tab-pane" id="pCertificate"></div>
                         </div>
                     </div>
                 </div>

@@ -22,6 +22,10 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
 
 // home page begin
 @include respond-to($tablet-portrait) {
+    .mobi-clear-padding {
+        padding: 0 !important;
+    }
+    // home begin
     .part {
         padding: 0;
     }
@@ -44,6 +48,19 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
             }
         }
     }
+    // home end
+    // 导航页面(metusa/news/fqa) begin
+    .metusa-wrap,
+    .news-wrap,
+    .fqa-wrap {
+        .item {
+            .text-tip {
+                max-height: 80px;
+            }
+        }
+    }
+    //(metusa/news/fqa) end
+    // 导航页面 end
 }
 
 @include respond-to($large-desktop) {
@@ -69,15 +86,31 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
             }
         }
     }
+    // 导航页面(metusa/news/fqa) begin
+    .metusa-wrap,
+    .news-wrap,
+    .fqa-wrap {
+        .item {
+            .text-tip {
+                height: 80px;
+            }
+        }
+    }
+    // 导航页面 end
 }
 
 //home page end
-
-
-@media only screen and (min-width:360px) and (max-width:384px){
-    html{font-size:64% !important;}
+@media only screen and (min-width:360px) and (max-width:384px) {
+    html {
+        font-size: 64% !important;
+    }
 }
+
+
 /*Iphone6,Iphone6plus*/
+
 @media only screen and (min-width:385px) and (max-width:435px) {
-    html{font-size:82.5% !important;}
+    html {
+        font-size: 82.5% !important;
+    }
 }

@@ -688,9 +688,14 @@
                 color: #959595;
                 font-size: 16px;
                 line-height: 20px;
-                height: 80px;
                 @include word-ellipsis-H;
                 //多行显示 配合高度
+            }
+            .tip-footer {
+                font-size: 12px;
+                height: 14px;
+                line-height: 14px;
+                width: 100%;
             }
             .icon {
                 padding: 0 5px;
@@ -749,12 +754,4 @@
         }
     }
     // 单个文章 end
-}
-
-.media-footer {
-    font-size: 12px;
-    margin-top: 14px;
-    height: 14px;
-    line-height: 14px;
-    width: 100%;
 }

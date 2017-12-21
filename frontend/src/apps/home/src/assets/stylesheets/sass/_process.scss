@@ -1,11 +1,24 @@
 .process-container {
     background-color: $pageBg;
     .repeater-thumbnail-cont {
-        margin-right: 15px;
-        margin-left: 15px;
+        // row 
+        margin-right: -15px;
+        margin-left: -15px;
         img {
             width: 260px;
             height: 200px;
         }
     }
+    .wrapRight-con .content img {
+        //文章中的图片
+        width: 100%;
+    }
 }
+
+@include respond-to($tablet-portrait) {
+    .repeater-thumbnail-cont {
+        margin: 0;
+    }
+}
+
+@include respond-to($large-desktop) {}
