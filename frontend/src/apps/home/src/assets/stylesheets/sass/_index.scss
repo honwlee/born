@@ -708,15 +708,13 @@
             font-size: 18px;
             color: #b72024;
         }
-        .item {
-            height: 40px;
-            line-height: 40px;
-            font-size: 14px;
-            color: #666666;
+        .list-item {
             display: block;
-            overflow: hidden;
-            &:hover {
-                color: #b72024;
+            a {
+                color: #666666;
+                &:hover {
+                    color: #b72024;
+                }
             }
         }
         .more {
