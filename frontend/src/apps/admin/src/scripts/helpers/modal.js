@@ -5,8 +5,7 @@ define([
     "jquery",
     "server",
     "toastr",
-    "handlebars",
-
+    "handlebars"
 ], function(skylarkjs, partial, SimpeMdeEditor, $, server, toastr, handlebars) {
     var __files = {},
         langx = skylarkjs.langx,
@@ -233,48 +232,51 @@ define([
         cmodal.find(".modal-title").html(data[type].title);
         cmodal.off('hidden.bs.modal').on('hidden.bs.modal', function() {
             __repeaterSelectedItems = [];
+            cmodal.find(".modal-body").empty();
         });
-        buildList(data[type], opts, function(list) {
-            var s = list.getDom();
+        cmodal.off('shown.bs.modal').on('shown.bs.modal', function() {
+            buildList(data[type], opts, function(list) {
+                var s = list.getDom();
 
-            s.on("selected.fu.repeaterList", function(e, data) {
-                var item_data = $(data).data("item_data");
-                if (item_data) __repeaterSelectedItems.push(item_data);
-            })
+                s.on("selected.fu.repeaterList", function(e, data) {
+                    var item_data = $(data).data("item_data");
+                    if (item_data) __repeaterSelectedItems.push(item_data);
+                })
 
-            s.on("deselected.fu.repeaterList", function(e, data) {
-                var item_data = $(data).data("item_data");
-                _.remove(__repeaterSelectedItems, function(item) {
-                    return item.id == item_data.id;
+                s.on("deselected.fu.repeaterList", function(e, data) {
+                    var item_data = $(data).data("item_data");
+                    _.remove(__repeaterSelectedItems, function(item) {
+                        return item.id == item_data.id;
+                    });
                 });
-            });
-            s.on("rendered.fu.repeater", function() {
-                s.repeater('list_setSelectedItems', __repeaterSelectedItems.map(function(item) {
-                    return { property: 'id', value: item.id };
-                }), true);
-            });
+                s.on("rendered.fu.repeater", function() {
+                    s.repeater('list_setSelectedItems', __repeaterSelectedItems.map(function(item) {
+                        return { property: 'id', value: item.id };
+                    }), true);
+                });
 
-            cmodal.find(".modal-body").html(s);
-            cmodal.find(".save-btn").off("click").on("click", function() {
-                var items = __repeaterSelectedItems;
-                if (items.length) {
-                    var formatData = __content[opts.key] = {
-                        type: type,
-                        items: items.map(function(item) {
-                            var ret = {};
-                            data[type].fields.forEach(function(f) {
-                                ret[f] = item[f];
-                            });
-                            return ret;
-                        })
-                    };
-                    cmodal.modal("hide");
-                    if (opts.listSCallback) opts.listSCallback(formModal, items, formatData);
-                } else {
-                    toastr.warning("请选择一项！");
-                }
-            });
-        }, actionName);
+                cmodal.find(".modal-body").html(s);
+                cmodal.find(".save-btn").off("click").on("click", function() {
+                    var items = __repeaterSelectedItems;
+                    if (items.length) {
+                        var formatData = __content[opts.key] = {
+                            type: type,
+                            items: items.map(function(item) {
+                                var ret = {};
+                                data[type].fields.forEach(function(f) {
+                                    ret[f] = item[f];
+                                });
+                                return ret;
+                            })
+                        };
+                        cmodal.modal("hide");
+                        if (opts.listSCallback) opts.listSCallback(formModal, items, formatData);
+                    } else {
+                        toastr.warning("请选择一项！");
+                    }
+                });
+            }, actionName);
+        });
         cmodal.modal('show');
     };
 
@@ -438,11 +440,12 @@ define([
                         overflow: "hidden"
                     });
                     editorC.find(".editable").css({
-                        width: size.width + 'px',
+                        width: (size.width - 30) + 'px',
                         overflowX: 'hidden',
                         overflowY: 'auto'
                     });
                 }
+                modal.find(".repeater").repeater('render');
             });
 
             modal.find("#datepickerIllustration").datepicker({

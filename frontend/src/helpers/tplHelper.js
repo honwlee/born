@@ -48,10 +48,10 @@ define([
                             first: first,
                             activePage: active,
                         }));
-                    _s.delegate(".activity-item", "click", function(e) {
-                        var id = $(e.currentTarget).data("id");
-                        window.go("/activity/" + id, true);
-                    });
+                    // _s.delegate(".activity-item", "click", function(e) {
+                    //     var id = $(e.currentTarget).data("id");
+                    //     window.go("/activity/" + id, true);
+                    // });
                     return _s;
                 }
             },
@@ -61,10 +61,10 @@ define([
                 category: "home",
                 show: function(tpl, data) {
                     var _s = $(tpl(data));
-                    _s.delegate(".env-item", "click", function(e) {
-                        var id = $(e.currentTarget).data("id");
-                        window.go("/posts/" + id, true);
-                    });
+                    // _s.delegate(".env-item", "click", function(e) {
+                    //     var id = $(e.currentTarget).data("id");
+                    //     window.go("/posts/" + id, true);
+                    // });
                     return _s;
                 }
             },
@@ -112,10 +112,10 @@ define([
                 cnName: "新闻资讯",
                 show: function(tpl, data) {
                     var _s = $(tpl(data));
-                    _s.delegate(".news-item", "click", function(e) {
-                        var id = $(e.currentTarget).data("id");
-                        window.go("/news/" + id, true);
-                    });
+                    // _s.delegate(".news-item", "click", function(e) {
+                    //     var id = $(e.currentTarget).data("id");
+                    //     window.go("/news/" + id, true);
+                    // });
                     return _s;
                 }
             },

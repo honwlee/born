@@ -56,27 +56,6 @@ define([
                 id: "pageRepeater",
                 key: "pages",
                 actions: [{
-                    name: "delete",
-                    title: "删除页面",
-                    tpl: "",
-                    callback: function() {
-
-                    }
-                }, {
-                    name: "show",
-                    title: "查看页面",
-                    tpl: tpl,
-                    callback: function() {
-
-                    }
-                }, {
-                    name: "edit",
-                    title: "编辑页面",
-                    tpl: tpl,
-                    callback: function() {
-
-                    }
-                }, {
                     name: "config",
                     html: '<span class="glyphicon glyphicon-cog"></span> 配置',
                     clickAction: function(helpers, callback, e) {

@@ -100,7 +100,9 @@
             </div>
             <div class="container panel-body panel row activity-con">
                 <div id="success_left" class="col-md-6 col-sm-6 col-xs-12 activity-item" data-id="{{first.id}}">
-                    <img src="{{first.src}}" title="" height="267" width="100%">
+                    <a href="/activity/{{first.id}}" target="_blank">
+                        <img src="{{first.src}}" title="" height="267" width="100%">
+                    </a>
                     <h3 class="left-title">{{title}}</h3>
                     <div class="left-abstract">{{first.abstract}}</div>
                 </div>
@@ -109,7 +111,9 @@
                         {{#each activePage}}
                         <li data-id="{{id}}" class="col-md-6 col-sm-6 col-xs-12 activity-item">
                             <div class="img_img_desc">
-                                <img src="{{src}}" height="auto" width="277">
+                                <a href="/activity/{{id}}" target="_blank">
+                                    <img src="{{src}}" height="auto" width="277">
+                                </a>
                             </div>
                             <p class="right-title">{{title}}</p>
                         </li>
