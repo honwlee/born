@@ -12,9 +12,15 @@ module.exports = {
     },
 
     public: function(req, res) {
+        req.query.sort = "publishedDate";
+        req.query.order = "DESC";
         parse("news", req, res, ["title"], {
             published: 'true'
         });
+    },
+
+    recommended: function(req, res) {
+        res.json({ status: true, results: News.list("updatedAt", "desc", true).take(req.query.limit || 8) });
     },
 
     show: function(req, res) {

@@ -27,10 +27,10 @@ class Model {
     static db(name) {
         return jsondb.get(name);
     }
-    static list(name, sortKey = "id", direction = "asc") {
-        let results = jsondb.get(name).sortBy(sortKey).value();
+    static list(name, sortKey = "id", direction = "asc", chainAble) {
+        let results = jsondb.get(name).sortBy(sortKey);
         if (direction == "desc") results = results.reverse();
-        return results;
+        return chainAble ? results : results.value();
     }
     static first(name) {
         return jsondb.get(name).first().value();

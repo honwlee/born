@@ -191,11 +191,6 @@ define([
                     toggle: false
                 });
                 $('ul.nav a.dropdown-toggle').dropdown();
-                $('ul.nav li.dropdown').hover(function() {
-                    $(this).find('.dropdown-menu').stop(true, true).fadeIn(500, 200);
-                }, function() {
-                    $(this).find('.dropdown-menu').stop(true, true).fadeOut(500, 200);
-                });
             });
         },
         routed: function() {}

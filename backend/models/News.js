@@ -4,8 +4,8 @@ const Model = require("./_Base").Model,
     fs = require('fs');
 
 exports.News = class News extends Model {
-    static list(sortKey = "status", direction = "asc") {
-        return Model.list("news", sortKey, direction);
+    static list(sortKey = "status", direction = "asc", chainAble) {
+        return Model.list("news", sortKey, direction, chainAble);
     }
     static findBy(args) {
         return Model.findBy("news", args);

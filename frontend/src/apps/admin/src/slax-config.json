@@ -209,7 +209,8 @@
                 "contents-about",
                 "contents-home",
                 "contents-process",
-                "contents-service"
+                "contents-service",
+                "contents-link"
             ],
             "controller": {
                 "type": "scripts/routes/contents/ContentsController"
@@ -259,6 +260,17 @@
                 "type": "scripts/routes/contents/ServiceController"
             }
         },
+        "contents-link": {
+            "sub": true,
+            "pathto": "/contents/link",
+            "data": {
+                "name": "contents-link",
+                "navName": "主页链接"
+            },
+            "controller": {
+                "type": "scripts/routes/contents/LinkController"
+            }
+        },
         "qas": {
             "pathto": "/qas",
             "data": {
@@ -285,7 +297,8 @@
                 "snippets-certificate",
                 "snippets-about",
                 "snippets-contact",
-                "snippets-service"
+                "snippets-service",
+                "snippets-link"
             ],
             "controller": {
                 "type": "scripts/routes/snippets/SnippetsController"
@@ -355,6 +368,17 @@
             },
             "controller": {
                 "type": "scripts/routes/snippets/CertificateController"
+            }
+        },
+        "snippets-link": {
+            "sub": true,
+            "pathto": "/snippets/link",
+            "data": {
+                "name": "snippets-link",
+                "navName": "主页链接内容设置"
+            },
+            "controller": {
+                "type": "scripts/routes/snippets/LinkController"
             }
         },
         "snippets-about": {

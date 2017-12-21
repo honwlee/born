@@ -39,12 +39,11 @@
             "pathto": "/",
             "data": {
                 "name": "home",
-                "navName": "home"
+                "navName": "BornInUSA"
             },
             "controller": {
                 "type": "scripts/routes/home/HomeController"
-            },
-            "hide": true
+            }
         },
         "process": {
             "pathto": "/process",

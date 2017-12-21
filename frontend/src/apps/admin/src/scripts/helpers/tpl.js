@@ -13,17 +13,17 @@ define([
         __content = {},
         __file,
         d = tplHelper.data,
-        bindEvntsFunc = function(parent, name, selector, off, opts) {
-            opts = opts || {
-                list_selectable: "multi"
-            };
+        bindEvntsFunc = function(parent, name, selector, off) {
+            // opts = opts || {
+            //     list_selectable: "multi"
+            // };
 
             modalFunc.contentListByBtn(selector, {
                 key: "contents",
                 listSCallback: function(modal, items, data) {
                     __content[name] = langx.clone(data);
                 },
-                list_selectable: opts.list_selectable
+                list_selectable: "multi"
             }, off);
         },
 

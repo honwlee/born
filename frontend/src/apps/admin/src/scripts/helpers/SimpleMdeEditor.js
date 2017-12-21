@@ -75,14 +75,12 @@ define([
     function showPhotos(callback) {
         var modal = $("#contentModal");
         modal.find(".modal-title").html("图片列表");
-        modal.off('shown.bs.modal').on('shown.bs.modal', function() {
-            buildPhotoList(function(list) {
-                var selector = list.getDom();
-                selector.on("selected.fu.repeaterThumbnail", function(row) {
-                    callback(selector.repeater('thumbnail_getSelectedItems'), modal);
-                });
-                modal.find(".modal-body").html(selector);
+        buildPhotoList(function(list) {
+            var selector = list.getDom();
+            selector.on("selected.fu.repeaterThumbnail", function(row) {
+                callback(selector.repeater('thumbnail_getSelectedItems'), modal);
             });
+            modal.find(".modal-body").html(selector);
         });
         modal.modal('show');
     };

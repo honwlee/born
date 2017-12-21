@@ -29,12 +29,6 @@ define([
                 imgUrl: this.post.src,
                 date: new Date(this.post.publishedDate).toISOString().substring(0, 10)
             }));
-            var simplemde = new SimpleMDE({
-                element: e.content.find("textarea")[0]
-            });
-            e.content.find(".post_overview").html(simplemde.markdown(this.post.content));
-            simplemde.toTextArea();
-            simplemde = null;
         },
 
         entered: function() {

@@ -234,24 +234,21 @@
         </div>
     </script>
     <script id="homeProvide-partial" type="text/x-handlebars-template">
-        <div class="panel-default hidden-xs" style="background: url({{src}}) no-repeat; background-size: 100% 640px;">
+        <div class="panel-default" style="background: url({{src}}) no-repeat; background-size: 100% 640px;">
             <!-- 生美国际赴美的五心服务 -->
             <div class="part">
-                <h1 class="main_title main_title_ten">BornInUSA 生美贴心服务</h1>
+                <h1 class="main_title main_title_ten">{{title}}</h1>
             </div>
             <div class="panel-body">
-                <ul class="container">
-                    {{#each snippets}} {{#if @index}}
-                    <li class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center">
-                        {{else}}
-                        <li class="col-lg-2 col-md-2 col-sm-2 col-xs-6 col-md-offset-1 text-center">
-                            {{/if}}
-                            <img src="{{src}}" height="130" width="130">
-                            <p class="part_ten_title">{{title}}</p>
-                            <p class="part_ten_main">{{description}}</p>
-                            <div class="part_ten_con">{{{content}}}</div>
-                        </li>
-                        {{/each}}
+                <ul class="part_ten">
+                    {{#each snippets}}
+                    <li>
+                        <img src="{{src}}" height="130" width="130">
+                        <p class="part_ten_title">{{title}}</p>
+                        <p class="part_ten_main">{{description}}</p>
+                        <div class="part_ten_con">{{{content}}}</div>
+                    </li>
+                    {{/each}}
                 </ul>
             </div>
         </div>
@@ -264,16 +261,53 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">内容</label>
-            <div class="col-sm-10">
-                <textarea class="editable" id="simplemde" name="content">{{content}}</textarea>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="col-sm-2 control-label" for="file">背景图片</label>
             <div class="col-sm-10">
                 <input type="file" class="form-control file" name="file" id="file" data-type="provide-cover" />
                 <p class="fieldset info text-right"><span class="text-warning text-info">图片格式只支持gif、jpg或者png！</span></p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">选择段落内容</label>
+            <div class="col-sm-10">
+                <button class="btn btn-primary select-content-list" data-type="snippets" type="button">点击选择</button>
+            </div>
+        </div>
+    </script>
+    <script id="homeLink-partial" type="text/x-handlebars-template">
+        <div class="panel-default hidden-xs">
+            <div class="footerOne hidden-xs">
+                <div class="innner">
+                    <div class="innerCon clearfix">
+                        <div class="left clearfix">
+                            {{#each snippets}}
+                                <div class="same">
+                                    <h5>{{title}}</h5>
+                                    {{#each links}}
+                                        <a href="{{link}}">{{name}}</a>
+                                    {{/each}}
+                                </div>
+                            {{/each}}
+                            <!-- PC微博、微信 -->
+                            <div class="same clearfix">
+                                <!-- PC底部微博微信 -->
+                                <a><img src="./assets/images/weixin-gzh.jpeg"></a>
+                            </div>
+                            <div class="same clearfix">
+                                <!-- PC底部微博微信 -->
+                                <a><img src="./assets/images/weixin-kf.jpeg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="homeLink-form-partial" type="text/x-handlebars-template">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" value="{{title}}" />
             </div>
         </div>
         <div class="form-group">

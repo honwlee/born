@@ -1,5 +1,6 @@
 'use strict';
 const Qa = require('../../models/Qa').Qa;
+const _ = require('lodash');
 const parse = require('../../exts/parseList').parse;
 const validate = require('../../exts/validation').validate;
 module.exports = {
@@ -12,9 +13,15 @@ module.exports = {
     },
 
     public: function(req, res) {
+        req.query.sort = "publishedDate";
+        req.query.order = "DESC";
         parse("qas", req, res, ["title"], {
             published: 'true'
         });
+    },
+
+    recommended: function(req, res) {
+        res.json({ status: true, results: Qa.list("updatedAt", "desc", true).take(req.query.limit || 8) });
     },
 
     show: function(req, res) {

@@ -66,10 +66,14 @@ _(["meet", "activity", "process", "env"]).each(function(name) {
         validate(Post, { title: req.body.title }, req, res);
     };
     module.exports["public_" + name] = function(req, res) {
-        console.log(catName);
+        req.query.sort = "publishedDate";
+        req.query.order = "DESC";
         parse("posts", req, res, ["title"], {
             published: 'true',
             category: catName
         });
+    };
+    module.exports["recommended_" + name] = function(req, res) {
+        res.json({ status: true, results: Post.list("updatedAt", "desc", true).take(req.query.limit || 8) });
     };
 });

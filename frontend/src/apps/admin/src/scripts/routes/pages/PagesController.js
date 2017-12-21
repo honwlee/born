@@ -85,13 +85,11 @@ define([
 
                             var modal = modalFunc.show("normalForm", "配置页面", $(cogTpl(data)), {
                                 modalEvts: function(_modal) {
-                                    _modal.off('shown.bs.modal').on('shown.bs.modal', function() {
-                                        _modal.find('[data-toggle="tab"]').each(function() {
-                                            var $this = $(this);
-                                            $this.tab();
-                                        });
-                                        _modal.find('[data-toggle="dropdown"]').dropdown();
+                                    _modal.find('[data-toggle="tab"]').each(function() {
+                                        var $this = $(this);
+                                        $this.tab();
                                     });
+                                    _modal.find('[data-toggle="dropdown"]').dropdown();
                                 }
                             });
 
@@ -184,13 +182,12 @@ define([
                         selector.repeater('render');
                     },
                     modalEvts: function(_modal) {
-                        _modal.off('shown.bs.modal').on('shown.bs.modal', function() {
-                            _modal.find('[data-toggle="tab"]').each(function() {
-                                var $this = $(this);
-                                $this.tab();
-                            });
-                            _modal.find('[data-toggle="dropdown"]').dropdown();
+
+                        _modal.find('[data-toggle="tab"]').each(function() {
+                            var $this = $(this);
+                            $this.tab();
                         });
+                        _modal.find('[data-toggle="dropdown"]').dropdown();
                     }
                 });
             });

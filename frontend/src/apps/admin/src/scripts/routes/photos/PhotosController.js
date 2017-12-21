@@ -65,6 +65,7 @@ define([
             selector.find(".repeater-add button").off("click").on("click", function(e) {
                 modal.show("form", $(tpl({
                     pages: self.pages,
+                    needLink: self.needLink,
                     needPageSelect: self.needPageSelect,
                     checked: true
                 })), this.addTitle, {

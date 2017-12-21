@@ -4,8 +4,8 @@ const Model = require("./_Base").Model,
     fs = require('fs');
 
 exports.Qa = class Qa extends Model {
-    static list(sortKey = "status", direction = "asc") {
-        return Model.list("qas", sortKey, direction);
+    static list(sortKey = "updatedAt", direction = "asc", chainAble) {
+        return Model.list("qas", sortKey, direction, chainAble);
     }
     static findBy(args) {
         return Model.findBy("qas", args);

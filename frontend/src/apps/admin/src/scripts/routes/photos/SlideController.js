@@ -12,6 +12,7 @@ define([
         title: "slide图片列表",
         addTitle: "添加slide图片",
         needPageSelect: false,
+        needLink: true,
         actionName: "slide"
     });
 });

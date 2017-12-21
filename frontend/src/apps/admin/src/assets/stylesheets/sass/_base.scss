@@ -17,6 +17,21 @@ a {
     transition: all 200ms;
 }
 
+.fullscreen {
+    padding: 0 !important;
+    .modal-dialog {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .modal-content {
+        height: auto;
+        min-height: 100%;
+        border-radius: 0;
+    }
+}
+
 #mainWrapper {
     opacity: 0;
     #main {

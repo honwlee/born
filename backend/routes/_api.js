@@ -1,5 +1,6 @@
 'use strict';
 const ctrls = require("../controllers/api/controllers"),
+    RecommendController = require("../controllers/api/RecommendController"),
     path = require("path"),
     fs = require('fs'),
     dbpath = path.join(__dirname, "../dbs"),
@@ -10,6 +11,7 @@ const ctrls = require("../controllers/api/controllers"),
     jsondb = dbms(dbpath, {
         master_file_name: "master.json"
     }),
+
     mkdirp = require('mkdirp'),
     _ = require('lodash'),
     User = require('../models/User').User,
@@ -79,6 +81,18 @@ module.exports = function(app, router, ensureAuthenticated, rootPath) {
                 }
             })
         });
+    });
+
+    app.get('/api/news/recommended', function(req, res) {
+        ctrls.news.module.recommended(req, res);
+    });
+
+    app.get('/api/qas/recommended', function(req, res) {
+        ctrls.qas.module.recommended(req, res);
+    });
+
+    app.get('/api/recommended/all', function(req, res) {
+        RecommendController.all(req, res);
     });
 
     app.get('/api/system/check', function(req, res) {

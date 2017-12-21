@@ -11,6 +11,7 @@ define([
 ], function($, skylarkjs, hbs, _, server, modal, partial, List, formTpl) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
+        __content,
         formSelector = $(langx.trim(formTpl));
     partial.get("snippets-form-partial", formSelector);
     var tpl = hbs.compile("{{> snippets-form-partial}}");
@@ -80,14 +81,26 @@ define([
                 selector = this.list.getDom();
             self.snippetTplOpts.checked = true;
             selector.find(".repeater-add button").off("click").on("click", function(e) {
-                modal.show("form", $(tpl(self.snippetTplOpts)), this.addTitle, {
+                var opts = {
                     key: "snippets",
                     action: self.actionName ? "post_" + self.actionName : "create",
                     file: true,
                     afterSave: function() {
                         selector.repeater('render');
                     }
-                });
+                };
+                if (self.snippetTplOpts.select) {
+                    opts.listSCallback = function(modal, items, data) {
+                        __content = langx.clone(data);
+                    };
+                    opts.beforeSave = function(obj) {
+                        obj._content = __content;
+                    };
+                    opts.afterSave = function() {
+                        __content = null;
+                    }
+                }
+                modal.show("form", $(tpl(self.snippetTplOpts)), this.addTitle, opts);
             });
             selector.find(".repeater-refresh button").off("click").on("click", function(e) {
                 selector.repeater('render');

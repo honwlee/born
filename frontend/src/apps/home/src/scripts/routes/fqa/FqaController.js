@@ -17,6 +17,12 @@ define([
     return spa.RouteController.inherit({
         klassName: "FqaController",
         repeaterId: "homeQaRepeater",
+        preparing: function(e) {
+            var self = this;
+            e.result = server().connect("recommended", "get", "all").then(function(data) {
+                self.recommended = data.results;
+            });
+        },
         buildList: function() {
             return new List({
                 id: this.repeaterId,
@@ -43,8 +49,7 @@ define([
                 self = this,
                 _ec = $(tpl({
                     routeName: "fqa",
-                    latest: recommended,
-                    recommended: recommended
+                    recommended: this.recommended
                 })),
                 list = this.buildList();
             e.content = _ec[0];

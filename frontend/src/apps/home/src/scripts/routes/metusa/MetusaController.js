@@ -10,13 +10,16 @@ define([
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         __selector = $(langx.trim(template));
-    var recommended = [{
-        id: "recommended1",
-        title: "去美国生宝宝 产后忌口"
-    }];
+
     return spa.RouteController.inherit({
         klassName: "MetUsaController",
         repeaterId: "homeMetusaRepeater",
+        preparing: function(e) {
+            var self = this;
+            e.result = server().connect("recommended", "get", "all").then(function(data) {
+                self.recommended = data.results;
+            });
+        },
         buildList: function() {
             return new List({
                 id: this.repeaterId,
@@ -43,8 +46,7 @@ define([
                 self = this,
                 _ec = $(tpl({
                     routeName: "metusa",
-                    latest: recommended,
-                    recommended: recommended
+                    recommended: this.recommended
                 })),
                 list = this.buildList();
             e.content = _ec[0];
