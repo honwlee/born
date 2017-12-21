@@ -8,6 +8,7 @@ const validate = require('../../exts/validation').validate;
 const pageExt = require("../../exts/page");
 
 function formatData(site) {
+    if (!site) return [];
     let snippets = [];
     if (site._content && site._content.type) {
         let sIds = _(site._content.items).map(function(i) { return i.id; }).value();
