@@ -21,11 +21,13 @@ exports.Post = class Post extends Model {
     }
     static create(args) {
         if (!args.publishedDate) args.publishedDate = new Date();
+        args.uniqTile = args.title + "_" + (args.category || "")
         args.publishedDate = new Date(args.publishedDate);
         return Model.create("posts", args);
     }
     static update(args) {
         if (!args.publishedDate) args.publishedDate = new Date();
+        args.uniqTile = args.title + "_" + (args.category || "")
         args.publishedDate = new Date(args.publishedDate);
         return Model.update("posts", "id", args);
     }

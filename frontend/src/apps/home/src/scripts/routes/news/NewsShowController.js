@@ -10,12 +10,12 @@ define([
         langx = skylarkjs.langx;
     return spa.RouteController.inherit({
         klassName: "PostsShowController",
-        post: null,
+        news: null,
         preparing: function(e) {
             var self = this,
                 id = e.route.getNamedValue()[1];
-            e.result = server().connect("news", "get", "show?id=" + id).then(function(post) {
-                self.post = post;
+            e.result = server().connect("news", "get", "show?id=" + id).then(function(news) {
+                self.news = news;
             });
         },
         rendering: function(e) {
@@ -23,11 +23,11 @@ define([
             var tpl = hbs.compile(langx.trim(selector.find("#news-show-main").html()).replace("{{&gt;", "{{>"));
 
             e.content = $(tpl({
-                id: this.post.id,
-                title: this.post.title,
-                abstract: this.post.abstract,
-                imgUrl: this.post.src,
-                date: new Date(this.post.publishedDate).toISOString().substring(0, 10)
+                id: this.news.id,
+                title: this.news.title,
+                abstract: this.news.abstract,
+                imgUrl: this.news.src,
+                date: window.formatDate(this.news.publishedDate)
             }));
         },
 

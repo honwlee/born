@@ -23,6 +23,15 @@ define([
 
         preparing: function(e) {
             var deferred = new langx.Deferred();
+            window.formatDate = function(d, split) {
+                split = split || "-";
+                var padTwo = function(value) {
+                        var s = '0' + value;
+                        return s.substr(s.length - 2);
+                    },
+                    date = new Date(d);
+                return date.getFullYear() + split + padTwo(date.getMonth() + 1) + split + padTwo(date.getDate());
+            };
             window._goTop = function(time) {
                 time = time || 200;
                 $([document.body, document.documentElement]).animate({

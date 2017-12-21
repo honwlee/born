@@ -21,10 +21,12 @@ exports.Snippet = class Snippet extends Model {
     }
     static create(args) {
         if (args._content) args._content = JSON.parse(args._content);
+        args.uniqTile = args.title + "_" + (args.category || "")
         return Model.create("snippets", args);
     }
     static update(args) {
         if (args._content) args._content = JSON.parse(args._content);
+        args.uniqTile = args.title + "_" + (args.category || "")
         return Model.update("snippets", "id", args);
     }
     static delete(args) {

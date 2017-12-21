@@ -17,7 +17,9 @@
                     {{else}}
                         <div class="item active">
                     {{/if}}
-                        <img alt="{{name}}" src="{{src}}">
+                        <a href="{{link}}" target="_blank">
+                            <img alt="{{name}}" src="{{src}}">
+                        </a>
                     </div>
                 {{/each}}
                 <div class="left carousel-control" href="#carousel-generic" data-slide="prev">

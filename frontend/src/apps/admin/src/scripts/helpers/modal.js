@@ -123,6 +123,20 @@ define([
         });
     };
 
+    function formatDate(date, split, moment) {
+        var split = split || "-",
+            padTwo = function(value) {
+                var s = '0' + value;
+                return s.substr(s.length - 2);
+            };
+        moment = moment || this.moment;
+        if (this.moment) {
+            return moment(date).format(this.momentFormat);
+        } else {
+            return date.getFullYear() + split + padTwo(date.getMonth() + 1) + split + padTwo(date.getDate());
+        }
+    };
+
     function showList(formModal, type, opts, actionName) {
         // opts: {search, list_selectable, key, listSCallback}
         var data = {
@@ -433,18 +447,7 @@ define([
 
             modal.find("#datepickerIllustration").datepicker({
                 allowPastDates: true,
-                formatDate: function(date) {
-                    var padTwo = function(value) {
-                        var s = '0' + value;
-                        return s.substr(s.length - 2);
-                    };
-
-                    if (this.moment) {
-                        return moment(date).format(this.momentFormat);
-                    } else {
-                        return date.getFullYear() + "-" + padTwo(date.getMonth() + 1) + "-" + padTwo(date.getDate());
-                    }
-                }
+                formatDate: formatDate
             });
             modal.find(".save-btn").off("click").on("click", function() {
                 var extralObj = {
@@ -513,6 +516,7 @@ define([
     };
 
     return {
+        formatDate: formatDate,
         contentListByBtn: contentListByBtn,
         contentListBySelect: contentListBySelect,
         parseForm: parseForm,

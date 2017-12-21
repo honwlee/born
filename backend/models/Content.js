@@ -21,10 +21,12 @@ exports.Content = class Content extends Model {
     }
     static create(args) {
         if (args.sub) args.sub = JSON.parse(args.sub);
+        args.uniqName = args.name + "_" + (args.category || "")
         return Model.create("contents", args);
     }
     static update(args) {
         if (args.sub) args.sub = JSON.parse(args.sub);
+        args.uniqName = args.name + "_" + (args.category || "")
         return Model.update("contents", "id", args);
     }
     static delete(args) {

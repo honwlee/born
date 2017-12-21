@@ -37,6 +37,7 @@ define([
                 list_selectable: "multi",
                 listSCallback: function(modal, items, data) {
                     __content = langx.clone(data);
+                    toastr.warning("请点击保存按钮，保存选择的内容！");
                 }
             });
             ec.find("button.save-btn").off("click").on("click", function() {

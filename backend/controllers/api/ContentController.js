@@ -62,7 +62,7 @@ _(["home", "service", "process", "about", "link"]).each(function(name) {
         });
         req.body.category = catName;
         req.body.file = req.file;
-        validate(Content, { name: req.body.name }, req, res);
+        validate(Content, { uniqName: req.body.name + "_" + catName }, req, res);
     };
     module.exports["public_" + name] = function(req, res) {
         console.log(catName);

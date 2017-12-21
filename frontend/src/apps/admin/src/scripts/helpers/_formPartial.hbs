@@ -95,7 +95,8 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">页面模板</label>
                 <div class="col-sm-10">
-                    <select class="form-control tpl-selector" name="tpl" id="tpl">
+                    <span class="help-block">请先输入名称，再选择页面模板</span>
+                    <select class="form-control tpl-selector" disabled="true" name="tpl" id="tpl">
                         <option value="">-请选择-</option>
                         {{#each tpls}}
                         {{#if @index}}

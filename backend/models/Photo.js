@@ -20,9 +20,11 @@ exports.Photo = class Photo extends Model {
         return Model.where("photos", key, value, chainAble);
     }
     static create(args) {
+        args.uniqName = args.name + "_" + (args.category || "")
         return Model.create("photos", args);
     }
     static update(args) {
+        args.uniqName = args.name + "_" + (args.category || "")
         return Model.update("photos", "id", args);
     }
     static delete(args) {

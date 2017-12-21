@@ -39,7 +39,7 @@ module.exports = {
 
     create: function(req, res) {
         req.body.file = req.file;
-        validate(Snippet, { name: req.body.name }, req, res);
+        validate(Snippet, { uniqTitle: req.body.title }, req, res);
     },
 
     delete: function(req, res) {
@@ -67,7 +67,7 @@ _(["vantage", "provide", "visa", "hospital", "flow", "certificate", "about", "co
         });
         req.body.category = catName;
         req.body.file = req.file;
-        validate(Snippet, { title: req.body.title }, req, res);
+        validate(Snippet, { uniqTitle: req.body.title + "_" + catName }, req, res);
     };
     module.exports["public_" + name] = function(req, res) {
         parse("snippets", req, res, ["title"], {

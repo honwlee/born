@@ -27,7 +27,7 @@ define([
                 title: this.qa.title,
                 abstract: this.qa.abstract,
                 imgUrl: this.qa.src,
-                date: new Date(this.qa.publishedDate).toISOString().substring(0, 10)
+                date: window.formatDate(this.qa.publishedDate)
             }));
             var simplemde = new SimpleMDE({
                 element: e.content.find("textarea")[0]

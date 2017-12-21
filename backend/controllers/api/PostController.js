@@ -63,7 +63,7 @@ _(["meet", "activity", "process", "env"]).each(function(name) {
         });
         req.body.category = catName;
         req.body.file = req.file;
-        validate(Post, { title: req.body.title }, req, res);
+        validate(Post, { uniqTitle: req.body.title + "_" + catName }, req, res);
     };
     module.exports["public_" + name] = function(req, res) {
         req.query.sort = "publishedDate";

@@ -174,6 +174,10 @@ define([
                     if (config.afterAction) config.afterAction(e, modal);
                 });
 
+                modal.find("input[name=name]").on("change", function() {
+                    modal.find("#tpl").prop("disabled", false);
+                });
+
                 modal.find("#tpl").off("change").on("change", function() {
                     __file = null;
                     if (this.value) {

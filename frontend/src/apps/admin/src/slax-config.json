@@ -136,21 +136,9 @@
                 "navName": "图片管理"
             },
             "subs": [
-                "photos-content",
                 "photos-slide",
                 "photos-page"
             ],
-            "controller": {
-                "type": "scripts/routes/photos/PhotosController"
-            }
-        },
-        "photos-content": {
-            "sub": true,
-            "pathto": "/photos/content",
-            "data": {
-                "name": "photos-content",
-                "navName": "内容图片"
-            },
             "controller": {
                 "type": "scripts/routes/photos/PhotosController"
             }
@@ -160,7 +148,7 @@
             "pathto": "/photos/slide",
             "data": {
                 "name": "photos-slide",
-                "navName": "slide图片"
+                "navName": "幻灯片图片"
             },
             "controller": {
                 "type": "scripts/routes/photos/SlideController"
@@ -171,7 +159,7 @@
             "pathto": "/photos/page",
             "data": {
                 "name": "photos-page",
-                "navName": "页面banner图片"
+                "navName": "页面模块背景图片"
             },
             "controller": {
                 "type": "scripts/routes/photos/PageController"
@@ -191,7 +179,7 @@
             "pathto": "/slides",
             "data": {
                 "name": "slides",
-                "navName": "Slide"
+                "navName": "幻灯片"
             },
             "controller": {
                 "type": "scripts/routes/slides/SlidesController"
@@ -209,8 +197,7 @@
                 "contents-about",
                 "contents-home",
                 "contents-process",
-                "contents-service",
-                "contents-link"
+                "contents-service"
             ],
             "controller": {
                 "type": "scripts/routes/contents/ContentsController"
@@ -258,17 +245,6 @@
             },
             "controller": {
                 "type": "scripts/routes/contents/ServiceController"
-            }
-        },
-        "contents-link": {
-            "sub": true,
-            "pathto": "/contents/link",
-            "data": {
-                "name": "contents-link",
-                "navName": "主页链接"
-            },
-            "controller": {
-                "type": "scripts/routes/contents/LinkController"
             }
         },
         "qas": {

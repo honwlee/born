@@ -32,6 +32,13 @@ define([
                     callback: function() {
 
                     }
+                }, {
+                    name: "edit",
+                    title: "编辑",
+                    tpl: tpl,
+                    callback: function() {
+
+                    }
                 }],
                 columns: [{
                     label: '名称',
