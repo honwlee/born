@@ -1,21 +1,29 @@
-.admin-form{
-    .keywords,.description{
+.admin-form {
+    .keywords,
+    .description {
         height: 90px;
     }
-    .edui-container{
+    .edui-container {
         width: initial !important;
-        height: 400px;
-    overflow-y: auto;
+        height: 354px;
+        overflow-y: auto;
+        .edui-editor-body {
+            .edui-body-container {
+                height: 300px;
+                min-height: 300px !important;
+            }
+        }
     }
     .checkbox {
-label{
-    padding-left: 0 !important;
-}
-    input{
-        // published
-    position: initial !important;
-    width: initial !important;
-    height: initial !important;
-    width: initial !important;
+        label {
+            padding-left: 0 !important;
+        }
+        input {
+            // published
+            position: initial !important;
+            width: initial !important;
+            height: initial !important;
+            width: initial !important;
+        }
     }
-}}
+}

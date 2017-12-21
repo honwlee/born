@@ -55,14 +55,29 @@ define([
                 title: "页面列表",
                 id: "pageRepeater",
                 key: "pages",
+                exceptActionRows: { config: ["activity", "metusa", "fqa", "news"] },
                 actions: [{
+                    name: "delete",
+                    title: "删除新闻",
+                    tpl: "",
+                    callback: function() {
+
+                    }
+                }, {
+                    name: "edit",
+                    title: "编辑",
+                    tpl: tpl,
+                    callback: function() {
+
+                    }
+                }, {
                     name: "config",
-                    html: '<span class="glyphicon glyphicon-cog"></span> 配置',
+                    html: '<span class="glyphicon glyphicon-cog" title="配置"></span>',
                     clickAction: function(helpers, callback, e) {
                         var pageId = helpers.rowData.id;
                         server().connect("pages", "get", "show?key=id&value=" + pageId).then(function(data) {
 
-                            var modal = modalFunc.show("normalForm", "配置页面", $(cogTpl(data)), {
+                            var modal = modalFunc.show("normalForm", $(cogTpl(data)), "配置页面", {
                                 modalEvts: function(_modal) {
                                     _modal.find('[data-toggle="tab"]').each(function() {
                                         var $this = $(this);
@@ -186,4 +201,4 @@ define([
         entered: function() {},
         exited: function() {}
     });
-});
+})

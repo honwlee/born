@@ -73,7 +73,7 @@ define([
         "delete": function(modal, opts) {
             return {
                 name: 'delete',
-                html: '<span class="glyphicon glyphicon-trash"></span> 删除',
+                html: '<span class="glyphicon glyphicon-trash" title="删除"></span>',
                 clickAction: opts.clickAction ? opts.clickAction : function(helpers, callback, e) {
                     modal.show("delete", "", opts.title, {
                         id: helpers.rowData.id,
@@ -89,7 +89,7 @@ define([
         "edit": function(modal, opts) {
             return {
                 name: 'edit',
-                html: '<span class="glyphicon glyphicon-edit"></span> 编辑',
+                html: '<span class="glyphicon glyphicon-edit" title ="编辑"></span>',
                 clickAction: opts.clickAction ? opts.clickAction : function(helpers, callback, e) {
                     opts.tplOpts = opts.tplOpts || {};
                     var _data = langx.mixin(langx.clone(helpers.rowData), opts.tplOpts);
@@ -107,7 +107,7 @@ define([
         "show": function(modal, opts) {
             return {
                 name: 'show',
-                html: '<span class="glyphicon glyphicon-eye-open"></span> 查看',
+                html: '<span class="glyphicon glyphicon-eye-open" title="查看"></span>',
                 clickAction: opts.clickAction ? opts.clickAction : function(helpers, callback, e) {
                     modal.show("content", $(opts.tpl(helpers.rowData)), opts.title, {
                         key: opts.key,
@@ -232,6 +232,7 @@ define([
             } else {
                 obj.dataSource = this.initDataSource(opts);
             }
+            obj.exceptActionRows = opts.exceptActionRows || {};
             obj.defaultView = opts.defaultView || "list";
             if (opts.views) obj.views = opts.views;
             if (opts.thumbnail_selectable) obj.thumbnail_selectable = opts.thumbnail_selectable;
@@ -256,7 +257,7 @@ define([
                         }
                     });
                     obj.list_actions = {
-                        width: 37,
+                        width: actions.length * 37,
                         items: actions
                     };
                     container.repeater(obj);

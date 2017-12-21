@@ -1,11 +1,12 @@
 define([
     "jquery",
     "scripts/helpers/Partial",
+    "lodash",
     "handlebars",
     "server",
     "skylarkjs",
     "scripts/helpers/fueluxComponents"
-], function($, partial, handlebars, server, skylarkjs) {
+], function($, partial, _, handlebars, server, skylarkjs) {
     var spa = skylarkjs.spa,
         router = skylarkjs.router,
         __isDelayed,
@@ -102,25 +103,40 @@ define([
                 var actionsHtml = '';
                 var self = this;
                 var i;
-                var length;
                 var $table = this.$element.find('.repeater-list .repeater-list-wrapper > table');
                 var $actionsTable = this.$canvas.find('.table-actions');
+                var len = this.viewOptions.list_actions.items.length;
+                // if (len == 1) {
+                //     var action = this.viewOptions.list_actions.items[0];
+                //     actionsHtml = '<a href="javascript:void(0)" data-action="' + action.name + '" class="action-item"> ' + action.html + '</a>'
+                //     if ($actionsTable.length < 1) {
+                //         var $actionsColumnWrapper = $('<div class="actions-column-wrapper" style="width: ' + this.list_actions_width + 'px"></div>').insertBefore($table);
+                //         var $actionsColumn = $table.clone().addClass('table-actions');
+                //         $actionsColumn.find('th:not(:last-child)').remove();
+                //         $actionsColumn.find('tr td:not(:last-child)').remove();
 
-                for (i = 0, length = this.viewOptions.list_actions.items.length; i < length; i++) {
+                //         var $actionsCells = $actionsColumn.find('td');
+
+                //         $actionsCells.each(function(rowNumber) {
+                //             var id = $(this).parent().attr("id");
+                //             var data = $("#" + id).data("item_data")
+                //             if (self.options.exceptRows && data && _.includes(self.options.exceptRows, data.name)) {
+                //                 $(this).html("-");
+                //             } else {
+                //                 $(this).html(actionsHtml);
+                //             }
+                //             $(this).find('a').attr('data-row', rowNumber + 1);
+                //         });
+                //     }
+                // } else {
+                for (i = 0; i < len; i++) {
                     var action = this.viewOptions.list_actions.items[i];
                     var html = action.html;
 
-                    actionsHtml += '<li><a href="javascript:void(0)" data-action="' + action.name + '" class="action-item"> ' + html + '</a></li>';
+                    actionsHtml += '<li class="' + action.name + '"><a href="javascript:void(0)" data-action="' + action.name + '" class="action-item"> ' + html + '</a></li>';
                 }
-
-                var actionsDropdown = '<div class="btn-group">' +
-                    '<button type="button" class="btn btn-xs btn-default dropdown-toggle repeater-actions-button" data-toggle="dropdown" data-flip="auto" aria-expanded="false">' +
-                    '<span class="caret"></span>' +
-                    '</button>' +
-                    '<ul class="dropdown-menu dropdown-menu-right" role="menu">' +
-                    actionsHtml +
-                    '</ul></div>';
-
+                var actionsDropdown = '<ul class="ul-inline list-unstyled ul-horizontally" role="menu">' +
+                    actionsHtml + '</ul>';
                 if ($actionsTable.length < 1) {
                     var $actionsColumnWrapper = $('<div class="actions-column-wrapper" style="width: ' + this.list_actions_width + 'px"></div>').insertBefore($table);
                     var $actionsColumn = $table.clone().addClass('table-actions');
@@ -147,12 +163,11 @@ define([
                         $(this).html(actionsDropdown);
                         $(this).find('a').attr('data-row', rowNumber + 1);
                     });
-
-                    $actionsColumnWrapper.append($actionsColumn);
-
-                    this.$canvas.addClass('actions-enabled');
                 }
 
+                $actionsColumnWrapper.append($actionsColumn);
+
+                this.$canvas.addClass('actions-enabled');
                 this.list_sizeActionsTable();
 
                 // row level actions click

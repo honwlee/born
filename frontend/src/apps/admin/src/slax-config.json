@@ -20,7 +20,7 @@
             "handlebars": "https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.amd.min",
             "template": "lib/template.min",
             "text": "https://cdn.bootcss.com/require-text/2.0.12/text.min",
-            "umeditor": "lib/umeditor/umeditor",
+            "umeditor": "lib/umeditor/umeditor.min",
             "umeditorConfig": "lib/umeditor/umeditor.config",
             "umeditorZh": "lib/umeditor/lang/zh-cn/zh-cn"
         },
@@ -29,7 +29,7 @@
                 "deps": ["lib/template.min"]
             },
             "umeditor": {
-                "deps": ["lib/umeditor/umeditor"]
+                "deps": ["lib/umeditor/umeditor.min"]
             },
             "umeditorConfig": {
                 "deps": ["lib/umeditor/umeditor.config"]

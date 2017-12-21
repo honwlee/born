@@ -122,6 +122,26 @@ define([
         });
     };
 
+    function resizeModal(modal) {
+        var editorC = modal.find(".textarea-editable");
+        var size = editorC.size();
+        var tSize = editorC.find(".edui-toolbar").size();
+        if (size) {
+            editorC.find(".edui-container").css({
+                width: size.width + 'px',
+                overflow: "hidden"
+            });
+            var h = size.height - tSize.height;
+            editorC.find(".editable").css({
+                width: (size.width - 30) + 'px',
+                height: h + "px !important",
+                overflowX: 'hidden',
+                overflowY: 'auto'
+            });
+        }
+        modal.find(".repeater").repeater('render');
+    };
+
     function formatDate(date, split, moment) {
         var split = split || "-",
             padTwo = function(value) {
@@ -432,20 +452,7 @@ define([
             modal.find(".modal-title").empty().html(title);
 
             modal.off('shown.bs.modal').on('shown.bs.modal', function() {
-                var editorC = modal.find(".textarea-editable");
-                var size = editorC.size();
-                if (size) {
-                    editorC.find(".edui-container").css({
-                        width: size.width + 'px',
-                        overflow: "hidden"
-                    });
-                    editorC.find(".editable").css({
-                        width: (size.width - 30) + 'px',
-                        overflowX: 'hidden',
-                        overflowY: 'auto'
-                    });
-                }
-                modal.find(".repeater").repeater('render');
+                resizeModal(modal);
             });
 
             modal.find("#datepickerIllustration").datepicker({
@@ -556,6 +563,7 @@ define([
                     s.text("取消全屏");
                     modal.addClass("fullscreen");
                 }
+                resizeModal(modal);
             });
             return modal;
         }
