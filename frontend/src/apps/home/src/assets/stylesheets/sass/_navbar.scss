@@ -66,9 +66,6 @@ nav.navbar {
                 }
             }
         }
-        &.active a {
-            color: $activeFColor;
-        }
         a {
             color: $defaultFColor;
             font-size: 17px;
@@ -77,13 +74,6 @@ nav.navbar {
                 background-color: transparent;
             }
         }
-    }
-    @include respond-to($except-phone) {
-        .navbar-nav {
-            float: right;
-            li a:hover {}
-        }
-        .active {}
     }
     .logo-nav {
         padding: 10px;
@@ -98,6 +88,15 @@ nav.navbar {
 @include respond-to($except-phone) {
     .navbar {
         height: $navHeight;
+        .navbar-nav {
+            float: right;
+        }
+        .open a {
+            background-color: transparent !important;
+        }
+        li.active a {
+            color: $activeFColor;
+        }
     }
     #mainWrapper #main {
         margin-top: $navHeight;
@@ -112,7 +111,7 @@ nav.navbar {
             z-index: 30;
         }
         .navbar-toggle {
-            background-color: $subBg;
+            background-color: $subBg !important;
             .icon-bar {
                 background-color: $fontColor !important;
             }

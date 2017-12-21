@@ -68,10 +68,10 @@ ul {
 }
 
 .homenews {
-    width: 100%;
-    height: 600px;
-    margin-top: 30px;
-    padding-bottom: 70px;
+    // width: 100%;
+    // height: 600px;
+    // margin-top: 30px;
+    // padding-bottom: 70px;
 }
 
 .homenews-con {
@@ -82,7 +82,6 @@ ul {
     }
     .slidecon ul li {
         .con {
-            height: 184px;
             background: #fff;
             position: relative;
             padding: 0;
@@ -108,7 +107,6 @@ ul {
                 p {
                     color: #999999;
                     line-height: 20px;
-                    height: 120px;
                     @include word-ellipsis;
                     white-space: initial; //多行显示 配合高度
                 }
@@ -123,11 +121,11 @@ ul {
             }
         }
         .img {
-            height: 184px;
             position: relative;
             padding-left: 0;
             img {
                 display: block;
+                border-radius: 2px;
                 padding: 10px 0;
                 width: 100%;
                 height: 100%;
