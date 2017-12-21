@@ -160,7 +160,7 @@ define([
                     var $actionsCells = $actionsColumn.find('td');
 
                     $actionsCells.each(function addActionsDropdown(rowNumber) {
-                        $(this).html(actionsDropdown);
+                        $(this).html(actionsDropdown).addClass("r-list-action");
                         $(this).find('a').attr('data-row', rowNumber + 1);
                     });
                 }
