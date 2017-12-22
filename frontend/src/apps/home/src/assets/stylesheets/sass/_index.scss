@@ -527,14 +527,15 @@
 .part_more {
     width: 210px;
     display: block;
-    text-align: center;
-    text-decoration: none;
     height: 45px;
-    text-align: center;
     line-height: 45px;
+    text-align: center;
     border: 1px solid #b72024;
     border-radius: 5px;
     margin: 0 auto;
+    &:hover{
+    text-decoration: none;
+    }
 }
 
 .find_more {
@@ -542,11 +543,10 @@
 }
 
 .part_five_more {
-    color: #b72024;
-    text-align: center;
+    color: #b72024 !important;
     &:hover {
         background-color: #b72024;
-        color: #fff;
+        color: #fff !important;
     }
 }
 
