@@ -28,21 +28,40 @@ define([
             homeDesc: {
                 name: "homeDesc",
                 cnName: "生美国际赴美生子",
-                category: "home"
+                itemCount: 3,
+                category: "home",
+                show: function(tpl, data) {
+                    var _s = $(tpl({
+                        title: data.title,
+                        content: data.content,
+                        posts: _.take(data.posts, this.itemCount)
+                    }));
+                    return _s;
+                }
             },
             homeService: {
                 name: "homeService",
                 cnName: "我们的服务",
-                category: "home"
+                itemCount: 4,
+                category: "home",
+                show: function(tpl, data) {
+                    var _s = $(tpl({
+                        title: data.title,
+                        qas: _.take(data.qas, this.itemCount)
+                    }));
+                    return _s;
+                }
             },
             homeActivity: {
                 name: "homeActivity",
                 cnName: "在美活动",
+                itemCount: 5,
                 category: "home",
                 show: function(tpl, data) {
-                    var first = _.first(data.posts),
+                    var posts = _.take(data.posts, this.itemCount);
+                    var first = _.first(posts),
                         length = data.length,
-                        active = _.slice(data.posts, 1, data.posts.length),
+                        active = _.slice(posts, 1, this.itemCount),
                         _s = $(tpl({
                             title: data.title,
                             first: first,
@@ -58,9 +77,13 @@ define([
             homeEnv: {
                 name: "homeEnv",
                 cnName: "美国待产环境",
+                itemCount: 3,
                 category: "home",
                 show: function(tpl, data) {
-                    var _s = $(tpl(data));
+                    var _s = $(tpl({
+                        title: data.title,
+                        posts: _.take(data.posts, this.itemCount)
+                    }));
                     // _s.delegate(".env-item", "click", function(e) {
                     //     var id = $(e.currentTarget).data("id");
                     //     window.go("/posts/" + id, true);
@@ -73,25 +96,33 @@ define([
                 cnName: "我们的优势",
                 category: "home",
                 show: function(tpl, data) {
-                    var first = _.first(data.snippets),
-                        length = data.snippets.length,
-                        divide = _.chunk(data.snippets, 3),
+                    var snippets = data.snippets || [];
+                    if (snippets.length) {
+                        var first = _.first(),
+                            length = snippets.length,
+                            divide = _.chunk(snippets, 3),
+                            _s = $(tpl({
+                                title: data.title,
+                                content: data.content,
+                                first: first || [],
+                                leftData: divide[0].reverse(),
+                                rightData: divide[1]
+                            })),
+                            detail = _s.find(".detail");
+                        _s.delegate(".item", "click", function(e) {
+                            var li = $(this);
+                            var d = li.data();
+                            var index = d.right ? d.index + 4 : 3 - d.index;
+                            detail.find(".title").empty().text(li.find(".item-title").text());
+                            detail.find(".content").empty().text(li.find(".item-content").text());
+                            detail.find(".page").empty().text(index + "/" + length);
+                        });
+                    } else {
                         _s = $(tpl({
                             title: data.title,
                             content: data.content,
-                            first: first,
-                            leftData: divide[0].reverse(),
-                            rightData: divide[1]
-                        })),
-                        detail = _s.find(".detail");
-                    _s.delegate(".item", "click", function(e) {
-                        var li = $(this);
-                        var d = li.data();
-                        var index = d.right ? d.index + 4 : 3 - d.index;
-                        detail.find(".title").empty().text(li.find(".item-title").text());
-                        detail.find(".content").empty().text(li.find(".item-content").text());
-                        detail.find(".page").empty().text(index + "/" + length);
-                    });
+                        }));
+                    }
                     return _s;
                 }
             },
@@ -110,8 +141,11 @@ define([
                 name: "homeNews",
                 category: "home",
                 cnName: "新闻资讯",
+                itemCount: 4,
                 show: function(tpl, data) {
-                    var _s = $(tpl(data));
+                    var _s = $(tpl({
+                        news: _.take(data.news, this.itemCount)
+                    }));
                     // _s.delegate(".news-item", "click", function(e) {
                     //     var id = $(e.currentTarget).data("id");
                     //     window.go("/news/" + id, true);

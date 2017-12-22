@@ -453,6 +453,10 @@ define([
         return status;
     };
 
+    function removeClickEvt(modal) {
+        modal.find(".save-btn").off("click");
+    }
+
     var modalFuncs = {
         buildList: buildList,
         _showForm: function(content, title, opts) {
@@ -463,6 +467,7 @@ define([
 
             modal.off('shown.bs.modal').on('shown.bs.modal', function() {
                 resizeModal(modal);
+                removeClickEvt(modal);
             });
 
             modal.find("#datepickerIllustration").datepicker({
@@ -504,6 +509,10 @@ define([
             var modal = $("#formModal");
             modal.find(".modal-title").empty().html(title);
             modal.find(".modal-body").empty().html(content);
+            modal.off('shown.bs.modal').on('shown.bs.modal', function() {
+                resizeModal(modal);
+                removeClickEvt(modal);
+            });
             if (opts && opts.modalEvts) opts.modalEvts(modal);
             modal.modal({
                 backdrop: "static",
