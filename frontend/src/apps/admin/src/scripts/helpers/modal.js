@@ -11,6 +11,7 @@ define([
         langx = skylarkjs.langx,
         __smdeIds = {},
         __repeaterSelectedItems = [],
+        __editorUid = 1,
         __content = {};
 
     function parseForm(selector) {
@@ -412,13 +413,13 @@ define([
 
         var smde = modal.find("#simplemde");
         if (smde[0]) {
-            var _id = langx.uid(__smdeIds);
             // __smdeIds[_id] = new SimpeMdeEditor({
             //     selector: modal.find("#simplemde")[0]
             // });
-            __smdeIds[_id] = UM.getEditor("simplemde");
+            __smdeIds[__editorUid] = UM.getEditor("simplemde", {}, true);
+            __editorUid += 1;
 
-            smde.attr("smdeId", _id);
+            smde.attr("smdeId", "smdeId" + __editorUid);
         }
     };
 

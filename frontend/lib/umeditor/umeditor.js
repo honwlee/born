@@ -1,7 +1,7 @@
 /*!
  * UEditor Mini版本
  * version: 1.2.2
- * build: Mon Dec 18 2017 16:16:20 GMT+0800 (CST)
+ * build: Fri Dec 22 2017 09:46:13 GMT+0800 (CST)
  */
 
 (function($) {
@@ -9840,9 +9840,13 @@
             setActiveWidget: function($widget) {
                 _activeWidget = $widget;
             },
-            getEditor: function(id, options) {
-                //var editor = _editors[id] || (_editors[id] = this.createEditor(id, options));
-                var editor = _editors[id] = this.createEditor(id, options);
+            getEditor: function(id, options, override) {
+                var editor;
+                if (override) {
+                    editor = _editors[id] = this.createEditor(id, options);
+                } else {
+                    editor = _editors[id] || (_editors[id] = this.createEditor(id, options));
+                }
                 _maxZIndex = _maxZIndex ? Math.max(editor.getOpt('zIndex'), _maxZIndex) : editor.getOpt('zIndex');
                 return editor;
             },
@@ -9978,9 +9982,6 @@
 
 
     })();
-
-
-
     UM.registerUI('bold italic redo undo underline strikethrough superscript subscript insertorderedlist insertunorderedlist ' +
         'cleardoc selectall link unlink print preview justifyleft justifycenter justifyright justifyfull removeformat horizontal drafts',
         function(name) {
