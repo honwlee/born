@@ -71,9 +71,9 @@ nav.navbar {
         }
         li[class^="-nav"] a,
         li[class*="-nav"] a {
-            padding-left: 7px;
-            padding-right: 7px;
-            background-color: transparent !important;
+            // padding-left: 7px;
+            // padding-right: 7px;
+            // background-color: transparent !important;
             background-image: none !important;
             box-shadow: none !important;
         }
@@ -132,6 +132,18 @@ nav.navbar {
             a {
                 color: $fontColor;
             }
+        }
+        li[class^="-nav"].active a,
+        li[class*="-nav"].active a {
+            color: $fontColor;
+        }
+        li[class^="-nav"] a,
+        li[class*="-nav"] a {
+            padding-left: 7px;
+            padding-right: 7px;
+            background-color: transparent !important;
+            background-image: none !important;
+            box-shadow: none !important;
         }
     }
     #mainWrapper #main {

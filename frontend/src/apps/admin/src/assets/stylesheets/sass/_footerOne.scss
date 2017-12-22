@@ -1,0 +1,31 @@
+.innner {
+    margin: 0 auto;
+    .innerCon {}
+    .innerCon .left {}
+    .innerCon .left .same {
+        float: left;
+        /* margin-left: 60px; */
+        text-align: center;
+        border: 1px solid;
+        padding: 20px;
+    }
+    .innerCon .left .same:first-child {
+        margin-left: 0;
+    }
+    .innerCon .left h5 {
+        color: #fff;
+        font-size: 16px;
+        font-weight: normal;
+        margin-bottom: 25px;
+    }
+    .innerCon .left a {
+        width: 20%;
+        display: block;
+        color: #959595;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    .innerCon .right {
+        float: right;
+    }
+}

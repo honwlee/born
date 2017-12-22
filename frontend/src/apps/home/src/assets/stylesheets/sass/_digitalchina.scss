@@ -159,6 +159,7 @@ ul {
     }
     .innerCon .left .same {
         float: left;
+        width: 20%;
         margin-left: 60px;
     }
     .innerCon .left .same:first-child {
@@ -204,7 +205,6 @@ ul {
 }
 
 .about-container {
-    background: $pageBg;
     padding-bottom: 70px;
     .position-current {
         height: 48px;

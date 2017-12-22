@@ -247,13 +247,13 @@
                 <ul class="container">
 
                     {{#each snippets}} {{#if @index}}
-                    <li class="col-lg-2 col-md-2 col-sm-2 text-center">
+                    <li class="col-lg-2 col-md-2 col-sm-2 text-center provide-item">
                         {{else}}
-                        <li class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 text-center">
+                        <li class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 text-center provide-item">
                             {{/if}}
-                            <img src="{{src}}" height="130" width="130">
-                            <p class="part_ten_title">{{title}}</p>
-                            <p class="part_ten_main">{{description}}</p>
+                            <img src="{{src}}">
+                            <h3 class="part_ten_title">{{title}}</h3>
+                            <h4 class="part_ten_main">{{description}}</h4>
                             <div class="part_ten_con">{{{content}}}</div>
                         </li>
                         {{/each}}
@@ -297,7 +297,7 @@
                         <div class="slidecon">
                             <ul class="list-unstyled row">
                                 {{#each news}}
-                                <li class="panel col-xs-12 col-sm-6 col-md-6 col-lg-6 news-item" data-id="{{id}}">
+                                <li class="panel col-xs-12 col-sm-3 col-md-6 col-lg-6 news-item" data-id="{{id}}">
                                     <div class="col-md-6 img ">
                                         <a target="_blank" href="/news/#{{id}}">
                                             <img src="{{src}}" alt="{{title}}">
@@ -343,8 +343,8 @@
                     <dl class="cf">
                         {{/if}}
                         <dt class="hidden-sm hidden-xs fl"><img src="{{src}}" width="140px"/></dt>
-                        <dd class="col-md-7 col-sm-12 col-xs-12 overflow">
-                            <span class="hisSpan">{{title}}</span>
+                        <dd class="col-md-7 col-sm-12 col-xs-12 mobi-clear-padding">
+                            <h4 class="hisSpan">{{title}}</h4>
                             <p class="posit_p">{{description}}<span class="bgy bgy_p"></span></p>
                         </dd>
                     </dl>
@@ -357,8 +357,8 @@
                     <dl class="cf">
                         {{/if}}
                         <dt class="hidden-sm hidden-xs fl"><img src="{{src}}" width="140px"/></dt>
-                        <dd class="col-md-7 col-sm-12 col-xs-12 overflow">
-                            <span class="hisSpan">{{title}}</span>
+                        <dd class="col-md-7 col-sm-12 col-xs-12 mobi-clear-padding">
+                            <h4 class="hisSpan">{{title}}</h4>
                             <p class="posit_p">{{description}}<span class="bgy bgy_p"></span></p>
                         </dd>
                     </dl>

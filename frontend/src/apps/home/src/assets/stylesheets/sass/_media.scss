@@ -1,120 +1,279 @@
-    $phone: '(max-width: 480px)';
-    $mini: '(max-width: 900px)';
-    $except-phone: '(min-width: 768px)';
-    $tablet-portrait: '(max-width: 767px)';
-    $except-tablet-portrait: '(min-width: 768px)';
-    $tablet-landscape: '(min-width: 768px) and (max-width: 979px)';
-    $large-desktop: '(min-width: 1200px)';
-    $max: '(max-width: 1300px)';
-    $bigThenMini: '(min-width: 900px)';
-    $non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
-    $retina: '(min--moz-device-pixel-ratio: 1.5),
+$phone: '(max-width: 480px)';
+$mini: '(max-width: 900px)';
+$except-phone: '(min-width: 768px)';
+$tablet-portrait: '(max-width: 767px)';
+$except-tablet-portrait: '(min-width: 768px)';
+$tablet-landscape: '(min-width: 768px) and (max-width: 979px)';
+$large-desktop: '(min-width: 1200px)';
+$max: '(max-width: 1300px)';
+$bigThenMini: '(min-width: 900px)';
+$non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
+$retina: '(min--moz-device-pixel-ratio: 1.5),
  (-o-min-device-pixel-ratio: 3/2),
-    (-webkit-min-device-pixel-ratio: 1.5),
-    (min-device-pixel-ratio: 1.5),
-    (min-resolution: 144dpi),
-    (min-resolution: 1.5dppx)';
+(-webkit-min-device-pixel-ratio: 1.5),
+(min-device-pixel-ratio: 1.5),
+(min-resolution: 144dpi),
+(min-resolution: 1.5dppx)';
  @mixin respond-to($media) {
-        @media only screen and #{$media} {
-            @content;
+    @media only screen and #{$media} {
+        @content;
+    }
+}
+
+//font size begin
+@include respond-to($tablet-portrait) {
+    h1 {
+        font-size: 30px !important;
+    }
+    h2 {
+        font-size: 28px!important;
+    }
+    h3 {
+        font-size: 24px!important;
+    }
+    h4 {
+        font-size: 20px!important;
+    }
+    h5 {
+        font-size: 18px!important;
+    }
+}
+
+@include respond-to($tablet-landscape) {
+    h1 {
+        font-size: 32px!important;
+    }
+    h2 {
+        font-size: 28px!important;
+    }
+    h3 {
+        font-size: 24px!important;
+    }
+    h4 {
+        font-size: 20px!important;
+    }
+    h5 {
+        font-size: 18px!important;
+    }
+}
+
+@include respond-to($large-desktop) {
+    h1 {
+        font-size: 40px;
+    }
+}
+
+//font size end
+// home page begin
+@include respond-to($tablet-portrait) {
+    .mobi-clear-padding {
+        padding: 0 !important;
+    }
+    // home begin
+    .part {
+        padding: 0;
+    }
+    .part_two_con {
+        max-height: 150px;
+    }
+    .part_five_more {
+        margin: 10px auto !important;
+    }
+    .find_more {
+        padding: 0;
+    }
+    .environment-con {
+        p.part_four_title {
+            font-size: 16px;
+            line-height: 36px;
+        }
+        .env-item {
+            img {
+                height: 150px;
+                width: 100%;
+            }
         }
     }
-    
-    // home page begin
-    @include respond-to($tablet-portrait) {
-        .mobi-clear-padding {
-            padding: 0 !important;
+    .homenews-con {
+        .img {
+            max-height: 184px;
         }
-        // home begin
-        .part {
-            padding: 0;
-        }
-        .part_two_con {
-            max-height: 150px;
-        }
-        .find_more {
-            padding: 0;
-        }
-        .homenews-con {
-            .img {
+        .slidecon ul li {
+            .con {
                 height: 100%;
-            }
-            .slidecon ul li {
-                .con {
+                p {
                     height: 100%;
-                    p {
-                        height: 100%;
-                    }
                 }
             }
         }
-        // home end
-        // 导航页面(metusa/news/fqa) begin
-        .metusa-wrap,
-        .news-wrap,
-        .fqa-wrap {
-            .item {
-                .text-tip {
-                    max-height: 80px;
-                }
-            }
-        }
-        //(metusa/news/fqa) end
-        // 导航页面 end
     }
-    
-    @include respond-to($large-desktop) {
-        .part {
-            padding: 50px;
+    // home end
+    // 导航页面(metusa/news/fqa) begin
+    .metusa-wrap,
+    .news-wrap,
+    .fqa-wrap {
+        .item {
+            .text-tip {
+                max-height: 80px;
+            }
         }
-        .part_two_con {
-            height: 150px;
+    }
+    //(metusa/news/fqa) end
+    .process-container {
+        .layou_title {
+            line-height: 46px;
         }
-        .find_more {
-            padding: 30px 0;
+    }
+    // 导航页面 end
+}
+
+@include respond-to($large-desktop) {
+    .part {
+        padding: 50px;
+    }
+    .part_two_con {
+        height: 150px;
+    }
+    .find_more {
+        padding: 30px 0;
+    }
+    .activity-con {
+        .left-con {
+            img {
+                height: 267px;
+                width: 100%;
+            }
         }
-        .homenews-con {
-            .img {
+        .right-con {
+            .img_img_desc {
+                height: 160px;
+            }
+        }
+    }
+    .provide-con {
+        .provide-item img {
+            height: 130px;
+            width: 130px;
+        }
+    }
+    .environment-con {
+        p.part_four_title {
+            font-size: 18px;
+            line-height: 66px;
+        }
+        .env-item {
+            img {
+                height: 213px;
+                // width: 379px;
+            }
+        }
+    }
+    .homenews-con {
+        .img {
+            height: 184px;
+        }
+        .slidecon ul li {
+            .con {
                 height: 184px;
-            }
-            .slidecon ul li {
-                .con {
-                    height: 184px;
-                    p {
-                        height: 120px;
-                    }
+                p {
+                    height: 120px;
                 }
             }
         }
-        // 导航页面(metusa/news/fqa) begin
-        .metusa-wrap,
-        .news-wrap,
-        .fqa-wrap {
-            .item {
-                .text-tip {
-                    height: 80px;
+    }
+    // 导航页面(metusa/news/fqa) begin
+    .metusa-wrap,
+    .news-wrap,
+    .fqa-wrap {
+        .item {
+            .text-tip {
+                height: 80px;
+            }
+        }
+    }
+    .process-container {
+        .layou_title {
+            height: 68px;
+            line-height: 56px;
+        }
+    }
+    // 导航页面 end
+}
+
+//home page end
+@include respond-to($tablet-landscape) {
+    .part_two_con {
+        height: 150px;
+    }
+    .part_five_more {
+        margin: 10px auto !important;
+    }
+    .activity-con {
+        .left-con {
+            img {
+                height: 200px;
+                width: 100%;
+            }
+        }
+        .right-con {
+            .img_img_desc {}
+        }
+    }
+    .environment-con {
+        p.part_four_title {
+            font-size: 18px;
+            line-height: 40px;
+        }
+        .env-item {
+            img {
+                height: 160px;
+                width: 100%;
+            }
+        }
+    }
+    .provide-con {
+        .provide-item img {
+            height: 100px;
+            width: 100px;
+        }
+    }
+    .homenews-con {
+        .img {
+            height: 100px;
+        }
+        .slidecon ul li {
+            .con {
+                height: 100%;
+                p {
+                    height: 100px;
                 }
             }
         }
-        // 导航页面 end
     }
-    
-    //home page end
-    @include respond-to($tablet-landscape) {
-        .part_two_con {
-            height: 150px;
+    // 导航页面(metusa/news/fqa) begin
+    .metusa-wrap,
+    .news-wrap,
+    .fqa-wrap {
+        .item {
+            .text-tip {
+                height: 80px;
+            }
         }
     }
-    
-    @media only screen and (min-width: 360px) and (max-width: 384px) {
-        html {
-            font-size: 64% !important;
-        }
+    //(metusa/news/fqa) end
+}
+
+@media only screen and (min-width: 360px) and (max-width: 384px) {
+    html {
+        font-size: 64% !important;
     }
-    /*Iphone6,Iphone6plus*/
-    
-    @media only screen and (min-width:385px) and (max-width:435px) {
-        html {
-            font-size: 82.5% !important;
-        }
+}
+
+
+/*Iphone6,Iphone6plus*/
+
+@media only screen and (min-width:385px) and (max-width:435px) {
+    html {
+        font-size: 82.5% !important;
     }
+}
