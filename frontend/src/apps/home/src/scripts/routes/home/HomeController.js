@@ -30,11 +30,14 @@ define([
             if (this.pageData) {
 
                 if (this.pageData.slide) {
-                    var slideS = $(components.slide(this.pageData.slide)).prependTo(_ec.find(".home-slide-container"));
-                    slideS.find("img").each(function(index, el) {
-                        var els = $(el).addClass("hide");
-                        els.parent().css("backgroud-image", "url(" + els.attr("src").replace(/\\g/, "/") + ")");
-                    });
+                    $(components.slide(this.pageData.slide.map(function(s) {
+                        return {
+                            name: s.name,
+                            link: s.link,
+                            description: s.description,
+                            src: s.src.replace(/\\/g, "/")
+                        }
+                    }))).prependTo(_ec.find(".home-slide-container"));
                 }
 
                 self.pageData.contents.forEach(function(content) {

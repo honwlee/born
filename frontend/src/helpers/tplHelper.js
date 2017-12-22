@@ -119,17 +119,6 @@ define([
                     return _s;
                 }
             },
-            homeLink: {
-                name: "homeLink",
-                cnName: "主页链接",
-                category: "home",
-                show: function(tpl, sub, main) {
-                    var src = (main.src || "").replace(/\\/g, "/");
-                    sub.src = src;
-                    var _s = $(tpl(sub));
-                    return _s;
-                }
-            },
             processMain: {
                 domId: "pProcess",
                 name: "processMain",

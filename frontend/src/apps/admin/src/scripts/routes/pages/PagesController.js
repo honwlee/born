@@ -55,15 +55,9 @@ define([
                 title: "页面列表",
                 id: "pageRepeater",
                 key: "pages",
+                addBtn: false,
                 exceptActionRows: { config: ["activity", "metusa", "fqa", "news"] },
                 actions: [{
-                    name: "delete",
-                    title: "删除新闻",
-                    tpl: "",
-                    callback: function() {
-
-                    }
-                }, {
                     name: "edit",
                     title: "编辑",
                     tpl: tpl,
@@ -146,10 +140,6 @@ define([
                 }, {
                     label: '路由',
                     property: 'pathto',
-                    sortable: false
-                }, {
-                    label: '位置',
-                    property: 'postion',
                     sortable: false
                 }]
             });

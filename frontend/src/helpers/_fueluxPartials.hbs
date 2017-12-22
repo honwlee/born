@@ -5,6 +5,7 @@
                 <div class="repeater-header">
                     <div class="repeater-header-left">
                         <span class="repeater-title">{{#if title}}{{title}}{{else}}Awesome Repeater{{/if}}</span>
+                        {{#if searchAble}}
                         <div class="repeater-search">
                             <div class="search input-group">
                                 <input type="search" class="form-control" placeholder="Search"/>
@@ -16,6 +17,7 @@
                                 </span>
                             </div>
                         </div>
+                        {{/if}}
                     </div>
                     <div class="repeater-header-right">
                         {{#if filterShow}}

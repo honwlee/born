@@ -17,11 +17,11 @@
                     {{else}}
                         <div class="item active">
                     {{/if}}
-                        <a href="{{link}}" target="_blank">
-                            <div class="banner-bg">
+                        <div class="banner-bg carousel-item" style="background-image: url({{src}})">
+                            <a href="{{link}}" target="_blank"></a>
                                <img alt="{{name}}" src="{{src}}">
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 {{/each}}
                 <div class="left carousel-control" href="#carousel-generic" data-slide="prev">
