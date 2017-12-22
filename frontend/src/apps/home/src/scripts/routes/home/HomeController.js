@@ -28,7 +28,15 @@ define([
                 self = this,
                 _ec = $(tpl({}));
             if (this.pageData) {
-                if (this.pageData.slide) $(components.slide(this.pageData.slide)).prependTo(_ec.find(".home-slide-container"));
+
+                if (this.pageData.slide) {
+                    var slideS = $(components.slide(this.pageData.slide)).prependTo(_ec.find(".home-slide-container"));
+                    slideS.find("img").each(function(index, el) {
+                        var els = $(el).addClass("hide");
+                        els.parent().css("backgroud-image", "url(" + els.attr("src").replace(/\\g/, "/") + ")");
+                    });
+                }
+
                 self.pageData.contents.forEach(function(content) {
                     tplHelper.show(content.tpl, content.sub, content).appendTo(_ec.find(".pages"));
                 });

@@ -38,6 +38,13 @@ define([
                     callback: function() {
 
                     }
+                }, {
+                    name: "edit",
+                    title: "编辑",
+                    tpl: tpl,
+                    callback: function() {
+
+                    }
                 }],
                 columns: [{
                     label: '名称',
@@ -75,7 +82,7 @@ define([
                         items.forEach(function(item) {
                             $("<div>").attr({
                                 class: "col-xs-6 col-md-3"
-                            }).appendTo(div).html("<img style='width:auto;height:80px;' src='" + item.data.src + "' >");
+                            }).appendTo(div).html("<img style='width:auto;height:80px;' src='" + item.src + "' >");
                         });
                     }
                 });

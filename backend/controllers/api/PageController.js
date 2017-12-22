@@ -58,7 +58,11 @@ module.exports = {
                 subs: subs,
                 contents: _contents,
                 slide: slides.map(function(s) {
-                    return s._content.items;
+                    if (s._content) {
+                        return s._content.items;
+                    } else {
+                        return []
+                    }
                 })[0]
             });
         } else {

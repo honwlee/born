@@ -261,7 +261,13 @@ define([
 
                 s.on("selected.fu.repeaterList", function(e, data) {
                     var item_data = $(data).data("item_data");
-                    if (item_data) __repeaterSelectedItems.push(item_data);
+
+                    if (item_data) {
+                        var result = __repeaterSelectedItems.filter(function(i) {
+                            return i.id === item_data.id;
+                        });
+                        if (!result.length) __repeaterSelectedItems.push(item_data);
+                    }
                 })
 
                 s.on("deselected.fu.repeaterList", function(e, data) {
@@ -356,6 +362,7 @@ define([
                 server().connect(value, "get", "select").then(function(data) {
                     // opts: {search, list_selectable, key, listSCallback}
                     showList(selector, value, {
+                        key: opts.key,
                         search: opts.search ? opts.search : false,
                         list_selectable: opts.list_selectable || "multi",
                         listSCallback: opts.listSCallback
@@ -373,6 +380,7 @@ define([
             var data = $(e.currentTarget).data();
             // opts: {search, list_selectable, key, listSCallback}
             showList(selector, data.type, {
+                key: opts.key,
                 search: opts.search ? opts.search : false,
                 list_selectable: opts.list_selectable || "multi",
                 listSCallback: opts.listSCallback
