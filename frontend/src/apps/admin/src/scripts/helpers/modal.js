@@ -10,8 +10,9 @@ define([
     var __files = {},
         langx = skylarkjs.langx,
         __smdeIds = {},
+        __uEExt = "mueId",
         __repeaterSelectedItems = [],
-        __editorUid = 1,
+        __uid = 0,
         __content = {};
 
     function parseForm(selector) {
@@ -30,7 +31,7 @@ define([
         });
         selector.find("textarea").each(function() {
             var s = $(this),
-                smdeId = s.attr("smdeId"),
+                smdeId = s.attr(__uEExt),
                 value;
             if (smdeId) {
                 // var edit = __smdeIds[smdeId].edit;
@@ -424,10 +425,10 @@ define([
             // __smdeIds[_id] = new SimpeMdeEditor({
             //     selector: modal.find("#simplemde")[0]
             // });
-            __smdeIds[__editorUid] = UM.getEditor("simplemde", {}, true);
-            __editorUid += 1;
-
-            smde.attr("smdeId", "smdeId" + __editorUid);
+            __uid += 1;
+            var editorUid = __uEExt + __uid;
+            __smdeIds[editorUid] = UM.getEditor("simplemde", {}, true);
+            smde.attr(__uEExt, editorUid);
         }
     };
 
