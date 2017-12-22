@@ -27,7 +27,7 @@ define([
                 title: this.post.title,
                 abstract: this.post.abstract,
                 imgUrl: this.post.src,
-                date: window.formatDate(this.news.publishedDate)
+                date: window.formatDate(this.post.publishedDate)
             }));
             e.content.find(".post_overview").html(this.post.content);
         },

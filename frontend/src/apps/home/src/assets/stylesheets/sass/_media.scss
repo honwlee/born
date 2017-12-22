@@ -73,6 +73,9 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
     .part {
         padding: 0;
     }
+    .part_one_main img {
+        height: 180px;
+    }
     .part_two_con {
         max-height: 150px;
     }
@@ -144,6 +147,9 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
 @include respond-to($large-desktop) {
     .part {
         padding: 50px;
+    }
+    .part_one_main img {
+        height: 260px;
     }
     .part_two_con {
         height: 150px;
@@ -231,6 +237,9 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
 
 //home page end
 @include respond-to($tablet-landscape) {
+    .part_one_main img {
+        height: 150px;
+    }
     .part_two_con {
         height: 150px;
     }
