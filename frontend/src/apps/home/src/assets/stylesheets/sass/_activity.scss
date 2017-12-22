@@ -18,12 +18,7 @@
     .repeater-canvas .item {
         width: 100%;
         overflow: hidden;
-        height: 260px;
         margin-bottom: 10px;
-        img {
-            width: inherit;
-            height: inherit;
-        }
     }
     .repeater-canvas .item img {
         -o-transition: all 0.5s linear;

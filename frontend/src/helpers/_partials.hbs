@@ -6,19 +6,17 @@
     </script>
 
     <script id="footerLink-partial" type="text/x-handlebars-template">
-        <div class="innner">
+        <div class="container">
             <div class="innerCon clearfix">
-                <div class="left clearfix">
-                    {{#each snippets}}
-                    <div class="same">
-                        <h5>{{title}}</h5>
-                        {{#each links}} {{#if src}}
-                        <a href="{{link}}"><img src="{{src}}"></a>
-                        {{else}}
-                        <a class="text-overflow" href="{{link}}">{{name}}</a> {{/if}} {{/each}}
-                    </div>
-                    {{/each}}
+                {{#each snippets}}
+                <div class="text-center same">
+                    <h5>{{title}}</h5>
+                    {{#each links}} {{#if src}}
+                    <a href="{{link}}"><img src="{{src}}"></a>
+                    {{else}}
+                    <a class="text-overflow" href="{{link}}">{{name}}</a> {{/if}} {{/each}}
                 </div>
+                {{/each}}
             </div>
         </div>
     </script>

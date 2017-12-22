@@ -82,6 +82,9 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
     .find_more {
         padding: 0;
     }
+    .carousel-item {
+        min-height: 100px;
+    }
     .environment-con {
         p.part_four_title {
             font-size: 16px;
@@ -124,6 +127,17 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
             line-height: 46px;
         }
     }
+    .activity-wrap {
+        .item {
+            max-height: 260px;
+        }
+        .item-con {
+            img {
+                width: inherit;
+                height: inherit;
+            }
+        }
+    }
     // 导航页面 end
 }
 
@@ -136,6 +150,10 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
     }
     .find_more {
         padding: 30px 0;
+    }
+    .carousel-item {
+        height: 540px;
+        min-height: 300px;
     }
     .activity-con {
         .left-con {
@@ -197,6 +215,17 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
             line-height: 56px;
         }
     }
+    .activity-wrap {
+        .item {
+            height: 260px;
+        }
+        .item-con {
+            img {
+                width: inherit;
+                height: inherit;
+            }
+        }
+    }
     // 导航页面 end
 }
 
@@ -207,6 +236,9 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
     }
     .part_five_more {
         margin: 10px auto !important;
+    }
+    .carousel-item {
+        min-height: 260px;
     }
     .activity-con {
         .left-con {
@@ -261,19 +293,16 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
         }
     }
     //(metusa/news/fqa) end
-}
-
-@media only screen and (min-width: 360px) and (max-width: 384px) {
-    html {
-        font-size: 64% !important;
+    .activity-wrap {
+        .item {
+            height: 200px;
+        }
+        .item-con {
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
-}
-
-
-/*Iphone6,Iphone6plus*/
-
-@media only screen and (min-width:385px) and (max-width:435px) {
-    html {
-        font-size: 82.5% !important;
-    }
+    // 导航页面 end
 }

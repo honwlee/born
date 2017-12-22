@@ -41,6 +41,7 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 .mobi-phone {
     position: fixed !important;
     right: 30px;
@@ -87,13 +88,12 @@ $navHeight: 82px;
 }
 
 .carousel-item {
-    height: 540px;
-    min-height: 300px;
     background: no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-size: 100%;
     img {
         display: none;
     }

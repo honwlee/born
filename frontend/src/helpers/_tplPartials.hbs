@@ -99,9 +99,9 @@
                 <h1 class="main_title main_title_seven">{{title}}</h1>
             </div>
             <div class="container panel-body panel row activity-con">
-                <div id="success_left" class="col-md-6 col-sm-6 col-xs-12 activity-item" data-id="{{first.id}}">
+                <div id="success_left" class="col-md-6 col-sm-6 col-xs-12 left-con" data-id="{{first.id}}">
                     <a href="/activity/{{first.id}}" target="_blank">
-                        <img src="{{first.src}}" title="" height="267" width="100%">
+                        <img src="{{first.src}}" title="">
                     </a>
                     <h3 class="left-title">{{title}}</h3>
                     <div class="left-abstract">{{first.abstract}}</div>
@@ -109,10 +109,10 @@
                 <div class="col-md-6 col-sm-6 col-xs-12 right-con">
                     <ul>
                         {{#each activePage}}
-                        <li data-id="{{id}}" class="col-md-6 col-sm-6 col-xs-12 activity-item">
+                        <li data-id="{{id}}" class="col-md-6 col-sm-6 col-xs-12">
                             <div class="img_img_desc">
                                 <a href="/activity/{{id}}" target="_blank">
-                                    <img src="{{src}}" height="auto" width="277">
+                                    <img src="{{src}}" >
                                 </a>
                             </div>
                             <p class="right-title">{{title}}</p>
@@ -150,9 +150,9 @@
                     {{#each posts}}
                     <li class="col-xs-12 col-sm-4 col-md-4 col-lg-4 env-item" data-id="{{id}}">
                         <a target="_blank" href="/posts/{{id}}">
-                            <img src="{{src}}" height="213" width="379">
+                            <img src="{{src}}" >
                         </a>
-                        <p style="line-height: 66px;" class="part_four_title">{{title}}</p>
+                        <p class="part_four_title">{{title}}</p>
                     </li>
                     {{/each}}
                 </ul>
@@ -238,7 +238,7 @@
         </div>
     </script>
     <script id="homeProvide-partial" type="text/x-handlebars-template">
-        <div class="panel-default hidden-xs" style="background: url({{src}}) no-repeat; background-size: 100% 640px;">
+        <div class="panel-default hidden-xs provide-con" style="background: url({{src}}) no-repeat; background-size: 100% 640px;">
             <!-- 生美国际赴美的五心服务 -->
             <div class="part">
                 <h1 class="main_title main_title_ten">{{title}}</h1>

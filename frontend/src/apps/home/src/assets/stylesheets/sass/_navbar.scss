@@ -53,7 +53,7 @@ nav.navbar {
                     &:hover {
                         background-color: transparent;
                         background-image: none;
-                        background-color: $subActiveBg;
+                        background-color: $subActiveBg !important;
                     }
                 }
                 &:hover {
