@@ -29,6 +29,7 @@ define([
                 imgUrl: this.news.src,
                 date: window.formatDate(this.news.publishedDate)
             }));
+            e.content.find(".post_overview").html(this.news.content);
         },
 
         entered: function() {

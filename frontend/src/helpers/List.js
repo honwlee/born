@@ -8,13 +8,14 @@ define([
 ], function($, skylarkjs, _, partial, server, hbs) {
     var langx = skylarkjs.langx;
 
-    function formatDate(d) {
+    function formatDate(d, split) {
+        split = split || "-";
         var padTwo = function(value) {
                 var s = '0' + value;
                 return s.substr(s.length - 2);
             },
             date = new Date(d);
-        return date.getFullYear() + "-" + padTwo(date.getMonth() + 1) + "-" + padTwo(date.getDate());
+        return date.getFullYear() + split + padTwo(date.getMonth() + 1) + split + padTwo(date.getDate());
     }
 
     function customRowRenderer(helpers, callback) {
@@ -89,10 +90,11 @@ define([
         "edit": function(modal, opts) {
             return {
                 name: 'edit',
-                html: '<span class="glyphicon glyphicon-edit" title ="编辑"></span>',
+                html: '<span class="glyphicon glyphicon-edit" title="编辑"></span>',
                 clickAction: opts.clickAction ? opts.clickAction : function(helpers, callback, e) {
                     opts.tplOpts = opts.tplOpts || {};
                     var _data = langx.mixin(langx.clone(helpers.rowData), opts.tplOpts);
+                    if (_data.publishedDate) _data.publishedDate = formatDate(_data.publishedDate);
                     modal.show("form", $(opts.tpl(_data)), opts.title, {
                         key: opts.key,
                         file: true,

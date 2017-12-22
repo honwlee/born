@@ -29,12 +29,7 @@ define([
                 imgUrl: this.qa.src,
                 date: window.formatDate(this.qa.publishedDate)
             }));
-            var simplemde = new SimpleMDE({
-                element: e.content.find("textarea")[0]
-            });
-            e.content.find(".post_overview").html(simplemde.markdown(this.qa.content));
-            simplemde.toTextArea();
-            simplemde = null;
+            e.content.find(".post_overview").html(this.qa.content);
         },
 
         entered: function() {

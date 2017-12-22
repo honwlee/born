@@ -4,8 +4,17 @@ if read -p "start build and deploy task [Y/N]? " answer; then
     if [ $answer == "Y" ] || [ $answer == "y" ]
     then
         echo "build and deploy"
-        cd build; gulp build; gulp deploy;
-        cd ..
+        if read -p "prod [Y/N]? " prod; then
+            prod=${prod:-y}
+            if [ $prod == "Y" ] || [ $prod == "y" ] 
+            then
+                cd build; gulp build --prod; gulp deploy;
+                cd ..
+            else
+                cd build; gulp build; gulp deploy;
+                cd ..
+            fi
+        fi
     else
         echo "start without build and deploy task"
     fi

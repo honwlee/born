@@ -27,14 +27,9 @@ define([
                 title: this.post.title,
                 abstract: this.post.abstract,
                 imgUrl: this.post.src,
-                date: new Date(this.post.publishedDate).toISOString().substring(0, 10)
+                date: window.formatDate(this.news.publishedDate)
             }));
-            var simplemde = new SimpleMDE({
-                element: e.content.find("textarea")[0]
-            });
-            e.content.find(".post_overview").html(simplemde.markdown(this.post.content));
-            simplemde.toTextArea();
-            simplemde = null;
+            e.content.find(".post_overview").html(this.post.content);
         },
 
         entered: function() {

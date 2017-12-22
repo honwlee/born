@@ -85,7 +85,7 @@ define([
                             $[method]("/api/" + name + "/" + action, function(data) {
                                 throb.remove();
                                 main.style.opacity = 1;
-                                if (data.status == false) {
+                                if (data.status && data.status == false) {
                                     deferred.resolve(null, data);
                                     if (opts && opts.noMsg) return;
                                     if (data.auth) {

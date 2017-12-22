@@ -24,6 +24,7 @@ define([
         preparing: function(e) {
             var deferred = new langx.Deferred();
             window.formatDate = function(d, split) {
+                d = d || new Date();
                 split = split || "-";
                 var padTwo = function(value) {
                         var s = '0' + value;

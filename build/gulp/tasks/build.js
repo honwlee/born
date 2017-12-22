@@ -9,7 +9,13 @@ const gulp = require('gulp'),
     util = require('../utils'),
     apps = argv.apps,
     del = require('del'),
-    appsPath = path.join(util.frontend, "src/apps");
+    header = require('gulp-header'),
+    livereload = require('gulp-livereload'),
+    sourceMaps = require('gulp-sourcemaps'),
+    uglify = require('gulp-uglify'),
+    onError = require('../utils/handleErrors'),
+    appsPath = path.join(util.frontend, "src/apps"),
+    prod = !!gutil.env.prod;
 
 function buildApp(name) {
     let appDist = path.join(util.frontend, "dist", name),
@@ -25,25 +31,62 @@ function buildApp(name) {
     }
     let appPath = path.join(appsPath, name);
     if (fs.existsSync(appPath)) {
-        copydir.sync(appPath + "/src", appDist);
+        // copydir.sync(appPath + "/src", appDist);
+        gulp.src(appPath + "/src/**/*.js")
+            .pipe(sourceMaps.init())
+            .pipe(sourceMaps.write().on('error', onError))
+            .pipe(prod ? uglify().on('error', onError) : gutil.noop())
+            .pipe(header(util.banner, {
+                pkg: util.pkg
+            }))
+            .pipe(gulp.dest(appDist));
+        gulp.src(appPath + "/src/assets/**/*")
+            .pipe(gulp.dest(appDist + "/assets"));
+        gulp.src(appPath + '/src/**//*.+(html|hbs|handerbars)')
+            .pipe(gulp.dest(appDist));
+        gulp.src(appPath + '/src/**//*.json')
+            .pipe(gulp.dest(appDist));
+        gulp.src(appPath + '/src/**//*.+(png|jpg|jpeg|gif)')
+            .pipe(gulp.dest(appDist));
+
         mkdirp.sync(path.join(appDist, "lib"));
         mkdirp.sync(path.join(appDist, "scripts/services"));
         mkdirp.sync(path.join(appDist, "scripts/helpers"));
+
         copydir.sync(commonLib, path.join(appDist, "lib"), function(stat, filepath, filename) {
             if (filename === ".DS_Store") return false;
             if (stat === 'directory' && filename.match(/^\./)) return false;
             return true;
         });
-        copydir.sync(commonSrvs, path.join(appDist, "scripts/services"), function(stat, filepath, filename) {
-            if (filename === ".DS_Store") return false;
-            if (stat === 'directory' && filename.match(/^\./)) return false;
-            return true;
-        });
-        copydir.sync(commonHelpers, path.join(appDist, "scripts/helpers"), function(stat, filepath, filename) {
-            if (filename === ".DS_Store") return false;
-            if (stat === 'directory' && filename.match(/^\./)) return false;
-            return true;
-        });
+        gulp.src(commonSrvs + '/**/*')
+            .pipe(sourceMaps.init())
+            .pipe(sourceMaps.write().on('error', onError))
+            .pipe(prod ? uglify().on('error', onError) : gutil.noop())
+            .pipe(header(util.banner, {
+                pkg: util.pkg
+            }))
+            .pipe(gulp.dest(path.join(appDist, "scripts/services")));
+
+        gulp.src(commonHelpers + '/**//*.+(html|hbs|handerbars)')
+            .pipe(gulp.dest(path.join(appDist, "scripts/helpers")));
+        gulp.src(commonHelpers + '/**/*.js')
+            .pipe(sourceMaps.init())
+            .pipe(sourceMaps.write().on('error', onError))
+            .pipe(prod ? uglify().on('error', onError) : gutil.noop())
+            .pipe(header(util.banner, {
+                pkg: util.pkg
+            }))
+            .pipe(gulp.dest(path.join(appDist, "scripts/helpers")));
+        // copydir.sync(commonSrvs, path.join(appDist, "scripts/services"), function(stat, filepath, filename) {
+        //     if (filename === ".DS_Store") return false;
+        //     if (stat === 'directory' && filename.match(/^\./)) return false;
+        //     return true;
+        // });
+        // copydir.sync(commonHelpers, path.join(appDist, "scripts/helpers"), function(stat, filepath, filename) {
+        //     if (filename === ".DS_Store") return false;
+        //     if (stat === 'directory' && filename.match(/^\./)) return false;
+        //     return true;
+        // });
     }
 }
 
