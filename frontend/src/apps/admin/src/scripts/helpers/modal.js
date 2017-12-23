@@ -170,7 +170,8 @@ define([
                     property: 'title',
                     sortable: false
                 }],
-                fields: ["id"]
+                label: "title",
+                fields: ["id", "title"]
             },
             pages: {
                 type: "pages",
@@ -181,6 +182,7 @@ define([
                     property: 'name',
                     sortable: false
                 }],
+                label: "title",
                 fields: ["id", "name"]
             },
             contents: {
@@ -192,6 +194,7 @@ define([
                     property: 'name',
                     sortable: false
                 }],
+                label: "title",
                 fields: ["id", "name"]
             },
             news: {
@@ -203,7 +206,8 @@ define([
                     property: 'title',
                     sortable: false
                 }],
-                fields: ["id"]
+                label: "title",
+                fields: ["id", "title"]
             },
             qas: {
                 type: "qas",
@@ -214,7 +218,8 @@ define([
                     property: 'title',
                     sortable: true
                 }],
-                fields: ["id"]
+                label: "title",
+                fields: ["id", "title"]
             },
             photos: {
                 type: "photos",
@@ -225,6 +230,7 @@ define([
                     property: 'src',
                     sortable: true
                 }],
+                label: "src",
                 fields: ["id", "description", "src", "name"]
             },
             snippets: {
@@ -236,7 +242,8 @@ define([
                     property: 'title',
                     sortable: true
                 }],
-                fields: ["id"]
+                label: "title",
+                fields: ["id", "title"]
             },
             links: {
                 type: "links",
@@ -247,7 +254,8 @@ define([
                     property: 'name',
                     sortable: true
                 }],
-                fields: ["id"]
+                label: "name",
+                fields: ["id", "name"]
             }
         }
         var cmodal = $("#chooseModal");
@@ -286,18 +294,36 @@ define([
                 cmodal.find(".modal-body").html(s);
                 cmodal.find(".save-btn").off("click").on("click", function() {
                     var items = __repeaterSelectedItems;
+                    var optionData = data[type];
                     if (items.length) {
                         var formatData = __content[opts.key] = {
                             type: type,
                             items: items.map(function(item) {
                                 var ret = {};
-                                data[type].fields.forEach(function(f) {
+                                optionData.fields.forEach(function(f) {
                                     ret[f] = item[f];
                                 });
                                 return ret;
                             })
                         };
                         cmodal.modal("hide");
+                        var ul = formModal.find(".select-content-results ul");
+                        formatData.items.forEach(function(item) {
+                            var iContent;
+                            if (optionData.label == "src") {
+                                iContent = $("<img>").attr({
+                                    class: "mini-img result-ic",
+                                    src: item.src
+                                })
+                            } else {
+                                iContent = $("<span>").attr({
+                                    class: "result-ic"
+                                }).text(item[optionData.label])
+                            }
+                            $("<li>").attr({
+                                class: "result-item"
+                            }).html(iContent).appendTo(ul);
+                        });
                         if (opts.listSCallback) opts.listSCallback(formModal, items, formatData);
                     } else {
                         toastr.warning("请选择一项！");
@@ -467,27 +493,36 @@ define([
 
             modal.off('shown.bs.modal').on('shown.bs.modal', function() {
                 resizeModal(modal);
+                if (opts.modalShownEvts) opts.modalShownEvts(modal);
+            });
+
+            modal.off('hidden.bs.modal').on('hidden.bs.modal', function() {
                 removeClickEvt(modal);
+                if (opts.modalHidenEvts) opts.modalHidenEvts(modal);
             });
 
             modal.find("#datepickerIllustration").datepicker({
                 allowPastDates: true,
                 formatDate: formatDate
             });
-            modal.find(".save-btn").off("click").on("click", function() {
-                var extralObj = {
-                    _content: __content[opts.key],
-                    _file: __files[opts.key]
-                };
-                if (opts.beforeSave) opts.beforeSave(extralObj);
-                if (checkForm(opts.checkKeys || [], modal)) {
-                    save(opts.key, modal, extralObj, function(data) {
-                        __content[opts.key] = null;
-                        __files[opts.key] = null;
-                        toastr.success("已保存！");
-                        if (opts.afterSave) opts.afterSave(data);
-                        modal.modal('hide');
-                    }, opts.action);
+            modal.find(".save-btn").off("click").on("click", function(e) {
+                if (opts.modalClickOkEvts) {
+                    opts.modalClickOkEvts(modal, e);
+                } else {
+                    var extralObj = {
+                        _content: __content[opts.key],
+                        _file: __files[opts.key]
+                    };
+                    if (opts.beforeSave) opts.beforeSave(extralObj);
+                    if (checkForm(opts.checkKeys || [], modal)) {
+                        save(opts.key, modal, extralObj, function(data) {
+                            __content[opts.key] = null;
+                            __files[opts.key] = null;
+                            toastr.success("已保存！");
+                            if (opts.afterSave) opts.afterSave(data);
+                            modal.modal('hide');
+                        }, opts.action);
+                    }
                 }
             });
 
@@ -497,23 +532,7 @@ define([
                 });
             }
             if (opts.bindFormEvnts != false) bindFormEvnts(modal, opts);
-            if (opts.modalEvts) opts.modalEvts(modal);
-            modal.modal({
-                backdrop: "static",
-                show: true
-            });
-            return modal;
-        },
-
-        _showNormalForm: function(content, title, opts) {
-            var modal = $("#formModal");
-            modal.find(".modal-title").empty().html(title);
-            modal.find(".modal-body").empty().html(content);
-            modal.off('shown.bs.modal').on('shown.bs.modal', function() {
-                resizeModal(modal);
-                removeClickEvt(modal);
-            });
-            if (opts && opts.modalEvts) opts.modalEvts(modal);
+            if (opts.modalInitEvts) opts.modalInitEvts(modal);
             modal.modal({
                 backdrop: "static",
                 show: true
@@ -563,9 +582,6 @@ define([
                     break;
                 case "content":
                     modal = modalFuncs._showContent(content, title, opts);
-                    break;
-                case "normalForm":
-                    modal = modalFuncs._showNormalForm(content, title, opts);
                     break;
                 default:
                     modal = modalFuncs._showDelete(content, title, opts);

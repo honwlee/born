@@ -11,6 +11,17 @@ function getFullURL(req) {
 
     return '' + root + req.originalUrl;
 }
+
+function formatDate(d, split) {
+    split = split || "-";
+    var padTwo = function(value) {
+            var s = '0' + value;
+            return s.substr(s.length - 2);
+        },
+        date = new Date(d);
+    return date.getFullYear() + split + padTwo(date.getMonth() + 1) + split + padTwo(date.getDate());
+}
+
 module.exports = {
     parse: function(name, req, res, queryKeys, filterOpts) {
         let dbpath = path.join(__dirname, "../dbs"),
@@ -159,6 +170,13 @@ module.exports = {
             _limit = parseInt(_limit, 10);
             chain = chain.slice(_start, _start + _limit);
         }
+
+        chain = chain.map(function(r) {
+            if (r.publishedDate) r.publishedDate = formatDate(r.publishedDate);
+            if (r.updatedAt) r.updatedAt = formatDate(r.updatedAt);
+            if (r.createdAt) r.createdAt = formatDate(r.createdAt);
+            return r;
+        })
 
         res.json({
             total: total,

@@ -20,36 +20,6 @@ define([
         __file,
         __currentTplKey = null,
         wizardTpl = hbs.compile("{{> wizard-tpl-partial}}");
-
-    function bindCurrentTplEvts(modal, key, callback, actionName) {
-        var container = modal.find(".tpl-container");
-        if (__currentTplKey) {
-            // 清除事件监听
-            tplHelper.getTplByKey(__currentTplKey).bindEvnts(modal, container, true);
-        }
-        $(tplHelper.getForm(key)()).appendTo(container.empty());
-        // 处理form显示内容，比如初始化编辑器等
-        modalFunc.bindFormEvnts(container, {
-            key: "contents",
-            file: true
-        });
-        container.find("input.file").on("change", function(e) {
-            var type = $(e.currentTarget).data("type");
-            __file = this.files[0];
-        });
-        var tplObj = tplHelper.getTplByKey(key);
-        __currentTplKey = key;
-        // 准备上传数据
-        tplObj.bindEvnts(modal, container);
-        modal.find(".save-btn").off("click").on("click", function() {
-            // 上传
-            tplObj.save(modal, {
-                _file: __file
-            }, actionName);
-            callback();
-        });
-    }
-
     return spa.RouteController.inherit({
         klassName: "ContentsController",
         repeaterId: "contentsRepeater",
@@ -66,37 +36,34 @@ define([
         },
 
         buildList: function(post) {
-            this.list = new List({
+            var list = this.list = new List({
                 title: "模板内容",
                 id: this.repeaterId,
                 key: "contents",
                 actionName: this.actionName,
                 actions: [{
-                        name: "delete",
-                        title: "删除模板",
-                        tpl: "",
-                        callback: function() {
+                    name: "delete",
+                    title: "删除模板",
+                    tpl: "",
+                    callback: function() {
 
-                        }
                     }
-                    // , {
-                    //     override: true,
-                    //     name: 'edit',
-                    //     html: '<span class="glyphicon glyphicon-edit"></span> 编辑',
-                    //     clickAction: function(helpers, callback, e) {
-                    //         opts.tplOpts = opts.tplOpts || {};
-                    //         var _data = langx.mixin(langx.clone(helpers.rowData), opts.tplOpts);
-                    //         modal.show("form", $(opts.tpl(_data)), opts.title, {
-                    //             key: opts.key,
-                    //             file: true,
-                    //             afterSave: function() {
-                    //                 opts.container.repeater('render');
-                    //                 if (opts.callback) opts.callback();
-                    //             }
-                    //         });
-                    //     }
-                    // }
-                ],
+                }, {
+                    name: "edit",
+                    title: "编辑",
+                    tpl: tpl,
+                    clickAction: function(helpers, callback, e) {
+                        var _data = langx.mixin(langx.clone(helpers.rowData), {});
+                        if (_data.publishedDate) _data.publishedDate = formatDate(_data.publishedDate);
+                        modalFunc.show("form", $(opts.tpl(_data)), "编辑页面内容", {
+                            key: "contents",
+                            file: true,
+                            afterSave: function() {
+                                list.getDom().repeater('render');
+                            }
+                        });
+                    }
+                }],
                 columns: [{
                     label: '名称',
                     property: 'name',
@@ -151,11 +118,58 @@ define([
                     ]
                 };
                 var wizard = $(wizardTpl(obj)).wizard(),
-                    modal = modalFunc.show("normalForm", wizard, this.addTitle, {
+                    modal = modalFunc.show("form", wizard, this.addTitle, {
                         key: "contents",
                         file: true,
-                        callback: function() {
+                        modalShownEvts: function(_modal) {
+                            var saveBtn = _modal.find(".save-btn").prop("disabled", true);
+                            _modal.find("#tpl").off("change").on("change", function() {
+                                __file = null;
+                                if (this.value) {
+                                    var key = this.value;
+                                    var container = _modal.find(".tpl-container");
+                                    if (__currentTplKey) {
+                                        // 清除事件监听
+                                        tplHelper.getTplByKey(__currentTplKey).bindEvnts(_modal, container, true);
+                                    }
+                                    __currentTplKey = key;
+                                    $(tplHelper.getForm(key)()).appendTo(container.empty());
+                                    // 处理form显示内容，比如初始化编辑器等
+                                    modalFunc.bindFormEvnts(container, {
+                                        key: "contents",
+                                        file: true,
+                                        listSCallback: function(formModal, items, formatData) {
 
+                                        }
+                                    });
+                                    container.find("input.file").on("change", function(e) {
+                                        var type = $(e.currentTarget).data("type");
+                                        __file = this.files[0];
+                                    });
+                                    saveBtn.prop("disabled", false);
+                                    wizard.wizard("next");
+                                }
+                            });
+                        },
+
+                        modalHidenEvts: function(_modal) {
+                            __file = null;
+                            __currentTplKey = null;
+                        },
+
+                        modalClickOkEvts: function(_modal) {
+                            var container = _modal.find(".tpl-container");
+                            var tplObj = tplHelper.getTplByKey(__currentTplKey);
+                            // 准备上传数据
+                            tplObj.bindEvnts(_modal, container);
+                            modal.find(".save-btn").off("click").on("click", function() {
+                                // 上传
+                                tplObj.save(_modal, {
+                                    _file: __file
+                                }, self.postAction);
+                                toastr.success("已保存！");
+                                selector.repeater('render');
+                            });
                         }
                     });
                 wizard.on('finished.fu.wizard', function() {
@@ -178,19 +192,7 @@ define([
                 //     modal.find("#tpl").prop("disabled", false);
                 // });
 
-                modal.find("#tpl").off("change").on("change", function() {
-                    __file = null;
-                    if (this.value) {
-                        bindCurrentTplEvts(modal, this.value, function() {
-                            toastr.success("已保存！");
-                            selector.repeater('render');
-                        }, self.postAction);
-                        wizard.wizard("next");
-                    }
-                });
-                modal.off('hidden.bs.modal').on('hidden.bs.modal', function() {
-                    __file = null;
-                });
+
             });
             selector.find(".repeater-refresh button").off("click").on("click", function(e) {
                 selector.repeater('render');
@@ -201,4 +203,4 @@ define([
         entered: function() {},
         exited: function() {}
     });
-})
+});

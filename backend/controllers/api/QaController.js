@@ -28,6 +28,9 @@ module.exports = {
         let qa = Qa.findBy({
             id: req.query.id
         });
+        if (qa.viewCount) qa.viewCount = 0;
+        qa.viewCount += 1;
+        Qa.update(qa);
         res.json(qa);
     },
 

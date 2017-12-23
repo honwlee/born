@@ -24,6 +24,9 @@ module.exports = {
         let post = Post.findBy({
             id: req.query.id
         });
+        if (post.viewCount) post.viewCount = 0;
+        post.viewCount += 1;
+        Post.update(post);
         res.json(post);
     },
 

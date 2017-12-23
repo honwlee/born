@@ -64,14 +64,46 @@ define([
                         var pageId = helpers.rowData.id;
                         server().connect("pages", "get", "show?key=id&value=" + pageId).then(function(data) {
 
-                            var modal = modalFunc.show("normalForm", $(cogTpl(data)), "配置页面", {
-                                modalEvts: function(_modal) {
+                            var modal = modalFunc.show("form", $(cogTpl(data)), "配置页面", {
+                                modalInitEvts: function(_modal) {
                                     _modal.find('[data-toggle="tab"]').each(function() {
                                         var $this = $(this);
                                         $this.tab();
                                     });
                                     _modal.find('[data-toggle="dropdown"]').dropdown();
+                                },
+
+                                modalShownEvts: function(_modal) {
+
+                                },
+
+                                modalHidenEvts: function(_modal) {
+                                    modalFunc.contentListByBtn(ps, {}, true);
+                                    modalFunc.contentListByBtn(cs, {}, true);
+                                    _modal.undelegate(".remove", "click");
+                                    _modal.undelegate(".up", "click");
+                                    _modal.undelegate(".down", "click");
+                                },
+
+                                modalClickOkEvts: function(_modal) {
+                                    var ps = _modal.find("#pSSub")
+                                    var cs = _modal.find("#pSContent");
+                                    var subs = [],
+                                        contents = [];
+                                    ps.find("li").each(function(i, el) { subs.push($(el).data("id")); })
+
+                                    cs.find("li").each(function(i, el) { contents.push($(el).data("id")); });
+
+                                    server().connect("pages", "post", "update", {
+                                        id: pageId,
+                                        subs: subs.join(","),
+                                        contents: contents.join(",")
+                                    }).then(function() {
+                                        _modal.modal("hide");
+                                        toastr.success("保存成功！");
+                                    });
                                 }
+
                             });
 
                             var ps = modal.find("#pSSub")
@@ -79,30 +111,7 @@ define([
                             var cs = modal.find("#pSContent");
                             bindBtnEvts("contents", cs);
 
-                            modal.find(".save-btn").off("click").on("click", function() {
-                                var subs = [],
-                                    contents = [];
-                                ps.find("li").each(function(i, el) { subs.push($(el).data("id")); })
 
-                                cs.find("li").each(function(i, el) { contents.push($(el).data("id")); });
-
-                                server().connect("pages", "post", "update", {
-                                    id: pageId,
-                                    subs: subs.join(","),
-                                    contents: contents.join(",")
-                                }).then(function() {
-                                    modal.modal("hide");
-                                    toastr.success("保存成功！");
-                                });
-                            });
-
-                            modal.off('hidden.bs.modal').on('hidden.bs.modal', function() {
-                                modalFunc.contentListByBtn(ps, {}, true);
-                                modalFunc.contentListByBtn(cs, {}, true);
-                                modal.undelegate(".remove", "click");
-                                modal.undelegate(".up", "click");
-                                modal.undelegate(".down", "click");
-                            });
                             modal.delegate(".remove", "click", function(e) {
                                 $(this).parent().parent().remove();
                             });
@@ -158,7 +167,7 @@ define([
                     afterSave: function() {
                         selector.repeater('render');
                     },
-                    modalEvts: function(_modal) {
+                    modalInitEvts: function(_modal) {
 
                         _modal.find('[data-toggle="tab"]').each(function() {
                             var $this = $(this);

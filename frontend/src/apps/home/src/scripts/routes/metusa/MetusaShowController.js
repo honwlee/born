@@ -27,7 +27,7 @@ define([
                 title: this.post.title,
                 abstract: this.post.abstract,
                 imgUrl: this.post.src,
-                date: new Date(this.post.publishedDate).toISOString().substring(0, 10)
+                date: window.formatDate(this.post.publishedDate)
             }));
             var simplemde = new SimpleMDE({
                 element: e.content.find("textarea")[0]

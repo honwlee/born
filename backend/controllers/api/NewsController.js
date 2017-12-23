@@ -27,6 +27,9 @@ module.exports = {
         let news = News.findBy({
             id: req.query.id
         });
+        if (news.viewCount) news.viewCount = 0;
+        news.viewCount += 1;
+        News.update(news);
         res.json(news);
     },
 
