@@ -62,7 +62,7 @@
             "pathto": "/",
             "data": {
                 "name": "home",
-                "navName": "管理主页"
+                "navName": "网站信息"
             },
             "controller": {
                 "type": "scripts/routes/home/HomeController"
@@ -72,7 +72,7 @@
             "pathto": "/pages",
             "data": {
                 "name": "pages",
-                "navName": "页面"
+                "navName": "页面管理"
             },
             "controller": {
                 "type": "scripts/routes/pages/PagesController"
@@ -148,7 +148,7 @@
             "pathto": "/photos/slide",
             "data": {
                 "name": "photos-slide",
-                "navName": "幻灯片图片"
+                "navName": "上传首页banner"
             },
             "controller": {
                 "type": "scripts/routes/photos/SlideController"
@@ -159,7 +159,7 @@
             "pathto": "/photos/page",
             "data": {
                 "name": "photos-page",
-                "navName": "页面模块背景图片"
+                "navName": "上传页面背景图片"
             },
             "controller": {
                 "type": "scripts/routes/photos/PageController"
@@ -169,7 +169,7 @@
             "pathto": "/news",
             "data": {
                 "name": "news",
-                "navName": "新闻"
+                "navName": "新闻管理"
             },
             "controller": {
                 "type": "scripts/routes/news/NewsController"
@@ -179,7 +179,7 @@
             "pathto": "/slides",
             "data": {
                 "name": "slides",
-                "navName": "幻灯片"
+                "navName": "banner管理"
             },
             "controller": {
                 "type": "scripts/routes/slides/SlidesController"
@@ -194,8 +194,8 @@
                 "navName": "页面内容"
             },
             "subs": [
-                "contents-about",
                 "contents-home",
+                "contents-about",
                 "contents-process",
                 "contents-service"
             ],
@@ -219,7 +219,7 @@
             "pathto": "/contents/home",
             "data": {
                 "name": "contents-home",
-                "navName": "主页"
+                "navName": "首页"
             },
             "controller": {
                 "type": "scripts/routes/contents/HomeController"
@@ -251,7 +251,7 @@
             "pathto": "/qas",
             "data": {
                 "name": "qas",
-                "navName": "QA"
+                "navName": "问答管理"
             },
             "controller": {
                 "type": "scripts/routes/qas/QasController"
@@ -286,7 +286,7 @@
             "pathto": "/snippets/vantage",
             "data": {
                 "name": "snippets-vantage",
-                "navName": "优势"
+                "navName": "我们的优势"
             },
             "controller": {
                 "type": "scripts/routes/snippets/VantageController"
@@ -308,7 +308,7 @@
             "pathto": "/snippets/flow",
             "data": {
                 "name": "snippets-flow",
-                "navName": "主要流程"
+                "navName": "赴美流程"
             },
             "controller": {
                 "type": "scripts/routes/snippets/FlowController"
@@ -352,7 +352,7 @@
             "pathto": "/snippets/link",
             "data": {
                 "name": "snippets-link",
-                "navName": "主页链接内容设置"
+                "navName": "页脚链接设置"
             },
             "controller": {
                 "type": "scripts/routes/snippets/LinkController"
@@ -406,7 +406,7 @@
             "pathto": "/links",
             "data": {
                 "name": "links",
-                "navName": "链接"
+                "navName": "页脚内容管理"
             },
             "controller": {
                 "type": "scripts/routes/links/LinksController"

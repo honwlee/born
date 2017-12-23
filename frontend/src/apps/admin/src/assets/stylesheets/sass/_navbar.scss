@@ -1,5 +1,11 @@
 $bgColor: #2e6da4;
 $fontColor: #fff;
+@media (min-width: 1200px) {
+    .container {
+        width: 1270px !important;
+    }
+}
+
 nav.navbar {
     height: 50px;
     z-index: 40;
