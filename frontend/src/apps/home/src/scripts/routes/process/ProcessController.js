@@ -13,6 +13,7 @@ define([
     return spa.RouteController.inherit({
         klassName: "ProcessController",
         pageData: null,
+        currentId: "pProcess",
         preparing: function(e) {
             var self = this;
             e.result = server().connect("pages", "get", "show?key=name&&value=process").then(function(data) {
@@ -35,7 +36,7 @@ define([
         },
 
         rendered: function() {
-            $('#pTabList a[href="#pProcess"]').tab('show');
+            $('#pTabList a[href="#' + this.currentId + '"]').tab('show');
             $("#pTabList").find('a').off('shown.bs.tab').on('shown.bs.tab', function(e) {
                 var path = $(e.currentTarget).data("path");
                 window.go(path, true);

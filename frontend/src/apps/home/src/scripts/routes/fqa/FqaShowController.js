@@ -14,9 +14,14 @@ define([
         preparing: function(e) {
             var self = this,
                 id = e.route.getNamedValue()[1];
-            e.result = server().connect("qas", "get", "show?id=" + id).then(function(qa) {
-                self.qa = qa;
-            });
+            if (id) {
+                e.result = server().connect("qas", "get", "show?id=" + id).then(function(qa) {
+                    self.qa = qa;
+                });
+            } else {
+                window.getComputedStyle("/fqa", true);
+            }
+
         },
         rendering: function(e) {
             var selector = $(langx.trim(template));

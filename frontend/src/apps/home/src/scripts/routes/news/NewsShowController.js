@@ -14,9 +14,13 @@ define([
         preparing: function(e) {
             var self = this,
                 id = e.route.getNamedValue()[1];
-            e.result = server().connect("news", "get", "show?id=" + id).then(function(news) {
-                self.news = news;
-            });
+            if (id) {
+                e.result = server().connect("news", "get", "show?id=" + id).then(function(news) {
+                    self.news = news;
+                });
+            } else {
+                window.getComputedStyle("/news", true);
+            }
         },
         rendering: function(e) {
             var selector = $(langx.trim(template));

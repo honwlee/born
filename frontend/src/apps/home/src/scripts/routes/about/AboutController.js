@@ -13,6 +13,7 @@ define([
     return spa.RouteController.inherit({
         klassName: "AboutController",
         pageData: null,
+        currentId: "aAbout",
         preparing: function(e) {
             var self = this;
             e.result = server().connect("pages", "get", "show?key=name&&value=about").then(function(data) {
@@ -35,7 +36,7 @@ define([
         },
 
         rendered: function() {
-            $('#aTabList a[href="#aAbout"]').tab('show');
+            $('#aTabList a[href="#' + this.currentId + '"]').tab('show');
             $("#aTabList").find('a').off('shown.bs.tab').on('shown.bs.tab', function(e) {
                 var path = $(e.currentTarget).data("path");
                 window.go(path, true);

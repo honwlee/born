@@ -14,9 +14,13 @@ define([
         preparing: function(e) {
             var self = this,
                 id = e.route.getNamedValue()[1];
-            e.result = server().connect("posts", "get", "show?id=" + id).then(function(post) {
-                self.post = post;
-            });
+            if (id) {
+                e.result = server().connect("posts", "get", "show?id=" + id).then(function(post) {
+                    self.post = post;
+                });
+            } else {
+                window.getComputedStyle("/activity", true);
+            }
         },
         rendering: function(e) {
             var selector = $(langx.trim(template));
@@ -27,7 +31,7 @@ define([
                 title: this.post.title,
                 abstract: this.post.abstract,
                 imgUrl: this.post.src,
-                date: window.formatDate(this.post.publishedDate)
+                date: window.formatDate(this.news.publishedDate)
             }));
             e.content.find(".post_overview").html(this.post.content);
         },
