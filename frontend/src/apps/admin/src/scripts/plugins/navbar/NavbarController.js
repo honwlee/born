@@ -106,63 +106,64 @@ define([
                 var $table = this.$element.find('.repeater-list .repeater-list-wrapper > table');
                 var $actionsTable = this.$canvas.find('.table-actions');
                 var len = this.viewOptions.list_actions.items.length;
-                // if (len == 1) {
-                //     var action = this.viewOptions.list_actions.items[0];
-                //     actionsHtml = '<a href="javascript:void(0)" data-action="' + action.name + '" class="action-item"> ' + action.html + '</a>'
-                //     if ($actionsTable.length < 1) {
-                //         var $actionsColumnWrapper = $('<div class="actions-column-wrapper" style="width: ' + this.list_actions_width + 'px"></div>').insertBefore($table);
-                //         var $actionsColumn = $table.clone().addClass('table-actions');
-                //         $actionsColumn.find('th:not(:last-child)').remove();
-                //         $actionsColumn.find('tr td:not(:last-child)').remove();
+                if (len == 1) {
+                    var action = this.viewOptions.list_actions.items[0];
+                    actionsHtml = '<a href="javascript:void(0)" data-action="' + action.name + '" class="action-item"> ' + action.html + '</a>'
+                    if ($actionsTable.length < 1) {
+                        var $actionsColumnWrapper = $('<div class="actions-column-wrapper" style="width: ' + this.list_actions_width + 'px"></div>').insertBefore($table);
+                        var $actionsColumn = $table.clone().addClass('table-actions');
+                        $actionsColumn.find('th:not(:last-child)').remove();
+                        $actionsColumn.find('tr td:not(:last-child)').remove();
 
-                //         var $actionsCells = $actionsColumn.find('td');
+                        var $actionsCells = $actionsColumn.find('td');
 
-                //         $actionsCells.each(function(rowNumber) {
-                //             var id = $(this).parent().attr("id");
-                //             var data = $("#" + id).data("item_data")
-                //             if (self.options.exceptRows && data && _.includes(self.options.exceptRows, data.name)) {
-                //                 $(this).html("-");
-                //             } else {
-                //                 $(this).html(actionsHtml);
-                //             }
-                //             $(this).find('a').attr('data-row', rowNumber + 1);
-                //         });
-                //     }
-                // } else {
-                for (i = 0; i < len; i++) {
-                    var action = this.viewOptions.list_actions.items[i];
-                    var html = action.html;
-
-                    actionsHtml += '<li class="' + action.name + '"><a href="javascript:void(0)" data-action="' + action.name + '" class="action-item"> ' + html + '</a></li>';
-                }
-                var actionsDropdown = '<ul class="ul-inline list-unstyled ul-horizontally" role="menu">' +
-                    actionsHtml + '</ul>';
-                if ($actionsTable.length < 1) {
-                    var $actionsColumnWrapper = $('<div class="actions-column-wrapper" style="width: ' + this.list_actions_width + 'px"></div>').insertBefore($table);
-                    var $actionsColumn = $table.clone().addClass('table-actions');
-                    $actionsColumn.find('th:not(:last-child)').remove();
-                    $actionsColumn.find('tr td:not(:last-child)').remove();
-
-                    // Dont show actions dropdown in header if not multi select
-                    if (this.viewOptions.list_selectable === 'multi' || this.viewOptions.list_selectable === 'action') {
-                        $actionsColumn.find('thead tr').html('<th><div class="repeater-list-heading">' + actionsDropdown + '</div></th>');
-
-                        if (this.viewOptions.list_selectable !== 'action') {
-                            // disable the header dropdown until an item is selected
-                            $actionsColumn.find('thead .btn').attr('disabled', 'disabled');
-                        }
-                    } else {
-                        var label = this.viewOptions.list_actions.label || '<span class="actions-hidden">a</span>';
-                        $actionsColumn.find('thead tr').addClass('empty-heading').html('<th>' + label + '<div class="repeater-list-heading">' + label + '</div></th>');
+                        $actionsCells.each(function(rowNumber) {
+                            var id = $(this).parent().attr("id");
+                            var data = $("#" + id).data("item_data")
+                            if (self.options.exceptActionRows && data && _.includes(self.options.exceptActionRows, data.name)) {
+                                $(this).html("-");
+                            } else {
+                                $(this).html(actionsHtml);
+                            }
+                            $(this).find('a').attr('data-row', rowNumber + 1);
+                        });
                     }
+                } else {
+                    for (i = 0; i < len; i++) {
+                        var action = this.viewOptions.list_actions.items[i];
+                        var html = action.html;
 
-                    // Create Actions dropdown for each cell in actions table
-                    var $actionsCells = $actionsColumn.find('td');
+                        actionsHtml += '<li class="' + action.name + '"><a href="javascript:void(0)" data-action="' + action.name + '" class="action-item"> ' + html + '</a></li>';
+                    }
+                    var actionsDropdown = '<ul class="ul-inline list-unstyled ul-horizontally" role="menu">' +
+                        actionsHtml + '</ul>';
+                    if ($actionsTable.length < 1) {
+                        var $actionsColumnWrapper = $('<div class="actions-column-wrapper" style="width: ' + this.list_actions_width + 'px"></div>').insertBefore($table);
+                        var $actionsColumn = $table.clone().addClass('table-actions');
+                        $actionsColumn.find('th:not(:last-child)').remove();
+                        $actionsColumn.find('tr td:not(:last-child)').remove();
 
-                    $actionsCells.each(function addActionsDropdown(rowNumber) {
-                        $(this).html(actionsDropdown).addClass("r-list-action");
-                        $(this).find('a').attr('data-row', rowNumber + 1);
-                    });
+                        // Dont show actions dropdown in header if not multi select
+                        if (this.viewOptions.list_selectable === 'multi' || this.viewOptions.list_selectable === 'action') {
+                            $actionsColumn.find('thead tr').html('<th><div class="repeater-list-heading">' + actionsDropdown + '</div></th>');
+
+                            if (this.viewOptions.list_selectable !== 'action') {
+                                // disable the header dropdown until an item is selected
+                                $actionsColumn.find('thead .btn').attr('disabled', 'disabled');
+                            }
+                        } else {
+                            var label = this.viewOptions.list_actions.label || '<span class="actions-hidden">a</span>';
+                            $actionsColumn.find('thead tr').addClass('empty-heading').html('<th>' + label + '<div class="repeater-list-heading">' + label + '</div></th>');
+                        }
+
+                        // Create Actions dropdown for each cell in actions table
+                        var $actionsCells = $actionsColumn.find('td');
+
+                        $actionsCells.each(function addActionsDropdown(rowNumber) {
+                            $(this).html(actionsDropdown).addClass("r-list-action");
+                            $(this).find('a').attr('data-row', rowNumber + 1);
+                        });
+                    }
                 }
 
                 $actionsColumnWrapper.append($actionsColumn);

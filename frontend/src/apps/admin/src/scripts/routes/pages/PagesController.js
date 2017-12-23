@@ -56,15 +56,8 @@ define([
                 id: "pageRepeater",
                 key: "pages",
                 addBtn: false,
-                exceptActionRows: { config: ["activity", "metusa", "fqa", "news"] },
+                exceptActionRows: ["activity", "metusa", "fqa", "news"],
                 actions: [{
-                    name: "edit",
-                    title: "编辑",
-                    tpl: tpl,
-                    callback: function() {
-
-                    }
-                }, {
                     name: "config",
                     html: '<span class="glyphicon glyphicon-cog" title="配置"></span>',
                     clickAction: function(helpers, callback, e) {

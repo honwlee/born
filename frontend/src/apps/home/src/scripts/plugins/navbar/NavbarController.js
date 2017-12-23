@@ -108,6 +108,7 @@ define([
         $("#footerOne").empty().html(handlebars.compile("{{> footerLink-partial}}")({
             snippets: __sitesData.snippets
         }));
+        $(".footer").removeClass("hide");
     };
 
     return spa.PluginController.inherit({
