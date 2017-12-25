@@ -17,7 +17,18 @@ const SlaxServer = require('skylark-slax-nodeserver'),
     flash = require('express-flash'),
     routes = require('./backend/routes/routes'),
     publicPath = path.join(__dirname, "public"),
-    replacestream = require('replacestream');
+    replacestream = require('replacestream'),
+    rfs = require('rotating-file-stream'),
+    logDirectory = path.join(__dirname, 'log');
+
+// ensure log directory exists
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
+
+// create a rotating write stream
+var accessLogStream = rfs('access.log', {
+    interval: '1d', // rotate daily
+    path: logDirectory
+});
 
 require('./backend/auth/passport.js');
 
@@ -36,6 +47,8 @@ function errorHandler(err, req, res, next) {
 }
 
 function _startBackend(app) {
+    // setup the logger
+    app.use(logger('combined', { stream: accessLogStream }))
     var hbs = exphbs.create({
         defaultLayout: 'main'
     });
