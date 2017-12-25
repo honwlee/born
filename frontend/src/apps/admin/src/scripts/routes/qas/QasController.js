@@ -38,13 +38,6 @@ define([
 
                     }
                 }, {
-                    name: "show",
-                    title: "查看文章",
-                    tpl: itemT,
-                    callback: function() {
-
-                    }
-                }, {
                     name: "edit",
                     title: "编辑文章",
                     tpl: tpl,

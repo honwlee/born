@@ -1244,7 +1244,7 @@ define([
 
         sites: ['weibo', 'qq', 'wechat', 'tencent', 'douban', 'qzone', 'linkedin', 'diandian', 'facebook', 'twitter', 'google'],
         mobileSites: [],
-        disabled: ['google', 'facebook', 'twitter'],
+        disabled: ['google', 'facebook', 'twitter', 'diandian'],
         initialized: false
     };
 
