@@ -70,10 +70,6 @@ define([
                     label: '名称',
                     property: 'name',
                     sortable: true
-                }, {
-                    label: '所属页面',
-                    property: 'category',
-                    sortable: false
                 }]
             });
         },
