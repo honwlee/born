@@ -19,7 +19,7 @@ function buildSass(name) {
     return gulp.src(src)
         .pipe(sourcemaps.init())
         .pipe(sass({
-            // outputStyle: 'compressed'
+            outputStyle: 'compressed'
         }).on('error', sass.logError))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(dist));
