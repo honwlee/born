@@ -1,7 +1,15 @@
 .admin-form {
+    textarea {
+        overflow-x: hidden;
+    }
     .keywords,
     .description {
         height: 90px;
+    }
+    .link-result .container {
+        width: inherit !important;
+        margin: 0;
+        padding: 0;
     }
     .edui-container {
         width: initial !important;

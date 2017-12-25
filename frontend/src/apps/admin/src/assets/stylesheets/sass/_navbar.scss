@@ -24,6 +24,16 @@ nav.navbar {
                 &:hover,
                 &.active {
                     background-color: #ccc;
+                    a {
+                        background-color: #ccc;
+                        background-image: none;
+                        color: #444 !important;
+                    }
+                }
+                &.active {
+                    a {
+                        color: #fff;
+                    }
                 }
             }
         }
@@ -58,7 +68,11 @@ nav.navbar {
                 background-color: #eee;
             }
         }
-        .active a {
+        .active a.dropdown-toggle {
+            background-color: #eee;
+            color: #444;
+        }
+        .active a.dropdown-toggle {
             background-color: #eee;
             color: #444;
         }
