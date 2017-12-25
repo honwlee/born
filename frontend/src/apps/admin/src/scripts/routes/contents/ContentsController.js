@@ -42,28 +42,30 @@ define([
                 key: "contents",
                 actionName: this.actionName,
                 actions: [{
-                    name: "delete",
-                    title: "删除模板",
-                    tpl: "",
-                    callback: function() {
+                        name: "delete",
+                        title: "删除模板",
+                        tpl: "",
+                        callback: function() {
 
+                        }
                     }
-                }, {
-                    name: "edit",
-                    title: "编辑",
-                    tpl: tpl,
-                    clickAction: function(helpers, callback, e) {
-                        var _data = langx.mixin(langx.clone(helpers.rowData), {});
-                        if (_data.publishedDate) _data.publishedDate = formatDate(_data.publishedDate);
-                        modalFunc.show("form", $(opts.tpl(_data)), "编辑页面内容", {
-                            key: "contents",
-                            file: true,
-                            afterSave: function() {
-                                list.getDom().repeater('render');
-                            }
-                        });
-                    }
-                }],
+                    // , {
+                    //     name: "edit",
+                    //     title: "编辑",
+                    //     tpl: tpl,
+                    //     clickAction: function(helpers, callback, e) {
+                    //         var _data = langx.mixin(langx.clone(helpers.rowData), {});
+                    //         if (_data.publishedDate) _data.publishedDate = formatDate(_data.publishedDate);
+                    //         modalFunc.show("form", $(opts.tpl(_data)), "编辑页面内容", {
+                    //             key: "contents",
+                    //             file: true,
+                    //             afterSave: function() {
+                    //                 list.getDom().repeater('render');
+                    //             }
+                    //         });
+                    //     }
+                    // }
+                ],
                 columns: [{
                     label: '名称',
                     property: 'name',
@@ -162,14 +164,12 @@ define([
                             var tplObj = tplHelper.getTplByKey(__currentTplKey);
                             // 准备上传数据
                             tplObj.bindEvnts(_modal, container);
-                            modal.find(".save-btn").off("click").on("click", function() {
-                                // 上传
-                                tplObj.save(_modal, {
-                                    _file: __file
-                                }, self.postAction);
-                                toastr.success("已保存！");
-                                selector.repeater('render');
-                            });
+                            // 上传
+                            tplObj.save(_modal, {
+                                _file: __file
+                            }, self.postAction);
+                            toastr.success("已保存！");
+                            selector.repeater('render');
                         }
                     });
                 wizard.on('finished.fu.wizard', function() {

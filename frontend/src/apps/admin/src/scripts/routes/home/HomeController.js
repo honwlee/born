@@ -47,8 +47,7 @@ define([
                 }, function(data) {
                     __file = null;
                     __content = null;
-                    if (data.status) {
-
+                    if (data) {
                         var site = data.result.site,
                             snippets = data.result.snippets
                         ec.find(".link-result").empty().html(handlebars.compile("{{> footerLink-partial}}")({

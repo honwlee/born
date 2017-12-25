@@ -53,7 +53,7 @@ function _startBackend(app) {
         resave: false,
         cookie: {
             httpOnly: true,
-            maxAge: 3600000 // see below
+            maxAge: 7200000 // see below
         }
     }));
     app.use(flash());
@@ -128,5 +128,5 @@ if (!(npm_argv && npm_argv.cooked instanceof Array)) {
 
 serve({
     port: npm_argv.cooked[3] || 8087,
-    root: path.join(__dirname, "frontend/src/apps/home/src")
+    // root: path.join(__dirname, "frontend/src/apps/home/src")
 });
