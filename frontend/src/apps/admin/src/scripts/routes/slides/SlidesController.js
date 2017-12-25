@@ -33,7 +33,7 @@ define([
                 key: "slides",
                 actions: [{
                     name: "delete",
-                    title: "删除slide",
+                    title: "删除",
                     tpl: "",
                     callback: function() {
 
@@ -70,7 +70,7 @@ define([
                 var modal = modalFunc.show("form", $(tpl({
                     checked: true,
                     pages: self.pages
-                })), "添加slide", {
+                })), "添加幻灯片", {
                     list_selectable: "multi",
                     key: "slides",
                     file: true,
