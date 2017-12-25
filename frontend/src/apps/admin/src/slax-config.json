@@ -86,42 +86,42 @@
                 "navName": "文章管理"
             },
             "subs": [
-                "post-envPost",
-                "post-meetPost",
-                "post-activityPost"
+                "posts-envPost",
+                "posts-meetPost",
+                "posts-activityPost"
 
             ],
             "controller": {
                 "type": "scripts/routes/posts/PostsController"
             }
         },
-        "post-envPost": {
+        "posts-envPost": {
             "sub": true,
             "pathto": "/posts/enviroment",
             "data": {
-                "name": "post-envPost",
+                "name": "posts-envPost",
                 "navName": "待产环境"
             },
             "controller": {
                 "type": "scripts/routes/posts/EnvController"
             }
         },
-        "post-meetPost": {
+        "posts-meetPost": {
             "sub": true,
             "pathto": "/posts/meet",
             "data": {
-                "name": "post-meetPost",
+                "name": "posts-meetPost",
                 "navName": "遇见美利坚"
             },
             "controller": {
                 "type": "scripts/routes/posts/MeetController"
             }
         },
-        "post-activityPost": {
+        "posts-activityPost": {
             "sub": true,
             "pathto": "/posts/activity",
             "data": {
-                "name": "post-activityPost",
+                "name": "posts-activityPost",
                 "navName": "在美活动"
             },
             "controller": {
