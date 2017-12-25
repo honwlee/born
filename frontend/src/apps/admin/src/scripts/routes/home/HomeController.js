@@ -48,9 +48,9 @@ define([
                     __file = null;
                     __content = null;
                     if (data) {
-                        var site = data.result.site,
-                            snippets = data.result.snippets
-                        ec.find(".link-result").empty().html(handlebars.compile("{{> footerLink-partial}}")({
+                        var site = data.site,
+                            snippets = data.snippets
+                        ec.find(".link-result").empty().html(hbs.compile("{{> footerLink-partial}}")({
                             snippets: snippets
                         }));
                         ec.find(".logo-result").empty().html('<img class="col-sm-5 col-sm-5 col-xs-12" src="' + site.src + '" />');

@@ -56,7 +56,7 @@ module.exports = {
 
     update: function(req, res) {
         req.body.file = req.file;
-        let site = Site.update(req.body);
+        let site = Site.update(req.body).value();
         res.json({
             status: true,
             result: {
