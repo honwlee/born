@@ -14,7 +14,9 @@ define([
         preparing: function(e) {
             var self = this,
                 id = e.route.getNamedValue()[1];
+
             e.result = server().connect("posts", "get", "show?id=" + id).then(function(post) {
+                window.setActiveRouteIdData(post);
                 self.post = post;
             });
         },

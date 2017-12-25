@@ -179,9 +179,6 @@ nav.navbar {
             }
         }
     }
-    .navtopinfo .gp_code {
-        font-size: 12px;
-    }
 }
 
 @include respond-to($large-desktop) {

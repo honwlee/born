@@ -16,6 +16,7 @@ define([
                 id = e.route.getNamedValue()[1];
             if (id) {
                 e.result = server().connect("posts", "get", "show?id=" + id).then(function(post) {
+                    window.setActiveRouteIdData(post);
                     self.post = post;
                 });
             } else {

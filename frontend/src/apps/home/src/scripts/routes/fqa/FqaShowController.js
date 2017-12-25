@@ -16,6 +16,7 @@ define([
                 id = e.route.getNamedValue()[1];
             if (id) {
                 e.result = server().connect("qas", "get", "show?id=" + id).then(function(qa) {
+                    window.setActiveRouteIdData(qa);
                     self.qa = qa;
                 });
             } else {

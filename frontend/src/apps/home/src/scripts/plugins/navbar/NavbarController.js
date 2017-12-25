@@ -7,7 +7,13 @@ define([
     "scripts/helpers/fueluxComponents"
 ], function($, partial, server, handlebars, skylarkjs) {
     var spa = skylarkjs.spa,
+        __activeIdData = null,
         router = skylarkjs.router;
+
+    window.setActiveRouteIdData = function(data) {
+        __activeIdData = data;
+    };
+
     var currentNav,
         currentSubs = {},
         __isDelayed,
@@ -34,6 +40,31 @@ define([
                         selector.css("opacity", 1);
                     });
                 });
+        },
+        addBreadcrumb = function(name, routes, parentName, id) {
+            var rootB = $("#homeBreadcrumb");
+            rootB.find("li.main").remove();
+            rootB.find("li.sub").remove();
+            if (name === "home") return;
+            var className = parentName ? "sub" : "main";
+            if (id) className = "main";
+            var item = routes[name];
+            var li = $("<li>").attr({
+                class: className + " brc-" + name
+            }).html("<a href='" + item.pathto + "'>" + item.data.navName + "</a>");
+
+            if (!id && parentName) {
+                var parentItem = routes[parentName];
+                $("<li>").attr({
+                    class: "main brc-" + parentName
+                }).html("<a href='" + parentItem.pathto + "'>" + parentItem.data.navName + "</a>").appendTo(rootB);
+            }
+            li.appendTo(rootB);
+            if (id && id === __activeIdData.id) {
+                $("<li>").attr({
+                    class: "sub id-item brc-" + parentName
+                }).html("<a href='/" + parentName + '/' + id + "'>" + __activeIdData.title + "</a>").appendTo(rootB);
+            }
         },
         initItems = function(routes, key, ul) {
             var page = routes[key];
@@ -159,14 +190,18 @@ define([
             router.on("routed", function(e) {
                 var curR = e.current.route;
                 var idM = curR.pathto.match(/\/(.*)\/:id$/);
+
                 // update nav dom with active class
                 if (curR.name.match(/-/)) {
                     var names = curR.name.split("-");
                     setActive(names[0]);
+                    addBreadcrumb(curR.name, routes, names[0]);
                     setSubActive(curR.name, names[0]);
                 } else if (idM) {
+                    addBreadcrumb(idM[1], routes, idM[1], e.current.params.id);
                     setActive(idM[1]);
                 } else {
+                    addBreadcrumb(curR.name, routes);
                     setActive(curR.name || "home");
                 }
             });
