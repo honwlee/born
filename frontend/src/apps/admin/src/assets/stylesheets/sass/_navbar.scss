@@ -15,12 +15,20 @@ nav.navbar {
     transition: background-color 0.3s ease-in-out;
     li {
         cursor: pointer;
+        &.open {
+            a {
+                background-color: transparent;
+            }
+        }
         &.dropdown {
             ul {
                 background-color: $bgColor;
                 display: none;
             }
             li {
+                a {
+                    color: #fff;
+                }
                 &:hover,
                 &.active {
                     background-color: #ccc;
@@ -32,6 +40,7 @@ nav.navbar {
                 }
                 &.active {
                     a {
+                        background-color: #ccc;
                         color: #fff;
                     }
                 }
@@ -42,6 +51,10 @@ nav.navbar {
         }
         &:hover,
         &.active {
+            background-color: #ccc;
+            color: #333;
+        }
+        &.active a {
             color: #333;
         }
         &:hover {
