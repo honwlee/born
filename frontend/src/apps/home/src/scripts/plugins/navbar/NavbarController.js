@@ -195,13 +195,13 @@ define([
                 if (curR.name.match(/-/)) {
                     var names = curR.name.split("-");
                     setActive(names[0]);
-                    addBreadcrumb(curR.name, routes, names[0]);
+                    // addBreadcrumb(curR.name, routes, names[0]);
                     setSubActive(curR.name, names[0]);
                 } else if (idM) {
-                    addBreadcrumb(idM[1], routes, idM[1], e.current.params.id);
+                    // addBreadcrumb(idM[1], routes, idM[1], e.current.params.id);
                     setActive(idM[1]);
                 } else {
-                    addBreadcrumb(curR.name, routes);
+                    // addBreadcrumb(curR.name, routes);
                     setActive(curR.name || "home");
                 }
             });

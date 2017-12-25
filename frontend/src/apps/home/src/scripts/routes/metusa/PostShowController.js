@@ -4,9 +4,9 @@ define([
     "handlebars",
     "simplemde",
     "server",
-    "./data",
+    "socialShare",
     "text!scripts/routes/metusa/metusa.hbs"
-], function($, skylarkjs, hbs, SimpleMDE, server, data, template) {
+], function($, skylarkjs, hbs, SimpleMDE, server, socialShare, template) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx;
     return spa.RouteController.inherit({
@@ -15,9 +15,13 @@ define([
         preparing: function(e) {
             var self = this,
                 id = e.route.getNamedValue()[1];
-            e.result = server().connect("posts", "get", "show?id=" + id).then(function(post) {
-                self.post = post;
-            });
+            if (id) {
+                e.result = server().connect("posts", "get", "show?id=" + id).then(function(post) {
+                    self.post = post;
+                });
+            } else {
+                window.getComputedStyle("/metusa", true);
+            }
         },
         rendering: function(e) {
             var selector = $(langx.trim(template));
@@ -36,6 +40,9 @@ define([
             e.content.find(".post_overview").html(simplemde.markdown(this.post.content));
             simplemde.toTextArea();
             simplemde = null;
+        },
+        rendered: function() {
+            socialShare('.social-share, .share-component');
         },
 
         entered: function() {

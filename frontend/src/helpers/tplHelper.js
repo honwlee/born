@@ -98,7 +98,7 @@ define([
                 show: function(tpl, data) {
                     var snippets = data.snippets || [];
                     if (snippets.length) {
-                        var first = _.first(),
+                        var first = _.first(snippets),
                             length = snippets.length,
                             divide = _.chunk(snippets, 3),
                             _s = $(tpl({
@@ -156,7 +156,7 @@ define([
             processMain: {
                 domId: "pProcess",
                 name: "processMain",
-                cnName: "主要流程",
+                cnName: "赴美流程",
                 category: "process",
                 show: function(tpl, data) {
                     var leftData = [],

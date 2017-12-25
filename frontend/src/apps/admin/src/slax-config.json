@@ -330,7 +330,7 @@
             "pathto": "/snippets/visa",
             "data": {
                 "name": "snippets-visa",
-                "navName": "签证办理"
+                "navName": "签证申请"
             },
             "controller": {
                 "type": "scripts/routes/snippets/VisaController"

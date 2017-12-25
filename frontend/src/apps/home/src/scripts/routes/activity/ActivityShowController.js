@@ -4,8 +4,9 @@ define([
     "handlebars",
     "simplemde",
     "server",
+    "socialShare",
     "text!scripts/routes/activity/activity.hbs"
-], function($, skylarkjs, hbs, SimpleMDE, server, template) {
+], function($, skylarkjs, hbs, SimpleMDE, server, socialShare, template) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx;
     return spa.RouteController.inherit({
@@ -35,6 +36,10 @@ define([
                 date: window.formatDate(this.post.publishedDate)
             }));
             e.content.find(".post_overview").html(this.post.content);
+        },
+
+        rendered: function() {
+            socialShare('.social-share, .share-component');
         },
 
         entered: function() {
