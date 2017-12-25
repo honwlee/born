@@ -45,7 +45,9 @@ module.exports = {
                     if (c.sub._content) {
                         let tableName = c.sub._content.type;
                         let sIds = _(c.sub._content.items).map(function(i) { return i.id; }).value();
-                        obj.sub[tableName] = Model.where(tableName, "id", sIds);
+                        obj.sub[tableName] = Model.where(tableName, "id", sIds, true).filter(function(item) {
+                            return item.published === "true";
+                        });
                     }
                 }
                 _contents.push(obj);

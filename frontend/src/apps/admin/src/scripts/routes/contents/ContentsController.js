@@ -139,10 +139,7 @@ define([
                                     // 处理form显示内容，比如初始化编辑器等
                                     modalFunc.bindFormEvnts(container, {
                                         key: "contents",
-                                        file: true,
-                                        listSCallback: function(formModal, items, formatData) {
-
-                                        }
+                                        file: true
                                     });
                                     container.find("input.file").on("change", function(e) {
                                         var type = $(e.currentTarget).data("type");
@@ -150,6 +147,9 @@ define([
                                     });
                                     saveBtn.prop("disabled", false);
                                     wizard.wizard("next");
+                                    var tplObj = tplHelper.getTplByKey(__currentTplKey);
+                                    // 准备上传数据
+                                    tplObj.bindEvnts(_modal, container);
                                 }
                             });
                         },
@@ -162,8 +162,6 @@ define([
                         modalClickOkEvts: function(_modal) {
                             var container = _modal.find(".tpl-container");
                             var tplObj = tplHelper.getTplByKey(__currentTplKey);
-                            // 准备上传数据
-                            tplObj.bindEvnts(_modal, container);
                             // 上传
                             tplObj.save(_modal, {
                                 _file: __file
