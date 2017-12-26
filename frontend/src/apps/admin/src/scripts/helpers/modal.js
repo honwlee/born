@@ -230,7 +230,7 @@ define([
                     sortable: true
                 }],
                 label: "src",
-                fields: ["id", "description", "src", "name"]
+                fields: ["id"]
             },
             snippets: {
                 type: "snippets",

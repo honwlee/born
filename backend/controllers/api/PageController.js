@@ -51,7 +51,7 @@ module.exports = {
                     }
                     if (c.sub._content) {
                         let tableName = c.sub._content.type;
-                        let sIds = _(c.sub._content.items).map(function(i) { return i.id; }).value();
+                        let sIds = c.sub._content.items.map(function(i) { return i.id; });
                         var ModuleM = modules[tableName];
                         if (ModuleM) {
                             obj.sub[tableName] = ModuleM.format(ModuleM.where("id", sIds, true).filter(function(item) {

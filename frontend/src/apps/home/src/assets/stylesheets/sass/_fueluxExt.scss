@@ -1,3 +1,15 @@
 .fuelux .repeater {
     border: none !important; //list(metuusa ,fqa,news ) 
 }
+
+.carousel-item {
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: block;
+    img {
+        display: none;
+    }
+}

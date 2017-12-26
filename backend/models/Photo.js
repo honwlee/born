@@ -24,7 +24,8 @@ exports.Photo = class Photo extends Model {
             return {
                 id: p.id,
                 src: p.src,
-                description: p.description
+                description: p.description,
+                link: p.link
             };
         });
     }

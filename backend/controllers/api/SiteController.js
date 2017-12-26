@@ -4,6 +4,7 @@ const Model = require("../../models/_Base").Model;
 const Site = require('../../models/Site').Site;
 const Page = require('../../models/Page').Page;
 const Slide = require('../../models/Slide').Slide;
+const Photo = require('../../models/Photo').Photo;
 const parse = require('../../exts/parseList').parse;
 const validate = require('../../exts/validation').validate;
 const pageExt = require("../../exts/page");
@@ -55,7 +56,8 @@ module.exports = {
             site: site,
             slide: slides.map(function(s) {
                 if (s._content) {
-                    return s._content.items;
+                    let pIds = s._content.items.map(function(c) { return c.id });
+                    return Photo.format(Photo.where("id", pIds, true));
                 } else {
                     return []
                 }

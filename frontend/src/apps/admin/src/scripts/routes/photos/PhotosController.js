@@ -49,6 +49,11 @@ define([
                     name: "edit",
                     title: "编辑",
                     tpl: tpl,
+                    tplOpts: {
+                        needLink: this.needLink,
+                        needPageSelect: this.needPageSelect,
+                        checked: true
+                    },
                     callback: function() {
 
                     }

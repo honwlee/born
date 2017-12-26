@@ -16,8 +16,7 @@ define([
 
     var currentNav,
         currentSubs = {},
-        __isDelayed,
-        __sitesData,
+
         setActive = function(name) {
             if (currentNav) $(currentNav).removeClass("active");
             currentNav = $("." + name + "-nav");
@@ -125,56 +124,14 @@ define([
             }
         };
 
-    function update(config) {
-        if (config.slide) {
-
-            $(partial.slide(config.slide.map(function(s) {
-                return {
-                    name: s.name,
-                    link: s.link,
-                    description: s.description,
-                    src: s.src.replace(/\\/g, "/")
-                }
-            }))).prependTo($("#homeSlide"));
-        }
-        if (config.site && config.site.id) {
-            var data = config.site;
-            $("#logo").attr({
-                src: data.src,
-                title: data.name,
-                alt: data.name
-            }).removeClass("hide");
-            $("#contact").html(data.contact);
-            $("#footerTwo").html(data.footer);
-            $("meta[name=keyword]").attr("content", data.keyword);
-            $("meta[name=description]").attr("content", data.description);
-
-        }
-        if (config.snippets) {
-            partial.get("footerLink-partial");
-            $("#footerOne").empty().html(handlebars.compile("{{> footerLink-partial}}")({
-                snippets: config.snippets
-            }));
-        }
-        $(".footer").removeClass("hide");
-    };
 
     return spa.PluginController.inherit({
-
-        preparing: function(e) {
-            e.result = server().connect("system", "get", "check").then(function(data) {
-                __isDelayed = data.checked;
-                return server().connect("sites", "get", "config").then(function(data) {
-                    __sitesData = data;
-                });
-            });
-        },
 
         starting: function(evt) {
             var spa = evt.spa,
                 // basePath = (spa.getConfig("baseUrl") || "").replace(/.*(\/$)/, ""),
                 // routes = spa.getConfig("routes"),
-                routes = __sitesData.routes,
+                routes = window.__sitesData.routes,
                 _el = $("#sk-navbar"),
                 goToPath = function(name) {
                     var path = routes[name].pathto;
@@ -231,7 +188,7 @@ define([
             partial.get("modal-partial");
             var modal = $("<div>").html(handlebars.compile("{{> modal-partial}}")());
             document.body.appendChild(modal[0]);
-            if (__isDelayed) {
+            if (window.__isDelayed) {
                 partial.get("error-partial");
                 var error = $("<div>").attr({
                     class: "container"
@@ -242,14 +199,7 @@ define([
                 contentM.modal("show");
             }
             _el.html(ul);
-            update(__sitesData);
-            $(function() {
-                $('.carousel').carousel();
-                // $("#mainNav").collapse({
-                //     toggle: false
-                // });
-                // $('ul.nav a.dropdown-toggle').dropdown();
-            });
+
         },
         routed: function() {}
     });
