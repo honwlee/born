@@ -4,8 +4,7 @@ define([
     "lodash",
     "handlebars",
     "server",
-    "skylarkjs",
-    "scripts/helpers/fueluxComponents"
+    "skylarkjs"
 ], function($, partial, _, handlebars, server, skylarkjs) {
     var spa = skylarkjs.spa,
         router = skylarkjs.router,

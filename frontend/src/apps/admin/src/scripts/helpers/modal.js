@@ -1,12 +1,11 @@
 define([
     "skylarkjs",
     "./Partial",
-    "./SimpleMdeEditor",
     "jquery",
     "server",
     "toastr",
     "handlebars"
-], function(skylarkjs, partial, SimpeMdeEditor, $, server, toastr, handlebars) {
+], function(skylarkjs, partial, $, server, toastr, handlebars) {
     var __files = {},
         langx = skylarkjs.langx,
         __smdeIds = {},
