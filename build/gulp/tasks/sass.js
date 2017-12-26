@@ -21,7 +21,7 @@ function buildSass(name) {
         .pipe(sass({
             outputStyle: 'compressed'
         }).on('error', sass.logError))
-        .pipe(sourcemaps.write())
+        // .pipe(sourcemaps.write())
         .pipe(gulp.dest(dist));
     // .pipe(rename("main.min.css"))
 }
