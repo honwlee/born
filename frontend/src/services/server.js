@@ -57,55 +57,55 @@ define([
             },
 
             connect: function(name, method, action, args, opts) {
-                var main = $("#mainWrapper")[0],
-                    self = this,
-                    deferred = new langx.Deferred(),
-                    throb = window.addThrob(main, function() {
-                        if (args) {
-                            $[method]("/api/" + name + "/" + action, args, function(data) {
-                                throb.remove();
-                                main.style.opacity = 1;
-                                if (data.status && data.status == false) {
-                                    require(["toastr"], function(toastr) {
-                                        deferred.resolve(null, data);
-                                        if (opts && opts.noMsg) return;
-                                        if (data.auth) {
-                                            toastr.error("未登录或者session失效，请登录后再操作！");
-                                        } else if (data.validate) {
-                                            toastr.error("数据已存在：(" + data.key + ":" + data.value + ")");
-                                        } else if (data.system) {
-                                            toastr.error("系统错误，请截图并联系管理员，谢谢合作！");
-                                        }
-                                    });
+                // var main = $("#mainWrapper")[0],
+                var self = this,
+                    deferred = new langx.Deferred();
+                // throb = window.addThrob(main, function() {
+                if (args) {
+                    $[method]("/api/" + name + "/" + action, args, function(data) {
+                        // throb.remove();
+                        // main.style.opacity = 1;
+                        if (data.status && data.status == false) {
+                            require(["toastr"], function(toastr) {
+                                deferred.resolve(null, data);
+                                if (opts && opts.noMsg) return;
+                                if (data.auth) {
+                                    toastr.error("未登录或者session失效，请登录后再操作！");
+                                } else if (data.validate) {
+                                    toastr.error("数据已存在：(" + data.key + ":" + data.value + ")");
+                                } else if (data.system) {
+                                    toastr.error("系统错误，请截图并联系管理员，谢谢合作！");
+                                }
+                            });
 
-                                } else {
-                                    if (self.memory[name]) self.memory[name][action] = data;
-                                    deferred.resolve(data);
+                        } else {
+                            if (self.memory[name]) self.memory[name][action] = data;
+                            deferred.resolve(data);
+                        }
+                    });
+                } else {
+                    $[method]("/api/" + name + "/" + action, function(data) {
+                        // throb.remove();
+                        // main.style.opacity = 1;
+                        if (data.status && data.status == false) {
+                            require(["toastr"], function(toastr) {
+                                deferred.resolve(null, data);
+                                if (opts && opts.noMsg) return;
+                                if (data.auth) {
+                                    toastr.error("未登录或者session失效，请登录后再操作！");
+                                } else if (data.validate) {
+                                    toastr.error("数据已存在：(" + data.key + ":" + data.value + ")");
+                                } else if (data.system) {
+                                    toastr.error("系统错误，请截图并联系管理员，谢谢合作！");
                                 }
                             });
                         } else {
-                            $[method]("/api/" + name + "/" + action, function(data) {
-                                throb.remove();
-                                main.style.opacity = 1;
-                                if (data.status && data.status == false) {
-                                    require(["toastr"], function(toastr) {
-                                        deferred.resolve(null, data);
-                                        if (opts && opts.noMsg) return;
-                                        if (data.auth) {
-                                            toastr.error("未登录或者session失效，请登录后再操作！");
-                                        } else if (data.validate) {
-                                            toastr.error("数据已存在：(" + data.key + ":" + data.value + ")");
-                                        } else if (data.system) {
-                                            toastr.error("系统错误，请截图并联系管理员，谢谢合作！");
-                                        }
-                                    });
-                                } else {
-                                    if (self.memory[name]) self.memory[name][action] = data;
-                                    deferred.resolve(data);
-                                }
-                            });
+                            if (self.memory[name]) self.memory[name][action] = data;
+                            deferred.resolve(data);
                         }
                     });
+                }
+                // });
                 return deferred.promise;
             }
         });

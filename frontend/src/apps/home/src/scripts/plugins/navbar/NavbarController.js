@@ -126,6 +126,7 @@ define([
 
     function update(config) {
         if (config.slide) {
+
             $(partial.slide(config.slide.map(function(s) {
                 return {
                     name: s.name,
@@ -133,7 +134,7 @@ define([
                     description: s.description,
                     src: s.src.replace(/\\/g, "/")
                 }
-            }))).prependTo($("#homeSlide"));
+            }))).prependTo($("#homeSlide").removeClass("hide"));
         }
         if (config.site && config.site.id) {
             var data = config.site;
