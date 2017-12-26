@@ -56,11 +56,11 @@ module.exports = {
                         if (ModuleM) {
                             obj.sub[tableName] = ModuleM.format(ModuleM.where("id", sIds, true).filter(function(item) {
                                 return item.published === "true";
-                            })).value();
+                            }));
                         } else {
                             obj.sub[tableName] = Model.where(tableName, "id", sIds, true).filter(function(item) {
                                 return item.published === "true";
-                            }).value();
+                            });
                         }
                     }
                 }
