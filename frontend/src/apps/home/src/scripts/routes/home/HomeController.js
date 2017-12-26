@@ -36,7 +36,11 @@ define([
 
         },
 
-        entered: function() {},
-        exited: function() {}
+        entered: function() {
+            $(document.body).addClass("home-page");
+        },
+        exited: function() {
+            $(document.body).removeClass("home-page");
+        }
     });
 });
