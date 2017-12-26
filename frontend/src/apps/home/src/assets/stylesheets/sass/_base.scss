@@ -96,6 +96,16 @@ $navHeight: 82px;
     }
 }
 
+#homeSlide {
+    display: none;
+}
+
+.home-page {
+    #homeSlide {
+        display: block;
+    }
+}
+
 .service {
     position: fixed;
     left: 30px;

@@ -26,6 +26,7 @@ exports.Snippet = class Snippet extends Model {
                 title: p.title,
                 src: p.src,
                 updatedAt: p.updatedAt,
+                content: p.content,
                 description: p.description
             };
         });

@@ -134,7 +134,7 @@ define([
                     description: s.description,
                     src: s.src.replace(/\\/g, "/")
                 }
-            }))).prependTo($("#homeSlide").removeClass("hide"));
+            }))).prependTo($("#homeSlide"));
         }
         if (config.site && config.site.id) {
             var data = config.site;
@@ -201,11 +201,6 @@ define([
                 }
             });
             router.on("routing", function(e) {
-                if (e.current.route.name == "home") {
-                    $("#homeSlide").removeClass("hide");
-                } else {
-                    $("#homeSlide").addClass("hide")
-                }
                 window._goTop();
             });
             router.on("routed", function(e) {
