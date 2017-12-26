@@ -48,13 +48,10 @@ body {
     bottom: 50px;
     background: #04A804;
     border-radius: 5px;
-    color: #fff !important;
-    font-weight: bold;
-    line-height: 40px !important;
+    line-height: 46px !important;
     text-align: center;
-    width: 50px;
+    width: 54px;
     text-decoration: none !important;
-    font-size: 30px !important;
 }
 
 $pageBg:#e7edf3;
@@ -98,7 +95,7 @@ $navHeight: 82px;
 .service {
     position: fixed;
     left: 30px;
-    bottom: 50%;
+    top: 50%;
     color: #fff;
     background: red;
     padding: 10px;
@@ -110,6 +107,9 @@ $navHeight: 82px;
         &:hover {
             // border-radius: 0 0 10px 10px;
             background-color: red;
+        }
+        img {
+            margin-bottom: 5px;
         }
     }
 }
@@ -136,7 +136,7 @@ $navHeight: 82px;
     font-size: 30px;
     background-color: rgba($color: #000000, $alpha: .7);
     .go-top-btn {
-        padding: 5px 16px;
+        padding: 10px 12px 0px;
         &:hover {
             // border-radius: 10px 10px 0 0;
             background-color: red;
