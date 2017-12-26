@@ -3,6 +3,7 @@ const _ = require('lodash');
 const Model = require("../../models/_Base").Model;
 const Site = require('../../models/Site').Site;
 const Page = require('../../models/Page').Page;
+const Slide = require('../../models/Slide').Slide;
 const parse = require('../../exts/parseList').parse;
 const validate = require('../../exts/validation').validate;
 const pageExt = require("../../exts/page");
@@ -46,9 +47,19 @@ module.exports = {
     },
 
     config: function(req, res) {
+        let slides = Slide.findAll({
+            page: "home"
+        });
         let site = Site.first();
         res.json({
             site: site,
+            slide: slides.map(function(s) {
+                if (s._content) {
+                    return s._content.items;
+                } else {
+                    return []
+                }
+            })[0],
             routes: pageExt.parse().routes,
             snippets: formatData(site)
         });

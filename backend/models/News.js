@@ -19,6 +19,20 @@ exports.News = class News extends Model {
     static where(key, value, chainAble) {
         return Model.where("news", key, value, chainAble);
     }
+    static format(chain) {
+        return chain.map(function(p) {
+            return {
+                id: p.id,
+                title: p.title,
+                src: p.src,
+                publishedDate: p.publishedDate,
+                viewCount: p.viewCount,
+                updatedAt: p.updatedAt,
+                link: p.link,
+                abstract: p.abstract
+            };
+        });
+    }
     static create(args) {
         if (!args.publishedDate) args.publishedDate = new Date();
         args.publishedDate = new Date(args.publishedDate);

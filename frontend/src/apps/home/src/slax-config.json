@@ -7,10 +7,8 @@
         },
         "paths": {
             "server": "scripts/services/server",
-            "skylarkBs": "lib/skylark-bs-swt",
+            "skylarkBs": "lib/skylark-bs-swt.min",
             "jquery": "lib/skylark-jquery",
-            "simplemde": "https://cdn.bootcss.com/simplemde/1.11.2/simplemde.min",
-            "toastr": "https://cdn.bootcss.com/toastr.js/latest/js/toastr.min",
             "lodash": "https://cdn.bootcss.com/lodash.js/4.17.4/lodash.min",
             "handlebars": "https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.amd.min",
             "text": "https://cdn.bootcss.com/require-text/2.0.12/text.min",

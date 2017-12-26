@@ -19,6 +19,15 @@ exports.Photo = class Photo extends Model {
     static where(key, value, chainAble) {
         return Model.where("photos", key, value, chainAble);
     }
+    static format(chain) {
+        return chain.map(function(p) {
+            return {
+                id: p.id,
+                src: p.src,
+                description: p.description
+            };
+        });
+    }
     static create(args) {
         args.uniqName = args.name + "_" + (args.category || "")
         return Model.create("photos", args);

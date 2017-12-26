@@ -4,13 +4,10 @@ define([
     "handlebars",
     "server",
     "scripts/helpers/tplHelper",
-    "scripts/helpers/components/components",
-    "text!scripts/routes/home/_pages.hbs",
     "text!scripts/routes/home/home.hbs"
-], function($, skylarkjs, hbs, server, tplHelper, components, pagesTpl, homeTpl) {
+], function($, skylarkjs, hbs, server, tplHelper, homeTpl) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
-        pageSelector = $(langx.trim(pagesTpl)),
         selector = $(langx.trim(homeTpl));
 
     return spa.RouteController.inherit({
@@ -28,18 +25,6 @@ define([
                 self = this,
                 _ec = $(tpl({}));
             if (this.pageData) {
-
-                if (this.pageData.slide) {
-                    $(components.slide(this.pageData.slide.map(function(s) {
-                        return {
-                            name: s.name,
-                            link: s.link,
-                            description: s.description,
-                            src: s.src.replace(/\\/g, "/")
-                        }
-                    }))).prependTo(_ec.find(".home-slide-container"));
-                }
-
                 self.pageData.contents.forEach(function(content) {
                     tplHelper.show(content.tpl, content.sub, content).appendTo(_ec.find(".pages"));
                 });
@@ -48,7 +33,7 @@ define([
         },
 
         rendered: function() {
-            $('.carousel').carousel()
+
         },
 
         entered: function() {},

@@ -19,6 +19,17 @@ exports.Snippet = class Snippet extends Model {
     static where(key, value) {
         return Model.where("snippets", key, value);
     }
+    static format(chain) {
+        return chain.map(function(p) {
+            return {
+                id: p.id,
+                title: p.title,
+                src: p.src,
+                updatedAt: p.updatedAt,
+                description: p.description
+            };
+        });
+    }
     static create(args) {
         if (args._content) args._content = JSON.parse(args._content);
         args.uniqTile = args.title + "_" + (args.category || "")

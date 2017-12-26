@@ -50,6 +50,9 @@ class Model {
             return result;
         }).value();
     }
+    static format(chain) {
+        return chain;
+    }
     static findByReg(name, args) {
         return jsondb.get(name).filter(function(r) {
             let result = true;

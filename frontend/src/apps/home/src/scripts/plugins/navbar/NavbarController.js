@@ -3,8 +3,7 @@ define([
     "scripts/helpers/Partial",
     "server",
     "handlebars",
-    "skylarkjs",
-    "scripts/helpers/fueluxComponents"
+    "skylarkjs"
 ], function($, partial, server, handlebars, skylarkjs) {
     var spa = skylarkjs.spa,
         __activeIdData = null,
@@ -125,20 +124,36 @@ define([
             }
         };
 
-    function update(data) {
-        $("#logo").attr({
-            src: data.src,
-            title: data.name,
-            alt: data.name
-        }).removeClass("hide");
-        $("#contact").html(data.contact);
-        $("#footerTwo").html(data.footer);
-        $("meta[name=keyword]").attr("content", data.keyword);
-        $("meta[name=description]").attr("content", data.description);
-        partial.get("footerLink-partial");
-        $("#footerOne").empty().html(handlebars.compile("{{> footerLink-partial}}")({
-            snippets: __sitesData.snippets
-        }));
+    function update(config) {
+        if (config.slide) {
+            $(partial.slide(config.slide.map(function(s) {
+                return {
+                    name: s.name,
+                    link: s.link,
+                    description: s.description,
+                    src: s.src.replace(/\\/g, "/")
+                }
+            }))).prependTo($("#homeSlide"));
+        }
+        if (config.site && config.site.id) {
+            var data = config.site;
+            $("#logo").attr({
+                src: data.src,
+                title: data.name,
+                alt: data.name
+            }).removeClass("hide");
+            $("#contact").html(data.contact);
+            $("#footerTwo").html(data.footer);
+            $("meta[name=keyword]").attr("content", data.keyword);
+            $("meta[name=description]").attr("content", data.description);
+
+        }
+        if (config.snippets) {
+            partial.get("footerLink-partial");
+            $("#footerOne").empty().html(handlebars.compile("{{> footerLink-partial}}")({
+                snippets: config.snippets
+            }));
+        }
         $(".footer").removeClass("hide");
     };
 
@@ -185,6 +200,11 @@ define([
                 }
             });
             router.on("routing", function(e) {
+                if (e.current.route.name == "home") {
+                    $("#homeSlide").removeClass("hide");
+                } else {
+                    $("#homeSlide").addClass("hide")
+                }
                 window._goTop();
             });
             router.on("routed", function(e) {
@@ -225,8 +245,9 @@ define([
                 contentM.modal("show");
             }
             _el.html(ul);
-            if (__sitesData.site && __sitesData.site.id) update(__sitesData.site);
+            update(__sitesData);
             $(function() {
+                $('.carousel').carousel();
                 $("#mainNav").collapse({
                     toggle: false
                 });

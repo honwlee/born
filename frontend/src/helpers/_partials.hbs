@@ -170,4 +170,309 @@
             </div>
         </div>
     </script>
+
+    <script id="slide-component-partial" type="text/x-handlebars-template">
+        <div class="banner carousel slide" id="carousel-generic" data-ride="carousel">
+            <ol class="carousel-indicators">
+                {{#each banners}}
+                    {{#if @index}}
+                        <li data-target="#carousel-generic" data-slide-to="{{@index}}"></li>
+                    {{else}}
+                        <li data-target="#carousel-generic" data-slide-to="{{@index}}" class="active"></li>
+                    {{/if}}
+                {{/each}}
+            </ol>
+            <div class="carousel-inner">
+                {{#each banners}}
+                    {{#if @index}}
+                        <div class="item">
+                    {{else}}
+                        <div class="item active">
+                    {{/if}}
+                        <div class="banner-bg carousel-item" style="background-image: url({{src}})">
+                            <a href="{{link}}" target="_blank"></a>
+                               <img alt="{{name}}" src="{{src}}">
+                            </a>
+                        </div>
+                    </div>
+                {{/each}}
+                <div class="left carousel-control" href="#carousel-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </div>
+                <div class="right carousel-control" href="#carousel-generic" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </div>
+            </div>
+        </div>
+    </script>
+     <script id="repeater-tpl-partial" type="text/x-handlebars-template">
+        <div class="repeater"{{#each data}} data-{{name}}="{{value}}"{{/each}} id="{{#if id}}{{id}}{{else}}myRepeater{{/if}}">
+            {{#if needHeader}}
+                <div class="repeater-header">
+                    <div class="repeater-header-left">
+                        <span class="repeater-title">{{#if title}}{{title}}{{else}}Awesome Repeater{{/if}}</span>
+                        {{#if searchAble}}
+                        <div class="repeater-search">
+                            <div class="search input-group">
+                                <input type="search" class="form-control" placeholder="Search"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <span class="{{#unless mctheme}}glyphicon glyphicon-search{{else}}fuelux-icon fuelux-icon-search{{/unless}}"></span>
+                                        <span class="sr-only">Search</span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                    <div class="repeater-header-right">
+                        {{#if filterShow}}
+                            <div class="btn-group selectlist repeater-filters" data-resize="auto">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <span class="selected-label">&nbsp;</span>
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Filters</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    {{#each filters}}
+                                        <li data-value="{{value}}" {{#if selected}}data-selected="true"{{/if}}><a href="#">{{text}}</a></li>
+                                    {{/each}}
+                                </ul>
+                                <input class="hidden hidden-field" name="filterSelection" readonly="readonly" aria-hidden="true" type="text"/>
+                            </div>
+                        {{/if}}
+                        {{#if multiView}}
+                            <div class="btn-group repeater-views" data-toggle="buttons">
+                                {{#if listShow}}
+                                    <label class="btn btn-default active">
+                                        <input name="repeaterViews" type="radio" value="list"><span class="{{#unless mctheme}}glyphicon glyphicon-list{{else}}fuelux-icon fuelux-icon-gridview-list{{/unless}}"></span>
+                                    </label>
+                                {{/if}}
+                                {{#if thumbShow}}
+                                    <label class="btn btn-default">
+                                        <input name="repeaterViews" type="radio" value="thumbnail"><span class="{{#unless mctheme}}glyphicon glyphicon-th{{else}}fuelux-icon fuelux-icon-gridview-thumbnail{{/unless}}"></span>
+                                    </label>
+                                {{/if}}
+                            </div>
+                        {{/if}}
+                        {{#if addBtn}} 
+                            <div class="btn-group repeater-add">
+                                <button class="btn btn-default">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </label>
+                            </div>
+                        {{/if}}
+                        {{#if refreshBtn}}
+                            <div class="btn-group repeater-refresh">
+                                <button class="btn btn-default">
+                                    <span class="glyphicon glyphicon-refresh"></span>
+                                </button>
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/if}}
+            <div class="repeater-viewport">
+                <div class="repeater-canvas"></div>
+                <div class="loader repeater-loader"></div>
+            </div>
+            <div class="repeater-footer">
+                <div class="repeater-footer-left">
+                    <div class="repeater-itemization">
+                        <span><span class="repeater-start"></span> - <span class="repeater-end"></span> of <span class="repeater-count"></span> items</span>
+                        <div class="btn-group selectlist" data-resize="auto">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="selected-label">&nbsp;</span>
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                {{#each itemsPerPage}}
+                                    <li data-value="{{value}}" {{#if selected}}data-selected="true"{{/if}}><a href="#">{{text}}</a></li>
+                                {{/each}}
+                            </ul>
+                            <input class="hidden hidden-field" name="itemsPerPage" readonly="readonly" aria-hidden="true" type="text"/>
+                        </div>
+                        <span>Per Page</span>
+                    </div>
+                </div>
+                <div class="repeater-footer-right">
+                    <div class="repeater-pagination">
+                        <button type="button" class="btn btn-default btn-sm repeater-prev">
+                            <span class="{{#unless mctheme}}glyphicon glyphicon-chevron-left{{else}}fuelux-icon fuelux-icon-chevron-left{{/unless}}"></span>
+                            <span class="sr-only">Previous Page</span>
+                        </button>
+                        <label id="{{pageLabelID}}" class="page-label">{{pageLabel}}</label>
+                        <div class="repeater-primaryPaging active">
+                            <div class="input-group input-append dropdown combobox">
+                                <input type="text" class="form-control" aria-labelledby="{{pageLabelID}}">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-right"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control repeater-secondaryPaging" aria-labelledby="{{pageLabelID}}">
+                        <span>of <span class="repeater-pages"></span></span>
+                        <button type="button" class="btn btn-default btn-sm repeater-next">
+                            <span class="{{#unless mctheme}}glyphicon glyphicon-chevron-right{{else}}fuelux-icon fuelux-icon-chevron-right{{/unless}}"></span>
+                            <span class="sr-only">Next Page</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="datepicker-tpl-partial" type="text/x-handlebars-template">
+        <div class="datepicker col-sm-10" {{#unless doNotInit}}data-initialize="datepicker"{{/unless}} id="datepickerIllustration">
+            <div class="input-group">
+                <input class="form-control" name="publishedDate" type="text" value="{{publishedDate}}"/>
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        <span class="sr-only">Toggle Calendar</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right datepicker-calendar-wrapper" role="menu">
+                        <div class="datepicker-calendar">
+                            <div class="datepicker-calendar-header">
+                                <button type="button" class="prev"><span class="glyphicon glyphicon-chevron-left"></span><span class="sr-only">Previous Month</span></button>
+                                <button type="button" class="next"><span class="glyphicon glyphicon-chevron-right"></span><span class="sr-only">Next Month</span></button>
+                                <button type="button" class="title">
+                                        <span class="month">
+                                            <span data-month="0">January</span>
+                                            <span data-month="1">February</span>
+                                            <span data-month="2">March</span>
+                                            <span data-month="3">April</span>
+                                            <span data-month="4">May</span>
+                                            <span data-month="5">June</span>
+                                            <span data-month="6">July</span>
+                                            <span data-month="7">August</span>
+                                            <span data-month="8">September</span>
+                                            <span data-month="9">October</span>
+                                            <span data-month="10">November</span>
+                                            <span data-month="11">December</span>
+                                        </span> <span class="year"></span>
+                                </button>
+                            </div>
+                            <table class="datepicker-calendar-days">
+                                <thead>
+                                <tr>
+                                    <th>Su</th>
+                                    <th>Mo</th>
+                                    <th>Tu</th>
+                                    <th>We</th>
+                                    <th>Th</th>
+                                    <th>Fr</th>
+                                    <th>Sa</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <div class="datepicker-calendar-footer">
+                                <button type="button" class="datepicker-today">Today</button>
+                            </div>
+                        </div>
+                        <div class="datepicker-wheels" aria-hidden="true">
+                            <div class="datepicker-wheels-month">
+                                <h2 class="header">Month</h2>
+                                <ul>
+                                    <li data-month="0"><button type="button">Jan</button></li>
+                                    <li data-month="1"><button type="button">Feb</button></li>
+                                    <li data-month="2"><button type="button">Mar</button></li>
+                                    <li data-month="3"><button type="button">Apr</button></li>
+                                    <li data-month="4"><button type="button">May</button></li>
+                                    <li data-month="5"><button type="button">Jun</button></li>
+                                    <li data-month="6"><button type="button">Jul</button></li>
+                                    <li data-month="7"><button type="button">Aug</button></li>
+                                    <li data-month="8"><button type="button">Sep</button></li>
+                                    <li data-month="9"><button type="button">Oct</button></li>
+                                    <li data-month="10"><button type="button">Nov</button></li>
+                                    <li data-month="11"><button type="button">Dec</button></li>
+                                </ul>
+                            </div>
+                            <div class="datepicker-wheels-year">
+                                <h2 class="header">Year</h2>
+                                <ul></ul>
+                            </div>
+                            <div class="datepicker-wheels-footer clearfix">
+                                <button type="button" class="btn datepicker-wheels-back"><span class="glyphicon glyphicon-arrow-left"></span><span class="sr-only">Return to Calendar</span></button>
+                                <button type="button" class="btn datepicker-wheels-select">Select <span class="sr-only">Month and Year</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="checkbox-tpl-partial" type="text/x-handlebars-template">
+        <div class="form-group{{#if validation}} has-{{validation}}{{/if}}{{#if required}} required{{/if}}">
+            <label for="{{#if id}}{{id}}{{else}}myCustomCheckboxWrapper{{/if}}" class="control-label{{#if horizontal}} col-sm-2{{/if}}">{{#if label}}{{label}}{{/if}}</label>
+
+            <div class="{{#if inline}}checkbox{{/if}}{{#if horizontal}} col-sm-10{{/if}}"{{#if required}} required{{/if}}>
+                {{#each checkboxes}}
+                {{#unless ../inline}}<div class="checkbox{{#if ../highlight}} highlight{{/if}}">{{/unless}}
+                    <label class="checkbox-custom{{#if ../inline}} checkbox-inline{{/if}}{{#if ../highlight}} highlight{{/if}}"{{#unless ../doNotInit}} data-initialize="checkbox"{{/unless}} id="{{#if id}}{{id}}{{else}}{{#if ../id}}{{../id}}{{else}}myCustomCheckbox{{/if}}{{@index}}{{/if}}">
+                        <input class="sr-only" type="checkbox" {{#if data-toggle}}data-toggle="{{data-toggle}}" {{/if}}{{#if checked}}checked="checked" {{/if}}{{#if disabled}}disabled="disabled" {{/if}}{{#if value}}value="{{value}}" {{/if}}name="{{#if name}}{{name}}{{else}}{{#if id}}{{id}}{{else}}{{#if ../id}}{{../id}}{{else}}myCustomCheckbox{{/if}}{{/if}}{{@index}}{{/if}}">
+                        <span class="checkbox-label">{{#if label}}{{label}}{{else}}Checkbox {{@index}} Label{{/if}}</span>
+                    </label>
+                {{#unless ../inline}}</div>{{/unless}}
+                {{/each}}
+                {{#if helptext}}<p class="help-block">{{helptext}}</p>{{/if}}
+            </div>
+        </div>
+    </script>
+
+    <script id="wizard-tpl-partial" type="text/x-handlebars-template">
+        <div class="wizard" {{#unless doNotInit}}data-initialize="wizard"{{/unless}} id="{{#if id}}{{id}}{{else}}myWizard{{/if}}">
+            <div class="steps-container">
+                <ul class="steps">
+                    {{#each steps}}
+                        <li data-step="{{step}}" class="{{#if active}}active{{/if}}{{#if complete}}complete{{/if}}"><span class="badge">{{stepBadge}}</span>{{#if secondaryText}}<div class="has-secondary-text"><h4>{{/if}}{{stepLabel}}{{#if secondaryText}}</h4><small>{{secondaryText}}</small></div>{{/if}}<span class="chevron"></span></li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="actions">
+                <button type="button" class="btn btn-default btn-prev"><span class="glyphicon glyphicon-arrow-left"></span>Prev</button>
+                <button type="button" class="btn btn-default btn-next" data-last="Complete">Next<span class="glyphicon glyphicon-arrow-right"></span></button>
+            </div>
+            <div class="step-content">
+                {{#each steps}}
+                    <div class="step-pane{{#if active}} active{{/if}}{{#if styles}} {{styles}}{{/if}}" data-step="{{step}}">
+                        {{#if title}}<h4>{{title}}</h4>{{/if}}
+                        {{{content}}}
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </script>
+
+    <script id="loader-tpl-partial" type="text/x-handlebars-template">
+        <div class="loader" {{#unless doNotInit}}data-initialize="loader"{{/unless}} {{#each data}}data-{{name}}="{{value}}" {{/each}}id="{{#if id}}{{id}}{{else}}myLoader{{/if}}"></div>
+    </script>
+
+    <script id="spinbox-tpl-partial" type="text/x-handlebars-template">
+        <div class="form-group{{#if validation}} has-{{validation}}{{#if feedback}} has-feedback{{/if}}{{/if}}">
+            <label class="control-label{{#if horizontal}} col-sm-2{{/if}}" for="{{#if id}}{{id}}{{else}}mySpinbox{{/if}}Input">{{#if label}}{{label}}{{/if}}</label>
+            <div{{#if horizontal}} class="col-sm-10"{{/if}}>
+                <div class="spinbox" {{#unless doNotInit}}data-initialize="spinbox"{{/unless}} id="{{#if id}}{{id}}{{else}}mySpinbox{{/if}}">
+                    <input id="{{#if id}}{{id}}Input{{else}}mySpinboxInput{{/if}}" name="{{#if name}}{{name}}{{else}}{{#if id}}{{id}}{{else}}mySpinbox{{/if}}{{/if}}" {{#if default}}value="{{default}}"{{/if}} type="text" class="form-control input-mini spinbox-input"{{#if required}} required{{/if}}{{#if readonly}} readonly{{/if}}{{#if disabled}} disabled{{/if}}{{#if validation}}{{#if feedback}}aria-describedby="{{#if id}}{{id}}{{else}}mySpinbox{{/if}}Status"{{/if}}{{/if}}>
+                    <div class="spinbox-buttons btn-group btn-group-vertical">
+                        <button type="button" class="btn btn-default spinbox-up btn-xs"{{#if disabled}} disabled{{/if}}>
+                            <span class="glyphicon glyphicon-chevron-up"></span><span class="sr-only">Increase</span>
+                        </button>
+                        <button type="button" class="btn btn-default spinbox-down btn-xs"{{#if disabled}} disabled{{/if}}>
+                            <span class="glyphicon glyphicon-chevron-down"></span><span class="sr-only">Decrease</span>
+                        </button>
+                    </div>
+                    {{#if feedback}}<span class="glyphicon glyphicon-{{feedback}} form-control-feedback" aria-hidden="true"></span><span id="{{#if id}}{{id}}{{else}}mySpinbox{{/if}}Status" class="sr-only">({{#if validation}}{{validation}}{{/if}})</span>{{/if}}
+                </div>
+                {{#if helptext}}<p class="help-block">{{helptext}}</p>{{/if}}
+            </div>
+        </div>
+    </script>
 </div>

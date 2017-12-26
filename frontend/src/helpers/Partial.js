@@ -41,9 +41,22 @@ define([
                 return options.inverse(this);
         }
     });
-    return {
+
+    var obj = {
         get: function(name, selector) {
             if (!partials[name]) _registryPartial(name, selector);
+        },
+        slide: function(banners) {
+            obj.get("slide-component-partial");
+            var tpl = handlebars.compile("{{> slide-component-partial}}");
+            return $(tpl({
+                banners: banners
+            }));
         }
-    }
+    };
+    obj.get("repeater-tpl-partial");
+    obj.get("datepicker-tpl-partial");
+    obj.get("checkbox-tpl-partial");
+    obj.get("wizard-tpl-partial");
+    return obj;
 });
