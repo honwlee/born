@@ -26,7 +26,7 @@ define([
                 _ec = $(tpl({}));
             if (this.pageData) {
                 self.pageData.contents.forEach(function(content) {
-                    tplHelper.show(content.tpl, content.sub, content).appendTo(_ec.find(".pages"));
+                    tplHelper.show(content.tpl, content.sub, content, _ec.find(".pages"));
                 });
             }
             e.content = _ec[0];

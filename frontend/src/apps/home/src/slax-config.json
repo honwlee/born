@@ -8,6 +8,7 @@
         "paths": {
             "server": "scripts/services/server",
             "skylarkBs": "lib/skylark-bs-swt.min",
+            "skylarkSwt": "lib/skylark-bs-swt",
             "jquery": "lib/skylark-jquery",
             "lodash": "https://cdn.bootcss.com/lodash.js/4.17.4/lodash.min",
             "handlebars": "https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.amd.min",

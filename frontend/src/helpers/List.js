@@ -1,11 +1,12 @@
 define([
     "jquery",
     "skylarkjs",
+    "skylarkBs",
     "lodash",
     "./Partial",
     "server",
     "handlebars"
-], function($, skylarkjs, _, partial, server, hbs) {
+], function($, skylarkjs, skylarkBs, _, partial, server, hbs) {
     var langx = skylarkjs.langx;
 
     function formatDate(d, split) {

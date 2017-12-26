@@ -4,7 +4,8 @@ define([
     "handlebars",
     "server",
     "scripts/helpers/tplHelper",
-    "text!scripts/routes/process/process.hbs"
+    "text!scripts/routes/process/process.hbs",
+    "skylarkBs",
 ], function($, skylarkjs, hbs, server, tplHelper, processTpl) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
@@ -29,7 +30,7 @@ define([
             if (self.pageData) {
                 self.pageData.contents.forEach(function(content) {
                     var tplData = tplHelper.data[content.tpl];
-                    tplHelper.show(content.tpl, content.sub).appendTo(_ec.find("#" + tplData.domId));
+                    tplHelper.show(content.tpl, content.sub, content, _ec.find("#" + tplData.domId));
                 });
             }
             e.content = _ec[0];

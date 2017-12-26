@@ -12,7 +12,7 @@
             "moment": "https://cdn.bootcss.com/moment.js/2.19.3/moment-with-locales.min",
             "photoswipe": "https://cdn.bootcss.com/photoswipe/4.1.2/photoswipe.min",
             "photoswipeUi": "https://cdn.bootcss.com/photoswipe/4.1.2/photoswipe-ui-default.min",
-            "skylarkBs": "lib/skylark-bs-swt",
+            "skylarkBs": "lib/skylark-bs-swt.all",
             "lodash": "https://cdn.bootcss.com/lodash.js/4.17.4/lodash.min",
             "jquery": "lib/skylark-jquery",
             "simplemde": "https://cdn.bootcss.com/simplemde/1.11.2/simplemde.min",

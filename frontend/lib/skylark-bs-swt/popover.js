@@ -1,0 +1,9 @@
+/**
+ * skylark-bs-swt - The skylark bootstrap standard widget tookit
+ * @author Hudaokeji, Inc.
+ * @version v0.9.0-beta
+ * @link https://github.com/skylarkui/skylark-bs-swt/
+ * @license MIT
+ */
+define(["skylark-utils/browser","skylark-utils/langx","skylark-utils/eventer","skylark-utils/velm","skylark-utils/query","./sbswt","./tooltip"],function(t,o,e,n,r,i,s){"use strict";function p(t){return this.each(function(){var o=r(this),e=o.data("bs.popover"),n="object"==typeof t&&t;!e&&/destroy|hide/.test(t)||(e||o.data("bs.popover",e=new l(this,n)),"string"==typeof t&&e[t]())})}var l=i.Popover=s.Constructor.inherit({klassName:"Popover",getDefaults:function(){return l.DEFAULTS},setContent:function(){var t=this.tip(),o=this.getTitle(),e=this.getContent();t.find(".popover-title")[this.options.html?"html":"text"](o),t.find(".popover-content").children().detach().end()[this.options.html?"string"==typeof e?"html":"append":"text"](e),t.removeClass("fade top bottom left right in"),t.find(".popover-title").html()||t.find(".popover-title").hide()},hasContent:function(){return this.getTitle()||this.getContent()},getContent:function(){var t=this.$element,o=this.options;return t.attr("data-content")||("function"==typeof o.content?o.content.call(t[0]):o.content)},arrow:function(){return this.$arrow=this.$arrow||this.tip().find(".arrow")}});l.VERSION="3.3.7",l.DEFAULTS=o.mixin({},r.fn.tooltip.Constructor.DEFAULTS,{placement:"right",trigger:"click",content:"",template:'<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'});var a=r.fn.popover;return r.fn.popover=p,r.fn.popover.Constructor=l,r.fn.popover.noConflict=function(){return r.fn.popover=a,this},r.fn.popover});
+//# sourceMappingURL=sourcemaps/popover.js.map

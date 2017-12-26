@@ -3,8 +3,9 @@ define([
     "scripts/helpers/Partial",
     "server",
     "handlebars",
-    "skylarkjs"
-], function($, partial, server, handlebars, skylarkjs) {
+    "skylarkjs",
+    "skylarkSwt/carousel"
+], function($, partial, server, handlebars, skylarkjs, carousel) {
     var spa = skylarkjs.spa,
         __activeIdData = null,
         router = skylarkjs.router;
@@ -244,10 +245,10 @@ define([
             update(__sitesData);
             $(function() {
                 $('.carousel').carousel();
-                $("#mainNav").collapse({
-                    toggle: false
-                });
-                $('ul.nav a.dropdown-toggle').dropdown();
+                // $("#mainNav").collapse({
+                //     toggle: false
+                // });
+                // $('ul.nav a.dropdown-toggle').dropdown();
             });
         },
         routed: function() {}
