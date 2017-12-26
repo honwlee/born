@@ -69,6 +69,10 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
     .mobi-clear-padding {
         padding: 0 !important;
     }
+    .throbber {
+        top: 45%;
+        left: 36%;
+    }
     // home begin
     .part {
         padding: 0;
@@ -148,6 +152,10 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
 }
 
 @include respond-to($large-desktop) {
+    .throbber {
+        top: 50%;
+        left: 50%;
+    }
     .part {
         padding: 50px;
     }
