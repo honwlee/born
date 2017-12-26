@@ -2,11 +2,10 @@ define([
     "jquery",
     "skylarkjs",
     "handlebars",
-    "simplemde",
     "server",
     "socialShare",
     "text!scripts/routes/fqa/qa.hbs"
-], function($, skylarkjs, hbs, SimpleMDE, server, socialShare, template) {
+], function($, skylarkjs, hbs, server, socialShare, template) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx;
     return spa.RouteController.inherit({

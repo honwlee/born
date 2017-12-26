@@ -2,11 +2,10 @@ define([
     "jquery",
     "skylarkjs",
     "handlebars",
-    "simplemde",
     "server",
     "socialShare",
     "text!scripts/routes/metusa/metusa.hbs"
-], function($, skylarkjs, hbs, SimpleMDE, server, socialShare, template) {
+], function($, skylarkjs, hbs, server, socialShare, template) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx;
     return spa.RouteController.inherit({
@@ -34,12 +33,7 @@ define([
                 imgUrl: this.post.src,
                 date: window.formatDate(this.post.publishedDate)
             }));
-            var simplemde = new SimpleMDE({
-                element: e.content.find("textarea")[0]
-            });
-            e.content.find(".post_overview").html(simplemde.markdown(this.post.content));
-            simplemde.toTextArea();
-            simplemde = null;
+            e.content.find(".post_overview").html(this.post.content);
         },
         rendered: function() {
             socialShare('.social-share, .share-component');
