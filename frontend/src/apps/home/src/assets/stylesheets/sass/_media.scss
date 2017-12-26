@@ -122,6 +122,9 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
             .text-tip {
                 max-height: 80px;
             }
+            a {
+                max-height: 140px;
+            }
         }
     }
     //(metusa/news/fqa) end
@@ -213,6 +216,12 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
             .text-tip {
                 height: 80px;
             }
+            a {
+                height: 140px;
+            }
+            .media-right {
+                padding: 0;
+            }
         }
     }
     .process-container {
@@ -256,9 +265,6 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
                 width: 100%;
             }
         }
-        .right-con {
-            .img_img_desc {}
-        }
     }
     .environment-con {
         p.part_four_title {
@@ -297,7 +303,10 @@ $retina: '(min--moz-device-pixel-ratio: 1.5),
     .fqa-wrap {
         .item {
             .text-tip {
-                height: 80px;
+                max-height: 80px;
+            }
+            a {
+                height: 140px;
             }
         }
     }

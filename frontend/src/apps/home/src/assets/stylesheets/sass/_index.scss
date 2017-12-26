@@ -416,8 +416,6 @@
     font-size: 30px;
 }
 
-
-
 .part_three_right {
     left: 50%;
     li {
@@ -433,8 +431,9 @@
         }
     }
 }
+
 .part_three_left {
-      left: 50%;
+    left: 50%;
     margin-left: -370px;
     li p {
         float: left;
@@ -669,7 +668,7 @@
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: cover;
-                height: 140px;
+                // height: 140px;
                 // width: 200px;
                 display: block;
             }
