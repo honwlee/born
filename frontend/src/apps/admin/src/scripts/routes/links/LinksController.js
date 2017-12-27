@@ -69,7 +69,8 @@ define([
                     },
                     listSCallback: function(modal, items) {
 
-                    }
+                    },
+                    checkKeys: ["name"]
                 });
             });
             selector.find(".repeater-refresh button").off("click").on("click", function(e) {

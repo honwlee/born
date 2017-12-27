@@ -652,6 +652,10 @@
     width: 100%;
     background-color: $pageBg;
     .left-list {
+        a,
+        a:hover {
+            text-decoration: none;
+        }
         .item {
             position: relative;
             cursor: pointer;

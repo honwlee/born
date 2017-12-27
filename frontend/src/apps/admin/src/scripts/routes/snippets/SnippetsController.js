@@ -81,7 +81,8 @@ define([
                     afterSave: function() {
                         __content = null;
                         selector.repeater('render');
-                    }
+                    },
+                    checkKeys: ["title"]
                 };
                 if (self.snippetTplOpts.select) {
                     opts.listSCallback = function(modal, items, data) {

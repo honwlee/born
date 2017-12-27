@@ -376,7 +376,18 @@ define([
                 }
                 return { error: false };
             }
-        }
+        },
+        abstract: {
+            emptyMsg: "摘要不能为空",
+            check: function(modal) {
+                var _us = modal.find("textarea[name=abstract]");
+                if (!_us.val()) {
+                    _us.focus();
+                    return { error: true, msg: this.emptyMsg };
+                }
+                return { error: false };
+            }
+        },
     };
 
     function contentListBySelect(selector, opts, off) {

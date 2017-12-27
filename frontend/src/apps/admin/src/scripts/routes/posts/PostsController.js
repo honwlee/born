@@ -89,7 +89,8 @@ define([
                     },
                     beforeSave: function() {
 
-                    }
+                    },
+                    checkKeys: ["title", "abstract"]
                 });
             });
             selector.find(".repeater-refresh button").off("click").on("click", function(e) {

@@ -86,7 +86,8 @@ define([
                     action: self.actionName ? "post_" + self.actionName : "create",
                     afterSave: function() {
                         selector.repeater('render');
-                    }
+                    },
+                    checkKeys: ["title"]
                 });
             });
             selector.find(".repeater-refresh button").off("click").on("click", function(e) {

@@ -87,7 +87,8 @@ define([
                     file: true,
                     afterSave: function() {
                         selector.repeater('render');
-                    }
+                    },
+                    checkKeys: ["title", "abstract"]
                 });
             });
             selector.find(".repeater-refresh button").off("click").on("click", function(e) {
