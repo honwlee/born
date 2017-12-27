@@ -82,9 +82,13 @@ module.exports = {
     },
 
     public: function(req, res) {
-        parse("pages", req, res, ["name", "type"], {
+        let result = parse("pages", req, res, ["name", "type"], {
             published: 'true'
-        });
+        }, true);
+        res.json({
+            total: result.total,
+            rows: Page.format(result.chain)
+        })
     },
 
     select: function(req, res) {

@@ -19,9 +19,13 @@ module.exports = {
     },
 
     public: function(req, res) {
-        parse("photos", req, res, ["name"], {
+        let result = parse("photos", req, res, ["name"], {
             published: 'true'
-        });
+        }, true);
+        res.json({
+            total: result.total,
+            rows: Photo.format(result.chain)
+        })
     },
 
     show: function(req, res) {

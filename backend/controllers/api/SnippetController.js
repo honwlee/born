@@ -14,12 +14,12 @@ module.exports = {
     },
 
     public: function(req, res) {
-        let result = parse("snippets", req, res, ["title"], true);
+        let result = parse("snippets", req, res, ["title"], {
+            published: "true"
+        }, true);
         res.json({
             total: result.total,
-            rows: result.rows.filter(function(s) {
-                return s.published;
-            }).value()
+            rows: Snippet.format(result.chain)
         })
     },
 
@@ -70,9 +70,13 @@ _(["vantage", "provide", "visa", "hospital", "flow", "certificate", "about", "co
         validate(Snippet, { uniqTitle: req.body.title + "_" + catName }, req, res);
     };
     module.exports["public_" + name] = function(req, res) {
-        parse("snippets", req, res, ["title"], {
+        let result = parse("snippets", req, res, ["title"], {
             published: 'true',
             category: catName
-        });
+        }, true);
+        res.json({
+            total: result.total,
+            rows: Snippet.format(result.chain)
+        })
     };
 });

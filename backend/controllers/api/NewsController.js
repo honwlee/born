@@ -14,8 +14,12 @@ module.exports = {
     public: function(req, res) {
         req.query.sort = "publishedDate";
         req.query.order = "DESC";
-        parse("news", req, res, ["title"], {
+        let result = parse("news", req, res, ["title"], {
             published: 'true'
+        }, true);
+        res.json({
+            total: result.total,
+            rows: News.format(result.chain)
         });
     },
 
@@ -29,7 +33,10 @@ module.exports = {
         });
         if (!news.viewCount) news.viewCount = 0;
         news.viewCount += 1;
-        News.update(news);
+        News.update({
+            id: news.id,
+            viewCount: news.viewCount
+        });
         res.json(news);
     },
 

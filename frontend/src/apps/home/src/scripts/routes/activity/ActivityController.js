@@ -43,14 +43,14 @@ define([
                 list = this.buildList();
             e.content = wrap[0];
             list.getDom().appendTo(_ec.empty());
-            _ec.delegate('.lightbox-item', 'click', function(e) {
-                e.preventDefault();
-                var id = $(e.currentTarget).data("id");
-                window.go("/activity/" + id, true);
-                // return $(this).lightbox({
-                //     wrapping: false
-                // });
-            });
+            // _ec.delegate('.lightbox-item', 'click', function(e) {
+            //     e.preventDefault();
+            //     var id = $(e.currentTarget).data("id");
+            //     window.go("/activity/" + id, true);
+            //     // return $(this).lightbox({
+            //     //     wrapping: false
+            //     // });
+            // });
         },
 
         rendered: function() {

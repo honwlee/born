@@ -15,9 +15,13 @@ module.exports = {
     },
 
     public: function(req, res) {
-        parse("posts", req, res, ["title"], {
+        let result = parse("posts", req, res, ["title"], {
             published: true
-        });
+        }, true);
+        res.json({
+            total: result.total,
+            rows: Post.format(result.chain)
+        })
     },
 
     show: function(req, res) {
@@ -26,7 +30,10 @@ module.exports = {
         });
         if (!post.viewCount) post.viewCount = 0;
         post.viewCount += 1;
-        Post.update(post);
+        Post.update({
+            id: post.id,
+            viewCount: post.viewCount
+        });
         res.json(post);
     },
 
@@ -71,10 +78,14 @@ _(["meet", "activity", "process", "env"]).each(function(name) {
     module.exports["public_" + name] = function(req, res) {
         req.query.sort = "publishedDate";
         req.query.order = "DESC";
-        parse("posts", req, res, ["title"], {
+        let result = parse("posts", req, res, ["title"], {
             published: 'true',
             category: catName
-        });
+        }, true);
+        res.json({
+            total: result.total,
+            rows: Post.format(result.chain)
+        })
     };
     module.exports["recommended_" + name] = function(req, res) {
         res.json({ status: true, results: Post.list("updatedAt", "desc", true).take(req.query.limit || 8) });

@@ -19,18 +19,28 @@ exports.Post = class Post extends Model {
     static where(key, value, chainAble) {
         return Model.where("posts", key, value, chainAble);
     }
-    static format(chain) {
-        return chain.map(function(p) {
-            return {
-                id: p.id,
-                title: p.title,
-                src: p.src,
-                publishedDate: p.publishedDate,
-                viewCount: p.viewCount,
-                updatedAt: p.updatedAt,
-                abstract: p.abstract
-            };
-        });
+    static format(chain, keys) {
+        if (keys) {
+            return chain.map(function(p) {
+                let obj = {};
+                keys.forEach(function(key) {
+                    obj[key] = p[key];
+                });
+                return obj;
+            });
+        } else {
+            return chain.map(function(p) {
+                return {
+                    id: p.id,
+                    title: p.title,
+                    src: p.src,
+                    publishedDate: p.publishedDate,
+                    viewCount: p.viewCount,
+                    updatedAt: p.updatedAt,
+                    abstract: p.abstract
+                };
+            });
+        }
     }
     static create(args) {
         if (!args.publishedDate) args.publishedDate = new Date();

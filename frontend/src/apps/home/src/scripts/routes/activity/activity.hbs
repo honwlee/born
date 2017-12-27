@@ -3,15 +3,17 @@
         <div class="row justify-content-center repeater-container"></div>
     </script>
     <script id="activity-listItem-partial" type="text/x-handlebars-template">
-        <div class="col-xs-12 col-sm-4 col-md-4 item-con">
-            <div class="thumbnail lightbox-item item" data-link="{{src}}" data-id="{{id}}" data-toggle="lightbox" data-gallery="activity-gligiallery">
-                <img src="{{src}}" class="img-fluid">
+        <a href="/activity/{{id}}" target="_blank" class="a-block">
+            <div class="col-xs-12 col-sm-4 col-md-4 item-con">
+                <div class="thumbnail lightbox-item item" data-link="{{src}}" data-id="{{id}}" data-toggle="lightbox" data-gallery="activity-gligiallery">
+                    <img src="{{src}}" class="img-fluid">
+                </div>
+                <div class="caption text-overflow">
+                    <h5>{{title}}</h5>
+                    <p>{{description}}</p>
+                </div>
             </div>
-            <div class="caption text-overflow">
-                <h5>{{title}}</h5>
-                <p>{{description}}</p>
-            </div>
-        </div>
+        </a>
     </script>
     <script id="activity-show-partial" type="text/x-handlebars-template">
         <div class="panel-body metusa-wrap">

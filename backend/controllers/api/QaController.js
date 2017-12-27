@@ -15,9 +15,13 @@ module.exports = {
     public: function(req, res) {
         req.query.sort = "publishedDate";
         req.query.order = "DESC";
-        parse("qas", req, res, ["title"], {
+        let result = parse("qas", req, res, ["title"], {
             published: 'true'
-        });
+        }, true);
+        res.json({
+            total: result.total,
+            rows: Qa.format(result.chain)
+        })
     },
 
     recommended: function(req, res) {
@@ -30,7 +34,10 @@ module.exports = {
         });
         if (!qa.viewCount) qa.viewCount = 0;
         qa.viewCount += 1;
-        Qa.update(qa);
+        Qa.update({
+            id: qa.id,
+            viewCount: qa.viewCount
+        });
         res.json(qa);
     },
 

@@ -18,23 +18,23 @@
     </div>
     </script>
     <script id="qa-listItem-partial" type="text/x-handlebars-template">
-    <div class="media panel-body mobi-clear-padding item" data-id="{{id}}">
-        <div class="media-left col-xs-12 col-sm-12 col-md-4 col-lg-4 mobi-clear-padding">
-            <a href="fqa/{{id}}" target="_blank">
-               <img class="media-object" alt="{{title}}" src="{{src}}"  style="width:100%;">
-            </a>
-        </div>
-        <div class="media-body media-right panel-body">
-            <h4 class="media-heading">{{title}}</h4>
-            <p class="text-tip"> {{abstract}}</p>
-            <p class="media-footer tip-footer">
-                <span>{{publishedDate}}</span>
-                <span class="pull-right">
-                    <i class="glyphicon glyphicon-eye-open icon"></i>
-                    {{viewCount}}
-                </span>
-            </p>
-        </div>
-    </div>
+        <a href="/fqa/{{id}}" target="_blank" class="a-block">
+            <div class="media panel-body mobi-clear-padding item" data-id="{{id}}">
+                <div class="media-left col-xs-12 col-sm-12 col-md-4 col-lg-4 mobi-clear-padding">
+                    <img class="media-object" alt="{{title}}" src="{{src}}"  style="width:100%;">
+                </div>
+                <div class="media-body media-right panel-body">
+                    <h4 class="media-heading">{{title}}</h4>
+                    <p class="text-tip"> {{abstract}}</p>
+                    <p class="media-footer tip-footer">
+                        <span>{{publishedDate}}</span>
+                        <span class="pull-right">
+                            <i class="glyphicon glyphicon-eye-open icon"></i>
+                            {{viewCount}}
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </a>
     </script>
 </div>

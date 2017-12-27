@@ -23,7 +23,7 @@ function formatDate(d, split) {
 }
 
 module.exports = {
-    parse: function(name, req, res, queryKeys, filterOpts) {
+    parse: function(name, req, res, queryKeys, filterOpts, chainAble) {
         let dbpath = path.join(__dirname, "../dbs"),
             dbms = require('../lib/dbms/'),
             _ = require('lodash'),
@@ -177,10 +177,16 @@ module.exports = {
             if (r.createdAt) r.createdAt = formatDate(r.createdAt);
             return r;
         })
-
-        res.json({
-            total: total,
-            rows: chain.value()
-        });
+        if (chainAble) {
+            return {
+                total: total,
+                chain: chain
+            }
+        } else {
+            res.json({
+                total: total,
+                rows: chain.value()
+            });
+        }
     }
 }

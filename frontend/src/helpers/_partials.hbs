@@ -36,31 +36,31 @@
                             <ul class="list-group list-unstyled rec-list">
                                 {{#each recommended.news}}
                                 <li class="list-group-item text-overflow list-item">
-                                    <a class="title" href="news/{{id}}" title="{{title}}">{{title}}</a> {{/each}}
+                                    <a class="title" href="news/{{id}}"  target="_blank" title="{{title}}">{{title}}</a> {{/each}}
                                 </li>
                             </ul>
-                            <div class="panel-footer text-right more"><a href="/news">查看更多</a></div>
+                            <div class="panel-footer text-right more"><a href="/news"  target="_blank">查看更多</a></div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading list-title">热门文章推荐</div>
                             <ul class="list-group list-unstyled rec-list">
                                 {{#each recommended.posts}}
                                 <li class="list-group-item text-overflow list-item">
-                                    <a class="title" href="/metusa/{{id}}" title="{{title}}">{{title}}</a>
+                                    <a class="title" href="/metusa/{{id}}"  target="_blank" title="{{title}}">{{title}}</a>
                                 </li>
                                 {{/each}}
                             </ul>
-                            <div class="panel-footer text-right more"><a href="/metusa">查看更多</a></div>
+                            <div class="panel-footer text-right more"><a href="/metusa" target="_blank">查看更多</a></div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading list-title">热门问答推荐</div>
                             <ul class="list-group list-unstyled rec-list">
                                 {{#each recommended.qas}}
                                 <li class="list-group-item text-overflow list-item">
-                                    <a class="title" href="/fqa/{{id}}" title="{{title}}">{{title}}</a> {{/each}}
+                                    <a class="title" href="/fqa/{{id}}"  target="_blank" title="{{title}}">{{title}}</a> {{/each}}
                                 </li>
                             </ul>
-                            <div class="panel-footer text-right more"><a href="/fqa">查看更多</a></div>
+                            <div class="panel-footer text-right more"><a href="/fqa"  target="_blank">查看更多</a></div>
                         </div>
                     </div>
                 </div>

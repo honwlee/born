@@ -198,6 +198,12 @@ define([
                 contentM.find(".modal-title").html("出错啦！");
                 contentM.modal("show");
             }
+            $(function() {
+                $("#mainNav").collapse({
+                    toggle: false
+                });
+                $('ul.nav a.dropdown-toggle').dropdown();
+            });
             _el.html(ul);
 
         },

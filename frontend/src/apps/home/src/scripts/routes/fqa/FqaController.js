@@ -54,10 +54,10 @@ define([
                 list = this.buildList();
             e.content = _ec[0];
             list.getDom().appendTo(_ec.find(".repeater-container").empty());
-            _ec.delegate(".item", "click", function(e) {
-                var id = $(e.currentTarget).data("id");
-                window.go("/fqa/" + id, true);
-            });
+            // _ec.delegate(".item", "click", function(e) {
+            //     var id = $(e.currentTarget).data("id");
+            //     window.go("/fqa/" + id, true);
+            // });
         },
 
         rendered: function() {
