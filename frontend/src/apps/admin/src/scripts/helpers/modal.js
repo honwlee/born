@@ -124,6 +124,21 @@ define([
     };
 
     function resizeModal(modal) {
+        var w, h,
+            mhh = modal.find(".modal-header").height(),
+            mfh = modal.find(".modal-footer").height();
+        if (modal.hasClass("fullscreen")) {
+            w = $(window).width();
+            h = $(window).height() - mhh - mfh;
+            modal.find(".modal-body").css({
+                "height": h + "px",
+                "overflowY": 'auto'
+            });
+        } else {
+            modal.find(".modal-body").css({
+                "overflowY": 'hidden'
+            });
+        }
         var editorC = modal.find(".textarea-editable");
         var size = editorC.size();
         var tSize = editorC.find(".edui-toolbar").size();
