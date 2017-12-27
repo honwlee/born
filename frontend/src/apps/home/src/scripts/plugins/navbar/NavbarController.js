@@ -4,8 +4,8 @@ define([
     "server",
     "handlebars",
     "skylarkjs",
-    "skylarkSwt/carousel"
-], function($, partial, server, handlebars, skylarkjs, carousel) {
+    "skylarkBs"
+], function($, partial, server, handlebars, skylarkjs) {
     var spa = skylarkjs.spa,
         __activeIdData = null,
         router = skylarkjs.router;
