@@ -126,7 +126,7 @@ define([
                                 var d = li.data();
                                 var index = d.right ? d.index + 4 : 3 - d.index;
                                 detail.find(".title").empty().text(li.find(".item-title").text());
-                                detail.find(".content").empty().text(li.find(".item-content").text());
+                                detail.find(".content").empty().html(li.find(".item-content").html());
                                 detail.find(".page").empty().text(index + "/" + length);
                             });
                         } else {
