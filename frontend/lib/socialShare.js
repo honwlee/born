@@ -1354,7 +1354,8 @@ define([
         }
 
         var elems = createElementByString('<div class="wechat-qrcode"><h4>' + data.wechatQrcodeTitle + '</h4><div class="qrcode"></div><div class="help">' + data.wechatQrcodeHelper + '</div></div>');
-        var qrcode = getElementsByClassName(elems[0], 'qrcode', 'div');
+        // var qrcode = getElementsByClassName(elems[0], 'qrcode', 'div');
+        var qrcode = $(elems[0]).find('.qrcode');
 
         wechat[0].appendChild(elems[0]);
         new QRCode(qrcode[0], { text: data.url, width: data.wechatQrcodeSize, height: data.wechatQrcodeSize });
@@ -1532,10 +1533,12 @@ define([
      * @returns {NodeList}
      */
     function createElementByString(str) {
-        var div = document.createElement('div');
-        div.innerHTML = str;
+        var div = $("<div>").html(str);
+        // var div = document.createElement('div');
+        // div.innerHTML = str;
 
-        return div.childNodes;
+        // return div.childNodes;
+        return $(div[0].firstChild);
     }
 
 
