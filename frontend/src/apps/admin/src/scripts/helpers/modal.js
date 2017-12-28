@@ -518,6 +518,9 @@ define([
 
             modal.off('shown.bs.modal').on('shown.bs.modal', function() {
                 resizeModal(modal);
+                window.onresize = function(event) {
+                    resizeModal(modal);
+                };
                 if (opts.modalShownEvts) opts.modalShownEvts(modal);
             });
 
