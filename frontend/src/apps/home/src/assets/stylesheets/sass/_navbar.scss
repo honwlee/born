@@ -36,7 +36,7 @@ nav.navbar {
     }
     li {
         cursor: pointer;
-        text-align: center;
+        // text-align: center;
         &:hover .dropdown-menu {
             display: block;
         }
@@ -184,5 +184,14 @@ nav.navbar {
 @include respond-to($large-desktop) {
     .navbar .container {
         width: 1050px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+    nav.navbar {
+        li a {
+            font-size: 12px;
+            padding: 10px 5px;
+        }
     }
 }

@@ -7,12 +7,18 @@ $fontColor: #fff;
 }
 
 nav.navbar {
-    height: 50px;
+    min-height: 50px;
     z-index: 40;
     margin-bottom: 0;
     background-color: $bgColor;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
     transition: background-color 0.3s ease-in-out;
+    li[class^="-nav"] a,
+    li[class*="-nav"] a {
+        background-image: none !important;
+        box-shadow: none !important;
+        color: $fontColor;
+    }
     li {
         cursor: pointer;
         &.open {
@@ -22,86 +28,44 @@ nav.navbar {
         }
         &.dropdown {
             ul {
-                background-color: $bgColor;
                 display: none;
             }
             li {
                 a {
-                    color: #fff;
+                    color: #333;
                 }
                 &:hover,
                 &.active {
-                    background-color: #ccc;
+                    background-color: #fff;
                     a {
-                        background-color: #ccc;
+                        background-color: #184F80 !important;
                         background-image: none;
-                        color: #444 !important;
+                        color: #fff !important;
                     }
                 }
                 &.active {
                     a {
                         background-color: #ccc;
-                        color: #fff;
+                        color: #333;
                     }
                 }
             }
         }
-        a {
-            color: $fontColor;
-        }
         &:hover,
         &.active {
-            background-color: #ccc;
-            color: #333;
-        }
-        &.active a {
-            color: #333;
+            background-color: #184F80 !important;
+            color: #fff !important;
         }
         &:hover {
             .dropdown-menu {
                 display: block;
             }
         }
-        color: #444;
     }
-    // .open .nav-item {
-    //     background-color: transparent !important;
-    // }
     .navbar-toggle {
         background-color: $bgColor;
         .icon-bar {
             background-color: $fontColor;
-        }
-    }
-    @include respond-to($except-phone) {
-        .navbar-nav {
-            float: right;
-            li a:hover {
-                color: #444;
-                background-color: #eee;
-            }
-        }
-        .active a.dropdown-toggle {
-            background-color: #eee;
-            color: #444;
-        }
-        .active a.dropdown-toggle {
-            background-color: #eee;
-            color: #444;
-        }
-    }
-    @include respond-to($tablet-portrait) {
-        .navbar {
-            .navbar-collapse {
-                background-color: $fontColor;
-                z-index: 30;
-            }
-        }
-        .container {
-            background-color: $fontColor;
-        }
-        .active {
-            background-color: #ccc;
         }
     }
     .logo-nav {
@@ -111,5 +75,70 @@ nav.navbar {
         position: relative;
         bottom: 4px;
         padding: 0 5px;
+    }
+}
+
+@include respond-to($except-phone) {
+    .navbar-nav {
+        float: right !important;
+        li a:hover {
+            color: #fff !important;
+            background-color: #184F80 !important;
+        }
+    }
+    .active a.dropdown-toggle {
+        color: #444;
+    }
+    .active a.dropdown-toggle {
+        color: #444;
+    }
+}
+
+@include respond-to($tablet-portrait) {
+    .navbar {
+        .navbar-collapse {
+            background-color: $fontColor;
+            z-index: 30;
+        }
+        li a {
+            color: #333 !important;
+        }
+        li.active a {
+            color: #fff !important;
+        }
+        li {
+            &:hover a,
+            &.active a {
+                background-color: #184F80 !important;
+                color: #fff !important;
+            }
+        }
+        li.open .dropdown-menu a {
+            color: #fff;
+        }
+    }
+    .container {
+        background-color: $fontColor;
+    }
+    .active {
+        background-color: #ccc;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+    .navbar-header {
+        //logo
+        display: none;
+    }
+    nav.navbar {
+        float: right;
+        li.dropdown {
+            ul li a:hover,
+            ul li a:active {
+                color: #fff !important;
+                background-color: $bgColor !important;
+                background-image: none !important;
+            }
+        }
     }
 }
