@@ -25,18 +25,7 @@
             "umeditorZh": "lib/umeditor/lang/zh-cn/zh-cn"
         },
         "sihm": {
-            "template": {
-                "deps": ["lib/template.min"]
-            },
-            "umeditor": {
-                "deps": ["lib/umeditor/umeditor.min"]
-            },
-            "umeditorConfig": {
-                "deps": ["lib/umeditor/umeditor.config"]
-            },
-            "umeditorZh": {
-                "deps": ["lib/umeditor/lang/zh-cn/zh-cn"]
-            }
+
         }
     },
     "page": {
