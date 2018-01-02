@@ -1,21 +1,21 @@
 [{
     "display": "hudao",
     "username": "hudao",
-    "password": "2017@hudao",
+    "password": "****",
     "isAdmin": true,
     "isSuperAdmin": true,
     "isActive": true
 }, {
     "display": "delay",
     "username": "delay",
-    "password": "2017@hudao",
+    "password": "****",
     "isAdmin": true,
     "isSuperAdmin": true,
     "isActive": true
 }, {
     "display": "admin",
     "username": "admin",
-    "password": "1",
+    "password": "****",
     "isAdmin": true,
     "isSuperAdmin": false,
     "isActive": true

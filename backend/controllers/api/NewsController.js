@@ -35,6 +35,7 @@ module.exports = {
         news.viewCount += 1;
         News.update({
             id: news.id,
+            publishedDate: news.publishedDate,
             viewCount: news.viewCount
         });
         res.json(news);

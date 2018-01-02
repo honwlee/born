@@ -37,7 +37,7 @@ module.exports = {
     posts: {
         module: require("./PostController"),
         uploadPath: "posts",
-        extralNames: ["meet", "activity", "process", "env"],
+        extralNames: ["meet", "activity", "process", "env", "service"],
         extraPrefix: [{
             name: "post_",
             method: "post"

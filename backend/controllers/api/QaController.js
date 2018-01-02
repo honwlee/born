@@ -36,6 +36,7 @@ module.exports = {
         qa.viewCount += 1;
         Qa.update({
             id: qa.id,
+            publishedDate: qa.publishedDate,
             viewCount: qa.viewCount
         });
         res.json(qa);

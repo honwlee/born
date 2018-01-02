@@ -50,7 +50,7 @@ define([
                     require(["lodash"], function(_) {
                         var _s = $(tpl({
                             title: data.title,
-                            qas: _.take(data.qas, self.itemCount)
+                            qas: _.take(data.posts, self.itemCount)
                         }));
                         return _s.appendTo(container);
                     });

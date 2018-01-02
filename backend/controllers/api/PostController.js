@@ -32,6 +32,7 @@ module.exports = {
         post.viewCount += 1;
         Post.update({
             id: post.id,
+            publishedDate: post.publishedDate,
             viewCount: post.viewCount
         });
         res.json(post);
@@ -58,7 +59,7 @@ module.exports = {
     }
 }
 
-_(["meet", "activity", "process", "env"]).each(function(name) {
+_(["meet", "activity", "process", "env", "service"]).each(function(name) {
     let catName = "posts_" + name;
     module.exports[name] = function(req, res) {
         parse("posts", req, res, ["title"], {

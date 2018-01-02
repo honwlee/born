@@ -57,6 +57,16 @@
                 "type": "scripts/routes/home/HomeController"
             }
         },
+        "password": {
+            "pathto": "/password",
+            "data": {
+                "name": "password",
+                "navName": "密码管理"
+            },
+            "controller": {
+                "type": "scripts/routes/home/PasswordController"
+            }
+        },
         "pages": {
             "pathto": "/pages",
             "data": {
@@ -75,46 +85,58 @@
                 "navName": "文章管理"
             },
             "subs": [
-                "posts-envPost",
-                "posts-meetPost",
-                "posts-activityPost"
+                "posts-env",
+                "posts-meet",
+                "posts-activity",
+                "posts-service"
 
             ],
             "controller": {
                 "type": "scripts/routes/posts/PostsController"
             }
         },
-        "posts-envPost": {
+        "posts-env": {
             "sub": true,
             "pathto": "/posts/enviroment",
             "data": {
-                "name": "posts-envPost",
+                "name": "posts-env",
                 "navName": "待产环境"
             },
             "controller": {
                 "type": "scripts/routes/posts/EnvController"
             }
         },
-        "posts-meetPost": {
+        "posts-meet": {
             "sub": true,
             "pathto": "/posts/meet",
             "data": {
-                "name": "posts-meetPost",
+                "name": "posts-meet",
                 "navName": "遇见美利坚"
             },
             "controller": {
                 "type": "scripts/routes/posts/MeetController"
             }
         },
-        "posts-activityPost": {
+        "posts-activity": {
             "sub": true,
             "pathto": "/posts/activity",
             "data": {
-                "name": "posts-activityPost",
+                "name": "posts-activity",
                 "navName": "在美活动"
             },
             "controller": {
                 "type": "scripts/routes/posts/ActivityController"
+            }
+        },
+        "posts-service": {
+            "sub": true,
+            "pathto": "/posts/service",
+            "data": {
+                "name": "posts-service",
+                "navName": "我们的服务"
+            },
+            "controller": {
+                "type": "scripts/routes/posts/ServiceController"
             }
         },
         "photos": {
