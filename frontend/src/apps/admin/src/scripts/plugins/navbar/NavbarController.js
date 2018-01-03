@@ -262,6 +262,15 @@ define([
             $(".logo-nav").on("click", function() {
                 goToPath("home");
             });
+            [{
+                key: "password",
+                href: "/password",
+                name: "密码管理"
+            }].forEach(function(item) {
+                $("<li>").attr({
+                    class: item.key + "-nav"
+                }).html("<a class='nav-item' data-spa-router='false' target='_blank' href='" + item.href + "'>" + item.name + "</a>").appendTo(ul);
+            });
             for (var key in routes) {
                 initItems(routes, key, ul);
             }
