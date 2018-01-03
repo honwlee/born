@@ -107,7 +107,10 @@ class Model {
         opt[queryKey] = args[queryKey];
         args.updatedAt = new Date();
         let result = jsondb.get(name).find(opt);
-        if (!result.value()) console.log(queryKey + "!!!! record not found!!!!! " + opt[queryKey]);
+        if (!result.value()) {
+            console.log(queryKey + "!!!! record not found!!!!! " + opt[queryKey]);
+            return {};
+        }
         if (result.value() && args.file && args.file.path) {
             let file = result.value().file;
             if (file && file.path) {

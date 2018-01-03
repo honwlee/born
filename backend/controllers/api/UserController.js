@@ -26,13 +26,20 @@ module.exports = {
         let action = req.body._action;
         delete req.body._action;
         let password = req.body.password;
+
         if (action == "reset") {
+            let u = User.findBy({
+                "username": "admin"
+            });
+            console.log(u.id);
+            userOpts.id = u.id;
             password = "2017-123456";
             userOpts.passwordInited = password == "2017-123456";
         }
         userOpts.password = password;
         let user = User.update(userOpts);
-        res.json(user);
+        res.redirect('/signin');
+        // res.json(user);
     },
 
     create: function(req) {
