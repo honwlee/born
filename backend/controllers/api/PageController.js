@@ -51,18 +51,35 @@ module.exports = {
                     }
                     if (c.sub._content) {
                         let tableName = c.sub._content.type;
-                        let sIds = c.sub._content.items.map(function(i) { return i.id; });
-                        var ModuleM = modules[tableName];
-                        if (ModuleM) {
-                            obj.sub[tableName] = ModuleM.format(ModuleM.where("id", sIds, true).filter(function(item) {
-                                return item.published === "true";
-                            }));
-                        } else {
-                            obj.sub[tableName] = Model.where(tableName, "id", sIds, true).filter(function(item) {
-                                return item.published === "true";
-                            });
+                        switch (c.tpl) {
+                            case "homeDesc":
+                                obj.sub[tableName] = Model.list(tableName, "publishedDate", "desc", true).filter(function(p) {
+                                    return p.category == "posts_meet";
+                                }).take(3).value();
+                                break;
+                            case "homeActivity":
+                                obj.sub[tableName] = Model.list(tableName, "publishedDate", "desc", true).filter(function(p) {
+                                    return p.category == "posts_activity";
+                                }).take(5).value();
+                                break;
+                            case "homeNews":
+                                obj.sub[tableName] = Model.list(tableName, "publishedDate", "desc", true).take(4).value();
+                                break;
+                            default:
+                                let sIds = c.sub._content.items.map(function(i) { return i.id; });
+                                var ModuleM = modules[tableName];
+                                if (ModuleM) {
+                                    obj.sub[tableName] = ModuleM.format(ModuleM.where("id", sIds, true).filter(function(item) {
+                                        return item.published === "true";
+                                    }));
+                                } else {
+                                    obj.sub[tableName] = Model.where(tableName, "id", sIds, true).filter(function(item) {
+                                        return item.published === "true";
+                                    });
+                                }
                         }
                     }
+
                 }
                 _contents.push(obj);
             }

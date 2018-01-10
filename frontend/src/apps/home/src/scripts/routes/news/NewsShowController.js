@@ -19,7 +19,7 @@ define([
                     self.news = news;
                 });
             } else {
-                window.getComputedStyle("/news", true);
+                window.go("/news", true);
             }
         },
         rendering: function(e) {

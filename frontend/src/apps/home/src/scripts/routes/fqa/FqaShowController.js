@@ -20,7 +20,7 @@ define([
                     self.qa = qa;
                 });
             } else {
-                window.getComputedStyle("/fqa", true);
+                window.go("/fqa", true);
             }
 
         },

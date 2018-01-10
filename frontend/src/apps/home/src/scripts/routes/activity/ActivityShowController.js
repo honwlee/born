@@ -20,7 +20,7 @@ define([
                     self.post = post;
                 });
             } else {
-                window.getComputedStyle("/activity", true);
+                window.go("/activity", true);
             }
         },
         rendering: function(e) {

@@ -19,7 +19,7 @@ define([
                     self.post = post;
                 });
             } else {
-                window.getComputedStyle("/metusa", true);
+                window.go("/metusa", true);
             }
         },
         rendering: function(e) {

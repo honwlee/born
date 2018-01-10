@@ -1,13 +1,12 @@
 'use strict';
+let jsondb;
 const path = require('path'),
     dbpath = path.join(__dirname, "../dbs"),
     Q = require('q'),
     fs = require('fs'),
     request = require('request'),
     dbms = require('../lib/dbms/'),
-    jsondb = dbms(dbpath, {
-        master_file_name: "master.json"
-    }),
+
     _ = require('lodash'),
     shortid = require('shortid'),
     uploadPath = path.join(__dirname, "../../public"),
@@ -16,6 +15,7 @@ const path = require('path'),
             master_file_name: "master.json"
         });
     };
+refresh();
 //used in local-signup strategy
 class Model {
     constructor() {
@@ -28,20 +28,25 @@ class Model {
         return jsondb.get(name);
     }
     static list(name, sortKey = "id", direction = "asc", chainAble) {
+        refresh();
         let results = jsondb.get(name).sortBy(sortKey);
         if (direction == "desc") results = results.reverse();
         return chainAble ? results : results.value();
     }
     static first(name) {
+        refresh();
         return jsondb.get(name).first().value();
     }
     static last(name) {
+        refresh();
         return jsondb.get(name).last().value();
     }
     static findBy(name, args) {
+        refresh();
         return jsondb.get(name).find(args).value();
     }
     static findAll(name, args) {
+        refresh();
         return jsondb.get(name).filter(function(r) {
             let result = true;
             for (let key in args) {
@@ -54,6 +59,7 @@ class Model {
         return chain;
     }
     static findByReg(name, args) {
+        refresh();
         return jsondb.get(name).filter(function(r) {
             let result = true;
             for (let key in args) {
@@ -65,6 +71,7 @@ class Model {
     }
 
     static where(name, key, value, chainAble) {
+        refresh();
         let chain = jsondb.get(name).filter(function(r) {
             return _.includes(value, r[key]);
         });
@@ -87,6 +94,7 @@ class Model {
         return result;
     }
     static findOrCreate(name, key, args) {
+        refresh();
         let query = {};
         query[key] = args[key];
         let result = jsondb.get(name).find(query).value();
@@ -138,6 +146,7 @@ class Model {
         return result;
     }
     static size(name) {
+        refresh();
         let result = jsondb.get(name).size().value();
         return result;
     }

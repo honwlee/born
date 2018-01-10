@@ -39,7 +39,7 @@ module.exports = {
             _end = req.query.end,
             _page = req.query.page,
             _sort = req.query.sort,
-            _order = req.query.order,
+            _order = req.query.order || req.query.direction,
             _limit = req.query.limit;
         delete req.query.search;
         delete req.query.offset;
@@ -117,13 +117,14 @@ module.exports = {
         });
         // Sort
         if (_sort) {
+
             _order = _order || 'ASC';
 
             chain = chain.sortBy(function(element) {
                 return _.get(element, _sort);
             });
 
-            if (_order === 'DESC') {
+            if (_order.match(/DESC/i)) {
                 chain = chain.reverse();
             }
         }
