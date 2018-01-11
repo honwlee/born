@@ -51,23 +51,24 @@ module.exports = {
                     }
                     if (c.sub._content) {
                         let tableName = c.sub._content.type;
+                        let ModuleM = modules[tableName];
                         switch (c.tpl) {
                             case "homeDesc":
-                                obj.sub[tableName] = Model.list(tableName, "publishedDate", "desc", true).filter(function(p) {
+                                obj.sub[tableName] = ModuleM.format(ModuleM.list("publishedDate", "desc", true).filter(function(p) {
                                     return p.category == "posts_meet";
-                                }).take(3).value();
+                                }).take(3));
                                 break;
                             case "homeActivity":
-                                obj.sub[tableName] = Model.list(tableName, "publishedDate", "desc", true).filter(function(p) {
+                                obj.sub[tableName] = ModuleM.format(ModuleM.list("publishedDate", "desc", true).filter(function(p) {
                                     return p.category == "posts_activity";
-                                }).take(5).value();
+                                }).take(5));
                                 break;
                             case "homeNews":
-                                obj.sub[tableName] = Model.list(tableName, "publishedDate", "desc", true).take(4).value();
+                                obj.sub[tableName] = ModuleM.format(ModuleM.list("publishedDate", "desc", true).take(4));
                                 break;
                             default:
                                 let sIds = c.sub._content.items.map(function(i) { return i.id; });
-                                var ModuleM = modules[tableName];
+
                                 if (ModuleM) {
                                     obj.sub[tableName] = ModuleM.format(ModuleM.where("id", sIds, true).filter(function(item) {
                                         return item.published === "true";

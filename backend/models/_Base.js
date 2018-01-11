@@ -25,42 +25,58 @@ class Model {
         refresh();
     }
     static db(name) {
-        return jsondb.get(name);
+        refresh();
+        return Model.encodeSrcWithChain(jsondb.get(name));
     }
     static list(name, sortKey = "id", direction = "asc", chainAble) {
-        refresh();
-        let results = jsondb.get(name).sortBy(sortKey);
+        let results = Model.db(name).sortBy(sortKey);
         if (direction == "desc") results = results.reverse();
         return chainAble ? results : results.value();
     }
     static first(name) {
-        refresh();
-        return jsondb.get(name).first().value();
+        let result = Model.db(name).first().value();
+        return result;
     }
     static last(name) {
-        refresh();
-        return jsondb.get(name).last().value();
+        let result = Model.db(name).last().value();
+        return result;
     }
     static findBy(name, args) {
-        refresh();
-        return jsondb.get(name).find(args).value();
+        let result = Model.db(name).find(args).value();
+        return result;
     }
     static findAll(name, args) {
-        refresh();
-        return jsondb.get(name).filter(function(r) {
+        let chain = Model.db(name).filter(function(r) {
             let result = true;
             for (let key in args) {
                 result = result && r[key] == args[key];
             }
             return result;
         }).value();
+        return chain;
     }
     static format(chain) {
         return chain;
     }
+    static encodeSrcWithChain(chain) {
+        return chain.map(function(p) {
+            let obj = {};
+            for (let key in p) {
+                if (key == "src") {
+                    obj[key] = p[key].replace(p.file.filename, encodeURI(p.file.filename));
+                } else {
+                    obj[key] = p[key];
+                }
+
+            };
+            return obj;
+        });
+    }
+    static encodeSrc(result) {
+        if (result && result.src) result.src = result.src.replace(result.file.filename, encodeURI(result.file.filename));
+    }
     static findByReg(name, args) {
-        refresh();
-        return jsondb.get(name).filter(function(r) {
+        let r = Model.db(name).filter(function(r) {
             let result = true;
             for (let key in args) {
                 let reg = new RegExp(args[key], "i");
@@ -68,11 +84,11 @@ class Model {
             }
             return result;
         }).value();
+        return r;
     }
 
     static where(name, key, value, chainAble) {
-        refresh();
-        let chain = jsondb.get(name).filter(function(r) {
+        let chain = Model.db(name).filter(function(r) {
             return _.includes(value, r[key]);
         });
         if (chainAble) {
@@ -91,10 +107,10 @@ class Model {
             args.src = args.file.path;
         }
         let result = jsondb.get(name).push(args).last().write();
+        Model.encodeSrc(result);
         return result;
     }
     static findOrCreate(name, key, args) {
-        refresh();
         let query = {};
         query[key] = args[key];
         let result = jsondb.get(name).find(query).value();
@@ -108,6 +124,7 @@ class Model {
             }
             result = Model.create(name, args);
         }
+        Model.encodeSrc(result);
         return result;
     }
     static update(name, queryKey, args) {
@@ -131,10 +148,11 @@ class Model {
             args.file = result.value().file;
         }
         result.assign(args).write();
+        Model.encodeSrc(result);
         return result;
     }
     static delete(name, args = {}) {
-        let result = jsondb.get(name).find(args);
+        let result = Model.db(name).find(args);
         if (result.value()) {
             let file = result.value().file;
             if (file && file.path) {
@@ -142,12 +160,11 @@ class Model {
                 if (fs.existsSync(fPath)) fs.unlinkSync(fPath);
             }
         }
-        result = jsondb.get(name).remove(args).write();
+        result = Model.db(name).remove(args).write();
         return result;
     }
     static size(name) {
-        refresh();
-        let result = jsondb.get(name).size().value();
+        let result = Model.db(name).size().value();
         return result;
     }
 };

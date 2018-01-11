@@ -4,6 +4,8 @@ const parse = require('../../exts/parseList').parse;
 const validate = require('../../exts/validation').validate;
 module.exports = {
     index: function(req, res) {
+        req.query.direction = req.query.direction || "desc";
+        req.query.sort = req.query.sort || "publishedDate";
         parse("news", req, res, ["title"]);
     },
 

@@ -3,6 +3,8 @@ const User = require('../../models/User').User;
 const request = require('request');
 module.exports = {
     index: function(req, res) {
+        req.query.direction = req.query.direction || "desc";
+        req.query.sort = req.query.sort || "updatedAt";
         res.json(User.userList());
     },
 
