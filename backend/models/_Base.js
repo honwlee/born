@@ -11,7 +11,7 @@ const path = require('path'),
     shortid = require('shortid'),
     uploadPath = path.join(__dirname, "../../public"),
     refresh = function() {
-        jsondb = dbms(dbpath, {
+        return jsondb = dbms(dbpath, {
             master_file_name: "master.json"
         });
     };
@@ -22,7 +22,7 @@ class Model {
         this.name = "";
     }
     static refresh() {
-        refresh();
+        return refresh();
     }
     static db(name) {
         refresh();

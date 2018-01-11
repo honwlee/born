@@ -2,6 +2,7 @@ const utils = require('./utils');
 const url = require('url');
 const pluralize = require('pluralize');
 const path = require('path');
+const Model = require('../models/_Base').Model;
 
 function getFullURL(req) {
     var root = url.format({
@@ -24,13 +25,8 @@ function formatDate(d, split) {
 
 module.exports = {
     parse: function(name, req, res, queryKeys, filterOpts, chainAble) {
-        let dbpath = path.join(__dirname, "../dbs"),
-            dbms = require('../lib/dbms/'),
-            _ = require('lodash'),
-            db = dbms(dbpath, {
-                master_file_name: "master.json"
-            });
-        let chain = db.get(name),
+        let _ = require('lodash');
+        let chain = Model.db(name),
             total = chain.size(),
             // Remove q, _start, _end, ... from req.query to avoid filtering using those
             // parameters
@@ -51,7 +47,7 @@ module.exports = {
         // Automatically delete query parameters that can't be found
         // in the database
         Object.keys(req.query).forEach(function(query) {
-            var arr = db.get(name).value();
+            var arr = chain.value();
             for (var i in arr) {
                 if (_.has(arr[i], query) || query === 'callback' || query === '_' || /_lte$/.test(query) || /_gte$/.test(query) || /_ne$/.test(query) || /_like$/.test(query)) return;
             }
