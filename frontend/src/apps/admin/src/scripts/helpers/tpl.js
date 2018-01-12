@@ -28,6 +28,7 @@ define([
         },
 
         saveFunc = function(name, selector, opts, actionName) {
+            var deferred = new langx.Deferred();
             var parseData = modalFunc.parseForm(selector.find(".sub-form"));
             parseData._content = __content[name];
             __content[name] = null;
@@ -38,8 +39,12 @@ define([
                 modalFunc.save("contents", selector.find(".form"), saveParam, function(data) {
                     toastr.success("已保存！");
                     selector.modal('hide');
+                    deferred.resolve(true);
                 }, actionName);
+            } else {
+                deferred.resolve(false);
             }
+            return deferred.promise;
         };
     var retObj = {
         getTplByKey: tplHelper.getTplByKey,
@@ -57,7 +62,7 @@ define([
                     bindEvntsFunc(parent, k, selector, off);
                 },
                 save: function(selector, opts, actionName) {
-                    saveFunc(k, selector, opts, actionName);
+                    return saveFunc(k, selector, opts, actionName);
                 }
             });
         })(d[key], key)

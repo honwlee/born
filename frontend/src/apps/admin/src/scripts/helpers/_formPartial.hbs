@@ -5,7 +5,11 @@
             <div class="col-sm-10">
                 <select class="form-control" name="page" id="pageSelect">
                     {{#each pages}}
-                    <option value="{{name}}">{{title}}</option>
+                        {{ifCond @root.page "==" name}}
+                            <option value="{{name}}" selected=true>{{title}}</option>
+                        {{ else }}
+                            <option value="{{name}}">{{title}}</option>
+                        {{/ifCond}}
                     {{/each}}
                 </select>
             </div>
@@ -117,11 +121,7 @@
                     <select class="form-control tpl-selector" name="tpl" id="tpl">
                         <option value="">-请选择-</option>
                         {{#each tpls}}
-                        {{#if @index}}
-                        <option value="{{name}}">{{cnName}}</option>
-                        {{ else }}
-                        <option value="{{name}}" select=true>{{cnName}}</option>
-                        {{/if}}
+                            <option value="{{name}}">{{cnName}}</option>
                         {{/each}}
                     </select>
                 </div>

@@ -321,7 +321,7 @@ define([
                             })
                         };
                         cmodal.modal("hide");
-                        var ul = formModal.find(".select-content-results ul");
+                        var ul = formModal.find(".select-content-results ul").empty();
                         formatData.items.forEach(function(item) {
                             var iContent;
                             if (optionData.label == "src") {

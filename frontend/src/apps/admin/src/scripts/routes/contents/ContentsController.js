@@ -161,9 +161,9 @@ define([
                             // 上传
                             tplObj.save(_modal, {
                                 _file: __file
-                            }, self.postAction);
-                            toastr.success("已保存！");
-                            selector.repeater('render');
+                            }, self.postAction).then(function(result) {
+                                if (result) selector.repeater('render');
+                            });
                         }
                     });
                 wizard.on('finished.fu.wizard', function() {

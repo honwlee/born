@@ -19,8 +19,10 @@ function formatData(site) {
                 title: snippet.title
             };
             let sc = snippet._content;
-            let iIds = _(sc.items).map(function(i) { return i.id; }).value();
-            if (sc) obj[sc.type] = Model.where(sc.type, "id", iIds);
+            if (sc) {
+                let iIds = _(sc.items).map(function(i) { return i.id; }).value();
+                obj[sc.type] = Model.where(sc.type, "id", iIds);
+            }
             return obj;
         });
     }

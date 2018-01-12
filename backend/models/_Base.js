@@ -99,6 +99,7 @@ class Model {
     }
 
     static create(name, args) {
+        refresh();
         args.id = shortid.generate();
         args.createdAt = new Date();
         args.updatedAt = new Date();
@@ -111,6 +112,7 @@ class Model {
         return result;
     }
     static findOrCreate(name, key, args) {
+        refresh();
         let query = {};
         query[key] = args[key];
         let result = jsondb.get(name).find(query).value();
@@ -128,6 +130,7 @@ class Model {
         return result;
     }
     static update(name, queryKey, args) {
+        refresh();
         let opt = {};
         opt[queryKey] = args[queryKey];
         args.updatedAt = new Date();
@@ -152,7 +155,8 @@ class Model {
         return result;
     }
     static delete(name, args = {}) {
-        let result = Model.db(name).find(args);
+        refresh();
+        let result = jsondb.get(name).find(args);
         if (result.value()) {
             let file = result.value().file;
             if (file && file.path) {
@@ -160,7 +164,7 @@ class Model {
                 if (fs.existsSync(fPath)) fs.unlinkSync(fPath);
             }
         }
-        result = Model.db(name).remove(args).write();
+        result = jsondb.get(name).remove(args).write();
         return result;
     }
     static size(name) {

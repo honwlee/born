@@ -54,7 +54,7 @@ define([
                 var sDiv = $("<div>").attr({
                     class: "text-center same"
                 }).html("<h5>" + sn.title + "</h5>").appendTo(footer);
-                sn.links.forEach(function(l) {
+                (sn.links || []).forEach(function(l) {
                     if (l.src) {
                         $("<a>").attr({
                             target: "_blank",

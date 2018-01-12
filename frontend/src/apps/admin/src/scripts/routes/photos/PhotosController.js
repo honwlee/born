@@ -31,6 +31,7 @@ define([
         },
 
         buildList: function(post) {
+            var self = this;
             this.list = new List({
                 thumbnail_template: '<div class="thumbnail repeater-thumbnail" style="background: {{color}};"><img height="75" alt="{{name}}" src="{{src}}" width="65"><span>{{name}}</span></div>',
                 thumbnail_selectable: true,
@@ -49,13 +50,24 @@ define([
                     name: "edit",
                     title: "编辑",
                     tpl: tpl,
-                    tplOpts: {
-                        needLink: this.needLink,
-                        needPageSelect: this.needPageSelect,
-                        checked: true
-                    },
-                    callback: function() {
-
+                    clickAction: function(helpers, callback, e) {
+                        var tplOpts = {
+                            needLink: self.needLink,
+                            needPageSelect: self.needPageSelect,
+                            checked: true
+                        };
+                        var _data = langx.mixin(langx.clone(helpers.rowData), tplOpts);
+                        _data.pages = self.pages
+                        modal.show("form", $(tpl(_data)), "编辑", {
+                            key: "photos",
+                            file: true,
+                            modalShownEvts: function(_modal) {
+                                _modal.find("#pageSelect").val(_data.page);
+                            },
+                            afterSave: function() {
+                                self.list.getDom().repeater('render');
+                            }
+                        });
                     }
                 }],
                 columns: [{
@@ -87,7 +99,7 @@ define([
                     afterSave: function() {
                         selector.repeater('render');
                     },
-                    checkKeys: ["title"]
+                    checkKeys: ["name"]
                 });
             });
             selector.find(".repeater-refresh button").off("click").on("click", function(e) {

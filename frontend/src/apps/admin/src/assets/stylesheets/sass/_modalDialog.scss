@@ -1,8 +1,13 @@
-.modal-dialog {
-    .sub-form {
-        li.result-item {
-            list-style: none;
-            line-height: 35px;
+.fuelux {
+    .modal {
+        overflow-y: auto;
+    }
+    .modal-dialog {
+        .sub-form {
+            li.result-item {
+                list-style: none;
+                line-height: 35px;
+            }
         }
     }
 }
