@@ -44,13 +44,20 @@ exports.News = class News extends Model {
         }
     }
     static create(args) {
-        if (!args.publishedDate) args.publishedDate = new Date();
+        let d = new Date();
+        if (!args.publishedDate) {
+            args.publishedDate = d;
+        } else {
+            args.publishedDate = new Date(args.publishedDate + "T" + [d.getHours(), d.getMinutes(), d.getSeconds()].join(":"));
+        }
         args.publishedDate = new Date(args.publishedDate);
         return Model.create("news", args);
     }
     static update(args) {
-        if (!args.publishedDate) args.publishedDate = new Date();
-        args.publishedDate = new Date(args.publishedDate);
+        if (args.publishedDate) {
+            let d = new Date();
+            args.publishedDate = new Date(args.publishedDate + "T" + [d.getHours(), d.getMinutes(), d.getSeconds()].join(":"));
+        }
         return Model.update("news", "id", args);
     }
     static delete(args) {

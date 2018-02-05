@@ -42,7 +42,6 @@ module.exports = {
         news.viewCount += 1;
         News.update({
             id: news.id,
-            publishedDate: news.publishedDate,
             viewCount: news.viewCount
         });
         let result = News.prevAndNext("news", "publishedDate", news.publishedDate);

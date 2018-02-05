@@ -43,15 +43,21 @@ exports.Post = class Post extends Model {
         }
     }
     static create(args) {
-        if (!args.publishedDate) args.publishedDate = new Date();
+        let d = new Date();
+        if (!args.publishedDate) {
+            args.publishedDate = d;
+        } else {
+            args.publishedDate = new Date(args.publishedDate + "T" + [d.getHours(), d.getMinutes(), d.getSeconds()].join(":"));
+        }
         args.uniqTile = args.title + "_" + (args.category || "")
-        args.publishedDate = new Date(args.publishedDate);
         return Model.create("posts", args);
     }
     static update(args) {
-        if (!args.publishedDate) args.publishedDate = new Date();
+        if (args.publishedDate) {
+            let d = new Date();
+            args.publishedDate = new Date(args.publishedDate + "T" + [d.getHours(), d.getMinutes(), d.getSeconds()].join(":"));
+        }
         args.uniqTile = args.title + "_" + (args.category || "")
-        args.publishedDate = new Date(args.publishedDate);
         return Model.update("posts", "id", args);
     }
     static delete(args) {

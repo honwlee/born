@@ -6,7 +6,6 @@ const path = require('path'),
     fs = require('fs'),
     request = require('request'),
     dbms = require('../lib/dbms/'),
-
     _ = require('lodash'),
     shortid = require('shortid'),
     uploadPath = path.join(__dirname, "../../public"),
@@ -58,20 +57,25 @@ class Model {
     static prevAndNext(name, key, value) {
         let chain = Model.db(name).filter(function(r) {
             return r.published == 'true';
+        }).sortBy(function(element) {
+            return _.get(element, "publishedDate");
         });
         let next = chain.filter(function(r) {
             return r[key] > value;
         }).map(function(_r) {
             return {
                 id: _r.id,
+                publishedDate: _r.publishedDate,
                 title: _r.title
             };
         }).take(1).value();
-        let prev = chain.filter(function(r) {
+
+        let prev = chain.reverse().filter(function(r) {
             return r[key] < value;
         }).map(function(_r) {
             return {
                 id: _r.id,
+                publishedDate: _r.publishedDate,
                 title: _r.title
             };
         }).take(1).value();

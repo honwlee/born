@@ -43,7 +43,6 @@ module.exports = {
         qa.viewCount += 1;
         Qa.update({
             id: qa.id,
-            publishedDate: qa.publishedDate,
             viewCount: qa.viewCount
         });
         let result = Qa.prevAndNext("qas", "publishedDate", qa.publishedDate);

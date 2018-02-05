@@ -1,9 +1,6 @@
 <div>
     <script id="news-show-main" type="text/x-handlebars-template">
         <div class="panel panel-default">
-            <div class="panel-header">
-                {{> next-prev-partial}}
-            </div>
             <div class="news-wrap panel-body">
                 <div class="container panel">
                     <textarea class="hide"></textarea>
@@ -21,6 +18,9 @@
                     </section>
                     <div class="social-share"></div>
                 </div>
+            </div>
+            <div class="panel-footer container">
+                {{> next-prev-partial}}
             </div>
         </div>
     </script>

@@ -34,7 +34,6 @@ module.exports = {
         post.viewCount += 1;
         Post.update({
             id: post.id,
-            publishedDate: post.publishedDate,
             viewCount: post.viewCount
         });
         res.json(post);
@@ -94,7 +93,7 @@ _(["meet", "activity", "process", "env", "service"]).each(function(name) {
         res.json({
             status: true,
             results: Post.list("updatedAt", "desc", true).filter(function(p) {
-                return p.published == 'true';
+                return p.published == 'true' && p.category == catName;
             }).take(req.query.limit || 8)
         });
     };
@@ -102,14 +101,40 @@ _(["meet", "activity", "process", "env", "service"]).each(function(name) {
         let post = Post.findBy({
             id: req.query.id
         });
-        if (!post.viewCount) qa.viewCount = 0;
+        if (!post.viewCount) post.viewCount = 0;
         post.viewCount += 1;
         Post.update({
             id: post.id,
             viewCount: post.viewCount
         });
-        let result = Post.prevAndNext("posts", "publishedDate", post.publishedDate);
-        result.item = post;
+        let chain = Post.db("posts").filter(function(r) {
+            return r.published == 'true' && r.category == catName;
+        }).sortBy(function(element) {
+            return _.get(element, "publishedDate");
+        });
+        let next = chain.filter(function(r) {
+            return r.publishedDate > post.publishedDate;
+        }).map(function(_r) {
+            return {
+                id: _r.id,
+                publishedDate: _r.publishedDate,
+                title: _r.title
+            };
+        }).take(1).value();
+        let prev = chain.reverse().filter(function(r) {
+            return r.publishedDate < post.publishedDate;
+        }).map(function(_r) {
+            return {
+                id: _r.id,
+                publishedDate: _r.publishedDate,
+                title: _r.title
+            };
+        }).take(1).value();
+        let result = {
+            next: next[0] || {},
+            prev: prev[0] || {},
+            item: post
+        };
         res.json(result);
     };
 });
