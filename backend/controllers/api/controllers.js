@@ -47,6 +47,9 @@ module.exports = {
         }, {
             name: "recommmended_",
             method: "get"
+        }, {
+            name: "show_",
+            method: "get"
         }]
     },
     contents: {

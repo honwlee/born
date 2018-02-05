@@ -1,0 +1,12 @@
+.prev-next-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .prev {}
+    .next {}
+    a {
+        width: 300px;
+        display: inline-block;
+        @include word-ellipsis;
+    }
+}

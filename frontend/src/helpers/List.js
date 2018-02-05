@@ -129,7 +129,7 @@ define([
 
             var tpl = hbs.compile("{{> repeater-tpl-partial}}"),
                 selector = this.selector = $(tpl({
-                    itemsPerPage: [
+                    itemsPerPage: opts.itemsPerPage || [
                         { value: 5, text: 5 },
                         { value: 10, text: 10, selected: true },
                         { value: 20, text: 20 },

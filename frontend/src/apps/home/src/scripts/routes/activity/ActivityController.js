@@ -18,6 +18,13 @@ define([
             return new List({
                 id: this.repeaterId,
                 key: "posts",
+                itemsPerPage: [
+                    { value: 9, text: 9 },
+                    { value: 18, text: 18, selected: true },
+                    { value: 27, text: 27 },
+                    { value: 54, text: 54 },
+                    { value: 99, text: 99 }
+                ],
                 actionName: "public_activity",
                 defaultView: "thumbnail",
                 thumbnail_template: langx.trim(__selector.find("#activity-listItem-partial").html()),

@@ -5,18 +5,21 @@ define([
     "server",
     "socialShare",
     "text!scripts/routes/news/news.hbs"
-], function($, skylarkjs, hbs, server, socialShare, template) {
+], function($, skylarkjs, hbs, server, socialShare, Partial, template) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx;
+    Partial.get("next-prev-partial");
     return spa.RouteController.inherit({
         klassName: "PostsShowController",
         news: null,
+        result: null,
         preparing: function(e) {
             var self = this,
                 id = e.route.getNamedValue()[1];
             if (id) {
-                e.result = server().connect("news", "get", "show?id=" + id).then(function(news) {
-                    self.news = news;
+                e.result = server().connect("news", "get", "show?id=" + id).then(function(result) {
+                    self.news = result.item;
+                    self.result = result;
                 });
             } else {
                 window.go("/news", true);
@@ -27,6 +30,11 @@ define([
             var tpl = hbs.compile(langx.trim(selector.find("#news-show-main").html()).replace("{{&gt;", "{{>"));
 
             e.content = $(tpl({
+                showRoute: "news",
+                prevId: this.result.prev.id,
+                prevTitle: this.result.prev.title,
+                nextId: this.result.next.id,
+                nextTitle: this.result.next.title,
                 id: this.news.id,
                 title: this.news.title,
                 abstract: this.news.abstract,

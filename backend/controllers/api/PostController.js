@@ -91,6 +91,25 @@ _(["meet", "activity", "process", "env", "service"]).each(function(name) {
         })
     };
     module.exports["recommended_" + name] = function(req, res) {
-        res.json({ status: true, results: Post.list("updatedAt", "desc", true).take(req.query.limit || 8) });
+        res.json({
+            status: true,
+            results: Post.list("updatedAt", "desc", true).filter(function(p) {
+                return p.published == 'true';
+            }).take(req.query.limit || 8)
+        });
+    };
+    module.exports["show_" + name] = function(req, res) {
+        let post = Post.findBy({
+            id: req.query.id
+        });
+        if (!post.viewCount) qa.viewCount = 0;
+        post.viewCount += 1;
+        Post.update({
+            id: post.id,
+            viewCount: post.viewCount
+        });
+        let result = Post.prevAndNext("posts", "publishedDate", post.publishedDate);
+        result.item = post;
+        res.json(result);
     };
 });

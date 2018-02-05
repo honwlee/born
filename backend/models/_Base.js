@@ -55,6 +55,31 @@ class Model {
         }).value();
         return chain;
     }
+    static prevAndNext(name, key, value) {
+        let chain = Model.db(name).filter(function(r) {
+            return r.published == 'true';
+        });
+        let next = chain.filter(function(r) {
+            return r[key] > value;
+        }).map(function(_r) {
+            return {
+                id: _r.id,
+                title: _r.title
+            };
+        }).take(1).value();
+        let prev = chain.filter(function(r) {
+            return r[key] < value;
+        }).map(function(_r) {
+            return {
+                id: _r.id,
+                title: _r.title
+            };
+        }).take(1).value();
+        return {
+            next: next[0] || {},
+            prev: prev[0] || {}
+        };
+    }
     static format(chain) {
         return chain;
     }
@@ -63,7 +88,7 @@ class Model {
             let obj = {};
             for (let key in p) {
                 if (key == "src") {
-                    obj[key] = p[key].replace(p.file.filename, encodeURI(p.file.filename));
+                    obj[key] = p[key].replace(p.file.filename, encodeURIComponent(p.file.filename));
                 } else {
                     obj[key] = p[key];
                 }
@@ -73,7 +98,7 @@ class Model {
         });
     }
     static encodeSrc(result) {
-        if (result && result.src) result.src = result.src.replace(result.file.filename, encodeURI(result.file.filename));
+        if (result && result.src) result.src = result.src.replace(result.file.filename, encodeURIComponent(result.file.filename));
     }
     static findByReg(name, args) {
         let r = Model.db(name).filter(function(r) {

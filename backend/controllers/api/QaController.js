@@ -27,7 +27,12 @@ module.exports = {
     },
 
     recommended: function(req, res) {
-        res.json({ status: true, results: Qa.list("updatedAt", "desc", true).take(req.query.limit || 8) });
+        res.json({
+            status: true,
+            results: Qa.list("updatedAt", "desc", true).filter(function(n) {
+                return n.published == 'true';
+            }).take(req.query.limit || 8)
+        });
     },
 
     show: function(req, res) {
@@ -41,7 +46,9 @@ module.exports = {
             publishedDate: qa.publishedDate,
             viewCount: qa.viewCount
         });
-        res.json(qa);
+        let result = Qa.prevAndNext("qas", "publishedDate", qa.publishedDate);
+        result.item = qa;
+        res.json(result);
     },
 
     update: function(req, res) {
