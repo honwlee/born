@@ -45,7 +45,7 @@ module.exports = {
             publishedDate: news.publishedDate,
             viewCount: news.viewCount
         });
-        let result = Qa.prevAndNext("qas", "publishedDate", qa.publishedDate);
+        let result = News.prevAndNext("news", "publishedDate", news.publishedDate);
         result.item = news;
         res.json(result);
     },

@@ -4,6 +4,7 @@ define([
     "handlebars",
     "server",
     "socialShare",
+    "scripts/helpers/Partial",
     "text!scripts/routes/news/news.hbs"
 ], function($, skylarkjs, hbs, server, socialShare, Partial, template) {
     var spa = skylarkjs.spa,
