@@ -19,8 +19,8 @@ define([
                 id: this.repeaterId,
                 key: "posts",
                 itemsPerPage: [
-                    { value: 9, text: 9 },
-                    { value: 18, text: 18, selected: true },
+                    { value: 9, text: 9, selected: true },
+                    { value: 18, text: 18 },
                     { value: 27, text: 27 },
                     { value: 54, text: 54 },
                     { value: 99, text: 99 }
