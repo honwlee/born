@@ -176,7 +176,7 @@
                 "navName": "海外留学"
             },
             "controller": {
-                "type": "scripts/routes/course/CourseController"
+                "type": "scripts/routes/courses/CoursesController"
             }
         },
         "courseShow": {
@@ -187,7 +187,7 @@
                 "navName": "查看"
             },
             "controller": {
-                "type": "scripts/routes/course/CourseShowController"
+                "type": "scripts/routes/courses/CourseShowController"
             }
         },
         "postShow": {

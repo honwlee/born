@@ -5,7 +5,7 @@ define([
     "server",
     "socialShare",
     "scripts/helpers/Partial",
-    "text!scripts/routes/study/study.hbs"
+    "text!scripts/routes/courses/courses.hbs"
 ], function($, skylarkjs, hbs, server, socialShare, Partial, template) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx;
@@ -18,21 +18,21 @@ define([
             var self = this,
                 id = e.route.getNamedValue()[1];
             if (id) {
-                e.result = server().connect("posts", "get", "show_meet?id=" + id).then(function(result) {
+                e.result = server().connect("courses", "get", "show?id=" + id).then(function(result) {
                     window.setActiveRouteIdData(result.item);
                     self.post = result.item;
                     self.result = result;
                 });
             } else {
-                window.go("/metusa", true);
+                window.go("/courses", true);
             }
         },
         rendering: function(e) {
             var selector = $(langx.trim(template));
-            var tpl = hbs.compile(langx.trim(selector.find("#metusa-show-main").html()).replace("{{&gt;", "{{>"));
+            var tpl = hbs.compile(langx.trim(selector.find("#course-show-main").html()).replace("{{&gt;", "{{>"));
 
             e.content = $(tpl({
-                showRoute: "metusa",
+                showRoute: "courses",
                 prevId: this.result.prev.id,
                 prevTitle: this.result.prev.title,
                 nextId: this.result.next.id,

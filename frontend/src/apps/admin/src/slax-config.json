@@ -265,7 +265,7 @@
                 "navName": "课程管理"
             },
             "controller": {
-                "type": "scripts/routes/course/CoursesController"
+                "type": "scripts/routes/courses/CoursesController"
             }
         },
         "snippets": {
