@@ -265,7 +265,7 @@ define([
             [{
                 key: "password",
                 href: "/password",
-                name: "密码管理"
+                name: "密码"
             }].forEach(function(item) {
                 $("<li>").attr({
                     class: item.key + "-nav"

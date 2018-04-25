@@ -61,7 +61,7 @@
             "pathto": "/pages",
             "data": {
                 "name": "pages",
-                "navName": "页面管理"
+                "navName": "页面"
             },
             "controller": {
                 "type": "scripts/routes/pages/PagesController"
@@ -72,7 +72,7 @@
             "isRouter": false,
             "data": {
                 "name": "posts",
-                "navName": "文章管理"
+                "navName": "文章"
             },
             "subs": [
                 "posts-env",
@@ -134,7 +134,7 @@
             "isRouter": false,
             "data": {
                 "name": "photos",
-                "navName": "图片管理"
+                "navName": "图片"
             },
             "subs": [
                 "photos-slide",
@@ -170,7 +170,7 @@
             "pathto": "/news",
             "data": {
                 "name": "news",
-                "navName": "新闻管理"
+                "navName": "新闻"
             },
             "controller": {
                 "type": "scripts/routes/news/NewsController"
@@ -180,7 +180,7 @@
             "pathto": "/slides",
             "data": {
                 "name": "slides",
-                "navName": "banner管理"
+                "navName": "banner"
             },
             "controller": {
                 "type": "scripts/routes/slides/SlidesController"
@@ -252,7 +252,7 @@
             "pathto": "/qas",
             "data": {
                 "name": "qas",
-                "navName": "问答管理"
+                "navName": "问答"
             },
             "controller": {
                 "type": "scripts/routes/qas/QasController"
@@ -262,7 +262,7 @@
             "pathto": "/courses",
             "data": {
                 "name": "courses",
-                "navName": "课程管理"
+                "navName": "课程"
             },
             "controller": {
                 "type": "scripts/routes/courses/CoursesController"
@@ -273,7 +273,7 @@
             "isRouter": false,
             "data": {
                 "name": "snippets",
-                "navName": "段内容管理"
+                "navName": "段内容"
             },
             "subs": [
                 "snippets-vantage",
@@ -417,7 +417,7 @@
             "pathto": "/links",
             "data": {
                 "name": "links",
-                "navName": "页脚内容管理"
+                "navName": "页脚内容"
             },
             "controller": {
                 "type": "scripts/routes/links/LinksController"
