@@ -258,6 +258,16 @@
                 "type": "scripts/routes/qas/QasController"
             }
         },
+        "courses": {
+            "pathto": "/courses",
+            "data": {
+                "name": "courses",
+                "navName": "课程管理"
+            },
+            "controller": {
+                "type": "scripts/routes/course/CoursesController"
+            }
+        },
         "snippets": {
             "pathto": "/snippets",
             "isRouter": false,

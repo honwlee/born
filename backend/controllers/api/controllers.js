@@ -68,6 +68,10 @@ module.exports = {
         module: require("./QaController"),
         uploadPath: "qas"
     },
+    courses: {
+        module: require("./CourseController"),
+        uploadPath: "course"
+    },
     sites: {
         module: require("./SiteController"),
         uploadPath: "sites"

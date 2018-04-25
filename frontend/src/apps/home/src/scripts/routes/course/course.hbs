@@ -1,0 +1,45 @@
+<div>
+    <script id="course-show-main" type="text/x-handlebars-template">
+        <div class="panel panel-default">
+            <div class="panel-body metusa-wrap">
+                <div class="container panel">
+                    <textarea class="hide"></textarea>
+                    <section class="case_container">
+                        <div class="row">
+                            <h1 class="col-xs-12 col-sm-12 col-md-12 col-lg-12" class="" style="font-size: 24px;  color: #b72024;font-weight: normal;">{{title}}</h1>
+                            <div class="case_info  col-md-12">
+                                <p class="date">{{date}}</p>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12"><p class="abstract">{{abstract}}</p></div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 post_overview"></div>
+                        </div>
+                    </section>
+                    <div class="social-share"></div>
+                </div>
+            </div>
+            <div class="panel-footer container">
+                {{> next-prev-partial}}
+            </div>
+        </div>
+    </script>
+    <script id="courses-listItem-partial" type="text/x-handlebars-template">
+        <a href="/courses/{{id}}" target="_blank" class="a-block">
+            <div class="media panel-body mobi-clear-padding item" data-id="{{id}}">
+                <div class="media-left col-xs-12 col-sm-12 col-md-4 col-lg-4 mobi-clear-padding">
+                    <img class="media-object" alt="{{title}}" src="{{src}}"  style="width:100%;">
+                </div>
+                <div class="media-body media-right panel-body">
+                    <h4 class="media-heading">{{title}}</h4>
+                    <p class="text-tip"> {{abstract}}</p>
+                    <p class="media-footer tip-footer">
+                        <span>{{publishedDate}}</span>
+                        <span class="pull-right">
+                            <i class="glyphicon glyphicon-eye-open icon"></i>
+                            {{viewCount}}
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </a>
+    </script>
+</div>

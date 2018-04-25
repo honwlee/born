@@ -169,6 +169,27 @@
                 "type": "scripts/routes/metusa/MetusaShowController"
             }
         },
+        "courses": {
+            "pathto": "/courses",
+            "data": {
+                "name": "courses",
+                "navName": "海外留学"
+            },
+            "controller": {
+                "type": "scripts/routes/course/CourseController"
+            }
+        },
+        "courseShow": {
+            "hide": true,
+            "pathto": "/courses/:id",
+            "data": {
+                "name": "courseShow",
+                "navName": "查看"
+            },
+            "controller": {
+                "type": "scripts/routes/course/CourseShowController"
+            }
+        },
         "postShow": {
             "hide": true,
             "pathto": "/posts/:id",
