@@ -23,23 +23,28 @@
         </div>
     </script>
     <script id="courses-listItem-partial" type="text/x-handlebars-template">
-        <a href="/courses/{{id}}" target="_blank" class="a-block">
-            <div class="media panel-body mobi-clear-padding item" data-id="{{id}}">
-                <div class="media-left col-xs-12 col-sm-12 col-md-4 col-lg-4 mobi-clear-padding">
-                    <img class="media-object" alt="{{title}}" src="{{src}}"  style="width:100%;">
+        <div class="col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-sm-8 col-md-8 col-lg-8">
+            <div class="program-card -desktop-horizontal">
+                <div class="program-card__header">
+                    <h3 class="program-card__header-title">
+                        <a href="/courses/{{id}}" target="_blank" class="program-card__header-title-link">{{title}}</a>
+                    </h3>
                 </div>
-                <div class="media-body media-right panel-body">
-                    <h4 class="media-heading">{{title}}</h4>
-                    <p class="text-tip"> {{abstract}}</p>
-                    <p class="media-footer tip-footer">
-                        <span>{{publishedDate}}</span>
-                        <span class="pull-right">
-                            <i class="glyphicon glyphicon-eye-open icon"></i>
-                            {{viewCount}}
-                        </span>
+                <a href="/courses/{{id}}" target="_blank" class="program-card__picture" style="background-image: url({{src}});"></a>
+                <div class="program-card__content  ">
+                    <p class="program-card__content-text">
+                        {{abstract}}
                     </p>
+                    <div class="program-card__ctas">
+                        <a href="/courses/{{id}}"target="_blank" class="program-card__ctas-btn program-card__ctas-btnMagenta">
+                            <span>了解更多</span>
+                        </a>
+        
+                    </div>
                 </div>
             </div>
-        </a>
+        </div>
     </script>
+
+
 </div>

@@ -1,0 +1,435 @@
+/*! Tue, 27 Feb 2018 12:11:48 GMT */
+
+
+/*
+ * These variables will be defined again in bootstrap code, but we need them now
+ */
+
+
+/*
+ * Just for reference these variables are defined on bootstrap
+ */
+
+svg path {
+    fill: inherit;
+    stroke: inherit;
+}
+
+.results {
+    display: block;
+    text-align: center;
+}
+
+.results * {
+    box-sizing: border-box;
+}
+
+.program-card {
+    position: relative;
+    display: inline-table;
+    margin-bottom: 20px;
+    // border: 1px solid #c9c9c9;
+    box-shadow: 0 0 1px #505050;
+    padding: 15px 0 0;
+    text-align: left;
+}
+
+.rtl .program-card {
+    text-align: right;
+}
+
+@media (min-width: 768px) {
+    .program-card {
+        margin-right: 10px;
+        margin-left: 10px;
+        max-width: 360px;
+        padding: 15px 0;
+    }
+}
+
+@media (min-width: 1200px) {
+    .program-card {
+        max-width: 374px;
+    }
+}
+
+.program-card__header {
+    height: 117px;
+}
+
+.program-card__header-title {
+    height: 50px;
+    font-family: "SabonLTStd-Roman";
+    font-size: 2rem;
+    text-align: center;
+    font-weight: normal;
+    padding: 0 30px;
+    margin: 0;
+    text-transform: none;
+    line-height: 1.2;
+}
+
+.program-card__header-title-link {
+    color: #000;
+    text-decoration: none;
+}
+
+.program-card__differentiator {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.2rem;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.rtl .program-card__differentiator {
+    font-size: 1.4rem;
+}
+
+.program-card__differentiator-item {
+    position: relative;
+    display: inline-table;
+    max-width: 90%;
+    padding: 0 10px;
+}
+
+.program-card__differentiator-item:first-of-type:last-of-type {
+    max-width: 90%;
+}
+
+.program-card__differentiator-item:first-of-type {
+    padding-left: 0;
+}
+
+.program-card__differentiator-item:last-of-type {
+    padding-right: 0;
+}
+
+.program-card__differentiator-icons {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    display: block;
+}
+
+@media (min-width: 480px) {
+    .program-card__differentiator-icons {
+        display: inline-block;
+    }
+}
+
+.program-card__differentiator-icon {
+    width: 18px;
+    height: 18px;
+    fill: rgba(0, 0, 0, 0.4);
+}
+
+.program-card__differentiator-icon.icon-icon-cap {
+    fill: black;
+}
+
+.program-card__differentiator-text {
+    display: block;
+    line-height: 1.2;
+}
+
+@media (min-width: 480px) {
+    .program-card__differentiator-text {
+        display: inline-block;
+    }
+}
+
+.program-card__picture {
+    display: block;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 20px;
+}
+
+.program-card__content {
+    position: relative;
+    padding: 0 20px 20px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.3rem;
+    line-height: 18px;
+}
+
+@media (min-width: 768px) {
+    .program-card__content {
+        padding: 0 20px 100px;
+        height: 180px;
+    }
+}
+
+@media (min-width: 768px) {
+    .program-card__content.-has-cities .program-card__content-text {
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    .program-card__content.-has-cities .program-card__content-list {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+.program-card__content-text {
+    display: block;
+    margin-top: 0;
+}
+
+.program-card__content-list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.program-card__content-list-text {
+    color: #818181;
+    font-weight: normal;
+}
+
+.program-card__content-list-label {
+    font-weight: bold;
+}
+
+.program-card__ctas:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media (min-width: 768px) {
+    .program-card__ctas {
+        position: absolute;
+        width: 100%;
+        height: 90px;
+        padding: 0 20px;
+        left: 0;
+        bottom: 0;
+    }
+}
+
+.program-card__ctas-btn {
+    display: table;
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    color: #000;
+    font-size: 1.1rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.rtl .program-card__ctas-btn {
+    font-size: 1.4rem;
+}
+
+@media (min-width: 480px) {
+    .program-card__ctas-btn {
+        vertical-align: text-bottom;
+        width: calc(50% - 10px);
+        display: inline-table;
+        margin-left: 20px;
+        float: right;
+    }
+    .program-card__ctas-btn:last-of-type {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .program-card__ctas-btn {
+        width: 100%;
+        display: table;
+        margin-left: 0;
+        float: none;
+    }
+}
+
+.program-card__ctas-btn:last-of-type {
+    margin-bottom: 0;
+}
+
+.program-card__ctas-btn:hover,
+.program-card__ctas-btn:focus,
+.program-card__ctas-btn:active {
+    background-color: #f7f7f7;
+    color: #000;
+}
+
+.program-card__ctas-btn span {
+    display: table-cell;
+    vertical-align: middle;
+    color: #fff;
+}
+
+.program-card__ctas-btnMagenta {
+    background-color: #ef2b8d;
+    border: 1px solid #ef2b8d;
+    color: #fff;
+}
+
+.program-card__ctas-btnMagenta:hover,
+.program-card__ctas-btnMagenta:focus,
+.program-card__ctas-btnMagenta:active {
+    background-color: #db007a;
+    border-color: #db007a;
+    color: #fff;
+}
+
+.program-card__textMagenta {
+    color: #db007a;
+}
+
+@media (min-width: 480px) {
+    .program-card__differentiator {
+        margin-top: 20px;
+    }
+    .program-card__differentiator-item {
+        height: 20px;
+        text-align: left;
+    }
+    .program-card__differentiator-item::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        width: 1px;
+        height: 20px;
+        background-color: #e5e5e5;
+    }
+    .program-card__differentiator-item:last-child::after {
+        display: none;
+    }
+    .program-card__differentiator-icons {
+        height: 20px;
+        margin: 0;
+    }
+    .program-card__differentiator-icons i {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .program-card__differentiator-text {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .program-card__differentiator-text:first-child:last-child {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.program-card.-desktop-horizontal {
+    /* This block of code is for a quick style fix will probably have to be reviewed */
+    /* End of crap code */
+    margin-right: 0;
+}
+
+.program-card.-desktop-horizontal .program-card__header {
+    height: auto;
+}
+
+.program-card.-desktop-horizontal .program-card__header-title {
+    height: auto;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+    .program-card.-desktop-horizontal {
+        margin-right: 0;
+        margin-left: 0;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 20px;
+    }
+    .program-card.-desktop-horizontal .program-card__header {
+        margin-bottom: 20px;
+        height: auto;
+    }
+    .program-card.-desktop-horizontal .program-card__header-title {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -12px;
+        font-size: 2.2rem;
+    }
+    .program-card.-desktop-horizontal .program-card__header-title-link {
+        padding: 0 20px;
+        background-color: #fff;
+    }
+    .program-card.-desktop-horizontal .program-card__picture {
+        float: left;
+        display: inline-block;
+        width: calc(50% - 20px);
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 768px) and (min-width: 992px) {
+    .program-card.-desktop-horizontal .program-card__picture {
+        width: calc(40% - 20px);
+    }
+}
+
+@media (min-width: 768px) {
+    .rtl .program-card.-desktop-horizontal .program-card__picture {
+        float: right !important;
+        margin-left: 0;
+        margin-right: 20px;
+    }
+    .program-card.-desktop-horizontal .program-card__content {
+        position: relative;
+        float: left;
+        display: inline-block;
+        width: 50%;
+        height: auto;
+        padding-bottom: 0;
+    }
+}
+
+@media (min-width: 768px) and (min-width: 992px) {
+    .program-card.-desktop-horizontal .program-card__content {
+        height: auto;
+    }
+}
+
+@media (min-width: 768px) and (min-width: 992px) {
+    .program-card.-desktop-horizontal .program-card__content {
+        width: 60%;
+    }
+}
+
+@media (min-width: 768px) {
+    .program-card.-desktop-horizontal .program-card__ctas {
+        position: relative;
+        width: auto;
+        height: auto;
+        padding: 0;
+    }
+    .program-card.-desktop-horizontal .program-card__ctas-btn {
+        width: calc(50% - 10px);
+        display: inline-table;
+        margin-left: 20px;
+        margin-bottom: 0;
+        float: right;
+    }
+    .program-card.-desktop-horizontal .program-card__ctas-btn:last-of-type {
+        margin-left: 0;
+    }
+    .rtl .program-card.-desktop-horizontal .program-card__ctas-btn {
+        float: left;
+        margin-left: 0;
+        margin-right: 20px;
+    }
+    .rtl .program-card.-desktop-horizontal .program-card__ctas-btn:last-of-type {
+        margin-right: 0;
+    }
+}
