@@ -173,7 +173,7 @@
             "pathto": "/courses",
             "data": {
                 "name": "courses",
-                "navName": "海外留学"
+                "navName": "海外游学"
             },
             "controller": {
                 "type": "scripts/routes/courses/CoursesController"
