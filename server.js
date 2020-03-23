@@ -126,7 +126,7 @@ function serve(options) {
     _startBackend(_express);
     options.slaxs = _prependSlaxApps();
     let slaxServer = new SlaxServer(options);
-    slaxServer.start(function() {
+    slaxServer.start(_express, function() {
         console.log(chalk.blue('*'), 'slax server successfully started.');
         console.log(chalk.blue('*'), 'Serving files at:', chalk.cyan('http://localhost:' + options.port));
         console.log(chalk.blue('*'), 'Press', chalk.yellow.bold('Ctrl+C'), 'to shutdown.');
@@ -141,5 +141,5 @@ if (!(npm_argv && npm_argv.cooked instanceof Array)) {
 
 serve({
     port: npm_argv.cooked[3] || 8087,
-    // root: path.join(__dirname, "frontend/src/apps/home/src")
+    root: path.join(__dirname, "frontend/src/apps/home/src")
 });

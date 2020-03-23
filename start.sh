@@ -8,10 +8,10 @@ if read -p "start build and deploy task [Y/N]? " answer; then
             prod=${prod:-y}
             if [ $prod == "Y" ] || [ $prod == "y" ] 
             then
-                cd build; gulp build --prod; gulp deploy;
+                cd build; ./node_modules/.bin/gulp build --prod; ./node_modules/.bin/gulp deploy;
                 cd ..
             else
-                cd build; gulp build; gulp deploy;
+                cd build; ./node_modules/.bin/gulp build; ./node_modules/.bin/gulp deploy;
                 cd ..
             fi
         fi
