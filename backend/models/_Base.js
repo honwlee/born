@@ -2,7 +2,7 @@
 let jsondb;
 const path = require('path'),
     dbpath = path.join(__dirname, "../dbs"),
-    Q = require('q'),
+    // Q = require('q'),
     fs = require('fs'),
     request = require('request'),
     dbms = require('../lib/dbms/'),
