@@ -41,7 +41,7 @@
     "gulp-usemin": "^0.3.11",
     "gulp-util": "^3.0.6",
     "gulp.spritesmith": "~4.0.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "run-sequence": "~1.0.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
